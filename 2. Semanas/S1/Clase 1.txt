@@ -1,11 +1,90 @@
-. {
-	. {
-		. 
+. INTRODUCCION{
+	. JPs con experiencia en DevOps
+	. Los laboratorios son con IA
+	. Los examenes no son con IA
+}
+
+. Ciclo de vida ddel desarrollo de sodftware{
+	. SDLC
+	. El diagrama que les enseñaron vs lo que realmente pasa{
+		. El comite de cambios o pase{
+			. Lo lidera el equipo de operaciones
+		}
+		. Equipo de desarrollo{
+			. Es al que le piden el software, sacar las cosas lo mas rapido posible, satisfacer el negocio
+		}
+		. Equipo de operaciones{
+			. Es el que hace que este en produccion el software
+			. Velan que el costo sea mas barato, que no se caiga
+		}
 	}
 }
 
-. {
-	. {
-		. 
+. VALUE STREAMING MAPPING{
+	. Te sientas con la persona y levantas la info; si cambia, lo vuelves a hacer
+	. Que es{
+		. Esta pensado que sea recorrido de un proceso
+	}
+	. Ejemplo de VSM{
+		. Los lead time tienen tiemo calendario
+		. 3.5% = 8h/9d 13h
+		. El cuello de botella esta en el QA
 	}
 }
+
+. Metriscas DORA{
+	. Google{
+		. Elite: Despliega varias veces al dia
+		. Low
+	}
+	. El VSM es una foto; DORA es el monitoreo{
+		. DORA levanta la informacion automaticamente
+		
+		. BPN es un insumo del VSM
+		
+		. DORA ve como estamos hoy vs la semana pasada
+		
+		. El cuello de botella esta  en el Lead Time
+	}
+	. Las 4 metricas{
+		. Frecuencia de despliegue{
+			. Que tan rapido desplegamos
+			
+			. Aterrizas una funcionalidad acotada que le de valor a cliente
+		}
+		. Lead time para cambios{
+			. Desde que haces el commit de codigo hasta que llegas a producción
+		}
+		. Tasa de fallas en cambios{
+			. No tiene sentido hacer tantos cambios y tener muchos problemas
+		}
+		. Tiempo de restauracion del servicio{
+			. SRE: Como se hace para que no se caiga produccion y si se cae que se levante solito
+		}
+		
+		. Herramientas del proceso de desarrollo o gestion de proyectos que te ayudan a medir: Trello, Jira{
+			. Si el servidor tiene errores, debe generar una alerta que para cuando se arregla automaticamente
+			
+			. OSI de Oracle{
+				. Herramienta de observabilidad: Open Search
+				. Oracle le conviene que consumas su recursos para que te cobren
+				
+				. Cada vez que un usuario hacia acciones se registra en un panel
+			}
+		}
+	}
+	. Velocidad y estabilidad no se intercambian{
+		. En produccion, se hace lento por seguro
+	}
+	. Problematicas comunes en orgnizaciones{
+		. Mentalidad de crecimiento{
+			. Tenemos el problema y pensar que mas hacer para solucionarlo
+		}
+		. Revisar el riesgo del pase
+		. QA como etapa final{
+			. Automatizacion de pruebas unitarias -> Triangulo
+		}
+	}
+}
+
+. Lo importante del caso es saber que nos llevamos de el: El tiempo de espera es el problema
