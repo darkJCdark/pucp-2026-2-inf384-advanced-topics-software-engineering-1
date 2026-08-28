@@ -1,8 +1,572 @@
-Sí, desarrollo de software, que es la sesión de hoy. Y se va primero al curso, que es temas avanzados de software, eh, uno. Pero como les decía, aterrizado este ciclo es DevSecOps. ¿Alguno ha escuchado algo de DevSecOps antes? Es totalmente nuevo. Yo diría que vamos a aprender bastante. Más adelante veremos qué es. Eh... un segundito, se ha abierto la PPT incorrecta. No tenía el adaptador para el laptop acá. Ahora sí. Eh... bueno. Les decía: primero, al ser primera clase, vamos a conocer un poquito el syllabus. Lo he tratado de distribuir acá de una forma más visual, para que todos estemos al tanto de. Eh... bueno, tenemos clases semanales, como el día de hoy, 3 horas a la semana. Y tenemos laboratorios quincenales, ¿no? De 2 horas a la semana, tipo B. Eh... el curso consta de 9 capítulos. Hay algunos que en una sola clase lo vamos a poder ver todo, y otros que necesitamos 2 clases para terminar de verlo. Entonces vamos a tener: empezar el día de hoy con el ciclo de desarrollo de software, luego introducción a lo que es DevSecOps, luego ya nos metemos de lleno un poco en lo que es integración continua, que es parte de DevSecOps, despliegue continuo.
-
-Hasta ahí. Tenemos lo que es diagnosticar el proceso y los posibles problemas, y ya empezar a como construir esas soluciones. Y dentro de esa construcción, luego vamos a ver cómo automatizamos parte de la calidad y la seguridad, que eso viene en el capítulo 5 o 6. Y luego, los capítulos 7, 8 y 9 ya vienen como: "ok, ya está todo construido, ahora cómo lo operamos y lo escalamos". Porque muchas veces DevSecOps lo hacen con un equipito, un equipo chico, pero luego cuando eso lo quieren llevar a toda la empresa, cuesta un poco más. Entonces ahí como que queda como si la razón es tener para poder llegar a hacer eso. ¿Sí? Eh... bueno, como las competencias alineadas a la carrera, está diseño de ingeniería, resolución de problemas, y sesión de ingeniería. Eh... y bueno, acá están los resultados de aprendizaje. Hasta ahí, ¿tienen alguna pregunta, alguna duda? Como la evaluación, es una evaluación clásica. Eh... el PTR peso 3 el laboratorio, peso 3 el parcial, y peso 4 el final, que va a agrupar un poco todo lo que hemos visto durante el ciclo. ¿Sí? Eh... para los... para el día de laboratorio, no lo tomen como los clásicos laboratorios.
-
-Los JPs que nos van a acompañar son personas, eh, que tienen experiencia. Uno de ellos, mucha experiencia en desarrollo, es Oto, y he traído a dos personas de afuera. No son PUC, pero han... se han desempeñado como DevOps en industrias grandes. Eh... uno de ellos es el contrata DevOps en una de las aseguradoras más grandes de acá en Perú. Y el otro es el que implementa todas las mejores prácticas de DevOps en esa empresa también, ¿no? Ambos han trabajado conmigo antes. Este... así que espero también les sea de mucha utilidad a ustedes tener su experiencia, su feedback, y por qué no también alguna retroalimentación para su carrera, ¿no? Porque ellos están muy, muy en el día a día con eso. Eh... eso por el mundo del laboratorio. En la siguiente sesión, eh... el primer laboratorio va a ser un laboratorio introductorio. No tiene nota, es introductorio, donde nos vamos todos a adecuar un poco a qué es lo que vamos a hacer. Sé que hay unos que les gusta más lo técnico, otros que no les gusta tanto lo técnico. Entonces la idea es alinearnos un poco ahí todos, para emparejarnos y partir todos de una misma.
-
-.. como un mismo punto, ¿no? Eh... bueno, luego el examen parcial final, que eso un poco ya lo conocen. Eh... se puede usaría, sí, se puede usaría. Eh... la idea es que entiendan un poco qué cosas es las que ustedes están haciendo como solución, ¿no? Eh... ustedes son los responsables de la solución, no la IA. Entonces ustedes pueden explicarlo y entender por qué y para qué se ha hecho de esa manera. ¿En los exámenes también se puede usaría? Los exámenes... bueno, los exámenes van a ser más clásicos. Ah, ok. Los exámenes van a ser casos.
-
+00:00 Speaker 1: de guía de desarrollo de software que es la sesión de hoy y se va primero al curso que se manda avanzado en software. Uno, pero como les decía, aterrizado este ciclo es DevSecOps. ¿Alguno ha escuchado algo de DevSecOps
+00:16 Speaker 2: antes?
+00:18 Speaker 1: Totalmente nuevo.
+00:19 Speaker 2: Yo creo que
+00:20 Speaker 1: vamos a aprender bastante. Más adelante veremos qué
+00:24 Speaker 2: es. Se había algo de repente incorrecto.
+00:46 Speaker 1: Tenía un tren adaptado para mí, le acordó, ¿verdad?
+01:13 Speaker 1: Bueno, les decía primero, al ser primera clase, vamos a conocer un poquito del sílabus. Yo he tratado de distribuir acá de una forma más visual, para que todos estemos al tanto de... Bueno, tenemos clases semanales, como el día de hoy, tres horas a la semana, y tenemos reporteros quincenales, dos horas a la semana, tipo B.
+01:35 Speaker 1: El curso consta de nueve capítulos. Hay algunos que en una sola clase la vamos a poder ver todo y otros que necesitamos dos clases para terminar de verlo.
+01:44 Speaker 2: Entonces vamos a tener que
+01:45 Speaker 1: empezar el día de hoy con el ciclo de desarrollo
+01:47 Speaker 2: del software,
+01:49 Speaker 1: luego introducción a lo que es Dexepops, luego ya nos metemos bien un poco a lo que es integración continua, que es parte de Dexepops, despliegue continuo. Hasta ahí tenemos lo que es
+02:00 Speaker 2: diagnosticar el
+02:02 Speaker 1: proceso y los posibles problemas y empezar a construir esa solución. Y dentro de esa construcción, luego vamos a ver cómo automatizamos parte de la calidad y la seguridad, que se ve en el capítulo 5 o 6. Y luego los capítulos 7, 8 y 9 ya vienen como, ok, ya está todo construido, ahora cómo lo operamos y lo escalamos. Porque muchas veces lo hacen como un equipo chico, pero luego cuando eso lo quieren llevar a toda la empresa, pues un poco más. Entonces hay como que consideraciones tener para poder llegar a hacer eso.
+02:37 Speaker 1: Bueno, como las competencias alineadas a la carrera, hasta diseño ingeniería, resolución de problemas, diseño ingeniería. Y bueno, acá están los resultados permisales.
+02:50 Speaker 2: ¿Alguna pregunta, alguna duda?
+02:58 Speaker 1: La evaluación es una evaluación clásica, el que tiene peso 3 el laboratorio, peso 3 el parcial y peso 4 el final que va a agrupar un poco todo lo que hemos visto durante el
+03:11 Speaker 2: ciclo.
+03:15 Speaker 1: Para los prácticos de laboratorio, nosotros como los clásicos laboratorios,
+03:19 Speaker 2: los
+03:19 Speaker 1: JPs que nos van a acompañar son personas que tienen experiencia, uno de ellos mucha experiencia en desarrollo. que es Oto, y he traído dos personas de afuera, no solo,
+03:31 Speaker 2: pero se
+03:34 Speaker 1: han desempeñado como DevOps en industrias grandes. Uno de ellos es el contrata a DevOps, una de las aseguradoras más grandes de acá en Perú, y el otro es el que implementa todas las mejores prácticas de DevOps en
+03:46 Speaker 2: ingeniería central del planeta. así
+03:50 Speaker 1: que espero que también les sea de mucha utilidad tener su experiencia su feedback y por qué no también alguna retroalimentación para su carrera porque están muy en el día a día con eso
+04:01 Speaker 2: eso
+04:05 Speaker 1: por el mundo del laboratorio en la siguiente sesión El primer laboratorio va a ser un laboratorio de introductorio, no tiene nota, ese es un laboratorio de introductorio, donde nos vamos todos a adecuar un poco a qué es lo que vamos a hacer. Sé que hay unos que les gusta más lo técnico, otros que no les gusta más lo técnico, entonces les desalineamos un poco ahí, todos para emparejarnos y partir todos de un mismo punto.
+04:33 Speaker 1: Bueno, luego el examen parcial final, ya lo conocen. ¿Se puede usar? Sí, se puede usar. La idea es que entiendan un poco qué cosas están haciendo como solución. Ustedes son responsables de la solución, no la guía. Ustedes pueden explicarlo y entender por qué, para qué se ha hecho de esa manera. ¿En
+04:54 Speaker 2: los exámenes también se puede usar? Los exámenes
+04:56 Speaker 1: van a ser más clásicos. Los exámenes van a ser casos para resolver. Hablo más del laboratorio. saturante laboratorio se van a poder usar para ir generando código o pipelines que lo veremos más adelante
+05:10 Speaker 2: acá
+05:13 Speaker 1: hay cierta bibliografía yo tengo algunos de estos que les quiero ir colgando algunos capítulos para que los vean chequeando pero les va a servir mucho para ir complementando lo que vemos en clase o entendiendo un poco mejor DevOps es algo relativamente nuevo en la industria 15 años, más o menos, a nivel teórico, y en Perú tendrá menos de 10. Hay muchos que empezamos haciendo debo, pero no sabíamos que era debo, si después ya llegó el nombre formal de debo.
+05:41 Speaker 2: Entonces, por
+05:43 Speaker 1: eso verán que los libros y los artículos que voy a sugerir son relativamente nuevos. El 18 va adelante,
+05:50 Speaker 2: fresquito.
+05:52 Speaker 1: No tienen que leer otro libro, hay ciertos capítulos que los voy a ir diciendo, y les voy a tratar de pasar los links o colgar los pdf para que los puedan chequear. ¿Hasta ahí alguna pregunta del syllabus?
+06:09 Speaker 2: Ok, bueno.
+06:14 Speaker 1: Vamos con este punto que me parece de los más importantes para la convivencia mutua. En los ciclos pasados hemos estado siendo jefe de práctica de implementación de software, y algo que me incomodaba bastante a mí era tener la sesión del laboratorio y algunos chicos en el celular exploreando qué sentido tienen que estén si no están. Entonces, ahí les diría a ustedes qué acuerdo creen que podamos llegar para poder llevar la sesión de
+06:51 Speaker 1: forma fluida y entendible. Que haga sentido que estén acá.
+06:56 Speaker 2: O sea, lo primero de los preguntas es,
+06:58 Speaker 1: ¿necesitan las laptops? ¿No necesitan las laptops ahorita?
+07:01 Speaker 2: No sé. Sí, ¿no? Por mi parte, yo sí suelo usar las laptops porque suelo tomar nota de lo que suele hablar, tanto el docente o algún feedback, ¿no?, que mis compañeros. Vale. ¿Alguien más? Si
+07:22 Speaker 1: necesitan algo, hacer algo, con toda confianza y tranquilidad pueden salir, hacerlo y volver. Sin ningún problema. Para tratar de enfocarnos. ¿Cuál es tu nombre? Disculpa.
+07:34 Speaker 2: Jorge Chamorro ¿Alguna
+07:39 Speaker 1: otra opinión, un pedido, alguna necesidad que tengan respecto a estos puntos?
+07:45 Speaker 3: En otras clases se suelen hacer cuestionarios al final de la clase
+07:54 Speaker 1: ¿Prefieres a...? Por
+07:55 Speaker 3: ejemplo, se lanzan preguntas y pues nosotros nos unimos y respondemos la pregunta para
+08:01 Speaker 1: ver si es que nos ha quedado... Ah, para hacer el laptop. Ok. En este caso, por ahí, yo soy más de usar Cajú, por ejemplo, ahí va a ser más celular. O si me quieren el laptop, con el código... Vale. El pedido acá es... Yo no quiero venir como un policía. ¿Qué estás haciendo? No es la idea. Mi objetivo es que todos estemos tratados de estar acá. Si estamos acá.
+08:24 Speaker 2: Y si no, no hay problema.
+08:27 Speaker 1: Esta es un poco la idea. Tenemos tres horas. Son tres horas largas. La idea es hacer un break a
+08:36 Speaker 2: la mitad de
+08:37 Speaker 1: las sesiones. En unos diez minutos.
+08:39 Speaker 2: Vamos a recalcarnos y seguir. Las sesiones las voy a tratar de hacer no
+08:46 Speaker 1: solo yo presentando acá. La idea es que, por eso me voy a poner un poco de material por ahí. Ahora después en la segunda parte de la sesión de hoy vamos a tener algo interactivo.
+08:58 Speaker 2: Y la idea es que el
+09:00 Speaker 1: conocimiento no solo lo estoy viendo acá, sino que ustedes lo vivan, lo pongan y lo compartan. Va a aparecer también un poco por ahí la sesión. Y las voy a ir variando. Con un poco lo que he visto que me ha... como yo he podido aprender después de la universidad, justo en temas de DevOps, en talleres. Creo que sería chévere eso compartirlo con ustedes. ¿Algún otro pedido, solicitación que tengan?
+09:40 Speaker 2: Bueno, arranquemos justo con eso.
+09:44 Speaker 1: Arranquemos con un 20.
+10:06 Speaker 1: Mi nombre es José Castillo. Tengo experiencia trabajando en bandas, en seguros, después en empresas de tecnología, constructores de tecnología. Y bueno, el año pasado decidí ser independiente.
+10:25 Speaker 2: Entonces,
+10:26 Speaker 1: estoy ahora como consultor independiente de diferentes clientes y diferentes consultoras también. He encontrado un buen mix ahí que todavía estoy transitando. Estoy de ingeniería informática acá, al igual que ustedes. Posiblemente llevé una MBA en la Pacífico. Yo sobre eso soy muy curioso y de saltar de un lado para otro para ver nuevas realidades. Entonces,
+10:50 Speaker 2: dado que ya había estudiado acá... Dije, que lo hago en Centrum, que
+10:53 Speaker 1: también tenía convenio en el trabajo donde estaba, que me den un descuento, y la otra a la Pacifico, que la Pacifico un poco por eso, para ver otra realidad. ¿Qué más? Bueno, por esas curiosidades que tengo, he podido seguir caminos a certificarme en temas de gestión de proyectos, como PMP, en temas de Agile, Master o Product Owner,
+11:16 Speaker 2: también
+11:17 Speaker 1: en temas de nube, como AWS sobre todo.
+11:22 Speaker 2: Y
+11:22 Speaker 1: también en DevOps. Como inicié un poco mi camino de DevOps,
+11:25 Speaker 2: yo
+11:27 Speaker 1: empecé como desarrollador, luego
+11:29 Speaker 2: como
+11:32 Speaker 1: desarrollador yo siempre fui bien curioso y siempre como que me metía más donde no me llamaban, pero trataba de, para ver cómo resolver estos problemas porque no tenía mucho sentido en hacer las cosas de esa manera porque, no sé.
+11:45 Speaker 2: se demoraba mucho,
+11:47 Speaker 1: la otra persona no sabía, yo decidiera explicarle para que las cosas fluyeran más. Y a veces me funcionó, a veces no me funcionó. Muchas veces también me llamaron la atención por meterme donde no debía. Pero bueno, el camino fue fluyendo y al final nació DevOps, nació la oportunidad para mí de liderar la implementación de DevOps en empresas de seguros. Y lo llevé, lo sacamos y bueno,
+12:10 Speaker 2: ahora...
+12:12 Speaker 1: Es un equipo gigante ese de DevOps. Nació conmigo como uno, dos, tres personas y ahora es... 40 o 50 personas de ese equipo de EURUS. Como parte de las experiencias que he tenido ahí, esas fricciones que decías de que no te hacen caso o que no tienen información, etc. Ahí es un muy pro. ¿Por qué no? Y ahí es un... Al inicio para mí era, no quiero hacerlo porque le caigo mal o porque...
+12:46 Speaker 1: Eso a él no le beneficia en nada. Porque a él lo que le interesa es que no le rompa su kiosco, no le manure el servidor. Si yo le explico esto, que él no conoce de qué va, le puedo romper el servidor y él está preocupado por eso. Entonces, al inicio de esa explicción, después fue evolucionando en entender cuál era su problemática y explicarle un poco qué cosa era lo que íbamos a hacer y acompañarlo en eso.
+13:14 Speaker 1: Pero todo ese proceso que les cuento no ha sido 100% tecnológico. Ahí ha habido una parte
+13:20 Speaker 2: de conocimiento
+13:26 Speaker 1: personal y conocimiento también de liderazgo para poder entrar en esas conversaciones, poder entender qué cosa te gusta a ti, por qué no me estás haciendo caso y cómo puedo llegar a ti para hacer lo que necesito hacer. Es una anécdota de una persona en otro equipo. que tenía toda la vida en la empresa, era mayor,
+13:47 Speaker 2: bastante mayor,
+13:48 Speaker 1: y no me hacía mucho caso porque cada vez que yo le necesitaba pedir algo y me necesitaba información de él. Y él tenía su computadora acá, de la empresa, y tenía su laptop al costado, una Linux,
+13:58 Speaker 2: de
+14:00 Speaker 1: esas que son chiquititas, desgaditas, que son muy ligeras, que son muy ligeras a nivel del sistema operativo de correo. Y él tenía como una obsesión por cada vez hacer ese Linux más ligero y más ligero y más ligero. Entonces yo no sabía nada de eso, ni me gustaba tampoco. Pero me di cuenta que le gustaba tanto que era mi forma de entrar en la conversación y de repente no le hacía el pedido de, oye, ya me hagas información de dónde está la base alta y no sé qué. No, si lo empezaba, oye, ¿cómo te ha ido? ¿Cómo tal? Y de ahí poco a poco ya entrábamos a otra conversación y generábamos confianza.
+14:32 Speaker 1: Eso lo aprendí de un jefe que tuve, que tenía ese don. O sea, él podía conversar con cada uno de ustedes. Y ustedes le iban contando algo de su casa, de su mamá, su casa, su hermano, su perro. Y él se acordaba de todo. Entonces, cuando llegaba, a veces quería pedir algo y a veces no. Simplemente, naturalmente, para conversar con tu vida. Y se acordaba de todas esas cosas. Sí, eso me pareció bien
+14:58 Speaker 2: chévere.
+15:00 Speaker 1: Entonces, esa parte soft, creo que ha sido clave también en este camino. Y también he tenido la oportunidad, en este programa, por ejemplo, de la maestría, había un programa de liderazgo durante toda la maestría para poder ir desarrollando eso. No sé si ustedes todos han llevado en el cuarto o quinto ciclo el curso de gestión. No, hay uno de gestión que es en la Facultad de Gestión de Estado de Ingeniería.
+15:30 Speaker 1: ¿De habilidades landas? ¿Qué tal lo sintieron?
+15:37 Speaker 2: No le gustó.
+15:41 Speaker 1: Yo cuando lo vi me emocioné y dije, oye, qué chévere que ahora están haciendo y quiero meterme más ahí para ver cómo acompañamos eso durante todos los cursos. Me encantaría. Es que no saben el poder ahorita. que eso tiene, es más importante que saber a desarrollar, o saber el pipeline, o saber qué fue.
+16:01 Speaker 1: Porque ahí realmente está el motor, que cuando descubres algo que no conoces, te da a conocerlo, te da a ir y preguntar, te da a perder el roche, te da a
+16:10 Speaker 2: perder el miedo, y todas esas cosas.
+16:12 Speaker 1: Y te da a también tener un motor. Entonces, bueno, ahí es a contarles un poco de mí. Yo siempre he tenido el bichito de querer enseñar. Pero bueno, no me ha dado el tiempo. El año pasado se dio la oportunidad. Y empecé a buscarla. Y hasta que, bueno, ya estoy por acá. Ya como profe. Pero mi
+16:33 Speaker 2: objetivo es que, de
+16:34 Speaker 1: alguna manera, estas cosas se vuelquen un poco más hacia los cursos obligatorios. No le dan a esto. Es un poco mi idea, ¿no? Que ese tipo de cosas que me estoy contando, de poco sí ir metiéndole. Bueno, acá no somos más de mil. El casado ya cumplió 13 años de casado. Tengo tres hijos. Y una de las decisiones que tuve el año pasado de independizarme fue también eso. Poder estar más tiempo. Mi esposa es profesora de la Facultad de Educación.
+17:08 Speaker 1: Ella también trae algunas cosas. No ha sido tan radical como ella. Ella ya no puso una cajita. Y en acuerdo con todos los alumnos, porque la mayoría son mujeres y no cuantos hombres, dejan
+17:19 Speaker 2: sus celulares antes
+17:20 Speaker 1: de entrar a la clase.
+17:23 Speaker 2: Y ahora pensé,
+17:24 Speaker 1: lo consulté con mis hijos, y me dijo, no, estás loco, ¿qué
+17:26 Speaker 2: vas a hacer eso? Así que bueno,
+17:30 Speaker 1: no sé, ¿tienen alguna pregunta para mí? Si les he contado alguna historia, se me había arrancado un para el tema de hoy. Cuando tenga alguna pregunta, alguna duda, o algo, alguna inquietud,
+17:44 Speaker 2: me
+17:47 Speaker 1: la hacen. Poco a poco les sigo contando algunas anécdotas de mi experiencia,
+17:51 Speaker 2: cuando
+17:52 Speaker 1: hagan sentido con las preguntas y los temas que vayamos viendo.
+17:59 Speaker 2: ¿Ok? Bueno.
+18:01 Speaker 1: Hoy día vamos a ver el... Ustedes ya traen nociones de qué cosa es el proceso de desarrollo de software, ¿no? Han ayudado a pedir software, muchos trabajan desarrollando, o han hecho algunos trabajos desarrollando, o algo alrededor del desarrollo, ¿no? Análisis, seguridad, bueno.
+18:18 Speaker 2: Entonces, hoy
+18:19 Speaker 1: día vamos a... ver un poco eso como proceso, más con, tal vez, lente, se podría decir, como de industrial, ¿no? De entenderlo como proceso y ver qué mejoras se pueden hacer o cuáles son los juegos de, etc. Vamos a ver algo que se llama el Valuesing Mapping. ¿Les suena algo el Valuesing Mapping? ¿Lo han visto para algo antes?
+18:36 Speaker 2: No.
+18:38 Speaker 1: Como su nombre lo dice, este proceso tiene momentos que agregan valor. al proceso que se está generando y le debes ver cuáles le están restando valor o cuáles le están restando velocidad a entregar el valor eso
+18:53 Speaker 2: es un poco ese
+18:54 Speaker 1: mapa es un proceso
+18:55 Speaker 2: luego
+18:57 Speaker 1: las métricas DORA que vamos a hacer más adelante
+19:00 Speaker 2: y
+19:01 Speaker 1: problemáticas comunes las experiencias que he ido teniendo la
+19:04 Speaker 2: idea
+19:08 Speaker 1: es que eso sea fluido entonces si tienen alguna pregunta levantan la mano y y lo hacemos en el momento para que no se les vaya
+19:14 Speaker 2: entonces,
+19:16 Speaker 1: bueno, arranquemos el proceso están formelitizados con esas siglas SDLC
+19:23 Speaker 2: Software Delivery Lifecycle proceso
+19:28 Speaker 1: de desarrollo de software lo digo porque ahorita en el mercado es clásico, esas siglas se usan para todo
+19:36 Speaker 2: entonces,
+19:39 Speaker 1: bueno, partamos un poco de lo que ya conocen, ¿no? En ingeniería de software, ya han visto este proceso, tal vez no con ese nombre, pero ya saben que hay una etapa de... ¿O qué etapa del proceso de desarrollo de software conocen? Las clásicas, un poco.
+20:12 Speaker 1: Saben que hay diferentes formas de trabajarlo, ¿no? Cascada, etc. Saben que hay temas de estimación, backlog, todo eso ya lo traen. Y lo que traemos acá en este curso, lo que vamos a ver un poco es visto como un flujo medible. Ya no es solamente garantizar que el producto tenga todos los requerimientos y hacerlo de la mejor manera, sino ya es verlo con ojos de, ok, ya tengo el proceso, pero ¿qué tan bien estamos haciendo este proceso? de desarrollar software. Ya no solamente a ver el producto, sino a ver cómo está el proceso por arriba.
+20:45 Speaker 1: Ver un poco cuáles son las métricas con las cuales mido ese proceso y cómo está la industria respecto a eso. Porque, oye, yo me demoro una semana en salir a producción, yo me demoro tres meses en salir a producción. ¿Está bien? ¿Está mal? No sé. Y ahí me preguntaba a ser, ¿quién eres? ¿Eres BCP?
+21:05 Speaker 2: ¿O eres...?
+21:06 Speaker 1: una startup que tiene tres clientes y está fresquita
+21:11 Speaker 2: también va
+21:13 Speaker 1: por ahí la medición Y acá también veremos, ok, no es aplicar debo, pero aplicar debo. La idea es, y eso va a ser algo común en lo que sea acá, posiblemente en su carrera, siempre primero hay que diagnosticar. No puedes ir a solucionar algo que no sabes cuál es realmente el problema. Entonces, eso también la idea es ver el proceso y diagnosticar cuál es el problema. Y ahí, así plantear qué soluciones podemos tener.
+21:54 Speaker 1: Entonces, justo el proceso que ya han visto, ¿no? Requisitos, prediseño, codificar, pruebas, y desplegar y operar. ¿Qué es lo que sumamos acá? Oye, yo diría requisitos, pero cuando voy a tocar la puerta para ya empezar a desarrollar, hay una espera. Entonces, esa espera normalmente no la hemos visto en esos procesos. En la vida real, se dan esperas. Se dan esperas porque hay que meter un ticket. a una plataforma y espera que le respondan. Se dan esperas porque las otras personas están en motocross o en otra cosa y que no le corresponden. Y esas esperas se dan entre las diferentes partes del proceso, ¿no?
+22:36 Speaker 1: Por ejemplo, ok, yo tengo los requisitos, pero son a alto nivel. Hay que hacer el refinamiento. Hay que juntarnos con el usuario y que nos detalle cómo es. Uy, el usuario es en reuniones. Hay una espera para esa refinamiento. Ya codifique, pero lo tienes que revisar el día técnico y darnos el feedback o decir si está bien o no. El Code Review. El día técnico de varios proyectos. Hay una cola de espera ahí también.
+23:00 Speaker 2: Ya desarrollé.
+23:03 Speaker 1: Ya lo probé. Pero para poder ir a producción, hay comités los jueves. Y estamos lunes. Hay que esperar el jueves para ir al comité y después que nos agenden el pase, lo que sé, lunes de la siguiente semana, viernes, domingo, sábado. ¿Les suena eso? ¿Se han visto con esas realidades? ¿Cuántos de acá, los que han estado trabajando, conocen o han escuchado el Comité de Cambios? Se pueden adaptar la mano. ¿Han escuchado el Comité de Cambios? Que se conoce como el CAP.
+23:38 Speaker 1: o como esperar a la confirmación de alguien para recién poder hacer el pase. El CAP,
+23:43 Speaker 2: o
+23:45 Speaker 1: comité de pases, normalmente lo lidera el equipo de operaciones y junta a todos los que quieren hacer pases de los proyectos. Y te mandan unos formatos, ¿no? Oye, tienes que tener... y presentarte. Te revisan y te dicen, ya, sí, está bien. Oye, no, no has considerado tener el backup de las datos por si se cae. No has considerado que estamos en fin de mes y no puedes pasar tal cosa por si se cae el proceso de cobro de intereses, nos cuelgan a todos. Tienes que esperarte una semana más. Y así, salen N cosas.
+24:17 Speaker 1: No puedo ver una anécdota muy curiosa en ese sentido, pero hay otras cosas que operaciones. Se ubican lo que es operaciones y desarrollo.
+24:26 Speaker 2: Como áreas.
+24:28 Speaker 1: O todavía como víctimas. Les voy a contar un poquito de qué va cada una. Porque todas las empresas, ahorita al menos hay dos. Y si no son áreas, son personas. Es muy raro que la misma persona vea ambas cosas, claro que es una empresa de área de TI uno solo. Al equipo de desarrollo va a ser que el negocio le está pidiendo las cosas. Oye, implementame este cambio, hazme este nuevo software. Ese es el equipo de desarrollo. Y el equipo de operaciones es el que está manteniendo los servidores para que esté funcionando todo bien ahorita en producción. Es el que, si el que desarrolla y le dice, oye, ahora vamos a hacer algo que no hemos hecho antes.
+25:11 Speaker 1: Necesitamos un servidor en Amazon. Y hasta ahora nunca lo hemos hecho. Se nos pide operaciones, operaciones tienen que ir a ver cómo hace para pagar la suscripción, si no tenemos la tarjeta de crédito, si tenemos que llamar un partner, lo que fuera, eso es lo de operaciones. Habilita el ambiente y se lo da a desarrollo para que el desarrollo pueda continuar.
+25:30 Speaker 2: Entonces,
+25:32 Speaker 1: ¿qué cosa va a ver operaciones? Porque el costo sea lo más bajo posible de
+25:37 Speaker 2: infraestructura.
+25:38 Speaker 1: Vela porque todo está estable, no se caigan las cosas. y desarrollo vela por satisfacer el negocio y saltar las cosas de lo más rápido posible. Entonces ese es un poco lo que es mundo de operaciones, desarrollo, mundo de operaciones. Y es, normalmente voy a ir haciendo como distinciones entre estas dos, yo siempre he estado más a la izquierda, pero tengo muchos amigos que han estado en operaciones y después de mucho tiempo he entendido su realidad y por qué nos ponían tantas trabajas.
+26:08 Speaker 2: Y
+26:08 Speaker 1: una de las cosas esas son las ventanas de cambio. Es un, oye, no quiero el descontrol de que pasa esa producción como loco y yo no me entere de las cosas que pasan, sino te pongo este comité, esta reunión, para yo enterarme de todo lo que vas a pasar y tener la tranquilidad que estamos viendo. Entonces, eso por ejemplo son las ventanas de
+26:25 Speaker 2: cambio.
+26:27 Speaker 1: Entonces vemos que en este proceso van a haber esperas. Vemos que las fases... Realmente terminan siendo como etiquetas, ¿no? O sea, es la codificación en sí. Ahora con IA, lo que es que te demorás a desarrollar varias horas o varios días, ahora te lo desarrollas a un par de horas. O minutos a veces. Entonces la actividad en sí termina siendo algo más complejo y más difícil de ser, pero es como algo más puntual y esas son las etiquetas. Sin embargo, el desperdicio realmente está dividiendo entre las fases. En esa espera,
+27:03 Speaker 2: porque
+27:05 Speaker 1: así está diseñado el proceso o lo que fuera, se queda ahí el valor en la puerta del horno, esperando a que el horno esté disponible para recién entrar. Ese desperdicio vive entre estas bases. Entonces, ¿cuál es el objetivo? Es justamente optimizar
+27:23 Speaker 2: esas
+27:26 Speaker 1: esperas. ¿Qué pasaría si nosotros queremos, oye, mira acá, La codificación está en 24 horas. Es la más alta de todas. Acá es 4, acá es 16 y acá es 3 horas. Oye, metámosle acá 5 errores más. Ya no va a ser 24, va a ser 12. ¿Qué va a pasar? Esto va a pasar, no sé si han visto las avenidas, cuando las destruyen y hacen 20 carriles, voy a estar generando 4 carriles, pero al final otra vez se aterriza, después vienen 2 carriles otra vez, o un carril otra vez. Se va a encolar otra vez todo hacia la siguiente parte. Y es lo que va a pasar acá en prueba.
+28:07 Speaker 2: En prueba se
+28:08 Speaker 1: va a acumular la cola, porque acá no tienen la capacidad para tenerla. Entonces, no siempre optimizar una... Una de las cajitas va a arreglar todo el proceso. Vas a terminar saturando la
+28:22 Speaker 2: fila.
+28:25 Speaker 1: ¿Están entendiendo?
+28:34 Speaker 2: Ahora vamos a lo que es el validation mapping.
+28:37 Speaker 3: Entonces,
+28:38 Speaker 1: ¿de qué se trata esto? Es de hacer visible justo esas esperas. ¿Qué cosa no es el validation mapping? No es el diagrama de arquitectura de la solución, no es un flujo BPMN, no sé si están familiarizados con eso, BPMN, ¿ya? No es un tablero de gira tampoco, tampoco es un organigrama de quién hace qué. Esto está pensado en que sea un recorrido de todo el proceso. Ahora, lo que les va a pasar, ya les pasa lo que están trabajando, es que no siempre hay un solo proceso.
+29:13 Speaker 1: En las empresas donde tienen los sistemas legados, que son los más antiguos, que nos toca solamente un equipo, que solamente hacemos un pase de producción una vez al mes o una vez a tres meses, porque nos da miedo y porque realmente son tan antiguos que mejor no tocarlos. Eso tendrá un proceso diferente. Y las aplicaciones digitales, el app, la web, tendrá un proceso mucho más veloz, porque tiene la tecnología para tener la tranquilidad que va a estar cumpliendo ya.
+29:42 Speaker 1: Entonces, va a pasar, porque en la realidad, tienen que mapear, para lo menos una empresa, varios, no uno solo, sino, por ahí salen varios, porque son procesos diferentes. Y normalmente las empresas lo que quieren atacar primero es el digital.
+29:59 Speaker 2: Porque el digital es el que
+30:00 Speaker 1: quieren darle velocidad. Normalmente pasa.
+30:08 Speaker 2: La idea es,
+30:09 Speaker 1: en esta vista que teníamos antes, poder medir cuánto tiempo nos estamos demorando en cada uno de los pasos. En cada una de las etapas. ¿Cómo se hace esto? Lo ideal es tener herramientas que nos lo den. La realidad es que tienes que ir a preguntar a las personas para que te cuenten porque no está desinformación normalmente.
+30:29 Speaker 1: Y uno te dice, sí, bueno, me muero dos horas, el otro te dice cuatro, el otro te dice cinco, y bueno, ahí la idea es ver un poco cómo llegas a un monto aproximado, a un valor aproximado, que esa es la realidad. Y mucho sirve ver la historia de lo que ha pasado hacia atrás de esa empresa o de ese equipo, ¿no? Cuánto te has muero normalmente en que te hacían el pedido y te lo llevabas a producción. Y por ahí ir sacando más o menos cuál es el número más aproximado.
+30:56 Speaker 1: Y bueno, finalmente lo que te va a dar esto es cuál es la eficiencia de tu flujo. Esto lo vamos a hacer en la siguiente, pero es, si yo me demoro en hacer la tarea dos horas, pero el tiempo de espera es una semana, mi eficiencia está siendo dos horas sobre una semana. Entonces, está siendo muy, muy, muy bajito. El virtual mapping, que es este proceso, nos va a permitir medir cuatro
+31:32 Speaker 2: cosas.
+31:32 Speaker 1: Empezamos con las tres primeras de
+31:34 Speaker 2: arriba.
+31:35 Speaker 1: Lo primero es el tiempo del proceso. ¿Cuánto realmente demora la ejecución de la actividad? El valor real del proceso. El otro es el lead time, o el tiempo del ciclo, que es el tiempo del proceso más la espera. Ese es el tiempo del ciclo. Y completo y correcto, como porcentaje, que es el percentage complete and accurate,
+32:01 Speaker 2: es,
+32:02 Speaker 1: ok, yo me demoro una hora en desarrollar, eso es rapidísimo, pero el 80% sale bien, el 20% tiene problemas que tengo que retrabajar después. Entonces, este es el que te da esa tasa. ¿Cuál es tu tasa de efectividad en lo que estás produciendo? ¿Qué tan...? que tanto accuracy estás teniendo sobre lo que estás entregando de nada vale desarrollar en un minuto que tenga un 100% y que todo me rebota y tengo que volver a hacerlo a tomar un poco más de tiempo y hacerlo bien Entonces son las tres métricas que
+32:40 Speaker 2: se
+32:41 Speaker 1: miden en el proceso y luego lo que hacemos es tomamos el tiempo del proceso, lo dividimos entre el tiempo del ciclo y nos da esa deficiencia de
+32:49 Speaker 2: flujo.
+32:51 Speaker 3: ¿El tiempo del proceso es el tiempo del proceso del usuario cuando es casi todos los días o el proceso de nosotros de hacer la solución?
+33:01 Speaker 1: es el de la actividad que estamos viviendo. Recordemos que estamos viendo todo el proceso completo, no solamente estamos viendo desarrollo, estamos viendo desde que el usuario define los requerimientos. La fase que te toca evaluar. Ahorita vamos a dar un ejemplo práctico, una fase, de la fase que estés evaluando. El tiempo del ciclo agrega no solo la hora efectiva de trabajo, sino la espera. en realidad los dos son reales porque este de acá también es real porque es el tiempo real que se tomó a hacer la tarea pero como tuviste que esperar la otra cosa que vino después es el tiempo de ciclo compleja
+33:55 Speaker 1: Ok, entonces, ¿cómo construimos ese valor simático? Lo primero es definir ese proceso que vamos a medir, ¿no? ¿Cuál es nuestro alcance? Les decía que hay empresas que tienen varios procesos. ¿Cuál de esos vamos a medir primero? Oye, es el de legados, no, es el de digital. Definamos uno de ellos. Lo siguiente es, ¿quiénes hacen ese trabajo? Tengo el usuario que es el que me define que hace, tengo el desarrollador. Tengo el CUA que va a probar y tengo el de operaciones que es el que va a desplegar. Entonces, lo siento a los tres o los cuatro y empezamos a validar el proceso, mapearlo y recoger de ellos cuáles son los tiempos reales que están tomando y las problemáticas. Porque acá también se va anotando, no lo vamos a ver acá, pero les digo que en la vida real también se va anotando los temas más cualitativos y no cuantitativos de, oye, sí, es que no tengo ambiente de pruebas. Entonces, eso se va anotando porque luego te sirve como... como un dato importante para entender por qué el tiempo es tan largo de demora o de espera pero todo eso se recoge un poco con ello y luego diagramar diagramamos el proceso y
+34:58 Speaker 2: justo
+35:00 Speaker 1: también diagramamos las esperas entre las sustancias y calculas las métricas que comentábamos en el anterior del tiempo del proceso
+35:09 Speaker 2: el
+35:10 Speaker 1: lead time, el tipo de ciclo, y el porcentaje de efectividad que tiene ese proceso, de la curación. Y finalmente, con el lead time y el process time, calculas la eficiencia del proceso, que es dividir uno el
+35:25 Speaker 2: process time entre el tipo de ciclo.
+35:27 Speaker 1: Entonces, ese es el flujo que se sigue para poder construir el balance mapping. Entonces, acá tenemos un balance mapping de ejemplo.
+35:35 Speaker 1: Tenemos la etapa de refinamiento, desarrollo, revisión de códigos, CUA, que en este caso es manual, tenemos el comité de cambios y el despliegue. ¿Qué nos dice? El refinamiento nos toma una hora realmente hacerlo, pero tenemos que esperar un día y una hora porque el usuario no está muy disponible para poder tenerlo. Entonces, ¿eso qué nos da? Que si sumamos esos dos, tenemos que el lead time nos da un día y dos horas. Un día y una hora más una hora, un día y dos horas. Y este último dato acá no es un dato calculado, es un dato que te lo dan y te dicen, oye, ¿sabes? El usuario a veces no la tiene muy clara. Entonces, en el 85% de veces nos da las cosas bien y en el 15% nos da un dato que después lo vamos a tener que retrabajar otra vez. Entonces esa es la accuracy de referencia. En desarrollo tenemos un proceso de desarrollo efectivo y cuatro horas de espera porque los desarrolladores están compartidos con otros proyectos, entonces no siempre están trabajando en esto.
+36:30 Speaker 1: Eso nos da un lead time de 5 horas. Y los desarrolladores tienen una buena tasa, 90%, solo se equivocan, 20%. En revisión de código también, ahí tenemos las métricas y así en cada uno de ellos. Entonces, si sumamos todos los process time, que es el tiempo real, imaginemos que tenemos a todas estas personas sentadas así como ustedes, cada una esperando el momento que le dan el trabajo para que el siguiente siga, para que el siguiente siga, para que el siguiente siga. Si lo estuviéramos así, y sumamos todos los tiempos de Process Time, nos da 8
+37:01 Speaker 2: horas.
+37:03 Speaker 1: Pero si es 8 horas, no nos podríamos realmente tener esto. Ese número es inreal, es como soñado, porque es como la vida perfecta y ya somos una empresa que nunca se va a dar, siempre otras personas van a tener otras cosas que hacer.
+37:14 Speaker 2: Porque si no,
+37:15 Speaker 1: tendríamos mucho desperdicio de
+37:16 Speaker 2: personas con otras cosas.
+37:19 Speaker 1: Algunas empresas si lo hacen, tienen un buen budget para poder apalancarlo. Una buena billetera. ¿Cuál es el lead time real de todo el proceso? Es la suma de todos los lead times, que en este caso es 9 días y 13 horas. Entonces, miren la diferencia. Realmente el tiempo efectivo de estas actividades son 8 horas, pero para poder entregarlo nos demoramos 9 días y 13 horas. Por si acaso, ahí van a ver que los lead times se mide en tiempo calendario, entonces por eso van a ver que sirve sumar todo 24 horas completas. ¿Y cuál es la eficiencia del flujo? Que es 8 horas entre los 9 días con 13 horas, estamos hablando de 3.5%.
+38:02 Speaker 2: ¿Hasta
+38:06 Speaker 1: ahí tienen alguna pregunta?
+38:08 Speaker 2: ¿Les queda esto claro?
+38:10 Speaker 1: Esto lo que van a hacer ustedes es hacer en el papelón o más tarde, así que no sé si les ha quedado tan cabido, pero con eso brotan preguntas. Viendo estos números, ¿cuál dirían que es el cuello de botella en este proceso? ¿Cuál de las fases?
+38:40 Speaker 2: Cuba manual.
+38:42 Speaker 1: Por ejemplo, acá nos dan un dato, que esto puede ser también porque Cuba, además que sea manual, es porque tiene un ambiente compartido. Es un tema muy clásico. Tenemos un solamente para probar y nos tenemos que turnar entre los diferentes proyectos. Entonces, tengo
+38:57 Speaker 2: que esperar mi turno.
+39:00 Speaker 1: Ahí hay NGN casos. Tenemos integración con RENIEC, pero está caído, pero no nos contesta y no sabemos cuándo está la zona. Entonces, eso nos ayuda a decir, acá hay un problema, veamos, acá con eso identificamos dónde es el problema, pero no sabemos por qué. Ahora después vamos a ver cómo podemos identificar por qué, pero acá sabemos dónde
+39:22 Speaker 2: está. ¿Estamos? Seguimos.
+39:32 Speaker 1: Ahora vamos a ver lo que son las métricas Dora. Dora es algo que yo conocí hace... no sé cuántos años, 7 años, 6 años. Dora es un estudio de Google. Google empezó a hacer estudios de cómo se está comportando la industria en general en
+39:54 Speaker 2: el
+39:55 Speaker 1: proceso de desarrollar software.
+39:58 Speaker 1: Entonces, lo que hizo Google, como es un grande, contactó a las principales empresas del mundo y les mandaba encuestas. Y esas encuestas iban a todo nivel. O sea, iban al gerente de TI y hacia abajo a todos. Y les iba preguntando diferentes cosas para poder levantar información y entender cómo se está comportando este proceso de desarrollo en el mundo. Y con eso, hace reportes anuales. Ahora le metí mucho el tema de IA. Los nuevos reportes los puedo pasar bien para que los vean. Pero la mitad del reporte es cómo se usa IA en el proceso y dónde está mal, dónde está bien. Y hay una parte más chiquita que habla sobre estas métricas. Pero estas métricas son la base. Entonces arranquemos por acá y al final del curso ya nos iremos a esa parte de la IA.
+40:40 Speaker 1: Ahora vamos a ver cuáles son estas métricas. Son cuatro métricas. Antes de eso, perdón. Y lo que hizo Google, que también fue interesante como para... En este reporte, no solamente él te dice, oye, siempre es todo anónimo, o sea, no pone BSP está así, Spotify está San, etc.
+41:00 Speaker 2: Él habla a
+41:00 Speaker 1: todos los anónimos y según las métricas los cataloga como Elite Performance, High Performance, Medium y Low. Los errores low son los más lentos, los que más bien quieren, etc. Y los elite son los que desplegan varias veces al día, tienen muy poquitos errores, etc. Y luego sobre eso, construir buenas prácticas, sugerencias respecto a dónde estás y qué problemas tienes, qué cosas deberías hacer. Ese es el estudio de DevOps. Es público, es gratuito. Ustedes lo buscan, lo pueden descargar. Igual lo voy a colgar en el video.
+41:40 Speaker 2: Adiós.
+41:44 Speaker 1: Entonces, ¿cómo entra Dora con el Value Stream Mapping? El Value Stream Mapping es una foto. Para poder mapear el Value Stream Mapping, ustedes se tuvieron que aceptar con las personas, levantar la info y diagramarlo. Eso se quedó en esa foto. Si mañana cambiaron algo, otra vez se van a tener que chequear y levantar esa info de esa manera.
+42:05 Speaker 2: Entonces,
+42:06 Speaker 1: Dora lo que hace es tener, son como KPIs métricas que ya están puestas. Y con eso vas levantando la información de manera recurrente y es como medir la temperatura. DORA lo que te permite es medir la temperatura en todo momento. En este caso son cuatro métricas que les decía, ahorita las vamos a ver. Este dato es bastante importante.
+42:32 Speaker 2: DORA
+42:32 Speaker 1: se basa en datos,
+42:36 Speaker 2: no en percepciones.
+42:37 Speaker 1: Es un dato bien ácido para ver realmente cuál es la realidad. Entonces, eso también ha ido bastante para tener la noción de cómo está la empresa o el proceso. Entonces, ¿cuándo deberíamos usar el value state mapping? Donde necesitamos entender por qué el flujo es lento y dónde es que está lento.
+43:09 Speaker 3: ¿El grupo del BPMN sería un insumo del BCM?
+43:14 Speaker 1: El
+43:14 Speaker 2: BCM
+43:21 Speaker 1: es más arriba, pero el BPMN es más puro. El BCM es un análisis completo
+43:28 Speaker 2: Entonces,
+43:29 Speaker 1: BCN usamos cuando, el vario stream mapping usamos cuando queremos entender por qué es lento y dónde. En cambio en DORA necesitamos ver si estamos mejor o no versus el año pasado, versus la semana pasada. ¿Cómo estamos en temperatura hoy versus la semana pasada? ¿Qué pasa si tenemos DORA pero no tenemos vario stream mapping?
+43:51 Speaker 2: Entonces, DORA te dice que
+43:53 Speaker 1: estás mal, pero no sabes dónde estás mal. Y si tienes Valiosin Mapping pero no tienes Dora, Valiosin Mapping
+43:59 Speaker 2: te
+44:01 Speaker 1: puede decir, ok, tienes que seleccionar este código botellado de acá, pero si no tienes las métricas para poder determinar si eso mejoró o no, no te sirve de nada. Por eso es la importancia de tener ambos. ¿Cuáles son esas cuatro métricas? La primera es frecuencia de despliegue. ¿Qué tanto estamos pasando a producción? Pasamos una vez al mes, una vez cada seis meses. Mientras más pasemos es mejor porque le estamos entregando más valor al negocio.
+44:37 Speaker 2: Siempre cuando la vamos bien, por ejemplo.
+44:39 Speaker 1: Hay casos en los cuales, ¡ah, ya! Entonces, hoy día le entrego el login, mañana le entrego la lista de clientes y pasado la venta. Eso no le da valor al cliente, porque el cliente quiere la venta y el flujo completo. Entonces, hay que pensarlo diferente y decir, ok, le entrego el login agotado con usuario y contraseña, no te vas a poder integrar con el login de Google y con el login de nada, lo hago bien agotado. Te hago la lista del cliente sin filtros y te hago la venta de tal producto nada más. Entonces, eso sí le agrega valor al cliente. Entonces, aterrizas una funcionalidad acotada, pero que le dé valor al
+45:11 Speaker 2: cliente, y ese sea tu despliegue.
+45:15 Speaker 1: Cuantos más tengas de eso, va a generar más valor para el cliente. Entonces, el primero es eso, qué tan rápido desplegamos.
+45:23 Speaker 2: El segundo es
+45:25 Speaker 1: el lead time para cambios. Está muy relacionado al value series mapping que veíamos antes. ¿Cuánto me estoy demorando desde que el usuario me define qué es lo que quiere? Algunos lo quieren un poquito antes incluso. Desde que el usuario se le ocurre la idea. Dependiendo de dónde tiene el gobierno. Hasta que esto ya se desplegó en producción. ¿Cuánto tiempo es esto? Es 60. En este caso, para dejar el curso, lo estamos midiendo desde que haces el commit de código hasta que llegas a producción. ¿Qué quiere decir eso? De que no estamos abarcando la parte del usuario. Luego está la tasa de falla de cambios, que en el día tenía que ver con la efectividad que mencionaba antes.
+46:17 Speaker 2: Oye,
+46:17 Speaker 1: hago muchos despliegues. Pero el 80% de esos cambios tiene problemas. No tiene sentido tener tantos de que vamos a estar más reparando que
+46:26 Speaker 2: haciendo cosas nuevas o mejores.
+46:29 Speaker 1: Entonces esa es la tasa de falla de cambios. ¿Qué porcentajes tienen problemas? Y la última es el tiempo de restauración de servicio, MTTR, Main Time to Recovery, que lo que nos dice es, ok, no podemos ser perfectos, vamos a salir de la resolución. Pero qué tan rápido nos recuperamos de esos errores
+46:47 Speaker 2: que salen en producción. También
+46:49 Speaker 1: hay una parte de O que acompaña. ¿Han escuchado en algún curso algo de observabilidad?
+46:55 Speaker 2: No sé. Todo el frente de observabilidad está
+46:58 Speaker 1: metido acá. Los SREs, que no he escuchado como rol de SREs, tengo el rol de DevOps, es Google, que también creo el rol de SRE, que es el Site Recovery Engineer, que son los que se encargan de que, ok, ya las cosas en producción, ¿cómo hacemos para que nada se caiga? Y si algo se cae, que se auto levante el solito, se auto repare. Todo eso apunta a esto, al tiempo de restauración
+47:19 Speaker 2: del servicio.
+47:25 Speaker 1: ¿Tienen acá alguna pregunta sobre algunas atméticas? También es parte de lo que vamos a hacer ahora como
+47:35 Speaker 2: experiencia más tarde.
+47:41 Speaker 1: Hay muchas soluciones que atacan cada uno de estas frentes. Acá, no sé, ¿han usado Jira o Trello? ¿Qué es lo que más han usado para este tipo de cosas? ¿Por qué no más? ¿Qué herramientas más han visto?
+47:58 Speaker 2: ¿O ninguna? Bueno,
+48:02 Speaker 1: todas las herramientas que tienen que ver con esta gestión del proceso de desarrollo, gestión de proyecto, son las que te ayudan a medir sobre todo esto. Y hay taparancados también con... Medir esto, sinceramente, es la parte más compleja para los equipos.
+48:16 Speaker 2: O sea,
+48:17 Speaker 1: sacar los números reales de las herramientas.
+48:20 Speaker 2: Es complicado. Es complicado.
+48:24 Speaker 1: Requiere mucho de que tus procesos estén maduros, requiere de que las personas sean disciplinadas a seguir sus procesos. Para que tengan una idea, más o menos, me ha tocado medirlo una vez. Por ejemplo, para esta de acá, tienes un servidor. Es lo más fácil de entender. Este es un servidor donde queda adentro una aplicación. De repente el servidor se queda sin memoria y la aplicación empieza a arrojar errores. Tienes que identificar el momento en el que sucedió eso. Para identificar ese momento necesitas una alerta ahí, que eso quede registrado en algún lugar. Entonces eso debería alertar a alguien, ya sea una persona o algún robotcito o profesor automático que tenga que lo solucione. Van, lo solucionan y esa alerta para, no deja de estar activa. Entonces ahí ya puedes tener ambos datos.
+49:23 Speaker 2: La
+49:24 Speaker 1: empresa que yo he visto que más maduro ha tenido esto, yo tuve una corta experiencia, pero muy muy enriquecedora, de Oracle. A mí me te puedo ver el detrás de cámara de la nube de Oracle. Y era una cosa mala. Un monstruo, así. Monstruo, monstruo, monstruo, monstruo de la cantidad de cosas que había.
+49:46 Speaker 2: La nube...
+49:47 Speaker 1: ¿Cuántos acá han usado la nube para algo, lo que sea?
+49:53 Speaker 2: Vamos a la mirada más de la mitad.
+49:56 Speaker 1: En la nube tienen diferentes servicios, ¿no? No sé que más no hayan usado más, AWS, Azure,
+50:00 Speaker 2: AWS,
+50:03 Speaker 1: GCP. Ok, bueno, vamos por AWS un poquito. Han usado un S3, un Lambda, imagino, que es lo más común. Cada uno es un servicio que ofrece la nube para algo botado. Cada en OSI, que es la nube de Baracol, yo le hago soporte a mi equipo al OpenSearch. Es una herramienta por observabilidad.
+50:26 Speaker 2: OpenSearch lo
+50:27 Speaker 1: podemos ver como si fuera un S3 o un Lambda. Atrás de ese OpenSearch, solamente en la operación o ni en la evolución, éramos 100 personas. Entre gente de la India, de Estados Unidos y yo creo. El Kubernetes, si vos habéis escuchado lo que es algo de Kubernetes, el Kubernetes en Oracle, el equipo que había detrás de ese Kubernetes eran 500 personas para
+50:52 Speaker 2: darle soporte a todo eso.
+50:54 Speaker 1: Eran monstruos. Y lo genial de eso, del monitoreo que tenían, es ¿qué cosa le interesa a Oracle como nubes?
+51:03 Speaker 2: Que los clientes consuman la nube. Amazon
+51:06 Speaker 1: le interesa... Amazon, pensemos en el marketplace, es lo que compra sus productos. A Oracle lo que conviene es que consumas sus recursos para que te cobren.
+51:18 Speaker 2: Entonces...
+51:19 Speaker 1: Cada vez que tú dabas clic en alguna parte de la consola de Oracle, donde querías crear recursos, o se les hacías por teléfono, o lo que fuera, pero la cosa es que cada vez que un usuario hacía acciones, ya sean automatizadas, ya sean por el típico wizard de la pantalla, cada acción se iba registrando en un panel donde se sabía quién había dado clic en qué cosa, y si es que ese clic le había dado OK, 200, o le había corrojado un error. y se le había arrojado un error y era creado, se disparaba automáticamente un ticket para que el equipo sepa que viera por qué se cayó
+51:53 Speaker 1: Y teníamos que hacer seguimiento, sobre todo lo que era en creación de nuevos recursos, llamar al cliente, lo que fuera, para que lo vuelva a levantar y no parar, porque eso era plata que iba a ingresar, porque era consumo nuevo que iba a tener. Entonces, ese nivel de monitoreo es el más guau que he visto. La evolución acá es, oye, se entra en el cliente, se llama y nos avisa que había un problema antes que nosotros nos demos cuenta. Eso es lo que normalmente es. No sé si les ha pasado. ¿A quién de ustedes, para una herramienta digital que usen, los han llamado a decirles, oye, detectemos que tuviste un problema en nuestra aplicación. ¿Cómo te ayudamos? Tú los llamas o ya te olvidas.
+52:32 Speaker 1: Entonces, eso es un poco lo que apunta la observabilidad. Así como,
+52:37 Speaker 2: wow.
+52:40 Speaker 1: Claro, desarrollar eso es muchas horas de inversión y herramientas de automatización. Muy buena mano de obra para la empresa.
+52:48 Speaker 2: Entonces,
+52:49 Speaker 1: Eso apunta, por ejemplo, a solucionar el time protocolo.
+52:56 Speaker 2: Ok. No hay dudas, entonces, sobre las métricas.
+53:03 Speaker 1: Este es un brochazo
+53:04 Speaker 2: del
+53:05 Speaker 1: informe de Dora, de cómo ha medido
+53:10 Speaker 2: la
+53:13 Speaker 1: categorización que les comentaba, de elite, high performance, middle performance y low performance, en cada una de las métricas. Entonces, esta categorización, por ejemplo, si tú tienes una frecuencia de despliegue
+53:26 Speaker 2: varias veces al día,
+53:28 Speaker 1: o sea, tú dices, quiero pasar a producción, listo, corran los procesos automatizados y listo, pasas a producción ese mismo día,
+53:33 Speaker 2: por ejemplo, Spotify, eres un delito. Netflix, también.
+53:41 Speaker 1: Lead time, menos de un día. Si empiezas a desarrollar ese mismo día y ese mismo día pasas, también estás como lead. El tiempo de restauración es menos de una hora, ese número ya está alto, debe ser menos ahora. La tasa de un cambio que sea baja es menos de 10%, menos de 3%. Y así, van a haber en cada cuadrante. cómo más o menos describe Google, cómo categoriza, cómo es informadora a las empresas en cada una de las métricas.
+54:18 Speaker 1: También, para que se tengan en cuenta lo que me pasó a mí cuando lo medimos en una empresa, normalmente la empresa, como les decía antes,
+54:26 Speaker 2: puede
+54:27 Speaker 1: tener varios street mapping. Uno para los legacy, otro para las herramientas digitales. Entonces, eso hará... de que la empresa también tenga varios niveles según qué proceso. Normalmente los legados están más por acá y los digitales también están más por acá. Llegar el lead en Perú, todavía no lo he visto. Ahora hay varios jugadores nuevos en el mercado
+54:50 Speaker 2: de tecnología, pero tenemos que hacer esa evolución un poco más.
+54:55 Speaker 1: Esto es hablando de las empresas grandes. Las chicas a veces es más fácil hacer lead porque tienen menos controles. Entonces esto es para que tengan un rochazo del informe. Ahora,
+55:11 Speaker 2: con
+55:12 Speaker 1: todo lo que hemos visto del proceso, los tiempos de espera, ¿cómo dirían que se relaciona la velocidad y la estabilidad?
+55:21 Speaker 2: ¿Creen que puede
+55:23 Speaker 1: haber estabilidad si
+55:25 Speaker 2: tenemos mucha velocidad? Debe ser inversa, tal vez. Debe ser inversa, tal vez.
+55:41 Speaker 1: ¿Cómo harán los el I? Para poder tener esto y
+55:45 Speaker 2: esto, manteniendo esto de acá.
+55:49 Speaker 1: Porque están teniendo velocidad y también mantienen estabilidad. No necesariamente, hay algunos que pueden estar acá y acá también. O sea, no pueden tener combinados las métricas. Tal vez los cambios que hacen, no entiendo bien si pueden ser así, no son sustanciales, pueden ser tal vez pequeños y en eso lo pueden
+56:10 Speaker 3: revisar rápido o lo pueden alzar rápido. Sí,
+56:13 Speaker 2: es válido.
+56:16 Speaker 1: Hay diferentes tipos de cambios, como comentaba antes, el tema de aumentemos la frecuencia de cambio, pero la idea es que sigan manteniendo valor. Si hacemos que mantengan valor y sean chiquitos, no.
+56:27 Speaker 2: Gol. Ya
+56:28 Speaker 1: está, estamos bien. No pasa nada porque están chiquitos, porque están dando valor realmente al
+56:34 Speaker 2: negocio. Entonces,
+56:36 Speaker 1: normalmente creemos que si desplegamos más seguido, vamos a romper las cosas. Esa es como la creencia más común. Y Operaciones vive muy medioso de eso. Tengo una anécdota que hace rato quiero aguantarle, la cuento acá ahorita. Ya están en ese proceso de seguros, ya con un proceso de DevOps montado. funcionando bien, pero el equipo operaciones todavía tenía miedo porque era nuevo para ellos. Y pasa un día que el e-commerce de venta de SOA, pum,
+57:04 Speaker 2: se cayó.
+57:05 Speaker 1: Los estaban matando a ellos, de oye, ¿qué ha pasado? ¿Qué ha pasado? Ellos no tenían idea, me llamaban a mí, José, ¿qué han hecho ustedes? No mucho nada. ¿Y qué pasó? Ningún equipo ha hecho ningún pase. Pero el equipo de marketing había logrado que el equipo de Yape Cuelgue. Cada vez que tú te alugueabas a YAPE, te salía, compra tu SOAT aquí, compra tu SOAT aquí. Tú le das click y salía el e-commerce, le das click y salía el e-commerce. E-commerce no estaba preparado para ese volumen de tráfico. E-commerce se cayó simplemente porque la de marketing le pasó el link del e-commerce SOAT a la gente de marketing de YAPE,
+57:42 Speaker 2: lo configuraron y se lo recoparon. Y
+57:45 Speaker 1: por eso se cayó. Yo me doy un ataque de risa con operaciones
+57:49 Speaker 2: porque le decía, o sea, ellos no les tendrán en la cabeza cómo
+57:54 Speaker 1: se caía sin que habíamos hecho ningún cambio nosotros.
+57:58 Speaker 2: Entonces,
+57:59 Speaker 1: es como que esas eran las piezas como de, ok, entiendo tu preocupación, pero es la realidad. O sea, esto va a pasar. Y qué hacemos diferente para que eso ya no pase. Este e-commerce era un desarrollo que se había hecho hace mucho tiempo, lo habían dejado en un servidor y todavía no priorizaban que sea autoescalable. Tenía muchas cosas que no se habían priorizado. Tenía solución, pero no le habíamos metido el esfuerzo ni la prioridad para.
+58:25 Speaker 1: Pero ¿cómo nació? Nació de usuario conversando con usuario y ninguna persona de grito de tecnología se enteró. Entonces, regresando al tema de la velocidad. Entonces, anteriormente, siempre era como vamos de espacio para no tener problemas. Me acuerdo de otra, era uno de los primeros espacios de producción en un banco, cuando era desarrollador, y cuando le mando espacio al equipo de operaciones... Mi jefe había trabajado con ellos, fuimos juntos a ver el pase y habían impreso el manual del pase. Hablo hace 12 años. Habían impreso el manual del pase. Era un pase en un Linux.
+59:19 Speaker 1: Escribía carácter por carácter la persona. Yo me sentía en Zotopia con el
+59:23 Speaker 2: sapita
+59:25 Speaker 1: este del... El... Flash.
+59:30 Speaker 2: Flash, exacto. O Flash, así, este...
+59:34 Speaker 1: Digitando los comandos y me estaba volviendo loco. Entonces, no usaba el autocompletar de Linux. No copiaba... El documento digital no copiaba los comandos, sino que lo podía tipear por el documento impreso.
+59:47 Speaker 2: Entonces, se equivocaba, se equivocaba, salía error,
+59:49 Speaker 1: porque digitaba mal. Y bueno, poco a poco... Yo fui digitando las cosas por ahí, digitando las cosas por ahí. Y al final yo me senté al computador y yo puse al costado a ver cómo hacía yo las cosas. Y él estaba sudando frío, porque
+01:00:00 Speaker 2: yo no administraba producción.
+01:00:04 Speaker 1: Para mí hacer cambios en desarrollo era, no pasa nada si algo mal logro, porque lo soluciono rápido. Pero esto era producción. Si yo administraba algo mal, la gente no podía arreglar su plata de la cuenta de ahorro. Entonces, bueno, no pasó nada.
+01:00:16 Speaker 2: Pasó todo bien.
+01:00:17 Speaker 1: Pero ahí un poco también entendí... Porque él se preocupa más, ¿no? Y ahí era el tema de lento pero seguro a automaticizamos cosas que no sabemos bien cómo funcionan. Pero bueno, esas paradigmas han cambiado bastante. Porque más de personas que la realidad. Y la idea es buscar la estabilidad de ambas cosas. ¿Cómo logramos velocidad? Pero garantizando también la estabilidad. Entonces, ¿qué pasaba si es que yo en vez de darle esa guía, yo preparaba un script? Simplemente corría el script y ejecutaba todos los mandos por él. No se equivocaron en el clip. Y el clip yo lo he visto como había probado antes, entonces no iba a pasar nada. Pero como en el proceso lo teníamos en ese momento así, nadie veía esas maneras.
+01:01:00 Speaker 2: Entonces, justo
+01:01:06 Speaker 1: hablaban del tema de los lotes pequeños. Lotes pequeños quiere decir eso, ¿no? Incrementarlos, incrementos pequeños. es más fácil de manejarlo que tener un pase muy grande. Si hay un problema, no sabemos dónde está el problema. También, si desplegamos de una manera más rutinaria, ya todos conocen ese proceso, se vuelve algo del día a día, y hacer un rollback también es mucho más
+01:01:35 Speaker 2: sencillo.
+01:01:38 Speaker 1: También pensando en la automatización. Y bueno, la última es la de retroalimentación corta,
+01:01:47 Speaker 2: que la idea es justo
+01:01:49 Speaker 1: esto, ¿no? Les he contado varias problemáticas y anécdotas de desarrollo con operaciones. Pero la idea cual es que finalmente sentémonos, veamos que hay ese problema y cómo nos ilusionamos juntos. Eso es la retroalimentación. Cuando se animan a ver la lectura que va a ir pasando, hay una parte que habla sobre esto, lo vamos a hacer en la siguiente clase, pero ahí hay mucho que tiene que ver con la retroalimentación. Y finalmente la automatización. Todo apunta a que las cosas se hagan bien siempre, automaticémoslas para evitar errores humanos.
+01:02:23 Speaker 1: y ahí es donde realmente va a hacer que generemos el
+01:02:27 Speaker 2: beneficio.
+01:02:38 Speaker 1: ¿Qué problemáticas comunes tenemos en la organización? Bueno, les he estado contando de algunas.
+01:02:44 Speaker 2: Una
+01:02:44 Speaker 1: clásica es los silos funcionales.
+01:02:48 Speaker 2: No, no, no.
+01:02:49 Speaker 1: Hasta acá llevo yo. El CUA se las arregla por su cuenta. Yo desarrollo y se las doy. Ya si él no entiende, será su roche, será su problema. Ese problema es más técnico, pues nada de software.
+01:03:05 Speaker 2: De eso todavía uno
+01:03:07 Speaker 1: se encuentra a todo nivel. No es solamente que eso le pasa a los juniors, eso le pasa a un gerente también. Hay gerentes que todavía están con esa mentalidad. Ahí los invito a ver qué hacemos para ir rompiendo esa mentalidad. Ahí les dejo una primera que tiene que ver con eso. ¿Han escuchado de mentalidad de crecimiento? Mentalidad de crecimiento es no buscar al culpable, o no retigarme y echarle culpa a otro, o solo justificar, sino gayar. Tenemos ese problema, ¿qué hacemos? ¿Qué está en mi cancha poder hacer? ¿Qué más puedo hacer para solucionarlo? Ese punto, por ejemplo, a mí me ha permitido, no digo que siempre haya tenido esa mentalidad, a veces caemos en el momento de ser víctimas, es más plural, pero esa partecita de ahí te permite dar un paso más allá.
+01:03:58 Speaker 1: Como decía antes, no siempre va a ir bien, no siempre va a funcionar. Me ha pasado con eso también, que por querer ir un poco más allá, yo digo, me ha caído mi café de mi jefe diciéndome, oye, no te metas en eso, que no es tu área. Pero bueno, hay empresas y situaciones de la empresa también paradas o no preparadas para cada momento.
+01:04:20 Speaker 2: Entonces, este
+01:04:23 Speaker 1: es el ejemplo de las aprobaciones como control, es otra de las cosas que pasa, pero la de los comités. Estos comités son muy chistosos porque a veces se sientan las personas ahí, no tienen ni idea de lo que estamos pasando, saben de la infraestructura pero no tienen ni idea de las aplicaciones ni del proceso. Entonces,
+01:04:44 Speaker 2: es
+01:04:45 Speaker 1: un trabajo que
+01:04:47 Speaker 2: haga
+01:04:48 Speaker 1: sentido el comité y de que no nos enteremos ahí, de que tenemos que tener 20 cosas para poder ir al comité, sino que nos enteremos antes. y saben esos controles automáticos, por ejemplo.
+01:04:59 Speaker 2: Entonces, que
+01:05:00 Speaker 1: esas aprobaciones realmente sean revisar el riesgo del pase más que cumplirte las cosas automáticas, porque las cosas automáticas son automáticas. Te van a decir que sí o sí o no. Eso lo vamos a ir viendo durante el curso y en el laboratorio de estas cosas automáticas que nos validan qué cosa es. Y aquí hay otro concepto que sale como CUA como etapa final. Imagínense que desarrollan dos meses y después de dos meses se la pasan a CUA para tu prueba. y no han corrido ningún test. ¿Conocen los conceptos de automatización de pruebas unitarios? Vengan con un curso de desarrollo. Acá vamos a ver parte de eso, de automatización de pruebas unitarios.
+01:05:45 Speaker 2: Vamos a ver algo que se llama el
+01:05:48 Speaker 1: triángulo de la automatización de pruebas. ¿Qué cosa? ¿Cuándo? Porque no puedo automatizar todo. Ahorita no sé si... ¿Han escuchado algo de Playwright? Que es la automatización de UI, ¿no? Esa es la más cara de automatizarlo.
+01:06:08 Speaker 1: Porque esa es la automatización. Las pruebas donde ya está todo. Le debes probarlo desde que tienes la parte más chiquita del software. Que son las pruebas unitarias. Y que vaya evolucionando. Bueno, eso lo íbamos viendo. Pero este concepto es, no espero para validar al final, sino que traigo esas validaciones al inicio.
+01:06:27 Speaker 2: Es un concepto que se llama Chief Left,
+01:06:28 Speaker 1: que también vamos a ir viendo un poquito más adelante. Y lo mismo pasa con seguridad. No me entero que tengo que probar las cosas de seguridad final, sino que las voy teniendo en cuenta desde el inicio y las voy validando en lo que se pueda desde el inicio.
+01:06:42 Speaker 2: Entonces son problemáticas
+01:06:43 Speaker 1: comunes que vamos a ir viendo que van a... para justificar o entender por qué el Spalio Seed Mapping que vamos a ver tiene esas demoras. Entonces es un brochazo que quería dar de algunas justificaciones de por qué el Spalio Seed Mapping podría estar lento en algunas partes. ¿Será tiene alguna pregunta, no? Tenemos ahí unos 10 minutos sobre él. Volvemos.
+01:07:40 Speaker 3: No, tengo un poquito más. Es de 10, casi 11 días prácticamente. Y esto ocurre en 7 pasos. El primero está el análisis y el refinamiento. Aquí nos dice el caso que es una lista profesional que le estaría refinando. Entonces, efectivamente, esto es para 3 horas de levantarnos, pero hay un día de espera seguramente con el cliente. Y esto se va repitiendo por el desarrollo. Efectivamente, esto tarda 14 horas en hacer el código, pero debido a...
+01:08:18 Speaker 3: ¡Gracias! Aquí hemos tenido una discusión, porque lo que hice caso es que para solicitar el uso del ambiente de pruebas hay que pedir, hay que llenar un excel, solicitar que voy a usar el ambiente de pruebas y aquí menciona que se comparte entre cinco empresas diferentes, cinco áreas diferentes.
+01:08:47 Speaker 3: No sabíamos qué poner en el pete, porque llenar un Excel no demora nada, pero se esperan cuatro días hasta que se toque. Y aquí hemos puesto el CIA del 77%, porque menciona que en el trimestre se pidieron 47 veces, y de las cuales 11 fueron canceladas a reprogramar. Luego, en pruebas, aquí es el uso del ambiente de pruebas.
+01:09:17 Speaker 2: Luego la
+01:09:18 Speaker 3: aprobación tarda una hora y aquí se espera tres días por la agenda de la jefa de e-commerce. Y luego el despliegue está a las dos horas. Aquí también nos tenemos que poner en espera porque dice que se tarda dos horas, incluyendo la verificación posterior. Entendemos que son dos horas de trabajo, y bueno, aquí hemos puesto el 6 y el 83% debido a que de los 12 despliegues, dos fueron con fallos. Y bueno, para el DORA, nos hemos basado en los datos de la bitácora del trimestre pasado. Entonces aquí nos menciona que hubieron 12 despliegues. El tiempo de recuperación fue de 6 horas en promedio y la tasa de fallos fue de 17%.
+01:10:09 Speaker 2: ¿Tienen
+01:10:15 Speaker 1: alguna pregunta para ellos? ¿Cuál es la que tiene el mayor tiempo del cuello de botella?
+01:10:30 Speaker 2: Una observación
+01:10:32 Speaker 1: o recomendación es la de frecuencia de despliegue, porque normalmente lo mínimo es, o sea, si son 12 en el trimestre, un dato más como mostrar es por mes, o sea, normalmente para que lo muestren por mes. al acostumarlo al mes más que el primer. ¿Qué se lleva de eso?
+01:10:57 Speaker 2: Comprendizaje.
+01:11:01 Speaker 3: Está bastante, nos vale la felicidad, porque la espera de los procesos demora mucho más
+01:11:08 Speaker 1: que realizar realmente el proceso.
+01:11:11 Speaker 3: Bueno, hay procesos que ni siquiera tienen tiempo de reflexión, pero tienen que mejorar, que es lo que realmente pasa. ¿Alguna otra cosa? Sí, también, de que, bueno, que esta herramienta que usted nos ha enseñado, también, o sea, sirve mucho dentro de los procesos para poder ver los coños de botella, ¿no? En este caso, como se mencionó en algún lado, pero también la fecha de aprobación es simplemente una aprobación que muera una espera de tres días.
+01:11:40 Speaker 2: ¿Algo más? ¿Quieres tomar? La
+01:11:42 Speaker 3: importancia de tener disponible el ambiente de pruebas, porque aparentemente este es el cuello, y en el caso que mencionan, gracias también. Con el ambiente de pruebas y la otra parte de pruebas, tenemos una duda, porque también tenemos una discrepancia, porque no sabemos si juntarlo o no. Y en este caso, ¿se debería resultar o no?
+01:12:06 Speaker 1: O sea, va a depender mucho en el momento de cómo lo evalúen, cómo lo quieran colocar, porque pudo haberlo absorbido y el tipo de espera se corría adentro. Las dos son varias, ya pensándolo en un análisis para poder ejecutar cosas, la idea es que esas cosas que han hallado de mete pruebas... Ahí queda clarísimo, evidente. Si lo hubieran absorbido en un informe como el Valencia Mapping, lo hubieran puesto como texto, como una descripción de el
+01:12:31 Speaker 2: dedicado de la prueba, la tal actividad.
+01:12:33 Speaker 1: Lo importante es eso, que no se pierda
+01:12:35 Speaker 2: esa información.
+01:12:40 Speaker 1: Como se dan cuenta, no hay una sola forma de hacer Valencia Mapping. Hay mucho criterio y depende de dónde quieras enfocarlo.
+01:12:49 Speaker 2: Gracias.
+01:13:40 Speaker: Sí. ¿Perdón? Sí, todo eso.
+01:13:50 Speaker 3: Mi nombre es Rodrigo, vamos a quitar nuestro caso en el caso 3.
+01:13:55 Speaker 2: Lo que hemos hecho ha sido desglosarlo en las 6 etapas
+01:13:59 Speaker 3: para el cálculo del PSM. Primero ha sido el requerimiento, tenemos que tener un tiempo de 4 horas, con un tiempo para terminar que esperar 20 horas, bueno, tendencia que esperar 16 horas, esperarnos una hora de 20. dando el porcentaje de fallo o de éxito de 60% para el desarrollo se tiene que hacer con un día anterior y digamos por donde se tenía que un tiempo de 8 horas y un tiempo total de un día que se hacía tanto de unas 22 semanas o de un tiempo de ejecución de 16 horas tanto para la presión del código que hacía la parte más interesante que explicará más cierto el porqué que es tanto con el tiempo de espera de un día entero para realizar todas las revisiones Ahora, tanto en las pruebas como en el usuario, los tiempos de espera son relativamente altos, y el tipo de despliegue con un porcentaje bastante alto de éxito, bastante un caso. Pero, a su vez, en caso de un problema,
+01:14:49 Speaker 2: se tiene que esperar molestando un día en los escenarios hasta los dos.
+01:14:52 Speaker 3: O sea, son porcentajes muy altos de éxito, pero en caso de que se falle, tiene que haber un costo bastante alto de tiempo de espera. Ahora, para las medidas de Dora,
+01:15:02 Speaker 1: Hemos visto que hay 1.4
+01:15:04 Speaker 3: despliegas por semana, o sea, hay un despliegue cada 5 días. La tasa de fallos que hemos visto es de un 27,8%. Y por último, el tiempo de restauración que el promedio ha sido de 3 horas. Puede ser tanto de 2 horas o de 4 horas en el par de los escenarios. Y el link que hemos encontrado ha sido 21 días calendarios. Ahora, parte del caso decía, por ejemplo, el referente de TI decía, pero las sumas, por ejemplo, el disco tardan 7 días, pero el tiempo que se acuerda, idealmente, sería de un día de 8 horas. con un fallo de eficiencia del grupo de 21.3. Entonces, claro, la pregunta llegaría a ser, ¿por qué? ¿Cómo llega a suceder esto? Y la respuesta de hecho se encuentra en una metria que dice las historias que son devueltas al menos una vez en la etapa anterior durante el trimestre. Son 94 en total, pero de las cuales 76 han sido devueltas.
+01:15:57 Speaker 2: Entonces,
+01:15:58 Speaker 3: es bastante probable. que se han estado acumulando realmente
+01:16:02 Speaker 2: aquí. O alguno
+01:16:04 Speaker 3: de estos despliegues ha provocado que tengan que retrasar poco a poco hasta acá y eso ha acumulado al final de algún tipo de escenario y por lo menos 21 días. Probablemente haya sido realmente ese tipo de... haya sido probable de una cadena de fallos que ha sucedido en todo ese lado. Además, claro, de las historias
+01:16:20 Speaker 1: que probablemente han retrasado las cosas.
+01:16:21 Speaker 3: El código que hemos identificado ha sido la revisión del código. principalmente por el tiempo de espera, y una tasa de éxito porque no tiene más que baja, que es casi casi la mitad. Entonces eso, en combinar con las historias, provoca desde que al final no sea siete días, sino termina siendo veintiuno. Bueno, esa es nuestra hipótesis.
+01:16:40 Speaker 2: Gracias.
+01:16:46 Speaker 1: ¿Alguna pregunta para ellos? De las métricas de Dora que... Wow, un desflame por semana, ¿tienen ellos?
+01:17:04 Speaker 2: ¿Qué
+01:17:04 Speaker 1: pudieron ver de las métricas de Dora?
+01:17:07 Speaker 3: Aria, la métrica de Dora no te hemos dado cuenta. Lo que más causaba dudas era, por favor, la última parte que es una litácula del último trimestre, que fue lo que se usó para hacer las métricas de Dora. En el inicio, pues, ¿es esto lo que te dice? Bueno, no es esto lo que te dice, ¿por qué 21 días? De hecho, acá te da la pregunta. ¿Por qué 21 días? De hecho, por lo que antes te lo dice. Pero es cuando comienzas a observar tanto el último dato, que no se coloca acá, pero es importante recalcarlo, las historias de vuelta llamamos una vez en la etapa anterior, y cruzando con esas dos de acá arriba, y viendo, ah mira, acá hay tiempos de pedaltos, está diciendo que aquí hay un tiempo de pedilizaras,
+01:17:45 Speaker 1: han
+01:17:46 Speaker 3: sido 77 hasta 24, ha sido casi casi un 75% de historias que tienden a fallar, entonces...
+01:18:11 Speaker 1: La tasa de change failure rate, la tasa de cambios con error, está alta, ¿no? 27%
+01:18:18 Speaker 2: la de ahora está alta.
+01:18:22 Speaker 1: ¿Qué aprenden de esto? ¿Qué les queda? De esta experiencia.
+01:18:30 Speaker 3: Bueno, se puede decir cumplir que en realidad, no solamente alguien confía con los datos, o sea, claro, si nos vamos a dar cuenta, si nos vamos a hacer estos errores, si podemos tratar de encontrar un posible error, realmente en realidad está habiendo todo esto como un conjunto, en conjunto. Vamos a darnos cuenta de que, tal vez, no es que simplemente es un problema acá y se queda acaitado. Probablemente sea un problema de acá, que termina provocando acá, que termina provocando acá. O sea, es como un agujero de trabajo, se va extendiendo. Aunque un análisis primero no se puede dar.
+01:19:04 Speaker 2: ¿Alguien más?
+01:19:12 Speaker 1: Gracias.
+01:19:19 Speaker 2: Siguiente grupo.
+01:19:41 Speaker 3: Y pues la primera etapa que tenemos es el desarrollo, que tiene un tiempo de producción de 12 horas, le esperan de 8 horas y pues el lead time es de 20 horas y en la parte de la integración botina tenemos 35 minutos, espera 0 porque es inmediata y el lead time es 35 minutos y pues la prueba de integración es de 1 hora y la esperan de 0 a 2 horas porque la programación de... La entrega de este producto es de cero a dos horas y pues realmente no sabemos en qué momento está. Y pues por eso es que el D-Time puede extenderse de una a tres horas. La revisión de seguridad, el tiempo de producción es de seis horas y después de cinco días. Y como se lo pueden notar, la espera es considerablemente mayor que las anteriores fases, lo que podría darnos a conocer un poco sobre que aquí se podría llevar cerca de un pelo de botellas. La siguiente etapa es la de preparación del expediente del cambio. Y aquí tenemos un tiempo de producción de 4 horas, la espera es de 6 horas, y esto en total se genera un lead time de 10 horas. El comité de cambio es de una hora y la espera de cuatro días. Cuatro días porque requiere tres firmas. Y pues eso también nos podría dar a conocer de que también se podría llevarse a cabo otro coño de botella. Y después de eso tenemos la ventana de despliegue. Con un tiempo de introducción de una hora, la espera de dos días y doce horas. Por esto el lead time es de dos horas y trece horas. Dos días y trece horas. Y pues después tenemos la métrica rora.
+01:21:20 Speaker 3: Bueno, lo que indicamos es, por ejemplo, que las específicas horas,
+01:21:24 Speaker 2: que tienen 8 de 5 minutos, que
+01:21:27 Speaker 3: es cada 25 días. También que ahorita hay total de 13 días redondeando, pero es de 12 días, 9 horas y 75 minutos.
+01:21:40 Speaker 2: La
+01:21:40 Speaker 3: tasa de la falla de cambios se indicaba en el caso que era 1 de cada 8, así que es 12,5% y el tiempo del cliente al servicio es de 20 horas, porque sacamos un promedio de ser una data escasa.
+01:22:03 Speaker 1: ¿Cuál es el código de botella de cadena y indicado? La
+01:22:05 Speaker 2: revisión de seguridad. La revisión de seguridad y el comité de cambios.
+01:22:14 Speaker 1: ¿Qué aprendizaje les deja este proceso?
+01:22:17 Speaker 3: Yo creo que el primer aprendizaje es que el tiempo de restablecimiento del servicio, muchas veces lo decidimos nosotros. En este caso nosotros hicimos un promedio entre el tiempo de incidencia y el restablecimiento del servicio. Profesor, lo que habéis dicho es, creo que no está en el UPTPO, es digamos los blancos para considerar que está bien y que está mal. Por ejemplo, los porcentajes de 0 a 20% y de 20% a 50% a la cual se dice.
+01:22:42 Speaker 2: Eso no hay. Una cosa que tenía,
+01:22:49 Speaker 1: no sé, como que hacer ruido es cuando en espera pusimos de 0 a 2 horas, porque comentar que es una automatización que corre cada 2 horas. Entonces, si un proceso justo termina cuando empezamos una automatización, puede llegar a llegar directamente o tiene que esperar las 2 horas de la mitad. Ahí no sabemos si poner el flor de los casos o poner... Gracias por ver el video. Lo de los rangos, yo puedo juntar un informe de Dora. El informe de Dora tiene los rangos.
+01:23:17 Speaker 1: Yo no lo llamaría bien o mal si no tienes una comparativa versus el mercado de si eres elite, si eres medium, si eres high. Va por ahí. Pero nuevamente, ¿quién eres? ¿Eres una panadería? ¿Eres un banco? ¿Eres un banco digital? ¿Eres un banco convencional?
+01:23:33 Speaker 2: Entonces eso depende un poco de eso.
+01:23:37 Speaker 3: Pero profe, ¿no sería mejor siempre colocarnos en el peor de las casas?
+01:23:42 Speaker 2: Por ejemplo, en este caso nosotros
+01:23:44 Speaker 3: consideramos un rango, pero podríamos fácilmente colocar el tiempo de 0 a 2 horas y el DINFAN sería de 3 horas.
+01:23:49 Speaker 1: No, no saben eso. Creo que me preguntaba respecto a si eso está bien o está mal versus, o sea, yo entendí la pregunta por la industria, ¿cierto? Claro. O sea, sobre los cálculos, si no se tiene, mejor el peor caso. Ahora, una vez que ya tienes ese dato, decir si está bien o está mal respecto a lo que tú necesitas como objetivo de negocio, ese era un poco lo que yo decía.
+01:24:16 Speaker 2: ¿Algo más? Bueno, gracias. Siguiente
+01:24:24 Speaker 1: grupo, faltan dos.
+01:25:48 Speaker 3: llevar los cambios a producción en estas
+01:25:51 Speaker 2: fases
+01:25:52 Speaker 3: se estima pues que el desarrollo tiene estos tiempos un tiempo efectivo de 10 horas con una espera de 6 luego de ese tiempo de desarrollo se hace una espera al corte semanal pues esta empresa cada semana hace un congelamiento de los releases para poder hacerlo en
+01:26:17 Speaker 2: conjunto al final
+01:26:19 Speaker 3: Esta espera de estos días, que bueno, en verdad es variable, solo
+01:26:25 Speaker 2: que el promedio es de 10 días.
+01:26:29 Speaker 3: Es, digamos, la fase más en la que hemos encontrado el cuello de botella. Porque la integración dura media hora, pero lo que sí es que se tienen que esperar 10 días. Así está diagnóstico. Luego está la estabilización de la
+01:26:47 Speaker 2: rama. Se quiere hacer que
+01:26:51 Speaker 3: todo esté bien. Acá, bueno, se da durante una semana
+01:26:56 Speaker 2: entera.
+01:26:59 Speaker 3: Pero efectivamente, el tiempo son 30 horas de corrección y demás. Y bueno, previo a la semana, hay dos días de espera. Entonces, dos días de espera más toda la semana nos da. Se demoran nueve días sin poder
+01:27:14 Speaker 2: estabilizar la rama.
+01:27:17 Speaker 3: Y bueno, ya luego se pasa al comité
+01:27:19 Speaker 2: de clave.
+01:27:22 Speaker 3: Y bueno, aquí es lo mismo. Se espera tres
+01:27:26 Speaker 2: días
+01:27:26 Speaker 3: y bueno, se puede dar dos o solamente cinco.
+01:27:29 Speaker 2: Y luego en el despegue
+01:27:30 Speaker 3: es lo mismo. Se arma como que un grupo en el que son diseñadores, UA y demás. Y aquí bueno, todo este tiempo... es alrededor de entre 8 y 10 horas y se espera también un día para poder hacer el despliegue y luego hay una verificación nada más que si dura 4 meses entonces sería el proceso de lo que hemos rescatado las métricas solo sobre el proceso tenemos que la suma del tiempo total
+01:28:02 Speaker 2: es 58 horas y
+01:28:06 Speaker 3: del lead time es 24 días entonces hay una muy clara diferencia hemos sacado que la eficiencia es solamente del 10%
+01:28:16 Speaker 2: e incluso hubo
+01:28:21 Speaker 3: un cambio en esta empresa
+01:28:22 Speaker 2: donde
+01:28:24 Speaker 3: ahora se ha implementado esto de los cortes y de hecho antes el cambio se tenía que era de dos releases, se tenía solamente un incidente, o sea de 7 releases un incidente ahora de 5 clíglices se tienen 2 incidentes
+01:28:39 Speaker 2: esto
+01:28:41 Speaker 3: ha variado también el porcentaje de la correctividad y bueno eso es de acá la
+01:28:47 Speaker 2: pregunta
+01:28:50 Speaker 3: Bueno, ahora en el caso de la matricas Dora, en el tema de la frecuencia del despliegue, en la vitópora también se menciona que se realizaron 3 despliegues en los últimos 90 días, por lo cual se tiene una frecuencia de 1 por mes. En el tema del V-Time, como mencionó mi compañero, que se había calculado bien, que es de 24,4 días.
+01:29:19 Speaker 2: para
+01:29:19 Speaker 3: poder resolver los cambios que hayan ocurrido en los
+01:29:23 Speaker 2: despliegues,
+01:29:24 Speaker 3: es un promedio de 14 horas y
+01:29:26 Speaker 2: el tema del porcentaje
+01:29:30 Speaker 3: de despliegues sin errores, se
+01:29:33 Speaker 2: mencionó
+01:29:35 Speaker 3: también en la literatura, de los tres últimos despliegues, solamente uno
+01:29:41 Speaker 2: ocurrió
+01:29:42 Speaker 3: todo bien y los otros tenían incidentes o requerían algún roto. Por tanto, el porcentaje es el 6.7%, que es bastante alto. Gracias.
+01:30:00 Speaker 1: ¿Cuál fue el código de botellas?
+01:30:03 Speaker 2: El de espera del corte. Como congelaban
+01:30:06 Speaker 3: la rama del clip
+01:30:09 Speaker 2: para agrupar, eso demoraba mucho.
+01:30:12 Speaker 1: Eso normalmente pasa en los ports. En los ports o los legados suele pasar eso de agrupar muchas funcionalidades para hacer un solo pase grande. Por
+01:30:20 Speaker 2: ejemplo. ¿Qué aprenden del
+01:30:25 Speaker 1: proceso? ¿Qué se llevan de esa experiencia?
+01:30:31 Speaker 3: No, me parece que en la última semana, me han hecho un cambio, porque antes era el empleado, hacían cada 15 días,
+01:30:39 Speaker 2: pero luego ocurrió algo,
+01:30:41 Speaker 3: y lo realizaron una vez al mes. Digo, antes era una vez al mes. Sí, antes era cada 15 días, y ahora es una vez al mes. Pero con los datos que sosteneron, y con lo que saca a su lado, regresaron.
+01:31:15 Speaker 2: ¿Alguien más? ¿Alguien más?
+01:31:23 Speaker 3: O sea, involucra desde la espera se despliegue, si incluye el desarrollo y la verificación, o también las incluye. Sí,
+01:31:31 Speaker 1: antes comentaba que en lead time se puede medir la parte que involucra el desarrollo, o es como cuando el desarrollo ya está listo. Las dos pueden ser válidas, pero sí es bueno siempre especificarlo.
+01:31:45 Speaker 3: ¿Y la parte después se despliegue, la
+01:31:47 Speaker 1: verificación? Sí, es parte, porque sin eso no tienes el ok del despliegue. Es parte de todas maneras. Es parte del despliegue.
+01:31:59 Speaker 2: ¿Algo más? Gracias.
+01:32:20 Speaker 1: El código botella es el que tiene mayor tiempo de espera. Oh, perdón, mayor litan.
+01:32:27 Speaker 2: El menos
+01:32:29 Speaker 1: eficiente no necesariamente es el que te código botella, porque puede ser menor tiempo.
+01:32:38 Speaker 2: Sí, puede
+01:32:39 Speaker 1: ser menos eficiente. Pedro, si quieres tratar de solucionar el problema del tiempo, del total proceso, no necesariamente te va a ayudar. Acá van a ser bien arrinconados, no sé si corro uno.
+01:33:15 Speaker 3: que es una operadora de telecomunicaciones regional y este caso trata más que nada de cómo funciona el desarrollo de autoportal de gestiones que tiene un precio de clientes. Primero se inicia con el área de desarrollo que dura un total de 12 horas. con una espera de 8 horas por ticket. Esto se basa más que nada en... porque el área de desarrollo no tiene permisos para la configuración de infraestructura y tiene que solicitar tickets. Esto se da en todo el área del proceso.
+01:33:53 Speaker 3: Para la construcción de pruebas se demora un total de 4 horas y 2 horas de espera para el agente. En ticket e infraestructura, una hora de configuración del nuevo token que se disponibiliza para cada cambio que se da. Y una esperada de cinco días hábiles para verificar que todo esté correcto. Para el área de ticket de base de datos, un desarrollo de dos horas y una esperada de tres horas, de tres días.
+01:34:24 Speaker 3: Para el despliegue por operaciones, un desarrollo de 3 horas y 1.5 días. Por último, la validación posterior, un desarrollo de 2 horas y una espera de 1 día. Aquí lo que encontramos fue un cuello de botella en el área de despliegue por operaciones, porque los incidentes se dieron en un 40%. Esto se trataba más que nada porque solo existe una persona que hace la configuración manual del despliegue de operaciones.
+01:34:55 Speaker 3: que realiza a través de un manual de 34 pasos que pasa el área de desarrollo por correo. Entonces se dan incidentes por cambios en los ambientes de prueba y el ambiente de desarrollo. Y continuando con el DORA. La frecuencia de despliegue de 10 fallas
+01:35:20 Speaker 2: por trimestre,
+01:35:21 Speaker 3: que consideramos que es bajo. El lead time para el cambio es de aproximadamente 12 días. Para eso tomamos desde que terminó el último commit, o sea después del desarrollo, hasta el despliegue por operación. No hemos considerado la obligación posterior porque en el Dora se mencionaba que era hasta el despliegue total.
+01:35:47 Speaker 3: Tenemos una duda. La tasa de fallos en cambios es de un 40% porque se da unos 4 ruedas en los 10 cambios por trimestre. Y por último, el tiempo de restauración de servicio que es de un total de 11 horas, contando de los tickets que duran aproximadamente 4
+01:36:08 Speaker 1: horas.
+01:36:10 Speaker 3: Eso sería todo.
+01:36:19 Speaker 1: ¿Cuál es el código borrilla?
+01:36:21 Speaker 3: Decidió por operaciones. 40%. Porque es el aporte manual de democracia.
+01:36:31 Speaker 2: Incidentes. Hay un
+01:36:32 Speaker 3: incidente de 40%. En el código operacional.
+01:36:38 Speaker 2: No,
+01:36:39 Speaker 1: el cuello de botella de tiempo.
+01:36:42 Speaker 3: El cuello de botella a nivel de tiempo es una tica de infraestructura que demora alrededor de 5 días hasta que se llegue a procesar por completo.
+01:36:57 Speaker 2: El
+01:36:58 Speaker 1: 40% tiene que ver con el ratio de efectividad.
+01:37:01 Speaker 2: No solamente con el código de teléfono. ¿Quién más?
+01:37:10 Speaker 1: ¿Qué se lleva de esta experiencia?
+01:37:17 Speaker 3: Yo creo que lo que se puede llevar de esta experiencia es más que nada poder mostrar,
+01:37:23 Speaker 1: puede
+01:37:26 Speaker 3: decirse en papel lo que es en el día a día, de forma visual se puede sacar mejores conclusiones.
+01:37:44 Speaker 2: Gracias.
+01:37:50 Speaker 1: Gracias a todos los grupos.
+01:39:16 Speaker 2: Un
+01:39:31 Speaker 1: equipo tiene 6 horas de cross-time y 12 horas de hit-time, por eso eficiencia de flujo aproximada.
+01:39:58 Speaker 2: A ver, esta buena idea.
+01:40:44 Speaker 1: Imaginemos que en este punto de acá,
+01:40:47 Speaker 2: hay
+01:40:49 Speaker 1: alguien que comentó en su explicación justo algo de esto. Que en este punto de acá, su porcentaje de efectividad de este punto
+01:40:58 Speaker 2: es muy bajo.
+01:41:00 Speaker 1: ¿Dónde tenemos que apuntar a solucionar las actividades? ¿Hacia atrás o hacia adelante? Hacia atrás, porque de acá estamos arrastrando una problemática que se está reventando en esta actividad. Algo está pasando hacia atrás.
+01:41:20 Speaker 2: ¿A alguno le queda la duda? ¿Están? ¿Estamos claros? Vamos.
+01:41:38 Speaker 1: ¿Cuál de las cuatro intervenciones moviría más en mi tal proyecto?
+01:42:21 Speaker 2: La
+01:42:21 Speaker 1: gerencia propone medir despliegue por desarrollador. ¿Cuál es el riesgo principal de medirlo por desarrollador?
+01:42:45 Speaker 1: No olvides realmente la entrada del equipo, ¿no?
+01:42:53 Speaker 2: ¿Qué? Vamos por
+01:42:57 Speaker 1: la última. Velocidad y estabilidad. ¿Qué muestra la evidencia de CLEV? De lo que hemos visto. CLEV es el libro que estoy viendo. Si tienen relación, se mueven juntas, solo importa velocidad, solo
+01:43:12 Speaker 2: importa estabilidad.
+01:43:34 Speaker 2: Ok, tercer lugar. Saludos.
+01:44:01 Speaker: El problema a atacar solamente en todos los países. Tengo
+01:44:12 Speaker 1: un par de anécdotas de eso, que es lo que pasa cuando las vives te parecen de locos. En esa empresa de seguros nosotros tercerizamos el desarrollo con proveedores, con terceros, y cada vez que teníamos que contratar un nuevo equipo, la empresa tercera contrataba el equipo, lo traían, y nosotros teníamos que crear las cuentas en la empresa.
+01:44:33 Speaker 2: Entonces, eso
+01:44:36 Speaker 1: es una empresa de 3.000 empleados. Tiene empleados en total, entre vendedores, comercial, todo el precio seguro. En el área de TI éramos que, no sé, ciento y pico de planilla y además de terceros.
+01:44:48 Speaker 2: Entonces,
+01:44:49 Speaker 1: llegaba este equipo de desarrolladores, nosotros teníamos que poner nuestro ticket para que el equipo de seguridad apruebe y después, una vez que la seguridad aprobaba, el equipo de operaciones creaba al usuario y le daba los permisos que necesitábamos. Imagínense, nosotros contratábamos a la persona, al proveedor, y ya le empezábamos a pagar, pero el ticket nos lo vendían dos semanas después. Teníamos a los desarrolladores ahí dos semanas capacitándose sin accesos y sin producir nada.
+01:45:18 Speaker 1: Entonces, esas dos semanas eran un montón de plata al agua, y bueno, ahí trabajamos en una automatización
+01:45:25 Speaker 2: en el que...
+01:45:28 Speaker 1: El código de botella había operaciones. Eran los tipos de espera, pero también en el tiempo que operaciones se tomaban hacerlo, porque dejaba el ticket ahí dormido hasta que lo ejecutaba. Entonces, ahí que hicimos, conversamos con seguridad, vimos que este caso ya era repetitivo, ya teníamos contrato con los proveedores, entonces que hay que aprobar nada, porque el rol que le damos siempre tiene los mismos permisos, y hay un contrato que nos cubre con ese proveedor, y está por defecto del check. Y ahora operaciones, ¿qué es lo que haces? Entras al Azure, entras al directorio activo, al E3D y le das el acceso. Ok, lo automatizamos en un proceso y ahora esto cambió a minutos.
+01:46:04 Speaker 1: Venía el nuevo acceso,
+01:46:06 Speaker 2: esto
+01:46:07 Speaker 1: igual automáticamente registramos el ticket para el que da la auditoría y demás, pero cambió de dos semanas a diez minutos.
+01:46:15 Speaker 2: Entonces,
+01:46:16 Speaker 1: esos son los ejemplos de espera, que normalmente uno piensa en DevOps y piensas en desarrollo, en páginas, en cosas, y hay muchas veces que son en mente procesos y cosas de los procesos de TI clásicos, que también hay que trabajar. Entonces, es un ejemplo muy clásico de tiempo de espera. Y esto ocurre acá, en esta empresa, te lo voy a contarles cuando lo he comentado bien, que me tocó el humor, ¿acuerdo? Y Oracle era la primera vez que ponían ese equipo en Perú. Ese equipo normalmente había estado en la India o en Estados Unidos. Y era la primera vez que lo ponían en Perú. Entonces no tenían la experiencia de mandar las laptops, mandar los batches, porque era trabajo presencial en la oficina de Oracle acá. Y varias cosas.
+01:46:55 Speaker 1: Entonces, yo tuve un primer día de trabajo, primera semana de enero. Mi primer día realmente de trabajo con laptops y todo fue quincena de marzo. dos meses y medio, sin
+01:47:06 Speaker 2: tener
+01:47:07 Speaker 1: equipo ni nada, porque ese proceso no estaba bien montado.
+01:47:11 Speaker 2: Eso pasa.
+01:47:19 Speaker 1: Sin números no hay diagnóstico, ¿no? Si no tenemos la medición real, todo queda en percepciones de ello, creo que es tal cosa, yo creo que es la otra, pero no tenemos, estamos midiendo realmente cuánto se están memorando las cosas. Esas métricas de Dora y también tener los datos del DCM ayudan para tener visibilidad de dónde atacar, ¿no? Y bueno, la última, ¿no? Estaba en la pregunta, la velocidad de estabilidad van juntas, ya sea que una afecte a la otra porque va a pasar, o cómo moverlas. Intencionar y hacer las cosas para que ambas vayan para adelante. Pero no puedes ir solo a estabilidad o solo a velocidad. Sobre todo en la nueva forma de trabajar del mundo tecnológico. Antes nos íbamos solamente a estabilidad. Algunos cometieron el error de solamente ir a velocidad.
+01:48:03 Speaker 2: Y se cometieron problemas y
+01:48:06 Speaker 1: errores.
+01:48:07 Speaker 2: Y bueno, se atacan antes.
+01:48:11 Speaker 1: No sé si antes de terminar tienen alguna pregunta. la otra lámina la dejo para la siguiente
+01:48:21 Speaker 2: agradecerles
+01:48:25 Speaker 1: la participación a todos nuevamente recalco, esa pregunta que les hice de que se llevaban es una pregunta que va a ser recurrentemente en el curso No les he contado esa parte de mí, pero bueno, de lo menos estudié coaching y también estoy llevando esos temas de coaching y esa pregunta de qué te llevas, con qué te quedas, te ayudan a ver más allá de la formulita, más allá de eso, que es un poco como, ¿qué nos está sumando? Entonces, te digo para que se queden preguntando eso también.
+01:48:57 Speaker 2: Gracias. Nos
+01:48:59 Speaker 1: vemos la semana que viene. Ah, para el laboratorio, perdón, les voy a colgar ciertos puntos a tener en cuenta, como que te habían creado su cuenta de GitHub, temas logísticos puntuales para disminuir el tiempo de preparación ahí en el día de laboratorio.
+01:49:14 Speaker 2: Recuerden que tenemos laboratorio el jueves, antes de la sesión de la clase. No,
+01:49:22 Speaker 1: todas las sesiones son presenciales. Laboratorio, sí.
+01:49:28 Speaker 2: Gracias.
+01:49:50 Speaker 1: Todas las nubes tienen la introductoria, como la practitioner. Esa ayuda, pero no es tan... Esa es como muy genérica. Yo te recomendaría esto. Por ejemplo, en AWS, si lo que quieres es más desarrollar, hay una que es de developers en AWS. Si lo que te quieres más es temas de arquitectura... Hay una de arquitecto. Y la de arquitecto hay dos niveles. La de...
+01:50:20 Speaker 2: La profesional y la sociedad. La sociedad es la más...
+01:50:28 Speaker 1: y la otra es la de CSOPS me parece que las de CSOPS ya las continuaron
+01:50:33 Speaker 2: y ya
+01:50:36 Speaker 1: después las dos más level son DevOps Professional y Architect Professional y bueno ahora hay una de IA que está bastante buena sobre AWS
+01:50:57 Speaker 1: Depende de qué es lo que te interesaría entre esas.
+01:50:59 Speaker 2: Ahora,
+01:51:00 Speaker 1: si una u otra, la verdad es la que más afín, la primera, que sea la que más afín para ti es, o sea, la que tienes más a la nube tienes más a la mano, y después saltar de una a otra es facilísimo. O sea, porque hay muchos servicios que equivalen de una nube a otra. Yo en Abedalece he sacado varias certificaciones, pero fue más porque necesitaba para dictar cursos, o porque la chamba me lo exigía. porque hay constructoras
+01:51:28 Speaker 2: con
+01:51:29 Speaker 1: lo que son partners para que te suban el nivel como partner de la nube tienes que tener gente certificada en
+01:51:36 Speaker 2: ciertas cosas pero yo
+01:51:40 Speaker 1: creo que me diga que atravieses la practitioner primero y después haces alguna de las más afiliaciones que hagan hoy día, developer o arquitectura
+  
