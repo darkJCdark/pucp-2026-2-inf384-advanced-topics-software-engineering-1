@@ -1,11 +1,153 @@
-. {
-	. {
-		. 
+. INTRODUCCION A DEVSECOPS{
+	. QUE SI ES{
+		. Coordinar y compartir responsabilidades
+		. Capacidad de la organizacion que se va construyendo
+		
+		. Una empresa siempre va mejorando
+		. BCP{
+			. App: Es mejor implementar DevOps
+			. Core: Esta en Covol
+		}
 	}
-}
+	. EL PROBLEMA ORIGINAL: EL MURO ENTRE DEV Y OPS{
+		. DEV{
+			. Subir nueva version de Windows
+		}
+		. SEC{
+			. ¿Son seguras las actualizaciones en Windows?
+		}
+		. OPS{
+			. Mantenerse en produccion
+		}
+	}
+	. POR QUE "SEC" Y POR QUE EN EL MEDIO{
+		. AUDITORIA{
+			. Demora mucho tiempo y hay observaciones
+		}
+	}
+	. DE DONDE VIENE TODO ESTO{
+		. The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win
+		
+		. NIST: Marcos de seguridad para el desarrollo de software
+	}
+	. LAS CINCO DIMENSIONES{
+		. CULTURE{
+			. Es la base de la casa, sino todo se cae
+			. AWS implemento los analisis post-mortem
+		}
+		. AUTOMATION{
+			. La velocidad en la retroalimentacion porque sabes lo que esta pasando
+			. Si el pipeline ya funsiono, no va a fallar despues
+			. Te liberas del riesgo de que el humano meta la pata
+		}
+		. LEAN{
+			. Mejora continua
+			
+			. Working Learning Progress{
+				. Es mejor tener poco y mayor velocidad
+			}
+		}
+		. MEASUREMENT{
+			. Metricas DORA
+			. Si la medicion no es automatica ni continua, es dificil tomar desiciones y que eso nos ayude
+			
+			. Yo como equipo se como mejorarlo
+		}
+		. SHARING{
+			. Compartir la informacion o mejoras
+			. post-mortem: Metimos la pata, lo compartimos con el mundo, hay que implementar las mejoras
+		}
+	}
 
-. {
-	. {
-		. 
+	. MODELOS DE ESTRUCTURA DE EQUIPOS{
+		. SILOS SEPARADOS{
+			. Dev, Sec y Ops separados
+		}
+		. CAPACIDAD EMBEBIDA{
+			. Tengo personas que saben de lo mismo separados, por lo que lo hacen de diferente manera
+		}
+		. EQUIPO DE PLATAFORMA{
+			. Equipo centralizado que construye los pipelines del camino que todos deben seguir
+		}
+		. SRE: EQUIPO DE CONFIABILIDAD{
+			. Estan enfocados en la operacion
+			. "Cuando esto este en la operacion, va a funcionar de esta manera"
+			
+			. Requiere madurez de la empresa y equipos
+		}
+	}
+	. Anti-patron: El equipo DevOps como tercer silo{
+		. Es como otro equipo de seguridad aparte que va a generar mas problemas
+		
+		. Lo mejor{
+			. Solo tener una plantilla y no muchas
+			. Solo se modifica la plantilla del pipeline por si Vercel actualiza cosas
+		}
+	}
+	. ANATOMIA DEL PIPELINE{
+		. INTEGRACION CONTINUA{
+			. Es lo que se hizo en el Lab0 (npm build)
+			
+			. COMMIT{
+				. Falla rapido y falla barato <- Para no llegar a produccion
+				. Hago el cambio y lo despliego
+			}
+			. BUILD{
+				. Lo compilo porque es antes de las pruebas unitarias
+			}
+			. PRUEBA UNITARIA{			
+				. JAVA: Si o si debe existir el binario para ejecutarlo
+				. Python: En el build, instalas las dependencias
+			}
+			. CALIDAD DE CODIGO{
+				. Sonarqube
+				. Sonarcloud
+			
+				. Si tienes mucho codigo repetido, te da la metrica
+			}
+			. SEGURIDAD{
+					. Analisis de seguridad de codigo
+			
+					. El token de vercel lo colocamos en el pipeline
+			
+					. Pecado: Subir claves al repositorio
+			
+					. Estas usando las librerias, consulta las librerias y dime si hay vulnerabilidades
+			
+					. El artefacto ya paso por todas las comprobaciones y ahora puede pasar a produccion
+			}
+
+			. Output: Artefacto validado
+		}
+		. ENTREGA Y DESPLIEGUE CONTINUO{
+			. Publicacion del artefacto
+			. Provision de infraestructura
+			. Despliegue a preproduccion
+			. Aprobacion
+			. Despliegue a produccion
+			
+			. ENTREGA CONTINUA{
+				. Llega hasta "Aprobacion manual" (intervension humana de la confirmalcion del despliegue)
+				
+				. Lab0: Si me pedia validacion humana, se ejecutaba
+			}
+			. DESPLIEGUE CONTINUO{
+				. No hay intervension humana
+				
+				. Lab0: Se desplego en Vercel sin preguntar nada
+				
+				. La aprobacion en realidad esta automatizada
+			}
+		}
+	}
+
+	. DevSecOps Farmeando Aura{
+		. Seguridad: Tiene todo el analisis estatico de seguridad; hackeados bloqueados; cumple todas las ISOs
+	}
+	
+	. CUATRO COSAS QUE SE LLEVAN{
+		. DevSecOps es un proceso y no herramienta
+		. Trabajar sin muros; hay que alinear los objetios
+		. Se construye una vez
 	}
 }

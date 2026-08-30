@@ -1,0 +1,441 @@
+# Temas S2
+
+  Meeting started: 28/8/2026, 9:49:38 p. m.
+  Duration: 87 minutes
+  Participants: Speaker 1, Speaker 2
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/jwKGr4wBzd9c4XeQr80O?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: Hoy día ya nos metemos ya de cabeza en lo que es DevSecOps, pero vamos a entender qué es DevSecOps. Y vamos a ver, así como pedíamos en el ciclo de desarrollo de software,
+00:12 Speaker 2: cuál
+00:13 Speaker 1: es el proceso, cuáles son los dolores, qué cosas vamos a enfrentar, acá vamos a mostrar qué es DevSecOps no solo como definición, sino cuáles son los principios, sobre qué se apalanta, y eso en teoría ya finalmente a qué llega en acciones en el día a día. en los que ganan el UCF o en la Universidad. Bueno, y no solo en la Universidad, ya
+00:33 Speaker 2: vi esto prácticamente todo el tiempo.
+00:35 Speaker 1: También, cómo se estructuran los equipos normalmente en las empresas. En el CECOPS es relativamente nuevo en la industria, y también por ende, en cada empresa se implementa totalmente diferente.
+00:46 Speaker 2: Pero
+00:47 Speaker 1: vamos a ver ahí algunas diferentes formas, las que funcionan, las que no funcionan. No hay una regla clara ahí, depende mucho. Y luego nos vamos a meter de lleno a qué es un pipeline. Nosotros fuimos en el laboratorio, jugamos un ratito en el laboratorio con un pipeline en base, pero no nos hemos metido de lleno a ver cuáles son las partes de ese pipeline, qué sentido tiene, cómo lo estructuramos. Entonces, antes de empezar, quería preguntarles, voy a ir recorriendo una por una y le deje lavarme la mano.
+01:25 Speaker 2: A ver, ¿en cuál
+01:26 Speaker 1: encontramos más coincidencia? Piensen en los proyectos, en las empresas que están actualmente. ¿Quién tiene el permiso y el conocimiento para poder hacer un pase a producción? ¿Cualquiera del equipo? ¿Sólo el líder técnico?
+01:43 Speaker 2: ¿Alguien de infraestructura?
+01:44 Speaker 1: ¿Operaciones? ¿Una sola persona en toda la empresa? ¿Nadie más lo sabe hacer? O no sé, nunca haya producido. Para la vica, bro. A ver, vamos por la primera. Cualquiera del equipo. No hay ninguna salda por acá. Solo el líder técnico. Tenemos un caso. El equipo de infraestructura. No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no,
+02:11 Speaker 2: no, no.
+02:16 Speaker 1: Logística. ¿En qué rubro está la empresa donde está trabajando?
+02:22 Speaker 2: Telecomunicación.
+02:24 Speaker 1: ¿Los que le dan la mano es proyecto personal o grupo?
+02:29 Speaker 2: Desarrollo. En las prácticas será investigación científica.
+02:34 Speaker 1: ¿En acá?
+02:35 Speaker 2: No, en el GP. El GP. ¿Y en tu caso? No, primero es de ordinariedad. Pensé que era así.
+02:45 Speaker 1: No hay una respuesta correcta. Cada empresa lo hace de una manera diferente porque está en un estadio de la vida diferente. ¿A quién le pasa que una sola persona en la empresa, en toda la empresa, pueda hacer el paso a la producción? Bueno, finalmente. Y el resto nunca llegó con la sal todavía.
+03:04 Speaker 2: Entiendo. Ok,
+03:06 Speaker 1: no hay respuesta correcta. O sea, acá la idea es... Nace o viene justo para dar una solución a estos típicos problemas de ¿Quién sabe hacer el base de producción?
+03:20 Speaker 2: Con
+03:21 Speaker 1: el pipeline, el pipeline es que ya no es una persona. Muchas personas se juntaron en algún momento y crearon el pipeline y ahora es el pipeline el que sabe hacer el base de producción. Entonces, un poco para ver las realidades. No todos estamos en la misma página y eso es chévere también de eso. Cada uno tiene una problemática diferente de dónde nace y cómo va. Conectándolo con lo que vimos en la clase anterior, ¿se acuerdan de las demoras? Imagínense que dependemos de una sola persona en la empresa a pasar los pasos de producción. Y tenemos 10 pasos. Se van a mejorar. Ahí se crean las colas.
+04:07 Speaker 2: O, más
+04:08 Speaker 1: al extremo,
+04:09 Speaker 2: lo creemos.
+04:10 Speaker 1: Esa persona se va a la empresa y nadie sabe cómo funciona, se da pedazos hasta que alguien más entiende cómo funciona y ya volvemos a levantar el bote. Entonces, les contaba un poco del objetivo de la sesión. Justo pensando ya en los procesos o en los casos que veíamos la última vez y
+04:42 Speaker 2: preguntándonos, ¿qué
+04:43 Speaker 1: prácticas? ¿Están siguiendo o no se están siguiendo? Con eso entender por qué tiene esa métrica de dólar tan
+04:51 Speaker 2: bajo, por qué tiene esa cola.
+04:53 Speaker 1: que estamos al delante en el universo de MAPI. Eso nos va a ayudar hoy la teoría de lo que es D-ORUS, el modelo HANS, las esculturas que ya mencionaba y el diseño también para el tema. Y bueno, al final vamos a tener un tallercito, un hilo diferente a la semana pasada, pero también conectado con eso. Entonces, la idea es pasar de... De dejar de preguntarnos a qué medimos, que es lo que vemos en la semana pasada. Entonces, ahora, ¿a qué construimos? En base a que ya identificamos eso que medimos. Ya medimos que el cuello de botella está en las pruebas. Entonces, ahora hay que construir algo relacionado a eso. Pasar de qué medimos a qué construimos. Bueno, estamos nuevamente recopilando lo que veíamos de la semana pasada, el tiempo se lo va en las colas, no en el trabajo en sí de la actividad, sino en las esferas. Las métricas de Dora van juntas, porque mezclando la frecuencia de desplegue... ¿Recuerdan cuáles eran las métricas de Dora?
+06:22 Speaker 2: Entonces, esas cuatro se ayudan a describir
+06:24 Speaker 1: qué es lo que está pasando, ¿no? Y la velocidad y estabilidad pueden que uno sale para atrás a la otra o el problema es que vayan juntos. Hacia adelante. Igual el mapa un poco para que tengan del curso. Sobre todo porque es la primera vez que se hizo el curso acá. Ya pasamos la parte de diagnóstico, que fue el capítulo anterior, y ahora vienen los capítulos más largos, que es toda la parte de construcción. Ahorita es entender primero, teóricamente, qué es lo que vamos a construir, y después ya nos vamos a meter de lleno a cada una de las partecitas de la construcción de esas automatizaciones.
+07:07 Speaker 2: ¿A qué le suena la palabra Debs & Cops?
+07:12 Speaker 1: Desarrollo, seguridad y operación.
+07:17 Speaker 2: ¿Qué cosa
+07:19 Speaker 1: ha respecto de eso?
+07:27 Speaker 2: El desarrollo era una parte de las operaciones, pero ahora se quería unir el desarrollo con las operaciones para hacer este tema de desesperación. Pero ya se está viviendo la tendencia que también la seguridad va a ser transversal a estos procesos. Cada etapa del DevOps va a tener una etapa de seguridad.
+07:56 Speaker 1: Dice que en esta aula no cuenta cuál es el condicionado. Esa es la 603, ¿cierto? Sí.
+08:05 Speaker 2: ¿Acá no es? ¿No? Hay que abrir la puerta.
+08:09 Speaker 1: Ah, necesitar una puerta. ¿La semana pasada pasó esto o es que ya está más
+08:18 Speaker 2: caloroso?
+08:23 Speaker 1: Sí, ya había salido un deposado que está igual, así
+08:25 Speaker 2: que... Ah, qué fresco. Gracias mucho.
+08:34 Speaker 1: Ah, pero me sigue teniendo una cosita por aquí. El aire la va a cerrar.
+08:39 Speaker 2: No veo nada
+08:42 Speaker 1: de la base. ¿Dónde va la mochila? Podría probar, por favor, con la puerta de atrás. A ver si con esa sí se queda abierta. ¿Tiene un soporte abajo abajo o no?
+09:28 Speaker 2: Entonces me
+09:36 Speaker 1: hablaban de desarrollo, seguridad de operaciones, que ahora querían trabajar juntos para la entrega continua. Y ahora, en términos de entrega continua, ¿qué es eso de la entrega continua?
+09:57 Speaker 2: ¿Y por qué
+10:01 Speaker 1: le suena que la seguridad tiene que estar en el medio? O sea, ¿por qué no lo llamaron DepopSec?
+10:14 Speaker 2: Creo que el DevOps era como el infinito y preserva la seguridad del medio. es como...
+10:31 Speaker 1: digo que fue la primera temporada de Spiderman y se que vino como el malo de la siguiente película para poner en Instagram más problemas creo que no sé si les comenté la clase pasada que digo Seiko fue una de las partes más difíciles que me hizo a mí no entender de que fuera complejo sino entender de que era necesario o sea, aceptarlo El típico que ahora es lo clásico, el MPA, ¿no? El segundo factor en el celular, el correo, para mí era un... ¡Ah, qué pesado! ¿Por qué nos meten eso? O hay otro concepto que se llama el GIP, el Just In Time, o sea, permiso en Just In Time, que es... Oye, yo voy a hacer tal acción y ese es el rol de hacerlo, pero el permiso no lo tengo asignado siempre. Solo lo pido y me lo dan de forma automática en el momento que lo tengo que pedir. Cada vez que tengo que pedir esa acción, tengo que hacer una acción previa que es pedir el permiso. Automáticamente me lo da, pero es como una acción previa de permiso. Entonces ese tipo de cosas que las empresas debes implementar
+11:34 Speaker 2: es todo el mundo de seguridad que hay. Acá es el
+11:36 Speaker 1: perfil de esa cosa. Vamos a ver qué es, qué
+11:41 Speaker 2: no es DevSecOps.
+11:46 Speaker 1: Entonces DevSecOps, que normalmente... Si yo les digo automatización, pipeline, es lo más cercano que les podría sonar,
+11:56 Speaker 2: ¿cierto?
+11:57 Speaker 1: Si les menciono cultura,
+11:59 Speaker 2: ¿les hace sentido algo?
+12:03 Speaker 1: Bueno, Pati.
+12:04 Speaker 2: Tal vez a las personas, o sea, bueno, al mencionar con cultura, las personas sí les deberían hacer, ¿no? Estar interesados, tener esa concientización de que sí se debería seguir estos procedimientos, ¿no? Así lo veo.
+12:28 Speaker 1: Un conjunto de prácticas, de cultura,
+12:31 Speaker 2: también técnicas, y
+12:36 Speaker 1: finalmente de la organización para mejorar el ciclo de desarrollo del software. Y ahí remarco algunas palabritas en negro, no es casualidad, que nos va a dar pie al modelo de calms que viene luego. Pero justo la idea es que sea de manera segura, ya sea de manera colaborativa, porque si el desarrollo no se pone de acuerdo
+12:55 Speaker 2: con las operaciones y la seguridad,
+12:58 Speaker 1: ese panel nunca se va a poder construir. No, no, no, no, no me autoparticen nada, me tengo que revisar a mano yo, porque no confío en tu herramienta. Pasa, pasa, pasa mucho. Entonces la automatización no es como que alguien que se capacita un montón en Vista Action va y mágicamente pone el file en una empresa y se acabó. Esa es la parte más fácil de hacerlo. La parte más difícil es sentar a seguridad de operaciones, explicarles, convencerles de que hay que hacerlo. O al revés también, a veces operaciones es el que viene con el pipeline. Y hay que convencer a desarrollo y a seguridad. Es muy raro que venga a hacerlo bien, pero bueno. Igual hay que convencer a otras personas. Entendernos, estandarizarnos y ya reciente ahí automatizarnos es lo más fácil al final. Entonces, ¿qué no es? Porque también muchas veces nos confundimos. Muchas empresas van a escuchar, esto lo hace el DevOps.
+13:54 Speaker 2: Ahora muchos dicen que el DevOps es
+13:56 Speaker 1: un rol. Lo llamamos como un rol.
+14:00 Speaker 2: Pero el DevOps no es solo un rol, no
+14:01 Speaker 1: es el ingeniero DevOps nada más. Es más allá de eso. tampoco es el equipo tampoco solamente son las herramientas ni las automatizaciones ni es solo una certificación y si es un poco lo que les contábamos coordinar, colaborar compartir responsabilidades buscar
+14:21 Speaker 2: ir
+14:22 Speaker 1: mejorando el proceso cada vez más y una capacidad también de la organización. Continuamente ir por esa propuesta continua. Y traigo otra vez lo que mencionaba antes de BSP. Imagínense BSP eso. Es un monso, no es un monso. Tiene más de 100 años. ¿Cuántas veces creen que ha cambiado y mejorado su proceso de desarrollo? No sé si ustedes están muy enterados o no, pero bueno, ahí les voy a contar algunas cositas que me encargo por los amigos que tengo. BCP es parte de CREECOR.
+15:03 Speaker 2: CREECOR, YAPE, es
+15:05 Speaker 1: una empresa aparte de BCP. ¿No saben eso? EO, es una empresa también de BCP. Hace poco han fusionado EO y YAPE en TI internamente. Los DevOps de uno y otro vale lo mismo. Ahora, ¿cómo es? EO es un proyecto dentro de la organización de YAPE.
+15:23 Speaker 2: Eh...
+15:26 Speaker 1: Y eso va pasando a las empresas, a las organizaciones. Me estoy dando un poquito a otro tema que vamos a ver más adelante, pero quería ir a esa parte de una empresa no es como que hace un esfuerzo, mejor el proceso ya se acabó, ya está todo listo. Es un tema de constantemente ir mejorándolo, mejorándolo y abarcar más cosas. ¿Dónde creen que es más fácil aplicar DevOps?
+15:48 Speaker 2: En
+15:48 Speaker 1: la app de OSP,
+15:53 Speaker 2: la versión celular.
+15:55 Speaker 1: o en el core que maneja las transacciones
+15:57 Speaker 2: de la tarjeta de crédito no
+15:59 Speaker 1: es más fácil implementar DevOps ¿en
+16:02 Speaker 2: el app?
+16:04 Speaker 1: ¿por qué le suele que vamos a acelerar?
+16:06 Speaker 2: porque el core es el core
+16:08 Speaker 1: ¿cuál es más crítico? si se cae el
+16:13 Speaker 2: core es más crítico
+16:14 Speaker 1: es más antiguo, es más publicado soporte mucho más procesos, es más crítico si algo pasa Ese es otro de los retos cuando se interpreta DevOps,
+16:25 Speaker 2: como parte de la organización.
+16:32 Speaker 1: Y lo último, bueno, también es esto, es una capacidad de la organización que se va construyendo. No es, ya compré el Big Hub Enterprise, ya somos DevOps en la organización. Ya todos tienen pipeline, ya somos DevOps en la organización. No hay luz. o se sigue cayendo a pedazos o seguimos haciendo un solo paso de producción al año. Es una capacidad que la organización va adquiriendo y va madurando en el tiempo. Hay un video que hasta ahora no lo encuentro, es un video que me encanta de lo que es la diferencia de WebSecOps. Hoy lo sigo buscando en las charlas que daba en pandemia de WebSecOps. Me gustaba mucho usarlo, pero bueno, tiene la estructura. Pero les tengo una idea, espero a veces
+17:23 Speaker 2: encontrarlo y pasárselo.
+17:39 Speaker 1: Esta persona antes era del equipo de operaciones y yo lo tenía que convencer de implementar DevOps y ahora curiosamente le están liderando DevOps
+17:47 Speaker 2: arriba.
+17:57 Speaker 1: Ahora tenemos desarrollo, el objetivo es implementar un proyecto de desarrollo, es cambiar, porque ellos quieren implementar un cambio en el software. Y ellos se miden con qué tan frecuente hacen
+18:12 Speaker 2: esos cambios.
+18:12 Speaker 1: Mientras más libero cambios, son el mejor que
+18:15 Speaker 2: me puede desarrollar. Por otro lado, el equipo de operaciones se
+18:18 Speaker 1: encargan de que esta máquina nunca se dañe, o siempre responda. Pero qué pasa si viene desarrollo y a cada rato me implementa una nueva versión del Windows, una nueva versión del Windows, una nueva versión del Windows, es más probable que algo pase y
+18:34 Speaker 2: la focus se caiga. Entonces,
+18:38 Speaker 1: ahí van como dos objetivos aislados entre desarrollo y operaciones. Y por otro lado está seguridad. que viene y dice, oye, pero, ¿están seguros que eso que van a desplegar, esa nueva actualización de Windows, es segura?
+18:53 Speaker 2: Entonces,
+18:53 Speaker 1: normalmente se comporta como una puerta al final del camino de, oye, ¿tienes todos los checks? Pasas. No tengo los checks, no pasas. Y no lo ven como algo de, en este camino que voy a recorrer, voy siguiendo los pasos seguros para llegar bien. Solamente el check al final de la puerta. Entonces, ese es un poco... ¿Cómo se origina el concepto de DevSecOps? Cada uno tirando para su molino, para su lado, y no conversando con una sola empresa, con un solo objetivo de negocio.
+19:24 Speaker 2: Y
+19:25 Speaker 1: acá lo que pasa es que ellos se echan la culpa, les contaban otra vez la historia del link que pusieron en llave para el e-commerce de Sobat, entonces se empiezan a echar la culpa de quién tuvo la culpa y por qué se cayó la cosa, o por qué saltó la vulnerabilidad. Entonces, ¿cómo cambiamos esto?
+19:45 Speaker 2: Y seguro
+19:47 Speaker 1: que les cuento, ¿ese
+19:49 Speaker 2: origen les
+19:51 Speaker 1: suena que es más
+19:52 Speaker 2: técnico o
+19:53 Speaker 1: problemática? ¿Más de personas? ¿Cuál pesa más en lo que les cuento como problema? ¿Técnico o personas?
+20:02 Speaker 2: Personas.
+20:07 Speaker 1: Cuando hablo personas, no quiero decir que esta persona es la culpa, sino que es como la cultura que se está viviendo en esa empresa. No se ve la persona con nombre y apellido. Oye, he elegido colores que uno no puede rematar una despierta.
+20:24 Speaker 2: No sé si el... No sé qué hacer. Voy a llevarme un poquito para luego
+20:29 Speaker 1: dejar de usar el blanco tan fuerte. O sea, por la luz que lo hemos apagado, esta vez está adelante. Creo que la otra vez está apagada atrás y prendida adelante. Vamos a aprender, pues. No los ojos se nos van a hacer.
+20:42 Speaker 2: Muy interesante.
+20:53 Speaker 1: Mejor, igual, mejor.
+20:56 Speaker 2: Mejor, dale.
+21:00 Speaker 1: Entonces, preguntaba antes, ¿por qué seguridad al medio? ¿Cuándo será más costoso para el OSP darse cuenta que el nuevo botón que ha puesto para pago
+21:15 Speaker 2: con bitcoins en
+21:16 Speaker 1: la aplicación del OSP tiene una vulnerabilidad? Cuando
+21:20 Speaker 2: el equipo lo está empezando a desarrollar, o cuando lo lanzaron a producción.
+21:25 Speaker 1: ¿Qué cosa podría pasar con la droga de producción más allá de estafa? O sea, ¿qué genera eso para BSP?
+21:32 Speaker 2: ¿Qué pasa con la
+21:33 Speaker 1: droga de producción?
+21:36 Speaker 2: ¿Multas? ¿Y
+21:41 Speaker 1: la droga de producción? Tienen muchas, muchas aristas, ¿no? No sé si alguno ha visto por ahí algún post de LinkedIn, del gerente, del CEO, del CTO, de BSP, ya toque bien los comentarios de, tengo tal problema en el banco y no me han atendido. Entonces, este barco de funcionales son los que más impactan y a veces no nos damos cuenta. ¿Qué pasa si con la misma hipótesis o esta imagen que les decía que al final el camino en la puerta me hace meche? Imagínense que ya no voy a recorrer ese camino una vez a la semana o una vez al mes, sino que lo quiero recorrer una vez al día. ¿Qué cosa va a ayudarme a escalar más? Que los controles tenga acá o que los controles tenga allá. La frecuencia con lo que hagan los controles me va a ayudar a que o llevo a lo mejor a una... Imaginemos una fábrica que genera productos. Si yo voy revisando poco a poco la evolución del producto, va a ser mejor que revisarla solo al final. Como queda. Bueno, otra de estas tiene que ver más con el tema de seguridad propiamente. Es un tema más técnico que habla de las superficies de seguridad. Si yo meto una vulnerabilidad, la vulnerabilidad se puede conectar con otras cosas y el hueco se hace más grande. Por ahí se cuelan y se andan para otro lado y pueden hacer más cosas. Puede saltarse de un lado para otro y el hueco crece. Y la última es... Chévere, automatizamos o queremos mejorar el proceso, pero dependiendo de la persona que estés, siempre va a caer finalmente un proceso de auditoría. Y el proceso de auditoría es, necesitábamos la lista de pases de producción que han hecho en el último año, y de esa segunda muestra de 40%, y ese 40% de pases tiene que traerme la evidencia de la aprobación del pase, la evidencia de que el pase se fundó bien, la evidencia de
+23:50 Speaker 2: las pruebas,
+23:52 Speaker 1: y así aceptas todo el proceso, todos
+23:54 Speaker 2: los checks del proceso.
+23:56 Speaker 1: Entonces imagínense si se lo está haciendo a mano, te vamos a engañar en un work. Y almacenándonos, en lo mejor caso, en un Wander, en un Uber. Recolectar todo esto, tratar de dar auditoría, me ha pasado con el equipo, es doloroso. Es bien doloroso. Te demora mucho tiempo, hay muchos problemas, te hacen observaciones, rebota, va para acá, para allá. Si tienes un pipeline que ya tiene pensado eso, automatizas todo eso para ya tenerlo listo. Y cada vez que viene alguien, listo. Un par de
+24:25 Speaker 2: queries
+24:25 Speaker 1: a tu... da tu información, llamándolas en general y saca las fotos más directas de lo que están pidiendo. Porque el file ya lo contempla.
+24:39 Speaker 2: Entonces esa
+24:40 Speaker 1: parte de seguridad también ayuda para la auditoría. Pero ¿de dónde viene DevOps? ¿De dónde viene DevOps? ¿De dónde viene DevOps? El tema de Agile seguramente lo han escuchado bastante. Ese ya está viejo con ustedes. Para mí cuando estudié era nuevo, más o menos.
+24:58 Speaker 2: Bueno,
+24:59 Speaker 1: a Perú, recién era nuevo. Y más o menos por el 2009 nace DevOps. Internamente, inicialmente con ciertas iniciativas de personas que querían hacer las cosas diferentes. Pero viene entre 2013 y 2018 que hay unos libros de Jen Kim, que se llama Gene Kim. El primer libro, que es el más antiguo, se llama The Phoenix Project. Este libro, si tienen la oportunidad, está en montar libro por ahí y ya está bien difundido. Es una novela de tecnología. Es una novela de una empresa de tecnología, no recuerdo de qué rumbo, pero te cuentan todas las problemáticas que vivía el área de tecnología con el gerente de TI, con las operaciones, que se cae el sistema, que no saben qué hacer, la desarrollo. Ya estaban a punto de... de caerse todo a pedazos y que todo el mundo se vaya, a empezar a trabajar juntos, de la mano, ir pidiendo mejoras poco a poco, poco a poco, poco a poco, y mejorar como empresa. Ese fue el primer libro de novela de Jenkins respecto a esto. Cuando lea algunas cositas que hablan de tecnología, hablan muy poquitas, o sea, técnicas, son bien antiguas. Hablan de Cobors, antiguos. Y Jenkins hizo un nuevo libro, que se llama The Unicorn Project, que es otra novela, pero es pensada en una empresa un poco más moderna. No tan fresquita de los últimos años, pero ya hablaba del tema analytics, sobre todo un poco de data. A mí más me gustó Phoenix Project, pero luego
+26:39 Speaker 2: está chévere. Y el Accelerate ya
+26:44 Speaker 1: también trae toda la parte de vos, pero es un poco más teórico. Explica por qué hacemos DevOps. Y habla de todas estas cosas. Todo lo que estamos haciendo en este capítulo es la parte de Accelerate. Y a partir del 2018 entra todo el Frente de Seguridad. ¿Quién está organizado con el NIST? ¿No estamos organizados con el NIST?
+27:09 Speaker 2: El
+27:10 Speaker 1: NIST es el Instituto Nacional de Sándalo de Tecnología de Estados Unidos. que son como los que empiezan a dar los marcos de trabajo para garantizar la seguridad en
+27:23 Speaker 2: el
+27:23 Speaker 1: desarrollo de software. Entonces, bueno, ¿qué es lo que eso finalmente es? Lo que van a ver es como una guía de cuando vas a desarrollar, voy a hacer así un específico en algún, no lo voy a decir textualmente, pero es para que tenga una idea. Cuando vas a desarrollar un frontend, una web expuesta a internet, tienes que tener en consideración que tienes que tener protocolos seguros, el HTTPS con el candadito. Tienes que tener bla bla bla y así. Entonces te da todo eso disgreado. O el LogWast. ¿El LogWast si no se han conocido? ¿No? El LogWast Top 10,
+27:59 Speaker 2: como
+28:00 Speaker 1: el Top 10 de vulnerabilidades
+28:02 Speaker 2: más comunes o más explotadas.
+28:05 Speaker 1: Y que ya dan muchas automatizaciones que la prueban de forma muy rápida. El SQL Injection, ¿te suena?
+28:11 Speaker 2: Es
+28:12 Speaker 1: uno de los ítems que salen en los software, por ejemplo. Entonces, esa es un poco la evolución de cómo ha ido en
+28:22 Speaker 2: el mundo.
+28:25 Speaker 1: Y para que tengan una idea, los Deus Days nacen acá. En Europa, no recuerdo ni tal país. Los DevOpsDays nacen por allá, y se van escalando en el tiempo. A Perú, los DevOpsDays llegaron al año pasado. Esta es la segunda edición. Esperemos la segunda, la tercera edición que viene. Y bueno, ahí con Corrado, cuando veníamos del evento para acá, estuvimos conversando de hacer algunas cositas por acá, si se anima. Si quieren participar, sería hecho.
+28:53 Speaker 2: ¿Ok?
+28:55 Speaker 1: ¿Hasta acá alguna duda, pregunta, de lo que es DevSecOps? ¿O lo es? Entonces vamos a meternos a lo que es Cammys.
+29:07 Speaker 2: Estoy dando tiempo para no...
+29:15 Speaker 1: Cal es el meme de Cal. Es el meme clásico. Se me lo digo, parece un meme antiguo a ustedes. El Cal lo que trae, y siempre lo ponen como una casita. Vamos a verlos. Cal viene de cinco letras. C de Cultura, A de Automatización, L de Lean. ¿Están familiarizados con la palabra Lean? ¿Toyota? ¿Han leído algo de Toyota? ¿Han visto casos de Toyota en algún curso? Sí. ¿Qué cosa conoces de Toyota? ¿Qué cosa has escuchado o conoces de eso de Toyota? De Toyota,
+29:54 Speaker 2: una subiendo de convención, recuerdo un poco... Ahora
+30:00 Speaker 1: tenemos una idea. Toyota...
+30:02 Speaker 2: Me
+30:04 Speaker 1: voy a equivocar en varias cositas. O sea, voy a enfocarme en el tema puntual. No quiero decir cosas que luego googleé y no son como... Yo solamente las digo, pero... Toyota, que viene de la cultura japonesa, tenía mucho el mindset de hacer bien las cosas. Entonces su tema de hacer bien las cosas necesitaba generar de forma eficiente autos no tan caros. O sea, buenos y no tan caros. Entonces tenían que optimizar sus cadenas de fabricación de autos. Y una de las maneras que hicieron para mejorar esa cadena de fabricación de autos fue... Tenían toda su línea de asamblaje. ¿Han escuchado algo de cómo se arman los autos así en masa? Se van armando por partes, pero
+30:49 Speaker 2: en lotes.
+30:50 Speaker 1: Entonces es como... No sé nada, pero es como que arman primero chasis de todo. Entonces tenemos acá los 20 autos de lotes que tenemos que armar solo chasis. Y vamos a la siguiente parte que se te montan las ruedas. Y a todos les montamos las ruedas. Y así, van pasando por... Por pedazos. No es que arman todo un carro de una, listo, siguiente auto. Por partes.
+31:11 Speaker 2: Entonces,
+31:12 Speaker 1: en esas cadenas que iban por partes, tenían controles de calidad y si es que algún auto no pasaba el control de calidad de esa parte que le tocaba, paraban la cadena, dejaban de fabricar nada ahí en esa línea, encontraban el problema, lo solucionaban y recién ahí dejaban pasar el siguiente. De esa manera, implementaron este tema de, oye, no hago el cheque al final del auto antes que se vaya a concesionado para la venta, sino que lo voy haciendo desde el inicio para
+31:41 Speaker 2: ir después viendo esos cheques.
+31:43 Speaker 1: Entonces, ellos implementan este modelo lean y no solo eso, esa vez te dice mejora contigo. Ese es el concepto. Y flotas pequeños, no es el auto al final, sino las pequeñas partes del bus. Mejor menos medición
+32:01 Speaker 2: es...
+32:02 Speaker 1: Necesitamos datos, ¿no? Ahorita la data es lo que más popular... Acá, ¿quiénes les gusta todo el tema de datos?
+32:10 Speaker 2: Eso, claro. ¿Qué más? No hay datos, pero está
+32:16 Speaker 1: más de moda eso. Cuatro. O sea, está bastante de moda abriendo el tema de data llevado a... Ya lo veíamos en la clase pasada, ¿no? Si no hubiéramos podido tener las métricas de cómo está el proceso, no hubiéramos sabido si estaba bien o mal. Y la idea es tener esa medición para ver si hemos evolucionado o no. Y lo otro, imagínense que esta mejora que se implementa para este problema que hemos encontrado fue la diferencia de que se cae en este equipo o lo llevamos a todas las organizaciones a través a todos. El sharing, compartir ese conocimiento que se han querido o esa mejora que se han querido. Entonces, este es el modelo Kahn. No debería ser representado por una casita, donde tenemos cuatro pilares y una base abajo que soporta todos los pilares.
+33:03 Speaker 2: De estas cinco letras,
+33:05 Speaker 1: cinco dimensiones de la casita, ¿cuál cree que es la base de la casita?
+33:11 Speaker 2: A ustedes. Cultura.
+33:19 Speaker 1: Cultura es la base de toda la casita. Sin cultura, la casita está.
+33:31 Speaker 2: Entonces, ok, chévere.
+33:34 Speaker 1: Cultura suena bacán. Suena chévere. Entendemos que todos tenemos que colaborar, pero ¿cómo sabemos si existe o no existe?
+33:43 Speaker 2: Sí.
+33:46 Speaker 1: Hago unos invitadores. No son los que van tan extremos como que eres o no eres. Como les decía,
+33:53 Speaker 2: hay fases de evolución. Y tú como
+33:55 Speaker 1: implementación de una empresa vas a ir de poco a poco. Entonces, una de las cosas es, por ejemplo, ya construí mi aplicación, ya funciona todo bien. La ponemos a los clientes. Ahora, ¿quién lo opera? ¿Quién ve los problemas que van a salir ahí? El mismo equipo que la desarrolló. Cuando el mismo equipo que la desarrolló lo sigue operando, normalmente hay mejor cultura. ¿Por qué? Porque ellos se preocupan por qué eso que están generando nazca bien. Nosotros están tirando el problema de los otros equipos. A veces estructuralmente, y también por temas de eficiencia en las empresas, se tiene igual esa separación,
+34:38 Speaker 2: igual se tiene la
+34:39 Speaker 1: concientización para que pasen bien las cosas. Pero si la misma empresa y el mismo equipo lo opera, se da forma natural. AWS implementó algo que se llama los análisis post-mortem, o sea, post-incident.
+35:00 Speaker 2: Es una
+35:08 Speaker 1: de las pastarelas de pago más correctas de cada grupo, donde están los AWS en casi todos los lugares. Esa era mi cliente. Y bueno, cuando veamos infraestructura como código, ahí entenderán que está un poquito más. Pero yo estaba haciendo unos cambios, y por ponqueado, porque ya había hecho esos cambios muchas veces, lo mandé sin previsar. Así es. Y cuando reviso, porque se demoraba tanto en implementar, en desplegar, se estaba borrando la base de datos con todas las transacciones de esa... de hacer el espacio.
+35:41 Speaker 2: Entonces...
+35:44 Speaker 1: En ese momento lo que tiene fue llamar a mi jefa y decirle, me tiré la pata, está pasando esto. Me dijo, llama al cliente, dile que está pasando y yo voy a llamar a WS para meternos en una call inmediatamente. Vamos cada uno para ocupar. Adelante, trobo. De ahí nuevamente, como es un tercer código, Terraform lo vamos a ver más adelante, pero por la forma técnica como lo había hecho, AWS nos decía que no es tan fácil recuperarlo, vas a tener que esperar que tales cosas, nosotros vamos a hacer ciertas cosas detrás de cámara, de lo que tú lo puedes hacer, de la nube, para ayudarte, pero ya está, vas a tener que hacer más cosas después. Listo, bueno, fueron varios días amanecidas a recuperar la información, después de tres días, en cuatro horas ya estábamos otra vez online. Pero fueron como 3 o 4 días a recuperar
+36:29 Speaker 2: toda la gente otra vez.
+36:34 Speaker 1: ¿Qué creen que pasó conmigo en esa empresa?
+36:40 Speaker 2: Me gustó una
+36:45 Speaker 1: persona de mi equipo, cuando apenas yo estaba haciendo trabajo con él, pero yo fui el que metí la patata. Él me recordaba a mí, yo era su jefe.
+36:55 Speaker 2: Y dice, José.
+36:56 Speaker 1: Nos quedamos sin trabajo. Y le digo, no te preocupes, que tenemos un buen trabajo esta semana para mantener que restablecer todo esto que hemos malogrado. Ok, malogrado. No, no me votaron. Esta empresa tenía una mentalidad mucho de esto, de post-mortem. ¿Qué fue lo que hicimos después que pasó esto? Y el cliente también tenía esa mentalidad. Un análisis post-mortem. Ese análisis post-mortem es, ¿qué falló en el proceso? de que hizo que José meta la pata y algo no algo que ayude a que no meta la pata o que, si metió la pata, esto se restablezca mucho más rápido y de una manera más eficiente. Que sí funcionó, que no funcionó. Entonces, ese análisis, José, ¿qué cosa buscó? ¿Quién fue el culpable?
+37:39 Speaker 2: ¿Qué buscó? ¿Quién fue el culpable? En
+37:44 Speaker 1: el proceso, ¿no? Claro. ¿Quién fue el proceso?
+37:48 Speaker 2: Entonces,
+37:49 Speaker 1: esa es una de las cosas, diría, las más importantes del tema cultural No buscamos culpables,
+37:55 Speaker 2: buscamos qué
+37:57 Speaker 1: parte del profesor creer
+37:58 Speaker 2: Y
+38:01 Speaker 1: bueno, otra cosa más de cultura es cuando definimos las cosas, seguridad también está presente para definir otras cosas juntas El equipo de desarrollo también puede ver algunas cosas de producción, siempre con temas de seguridad, pero ¿cómo le doy soporte yo a la aplicación si no tengo acceso a los blogs? Entonces es como siempre de locos.
+38:21 Speaker 2: No, tienes que hacer tu solicitud y
+38:24 Speaker 1: te mandan cierta porción nada más, ni si quieres más otros tickets más, y eso es una locura, eso no funciona. Entonces ahí es también cómo hacemos para facilitar la vida del equipo de desarrollo, para mejorar la experiencia de la aplicación. Y así, hay varias cositas de qué es. Señales que existen o no existen. En la automatización, debes
+38:48 Speaker 2: poder,
+38:49 Speaker 1: en este proceso que veíamos, encontrar cuáles son esas partes repetibles, que son de la misma manera, y esas poder automatizarlas. Pero que quede en la responsabilidad. En el laboratorio que implementaron ayer, Muchos tuvieron problemas con la integración con Vercel Por ahí se habían olvidado algunos de ponerla en los IDs y les salían errores El pipeline quedaba registrado ahí con un error previo y había un log asociado Eso nos va a decir como trazabilidad Trazabilidad de dónde y por qué falló También tuvieron velocidad. Inmediatamente, ustedes se dieron cuenta que habían fallado. Imagínense, si ustedes, eso, en ese
+39:37 Speaker 2: panel que ya se ha automatizado,
+39:39 Speaker 1: ese era un manual de Word. Ustedes le habían mandado por correo operaciones y no le habían puesto esas variables. Y operaciones al día siguiente o a los días, atendía a lo suelito y luego te respondía con otro correo diciéndote,
+39:51 Speaker 2: oye, hay otra cosa. Tú lo leías al día siguiente.
+39:54 Speaker 1: Y veías que eso. Entonces, esa velocidad en la retroalimentación, la automatización también te la da. Inmediatamente ya sabes qué es lo que está pasando.
+40:04 Speaker 2: Y
+40:04 Speaker 1: finalmente, la liberación del criterio humano. O sea, tú ya no dependes de una persona el decir cómo despliego el percento. Y el Paylan sabe cómo hacerlo y lo hace automáticamente. Entonces el Paylan, si ya funcionó, no va a fallar después. salvo obviamente que haya algún problema pero si es siempre lo mismo, con las mismas condiciones siempre
+40:26 Speaker 2: te
+40:28 Speaker 1: liberas de ese criterio y riesgo de que el humano meta la patria Si tienen preguntas, por siempre me interrumpen. Puedo darle la mano para el segundo. Con esa frase me vino hoy día la jefa que les conté que llamé, se llama Claudia Márquez. ¿Hay alguno que no se ha escuchado a Claudia Márquez? Claudia Márquez es la primera embajadora mujer de AWS en Sudamérica y Perú. Es la primera mujer Golden Jacket. ¿Sabes lo que es Golden Jacket? Golden Jacket es la que tiene todas las certificaciones de AWS
+41:29 Speaker 2: Perú. Así
+41:30 Speaker 1: que es por el sitio de Calais, es una consultora donde yo trabajo contigo. Claro, debí hacer una charla en
+41:38 Speaker 2: AWS.
+41:41 Speaker 1: De mi no es la conexión, de lo que nos pasó hace cuatro años, sigo metiendo la pata ahora a estar ahí haciendole soporte para su charla.
+42:10 Speaker 2: ¿Qué es
+42:10 Speaker 1: mejor? ¿Tener muchas cosas
+42:16 Speaker 2: en Work in Progress o pocas cosas en Work in Progress? Es
+42:22 Speaker 1: mejor tener más output y menos in-progress, pero con mayor velocidad. En vez de acumular todas y avanzar un poquito de cada una pero no terminar ninguna. Ya hablamos del tema de los lotes. El tema de la medición, que es lo de las métricas duras que ya lo habíamos visto. Algo muy importante es este punto de acá. Si la medición no se hace de forma automática y continua, se
+43:02 Speaker 2: vuelve muy difícil de manejar y de
+43:03 Speaker 1: realmente usar esas métricas. Se automatiza toda la del despliegue, pero después tienen que venir tres personas a ir al cuen y hacer cosas para ver cómo estamos en métricas. Es bien difícil realmente tomar decisiones y que eso nos ayude a... Yo en este evento de ustedes, mi rol ha sido desde el punto de vista organizador, el frente de Data Analytics. Es la primera vez que tomó un rol así.
+43:32 Speaker 2: Pero
+43:32 Speaker 1: yo quería estar ahí como sea, así que es el que
+43:34 Speaker 2: está disponible y lo metí.
+43:35 Speaker 1: Y me tocó ver las métricas del evento. Por eso, los asistentes, estas cosas que les traía.
+43:44 Speaker 2: Y... Esta
+43:46 Speaker 1: es la siguiente clase, la les puedo mostrar. Luego, la primera vez proyectaba esas métricas. Pero teníamos métricas de cantidad de charlas, cantidad del NPS, que es la puntuación que los asistentes le daban a la charla. Entonces, imagínense, durante el evento, darnos cuenta de qué cosa está funcionando y qué no, para tomar acción ahí mismo y corregir. Oye, han dado el feedback que la he condicionado de tal sala no está funcionando o tal cosa. Entonces, ahí, pum, pum, pum, tomar acción rápido y no esperar al otro año el siguiente evento para corregir las cosas. Lo mismo pasa acá. En el proceso de desarrollo, si esa medición no la tienen de manera automática, no vamos a poder mejorar eso en un momento. Es muy importante que el equipo ve sus números. Si nuestra calidad o nuestra seguridad está mala, yo como equipo sé cuáles son esos números para cómo mejorar. Pero más adelante, en el siguiente, vamos a ver cómo medir la calidad, cómo medir la calidad. Y el tema de compartir la información o compartir las mejoras. Ya la de los post-mortems,
+44:56 Speaker 2: estos post-mortems no
+44:58 Speaker 1: es como algo escondido, de oye, no, no, metimos la pata, no vamos a matar a nadie. Oye, metimos la pata, nos dimos cuenta de esto, lo compartimos con el mundo, esto fue lo que aprendimos, hay que implementar esas mejoras. La documentación está viva, siempre se está alimentando por todos. Y este tema de interrogación, por lo que parece. ¿Les suena el per programming, el speed programming? Sí. Eso viene, por ejemplo, un poco de ahí también. Es la forma de cómo evolucionamos la parte de
+45:29 Speaker 2: seguir
+45:29 Speaker 1: desarrollando las cosas de una manera más fácil. Ahora, vayamos un poco al modelo de estructura de equipos. Esta parte de acá,
+45:59 Speaker 2: en las
+46:01 Speaker 1: certificaciones de DevOps, que también llevamos de momento, te cuento un poco de esto, se llaman los antipatrones de los equipos de DevOps. Es como que sataniza un poco de, oye, no, no, no, tú no puedes tener un equipo de DevOps aparte de desarrollo y de operaciones. Debería ser uno en conjunto, un mix de ambos, que esté en uno, que esté en otro. En la vida real eso no va a pasar. O sea, va a pasar en la evolución, tal vez un poquito, a veces se la hace para allá, a veces se la hace para acá, pero no siempre es así. Por lo tanto, puedo contar una anécdota, anonimizando la información lo más posible. Uno de los bancos, así, muy importantes,
+46:43 Speaker 2: era
+46:45 Speaker 1: un centro de innovación que sacó productos muy
+46:49 Speaker 2: buenos,
+46:49 Speaker 1: pero que también tuvieron problemas. Porque ellos implementaron DevOps desde cero, o sea, desde el arranque y empezaron DevOps. ¿Por qué? Porque este banco lo que hizo fue, ok, tenemos al TI clásico, que opera modo elefante, todo lento, todo lento, todo lento, montamos un equipo paralelo de innovación que crea productos innovadores nuevos. Pues ahí nació esta guilletera muy importante que todo el mundo usa ahora. Y cuando nace,
+47:15 Speaker 2: tuvimos
+47:19 Speaker 1: problemas en la operación por personas malintencionadas, hicieron cosas que no vivían, pero como es un proceso automático y no tenía ciertas validaciones, saltaron problemas. Entonces, ¿qué hicieron?
+47:29 Speaker 2: Se fueron a otro lado, del extremo, ¿qué se entiende?
+47:33 Speaker 1: Esa es la puerta de pliegues, que con operaciones ya teníamos algo humanizado y estaba abierta para pasar con los perros.
+47:41 Speaker 2: Cerró.
+47:42 Speaker 1: La puerta se cerró, las personas no tenían comunicación directa con el equipo de operaciones, y ir para allá era como tirar un sobre debajo de la puerta, pero no podías ni hablar con ellos. ¿Por qué? Porque tuvieron que preocuparse ese proceso de alguna manera. Entonces, ese equipo nació, esa evolución fue, ok, todos somos DevOps, uno solo, no íbamos viendo la forma, no pusimos los controles que debíamos, nos divorciamos otra vez, y tres operaciones, que son desarrollo, y ya después nació DevOps otra vez al medio para lidiar. Ahorita la mayoría de empresas DevOps es una empresa que es un área aparte de desarrollo y de otras empresas, pero que va uniendo puentes para... para poder mejorar el proceso. Entonces, pero bueno, igual como teoría, es igual para que sepamos qué formas hay. La primera es si los separados, ¿no? Tienes desarrollo de un lado, operaciones por otro, seguridad por otro, cada uno tirando para su lado. Entonces, ¿eso cómo evoluciona? Evoluciona a, oye, tengo personas... que conocen la operación y de seguridad en el área de desarrollo, ellos se encargan. ¿Pero de eso qué pasa? Ese equipo se encarga y lo hace de una manera, el otro equipo se encarga y lo hace de otra manera.
+49:10 Speaker 2: Entonces,
+49:10 Speaker 1: cuando hay que hacer una organización que quiere escalar eso y hacer una área eficiente, eso no es manejable, porque mantener muchas tecnologías, mantener muchas formas de hacer las cosas, es más riesgoso, es más caro, porque depende más de las personas que están ahí. Entonces hay que homologar y verlo un poquito. Entonces luego viene el equipo plataforma, que es...
+49:29 Speaker 2: Hay
+49:30 Speaker 1: un equipo centralizado que es el que construye
+49:33 Speaker 2: los pipelines y
+49:37 Speaker 1: los templates de cómo se hacen los pipelines, en la forma, y ese es el camino que todos deben seguir. Y luego viene el equipo de confiabilidad, los SREs,
+49:49 Speaker 2: que
+49:53 Speaker 1: están enfocados en la operación. O sea, ya no solo piensan en el proceso de desarrollo, sino ya han pensado en, ok, eso cuando pasa la operación va a operar de esa manera. ¿Se acuerdan de los SREs que lo pusieron a través de Google? SiteReveloping Engineer. SiteReveloping Engineer es el que está con los ojos en las métricas de producción. Oye, las transacciones están pasando. Tenemos muchos errores, no tenemos muchos errores. Está con los ojos allá. Y en base a los ojos allá es cómo diseño la aplicación para que eso fluya bien. La última vez me contaba de mi experiencia en Oracle de cómo
+50:31 Speaker 2: tenían
+50:33 Speaker 1: los ojos puestos en que si algún cliente le fallaba la creación de un servidor, automáticamente le asignaban un ticket para revisar qué pasó y contactar al cliente para que lo cree. Eso es esa parte de acá. Entonces, si tu objetivo es que el negocio venda, es el objetivo del servicio.
+50:53 Speaker 2: Entonces,
+50:54 Speaker 1: fluye hacia atrás en el proceso y hace que la mejora se vaya hacia su lugar. Pero eso requiere ya más dureza de la empresa, de los gilipollos, más complejo ir hacia ese lugar. La gran mayoría... Están acá, pero han ido evolucionando bastante, han pasado por esos estadios y la mayoría en Perú que está ahí y otras aquí, más carita. Y eso es lo que les decía, que nace como
+51:29 Speaker 2: un
+51:32 Speaker 1: silo, que es como un área de DevOps aparte,
+51:35 Speaker 2: llevándolo
+51:37 Speaker 1: al extremo,
+51:38 Speaker 2: que es
+51:40 Speaker 1: esta área de DevOps, es la que se encarga de hacer todo con los paletes. Nadie más puede hacer nada con los paletes. versus el otro que era yo te enseño al equipo de desarrollo lo de hacer los pipelines y el equipo de desarrollo tiene mayor libertad para ese uso entonces cuando pones un equipo al medio es como crear otro desarrollo operación de seguridad aparte y que al final intenta generar algunos problemas porque va a haber los cambios diferentes de objetivo entonces
+52:11 Speaker 2: la
+52:12 Speaker 1: idea es crear plantillas ¿Han escuchado el
+52:16 Speaker 2: concepto de COE? Centro de Excelencia.
+52:21 Speaker 1: ¿Qué han escuchado de ese? En los puestos. La mayoría de empresas se vienen en lo que se llaman los COE. A mí me tocó formar el COE de Empresas de Seguros,
+52:35 Speaker 2: el COE
+52:36 Speaker 1: de Debux se llamó primero, que era justo el que arma la base para que toda la empresa y empiece a usar The Oaks de una misma manera. Con matices y con sabores ya, porque no le vas a pedir lo mismo al cantor.
+52:52 Speaker 2: Pero sí,
+52:54 Speaker 1: que todas las aplicaciones digitales nacen con la misma receta, de alguna manera. Entonces, ¿qué pasa acá? Para que les hagan una idea. Ustedes ayer les hicieron un pipeline para verse. Imagínense que cada uno de ustedes es un proyecto diferente en la empresa. Y cada uno de ustedes está creando el
+53:11 Speaker 2: Paila para desplegar todos en Bersel. Cada
+53:15 Speaker 1: uno desplega a su manera en Bersel. Tendríamos 32. El código que busca es, oye, Bersel es nuestra tecnología estándar. Hago la receta y les comparto. Esta es la forma como todos tenemos que usar el desple de Bersel. ¿Por qué? Porque si mañana Bersel cambia y anuncia el toque para el desplegue, si anuncia lo que se adiquí, no tengo que hacer un cambio 32 veces. Hay unas maneras técnicas que vamos al ruego, que es modifico solo la plantilla base y esto automáticamente la red. Pero son esos tipos de cosas que el COBE va buscando, más técnicas, que otras que tienen más de cultura. Le disfungo y el equipo allá le tiene miedo a la automatización, no confían. Hay que ir a conversar con ellos y convencerlos de que este es el camino. Entonces ese tipo de cosas es el COBE.
+54:03 Speaker 2: Entonces un poco lo que se busca es... ¿A Antipatrón se refiere a las malas prácticas? Sí, sí. Sí, ya va a acabar ya. ¿Necesita
+54:44 Speaker 1: el nombre? Hoy
+54:44 Speaker 2: vamos... Brains, Brains.
+54:48 Speaker 1: Brains. Brains. Brains, Brains. Brains, Brains.
+54:50 Speaker 2: Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains.
+54:58 Speaker 1: Brains. Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains, Brains. Brains, Brains. Brains, Brains, Brains. Brains, Brains. Brains, Brains. Brains, Brains, Brains. Brains, Brains, Brains. Brains, Brains, Brains. Brains, Brains, Brains. Brains,
+55:00 Speaker 2: Brains, Brains, Brains, Brains, Brains, Brains,
+55:06 Speaker 1: Brains, Brains,
+55:08 Speaker 2: Brains
+55:51 Speaker 1: Lo referé a todos esta vez porque esa parte que viene es importante, el corazón de lo que viene, así que quería escalarlo. En la clase pasada veíamos el proceso, el circuito, el ciclo de desarrollo de software.
+56:10 Speaker 2: Hoy vamos
+56:11 Speaker 1: a mezclar mucho lo técnico, lo que pasa detrás ya de la codificación y las partes más técnicas de ese proceso de desarrollo. El COVID, que es ya hago el cambio y lo despliego. Después que viene, compilarlo. ¿Está familiarizado con la opción de pruebas sanitarias?
+56:34 Speaker 2: ¿Te
+56:35 Speaker 1: hace sentido o te suena de por qué está en pruebas sanitarias después que viene? ¿Es necesario que esté en BILT para hacer el proceso unitario?
+56:47 Speaker 2: Depende del lenguaje. Creo que depende de la tecnología.
+56:56 Speaker 1: Normalmente el proceso de BILT es
+56:58 Speaker 2: entre
+57:00 Speaker 1: comillas. Si hablamos de Java, sí o sí debe existir BILT. Si no, no puede ejecutar nada. Tiene que generarse el binario para la persona ejecuta. Si hablamos de un Python que no se compila, sino que solo se interpreta y se ejecuta, ¿qué tienes que hacer con el build? Instalar las dependencias. Esa sería la partecita del build que hay que ejecutar sí o sí antes de ejecutar las pruebas sanitarias. Siempre por ese lugar se pinta el build antes de las pruebas sanitarias. Luego el tema de análisis de calidad de código. ¿Le suena algo de calidad de código? ¿Han visto algo de calidad de código? ¿O alguna herramienta?
+57:43 Speaker 2: ¿O algún software? ¿Linters?
+57:47 Speaker 1: ¿Linters? Eso es una buena calidad de código.
+57:50 Speaker 2: ¿SonarCube? ¿SonarCloud?
+57:52 Speaker 1: ¿Te suena? Uy, entonces cuando digamos eso va a ser súper rochoso. SonarCube no son como la herramienta y SonarCloud es la versión SAS. es una herramienta súper
+58:05 Speaker 2: buena que te dice
+58:07 Speaker 1: todos los issues que
+58:11 Speaker 2: él ve si
+58:12 Speaker 1: tú pusiste un while true te dice, oye, ya tienes un bucle que se va a quedar pegado y tu código él te identifica esas cosas y te hace feedback para que lo corrijas antes de que salte con el cliente si tú tienes otras prácticas de Oye, tiene mucho código repetitivo por aquí y por allá, deberías unificarlo. También te da esa métrica de repetición de código. Todo eso tiene también el Frente de Calidad de Código. Los links son una partecita, la más ligera, digamos, pero que también hay. Esto de implicación, es lo que comentaba. Bueno, el Frente de Seguridad.
+58:57 Speaker 2: ¿Han
+58:57 Speaker 1: visto algo de análisis de seguridad de código? Bueno, hay herramientas que lo que agarran y revisan si tu código ha puesto algún secreto. En Vercell, por ejemplo, ese paso de ese contraseño que pusimos, lo hemos podido poner en el código, en el partner. ¿Para qué lo pusimos como variable en torno del GitHub? ¿Por qué no lo pusimos ahí en el llame en directo? Bueno, que por sí, que no he entendido, porque a veces me ha pasado, que cuando intentas producir, por ejemplo, un .em con una tiquilio, en general,
+59:24 Speaker 2: ¿quién también lo detecta y no te permite emitir algo? ¿Y
+59:33 Speaker 1: eso lo hacen en tu propia cuenta en GitHub?
+59:49 Speaker 2: O sea, Github,
+59:50 Speaker 1: pero si solo, si te va a dejar sube. Pero si tienes preconfiguradas reglas, algo que se llaman los hooks,
+59:57 Speaker 2: pre-commit hooks, son
+59:59 Speaker 1: los que avalían tu máquina totalmente y son los que no te permiten hacer eso. Y justo es el ejemplo que da es este, ¿no? O sea, una de las clásicas vulnerabilidades es subir secretos a los historios. Es pecado. O sea, no se debe hacer. Y hay herramientas que analizan el software y dicen, oye, o sea, acá tienes secretos acá. Esa es como la más básica, obvia, pero hay otras que es, oye, estás usando librerías, entonces esto analiza qué versión de la librería estás usando, consulta las bases de conocimiento sobre las vulnerabilidades ya conocidas de esta versión de librería y te dicen, oye, por si acaso tienes tales vulnerabilidades en esta librería que estás poniendo. Yo te recomiendo ir a esta otra versión de la librería que ya no tiene esas vulnerabilidades. Eso es, por ejemplo, el análisis de dependencias. Pero vamos a ver más adelante. Ahora no me quiero meter con tanto detalle, pero es para que entiendan de qué va el tema de seguridad, de qué va calidad en cada una de las partes. Van a haber momentos donde nos vamos a meter a profundidad en calidad, a profundidad en seguridad. Entonces, ¿cuál es la idea? Oye, ¿se acuerda que Ayama lograron su código y no compilaba?
+01:01:07 Speaker 2: Sí.
+01:01:08 Speaker 1: Entonces, ¿falla rápido o falla barato? Ese es un poco el concepto de esto, de tener los controles lo más temprano para poder darnos cuenta de que esto no llega a producción.
+01:01:24 Speaker 2: Entonces,
+01:01:25 Speaker 1: la salida de esto, ¿qué finalmente va a ser? Va a ser un artefacto versionado, porque ya está pasando por todo el proceso del código y está versionado. Y este artefacto, también la idea es que el panel lo versione. Y ya pasó por todas las validaciones. Y es este mismo artefacto que es el que se va a desplegar en producción. Aunque no lo crean, en empresas grandes todavía pasa que no tienen DevOps, no tienen un proceso elaborado de compilación y despliegue. Y es el equipo de desarrollo que administra qué compilados le va pasando al equipo de operaciones. Y no hay una correlación real entre la versión que está personal y...
+01:02:10 Speaker 2: en el GitHub y
+01:02:11 Speaker 1: lo que está escribiendo, sino que depende del desarrollo de qué cosa le pasa a la operación y es un riesgo gigante. Entonces, la idea es que este proceso te garantice de que lo que está en el código fuente, en el repositor código fuente, el copilado de eso, o enlatado, es lo que
+01:02:29 Speaker 2: se está escribiendo realmente.
+01:02:32 Speaker 1: Entonces, la idea es que esto se construye una sola vez y se puede desplegar
+01:02:36 Speaker 2: varias
+01:02:38 Speaker 1: veces. Apareció el concepto antes de entrada continua, por ahí. ¿Han escuchado despliegue continuo y entrada continua? ¿O como diferencia? Son dos conceptos casi iguales, pero no iguales.
+01:03:00 Speaker 2: En
+01:03:01 Speaker 1: el proceso anterior se conoce más como la integración continua, que es copilo, salido... Y ese proceso de integración continua genera un artefacto listo para desplegar, pero todavía no lo despliega. Ahora viene ya la entrega,
+01:03:14 Speaker 2: el despliegue.
+01:03:15 Speaker 1: Y el despliegue pasa por, publicamos ese artefacto, implementamos la infraestructura, si es que no está ya implementada, lo ideal es que el panel también lo haga, pero eso es un nivel bien avanzado, normalmente la infraestructura ya está. Lo despliegue primero a un ambiente previo, como la reproducción, se valida. Y luego viene acá la aprobación para poder despliegar producción. ¿Por qué? Porque yo despliegue en preproducción y acá hay que validar que todo funcione bien. Eso puede ser automatizado, o puede que no.
+01:03:44 Speaker 2: Entonces,
+01:03:44 Speaker 1: acá se da esa aprobación de esa validación y luego ahí recién se hace el despliegue a producción.
+01:03:52 Speaker 2: Entonces,
+01:03:53 Speaker 1: si yo tengo la entrega continua, ¿hasta dónde va? Va hasta acá. ¿Qué quiere decir? Que ejecutar este display en producción es que alguien va y dice, sí, confirmo, display en producción. Necesita, no es que esta acción se haga de manera manual, sino que necesita una aprobación manual para que esto se dé. ¿Ok? Para que el display en producción se dé. Display continuo es la automatización completa. Yo comité en la lámina anterior, yo le lancé el commit, pasa por todas las validaciones y automáticamente se pasó todo, todo, todo, todo, todo, se autoprueba y eso solito pasa por eso. Entonces despliega de producción es aprobación automática o
+01:04:34 Speaker 2: todo automatizado y
+01:04:37 Speaker 1: la entrega continua es el último
+01:04:38 Speaker 2: paso y
+01:04:41 Speaker 1: necesita intervención humana. Nuevamente, no es para que se meta al servidor a instalar los paquetes, sino es para que den la confirmación de que el despliega continua. Esa es la diferencia entre entrega continua y despliega continua. Así que tenemos tres conceptos. Integración continua.
+01:05:11 Speaker 2: Entregación continua es
+01:05:14 Speaker 1: lo que hicimos ayer, pero ayer sí íbamos a desplegar. Ayer mezclamos las dos cosas. hacia el NPMB. Eso sería interacción continua. O el PNP. Interacción continua. Hasta ahí sería la interacción continua en lo que hicimos nosotros. Lo que nosotros hicimos ayer,
+01:05:44 Speaker 2: lo
+01:05:46 Speaker 1: que seguía es despliegue continuo. Despliegue en Vercell sin preguntarnos nada, ¿cierto? No les pedí a ustedes, oye, ¿despliegue o no despliegue? Si nosotros hubiéramos puesto una acción manual en la cual tú verificaras algo del Python antes de que el despliegue de Vercell, eso sería entrega buena. Porque requerría que alguien verifique antes
+01:06:04 Speaker 2: de que el despliegue real.
+01:06:07 Speaker 1: La diferencia entre la despegue continua y la entrega continua es que el despegue continua no necesita validación de un humano para ejecutarse. Y la entrega continua si necesita una aprobación de un humano para ejecutar el despegue.
+01:06:19 Speaker 2: Es lo que se aproba automáticamente después del repuesto.
+01:06:24 Speaker 1: Se podría decir que esa sería una validación previa, pero esa sabes, porque cuando tú haces lo del público, el pilot no había corrido todavía. Entonces, ahí estamos un paso antes de la integración cotidiana.
+01:06:41 Speaker 2: El pilot de ayer...
+01:06:43 Speaker 1: era como lo más básico, entonces por eso va a confundir un poco acá, porque como tenía las cosas medio mezcladas. Ahora cuando entré con vosotros los pilots, vamos a diferenciarlos un poquito más. Y vamos a tener un pilot solo y integración continua. ¿Cuál es la idea de integración continua? Cada vez que yo lanzo un pull request, corre integración continua y te da feedback, para que tú mejores eso o arregles lo que está mal. Y una vez que está todo bien, recién ahí apruebas en todo el juez, y se gatilla el despliegue. Recordemos que acá estamos hablando de producción. Esa es la que nosotros teníamos, puede ser que despliegue inicialmente a PUA, a desarrollo. Pero la automatización del despliegue de producción es la que se refiere a ese punto. Si el despliegue de producción necesita lo que hay de alguien, la producción de alguien o no. Esa es la diferencia entre el despliegue continuo. La parte de producción de infraestructura, ¿es que también se puede localizar? Sí, es algo como bien avanzado,
+01:07:52 Speaker 2: dependiendo
+01:07:53 Speaker 1: de la magnitud y el tipo de infraestructura que tienes. Cada
+01:07:58 Speaker 2: vez que se encuentra consumen una
+01:08:02 Speaker 1: parte o activo una parte de infraestructura. Sí, correcto. Ahí es lo que se llama infraestructura efímera. Es como se crea para el momento de lo que necesitas, se ejecuta la prueba y después se distribuye. La producción nunca se destruye porque si se me llena que esté vivo, pero el de testing necesita solo en un momento. Dependiendo de qué tipo de infraestructura estemos hablando, vale la pena ponerlo así o no. Entonces, nuevamente vamos a ir el doble clic a todo este proceso en los siguientes capítulos que vienen. Yendo el recorrido completo es integración continua, voy desde el commit, paso por todas las instancias de validación y acá ya tengo un artefacto versionado y validado. Este es el output de la integración continua. Y después viene ya el despliegue. que si no necesito aprobación de humano, lo llamamos empleo continuo.
+01:09:02 Speaker 2: Si necesito
+01:09:02 Speaker 1: una aprobación previa a la ejecución del paso de producción, es entrega continuo. Entonces, la semana pasada, ustedes trabajaron unos casos.
+01:09:23 Speaker 2: Dijo que lo que es integración continua es lo que es hasta el npm build, creo. Eso sería en local.
+01:09:34 Speaker 1: Lo que pasa es que más allá que sea en local... Perdón, ¿a cuánto referías?
+01:09:38 Speaker 2: O sea, se dijo que la integración es hasta el build. Vamos a gastar, pero voy a hacer esto más fácil. Tengo una parte de... Tengo la parte del BIM.
+01:10:02 Speaker 1: Tengo acá BIM y validaciones. BIM y validaciones. A esto lo llamamos
+01:10:17 Speaker 2: CIM.
+01:10:19 Speaker 1: Continuous integration. Integración contiene.
+01:10:22 Speaker 2: ¿Ok?
+01:10:23 Speaker 1: Luego de las validaciones, yo ya quiero... Oye, está todo check. Ya generé mi artefacto.
+01:10:32 Speaker 2: Generé todos los checks.
+01:10:34 Speaker 1: Está listo. Y tiene una versión, además. Quiero desplegarlo. Entonces ahora ya vienen las tareas necesarias para poder hacer el despliegue. Lo voy a simplificar ahorita
+01:10:51 Speaker 2: en... Entonces,
+01:11:00 Speaker 1: este artefacto viaja acá al nuevo proceso y puede que necesite habilitar infraestructura primero.
+01:11:26 Speaker 2: Digamos que voy a infra, pre-producción o pre-pua. Y por acá
+01:11:37 Speaker 1: está mi
+01:11:39 Speaker 2: fase de producción. Entonces,
+01:11:57 Speaker 1: la integración... La entrega continua del proceso llega hasta acá. Y acá hay una persona. Que tiene que decir, ¿va o no va?
+01:12:14 Speaker 2: Si sí va, listo, lo desplegamos.
+01:12:16 Speaker 1: A esto le llamamos el despliegue continuo. ¿Cuál es el despliegue continuo? Es lo mismo, pero les gusta todo. Y esa aprobación también se da, pero está automatizada. Tenemos un nivel tan maduro del proceso de desarrollo y de validaciones que acá ya corren, no sé si han escuchado algo de Selenium, que automatiza pruebas, Playwright,
+01:12:53 Speaker 2: etc. Corre todo eso que
+01:12:56 Speaker 1: ya nos da una certeza de que mi página no se cae. Ya corrí las pruebas de estrés. Le metí el K8, el karate para las pruebas de API. Le metí todo lo que son automatizaciones y estoy seguro de que esto va a funcionar bien. Y por eso, me puedo mandar a desplegar esto porque acá ya tengo todos los checks automatizados de pruebas que me garantizan que la aplicación va a funcionar bien. Eso se llama Continuous Interaction Multiverse.
+01:13:42 Speaker 2: ¿Ahora sí que vamos a ver? Sí.
+01:13:45 Speaker 1: Cuéntale. Por ejemplo, ayer lo que comentaba, las credenciales estaban de una manera segura en Cristo. Bueno, ahorita tengo un cliente en el que estoy trabajando, el área de seguridad dice no, no pueden estar en GitHub, tiene que estar en AWS, si eres manager, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, ¿Alguna otra pregunta? Ahora sí vamos al caso. Entonces, la semana pasada trabajaron en unos casos. Creo que hubo un par de personas que no llegaron a trabajar en el caso. Hay algunas que no llegó
+01:14:37 Speaker 2: a ser un
+01:14:38 Speaker 1: grupito la semana pasada, pero que no estábamos todos. Pueden levantar la mano para ver con quién es seguro. Tú no estuviste. ¿Alguna más? ¿Tú sí estuviste? Entonces, ustedes se pueden unir a algunos de los otros grupos que ya han trabajado en el caso para poder verlos juntos.
+01:14:56 Speaker 2: ¿Cuál es la idea? Que
+01:14:57 Speaker 1: vean el mismo caso,
+01:14:59 Speaker 2: entiendan
+01:15:01 Speaker 1: la problemática y en base al calms identifiquen y puntúen. En cultura, según este caso, yo creo que está del 1 al 5, en 3, en 4. Y el que esté más bajo, piensen en qué cosas podrían hacer. para mejorar ese punto. En el baile de ella están colgados los casos, los pude traer impresos hoy, así que los pueden ver de forma virtual. Si no se ponen en su caso, elijo bien.
+01:15:34 Speaker 2: Tenemos para esto...
+01:15:46 Speaker 1: En el orden de las posibilidades, la primera respuesta la adelantaríamos.
+01:15:51 Speaker 2: La segunda es por acá. Vamos
+01:15:56 Speaker 1: a usar esa regla.
+01:15:58 Speaker 2: Primero leen la pregunta. ¿Era la respuesta?
+01:16:03 Speaker 1: Cultura.
+01:16:07 Speaker 2: ¿Por qué sería cultura?
+01:16:39 Speaker 1: Todo cambio que pase el pipeline queda listo para desplegar, pero un humano decide cuándo.
+01:16:44 Speaker 2: ¿Qué es? Profilísimo número.
+01:17:10 Speaker 1: Una área central escribe todos los pipelines y los equipos le abren tickets. ¿Qué describe esa situación?
+01:17:28 Speaker 2: Devox contra Cecilio
+01:17:51 Speaker 1: ¿Por qué el análisis de seguridad se ejecuta dentro del pipeline y no es una revisión previa al pase? ¿Porque las herramientas automáticas encuentran más fallas que una persona? ¿Porque eliminan la necesidad de un equipo de seguridad? Porque lo exige la normativa del sector. Porque una revisión manual no escala con la frecuencia de...
+01:18:13 Speaker 2: ¿Qué
+01:18:17 Speaker 1: creen? ¿Por qué la análisis de seguridad dentro del pipeline y no una revisión previo al paso? ¿Se entiende como una revisión manual
+01:18:27 Speaker 2: por fuera del pipeline? Porque elimina la necesidad de un equipo de seguridad. Una revisión
+01:18:58 Speaker 1: manual no a escala cuando queremos emplear más veces. ¿Por qué?
+01:19:04 Speaker 2: ¿Por qué? ¿Por qué? ¿Por qué?
+01:19:07 Speaker 1: ¿Por qué? ¿Por qué? Imaginen que tienen ese escenario. Las pruebas unitarias demoran 40 segundos. El análisis de seguridad demora 6 minutos. El bit demora 2 minutos. ¿Qué orden conviene tras el commit? Después de acabar el commit, ¿qué orden debería tener?
+01:19:47 Speaker 2: Viene con truco, ¿ah? Con truco.
+01:19:51 Speaker 1: Ya, viene a ser en seguridad build y test unit. ¿Por qué? Porque la verdad. Creo yo que es la verde porque si vas a pasar todo el tiempo para dejar la seguridad al medio, al final, entonces vas a gastar un poco más tiempo en darte cuenta de que te equivocaste, si es que te equivocaste.
+01:20:09 Speaker 2: Casi. ¿Tiene
+01:20:11 Speaker 1: sentido lo que comentas? Tal vez acá, si eso es un error un poco de la pregunta, que seguridad es muy amplio. ¿De qué estamos hablando de seguridad? Si yo te dijera ahora, oye, ¿sabes qué? Quiero hacer el análisis de seguridad sobre el compilado. ¿Sería posible hacer ese orden? No, no. No sería posible hacer ese orden. Entonces, teniendo en cuenta, pongámosle un apellido a esa seguridad. Análisis del compilado del seguridad compilado. ¿Cuál podría ser el orden? No podría ser.
+01:20:48 Speaker 2: ¿Por qué? Ok, en seguridad ya podéis probar con un compilado y ya con las pruebas sanitarias ya hechas. Ya que estas pruebas sanitarias se hacen más manuales automáticas y ya se van a hacer más
+01:21:03 Speaker 1: análisis. ¿Y por qué no ahora los 6 units antes del 20?
+01:21:09 Speaker 2: Porque no se puede hacer. No, falta compilar. Ok, genial.
+01:21:24 Speaker 1: ¿Cuál es la salida de la etapa de integración continua? ¿Cuál es la salida de la etapa de integración continua? ¿Cuál es la salida de la etapa de integración continua? Un artefacto versionado que pasó todas las validaciones Un reporte de cobertura de pruebas un ambiente de preproducción desplegado, una aprobación del comité de cambios. ¿Cuál es la salida de la etapa de integración con tiempo?
+01:22:23 Speaker 2: Un artefacto versionado que pasó todas las validaciones. Primero tiene que pasar por el commit, el build, prueba unitaria, calidad de código y para financiar la seguridad para que vean que ya este artefacto pasó por todas esas validaciones. ¿Ya estaba el paquetito? Ahora no.
+01:22:40 Speaker 1: ¿Aquí está el paquetito?
+01:23:10 Speaker 2: ¿Cómo
+01:23:10 Speaker 1: formarían Aura los developers? ¿Cómo formarían Aura un developer? ¿Cómo formarían Aura un developer? ¿Cómo formarían Aura un developer? En ese número tendría un uptime muy bajito, así que sería un número de uptime. Todos los deploy serían visitosos. Tendría un monitoreo habilitado 24-7. Tendría todos los backups al día, semi-incidentes. De esa manera, farmaría Aura. ¿Y seguridad? ¿Cómo farmaría Aura? Tendría todo el análisis estático de seguridad. Todas sus pruebas de Tendesting saldrían exitosas, saldrían cero vulnerabilidades, todos los hackeos estarían bloqueados, requerirían todas las ISOs que existen y
+01:24:10 Speaker 2: existirán.
+01:24:14 Speaker 1: Y bueno, requerirían todos los mecanismos de liquidación. Bueno, ¿qué nos llevamos hoy?
+01:24:28 Speaker 2: ¿Cuántas cosas?
+01:24:30 Speaker 1: Uy, falta la puerta. La borré al final porque no me convencía y no
+01:24:33 Speaker 2: lo hice arriba. Claro, claro.
+01:24:36 Speaker 1: ¿Se construye? ¿No se compra? La borré. Ya lo vimos, no es una herramienta, es todo un proceso que vamos implementando. El muro, si ponemos muros entre los equipos, estamos generando incentivos porque otra vez se paran y otra vez hagan malas cosas. es trabajar con que un poco alineamos los objetivos para que no pase eso de que uno quiera cambios y el otro no quiera cambios. Y el objetivo también es, ¿no? Construyo una sola vez o un solo build y desplego varias veces. Eso sería,
+01:25:13 Speaker 2: si querían ver
+01:25:15 Speaker 1: algo de las métricas
+01:25:17 Speaker 2: que decía antes. Ah, perdón, no me lo dejé. Hoy les he traído stickers. Uy, para que participaran por acá.
+01:25:46 Speaker 1: Y bueno, era súper interesante. El NPS del evento, el rating, nos ha sido bastante bien. Casi 5. Sí, ha sido bastante bien, bastante bien.
+01:25:57 Speaker 2: Y bastante grande.
+01:26:01 Speaker 1: Y como yo, nosotros tenemos diferentes médicos. Lo vamos a ir analizando para mejorar el evento de la próxima semana.
+01:26:13 Speaker 2: ¿Han ido a ustedes a eventos de
+01:26:14 Speaker 1: biología dentro de la PUC? Sí,
+01:26:17 Speaker 2: profe. ¿A cuál? ¿Cómo se llama? ¿Y de qué era el evento? Bueno, hubo una charla de quantum, no me acuerdo. De computación cuántica. Hablamos de temas de lógica. ¿Era una charla o era un evento? Era una ponencia, una ponencia.
+01:27:09 Speaker 1: Un borrado de lo que me decía es que uno de los retos es que los alumnos
+01:27:12 Speaker 2: vayan.
+01:27:15 Speaker 1: Eso me diría de ver cómo trabajamos juntos eso y que puedan ir, ¿no? Pero horarios, de maneras. Por ejemplo, ese tema de que el evento sea jueves-viernes, luego conversé con un organizador y me decía, yo les dije, ¿por qué lo hacemos jueves-viernes? ¿Por qué no lo hacemos sábado-domingo? Para que las personas vayan. Y lo que me decían, no, me dicen, las personas que trabajan,
+01:27:41 Speaker 2: no van los fines de semana. Van más jueves-viernes. ¿Por qué? Porque las empresas con trabajo les están interesadas en que vayan y las mandan.
+01:27:49 Speaker 1: Pero el 7-20 está orientado a
+01:27:51 Speaker 2: estudiantes. Pero bueno, estoy
+01:27:56 Speaker 1: adelantando lo que podría pasar más adelante.
+01:27:58 Speaker 2: Va a pasar, va a pasar.
+  
