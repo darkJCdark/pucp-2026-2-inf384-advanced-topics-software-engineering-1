@@ -1,11 +1,300 @@
-. {
-	. {
-		. 
-	}
+. LABORATORIO 2{
+	. Vamos a crear nuestro propio pipeline
+	. 
 }
 
-. {
-	. {
-		. 
+. INTEGRACION CONTINUA I{
+	. OBJETIVO DE LA SESION Y RUTA{
+		. Se tiene que entender el problema para saber como atacarlo
+	}
+	. DONDE ESTAMOS EN EL PIPELINE{
+		. Si necesito pruebas unitarias, necesito el build
+		. Tener pequeños incrementos genera un flujo mas fluido
+	}
+	. A: VERSIONAMIENTO DE CODIGO{
+		. Que es realmente CI (integracion continua){
+			. En la realidad, no es posible
+			. Se busca que una persona integre su codigo al menos una vez al dia
+			. Mala practica{
+				. Lineas de codigo duplicadas
+			}
+		}
+		. El costo de integrar tarde{
+			. Retrasamos las colas de espera
+			. La idea es no tener cuellos de botella
+		}
+		. GitFlow{
+			. Main{
+				. Produccion
+			}
+			. Tag: Nombre de las versiones
+			
+			. Release notes: Tienen asociado los tags
+			. hotfix{
+				. Son cambios urgentes de negocio
+				
+				. Se abre una rama desde main y se hace fix
+			}
+			. develop{
+				. Rama de larga duracion
+			}
+			. feature{
+				. Cada funcionalidad crea una rama que se unifica con develop
+			}
+			. realese{
+				. Ya estamos listos y pasa a produccion
+				
+				. Es un QA
+			}
+
+			. En la vida real{
+				. Se hacen 2 proyectos en paralelo
+			}
+			. Cherry pick{
+				. El término cherry pick (o git cherry-pick) en desarrollo de software se refiere a la acción de copiar un commit (cambio específico) de una rama a otra sin necesidad de fusionar (merge) todo el historial de las ramas
+			}
+			
+			. GitFlow te sirve cuando tienes release programados{
+				. Hay un bug en release
+				. Que baje a develop
+				. Se corrige
+				. Sube hasta llegar a produccion
+			}
+			. Mientra mas lejos estas de produccion hay mas controles y hay demoras en automatizacion
+		}
+
+		. Truck Based{
+			. No es facil llegar a esta madurez
+			
+			. Se inyecta problemas o bugs en produccion
+			
+			. Hay una rama por tarea
+			. Hay una rama por bug de una tarea
+			
+			. feature es mas grande que task
+			
+			. Cada circulo es una rama diferente
+			
+			. TRUNK BASED DEVELOPMENT (Basado en troncos){
+				. Feature Flag{
+					. if;else;
+					. Tengo una integracion con RENIEC
+					. Tengo una nueva funcionalidad en codigo, pero falta pruebas
+					. Se incorpora y se coloca una bandera para cambiar en 1 o 2
+					
+					. El flag habilita nuevos features para prender o apagar nuevos features
+				}
+			}
+		}
+		. COMPARACION DE ESTRATEGIAS{
+			. GitFlow: Eres productivo
+			. GitHub Flow: Se orienta a un producto que se quiere liberar
+			. Trunk based: Commits continuos
+			
+			. Proceso de desarrollo de Spotify y Netflix: Prenden y apagan funcionalidades
+			. DataDog: Plataforma de observabilidad
+		}
+		. FEATURE FLAG{
+			. Si la nueva funcionalidad esta funcionando, la uso, sino la actual
+			. Se usa variables de entorno
+			
+			. Si la nueva funcionalidad ya esta, se corrige el codigo
+		}
+		
+		. LOS TRES ESCENARIOS{
+			. A: Startup, 5 desarrolladores{
+				. Estrategia: Truck Based; se necesita pruebas automatizadas
+				. DORA: Lead time para cambios te dice que tanto tiempo demora que a Marketing se le ocurre una idea para que llegue a produccion
+			}
+			. B: Banco peruano{
+				. Estrategia: GitFlow
+				. DORA: Tasa de fallos en cambios porque hay tiempo fijo de despliegue
+			}
+			. C: {
+				. Estrategia: GitHub Flow porque solo una rama esta desplegada y se despliega en dias
+				. DORA: Tasa de fallos porque importa es la estabilida, por lo que el Lead Time no se va a mover tanto
+			}
+		}
+	
+		. VERSIONADO SEMANTICO{
+			. Ejemplo: Minecraft
+			. Esto nos sirve cuando usamos librerias
+			. Esta asociado a los realese notes
+			. X.Y.Z
+			. Se puede autoasignar las versiones para que vaya alineado a la realidad
+		}
+		. Convensiones de commit{
+			. Pipeline que revise el codigo en base al commit
+			. Si el encuentra un feature, modifica el Y
+		
+			. La misma automatizacion deside la version siempre y cuando un desarrollador lo exige
+
+			. Hook local para que el commit siga un patron
+		}
+	}
+	. B: Todos usamos librerias de la comunidad{
+		. Las librerias que necesitamos necesitan librerias internas
+		. Librerias de npm{
+			. Ciertas librerias de las mas usadas fueron hackeadas
+			. Al usar las librerias te instalaba un malware
+			. Un estudiante perdio su cuenta de GitHub
+			. Eso afecto a las conecciones que tenia
+			
+			. GitHub tiene limitaciones de pipeline al mes
+			
+			. ¿Como evitamos eso?
+			
+			. Archivo log es para fijar la version{
+				. Log 5.1.1
+			}
+		}
+		. ESTO ES UN POTENCIAL PROBLEMA DE SEGURIDAD{
+			. Suplantacion de nombre
+			. NIST: Terceros
+		}
+		. MIDE TU PROPIO PROYECTO{
+			. Paideia{
+				. Mudle es un open source
+			}
+		}
+		. Builds reproducibles y archivos de bloqueo{
+			. Achivo de bloqueo{
+				. El pipeline agarra ese archivo para asegurar la version que quiero
+				. Va a ser desicion mia y no la del proveedor
+			}
+		}
+		. REPOSITORIOS DE ARTEFACTOS Y PROXY INTERNO{
+			. Repositorio publico{
+				. Se debe hacer un whitelist de librerias de la comunidad
+				. Estas librerias se colocan en un repositorios privado local para garantizar que no esten manipuladas
+			
+				. ¿Que pasa si se cae el servidor de una libreria que usamos? No tiene sentido
+				. La solucion es garantizar el uso de las librerias bajo nuestro control
+			}
+			. Cache y control de versiones{
+				. Hay artefactos
+				
+				. plataforma Sigrid
+			}
+		}
+	}
+	. C: Build{
+		. CONSTRUIR UNA VEZ, DESPLEGAR MUCHAS{
+			. Scret Manager
+			. Bautizamos al build con el x.y.z
+			. El compilado vive en un lugar
+			
+			. ANTI-PATRON{
+				. Construirlo otra vez en QA y en produccion con diferentes librerias
+				. Por eso, es importante el log
+			}
+			. Lo que se quiere que lo que se vaya a desplegar haya sido aprobado por todo el proceso
+		}
+		. ANATOMIA DE UN TRABAJO DE CONSTRUCCION{
+			. PIPELINE{
+				. Version fija del entorno{
+					. runs-on: En que ambiente va a correr mi pipeline
+				}
+				. Instalacion desde bloques{
+					. log.json
+				}
+				
+				. "cache"{
+					. Guardas en memoria las librerias para no estar descargandola cada rato de internet
+				}
+				. Cache de las dependencias: La configuracion de la cache me permite acelerar el proceso de compila
+				. Artefacto identificado: .sha
+			}
+		}
+		. EL TIEMPO DE CONSTRUCCION ES UNA METRICA DE PROCESO
+		SI ES MUY ALTA, LOS DEVELOPERS EVITARAN EL PIPELINE{
+			. Si tarda mucho, el desarrollador no lo va a usar porque tarda mucho y lo tiene que hacer todos los dias
+			. La idea es que el desarrollador siempre lo use
+			. La idea es apuntar a 3 min
+			
+			. Es importante el tiempo y las practicas que seguimos para que el tiempo disminuya
+		}
+		. QUE MIDE EL ANALISIS AUTOMATICO DE CALIDAD{
+			. Zonnar cube
+			
+			. Se ve la calidad del codigo internamente y no lo que espera el usuario
+			
+			. Lo que se mide{
+				. Cobertura: Que porcentaje de tu codigo fuente esta cubierto por tus pruebas unitarias
+				. Duplicacion{
+					. Se mide en porcentaje; hay un 20% que se espera que no este cubierto
+					
+					. Si desarrollamos software y muchas partes se repiten, la idea es que este como funcion y se reutilice en varios lados
+					. La idea es no duplicar tanto el codigo
+				}
+				. Complejidad{
+					. Ciclos computacionales
+					. Que tan complejo se hace de ejecutar
+				}
+				. Issues
+				. Deuda tecnica{
+					. Te sugiere que hacer en el issu y te dice su tiempo
+					. Calcula todo el tiempo
+				}
+			}
+			
+			. La calidad es para detener lo malo
+			
+			. Si queremos que este bien la aplicacion, se usan pruebas de aplicacion <- Esto no forma parte de la calidad que vemos ahora
+		}
+		. QUALITY GATE: DEL REPORTE A LA CONDICION{
+			. Al lanzar un pull request, si no has cubierto el 80% de pruebas, no te deja pasar
+			. Que el mismo pipeline detenga al desarrollador
+			
+			. AUTOMATIZACION DE PRUEBAS{
+				. Java: Unit
+				. El framework reconoce que partes estas probando y que otras no
+			}
+		}
+		. EL UMBRAL QUE NADIE PUEDE PASAR SE TERMINA DESACTIVANDO{
+			. Umbral: 80%
+			
+			. Se puede configurar excepciones
+			
+			. La idea es que el quality gate este prendido para que el equipo sepa del issue y lo repare
+			. La idea es que a futuro se bajen los umbrales para acercarte a la mejor practica posible
+		}
+		. ANATOMIA DE LA VALIDACION EN EL PIPELINE{
+			. jobs{
+				. Se declaran los jobs que se van a recorrer: Validar y desplegar
+			}
+			. validar{
+				. Si no esta ubunto, no pasa
+				
+				. steps{
+					. Pasos
+					
+					. uses{
+						. Usa una libreria externa
+						. Hace un checkout del codigo
+						. La idea es que traiga la ultima version
+						
+						. Se pueden usar uses de la comunidad o el tuyo instanciandalo
+					}
+					. correr las pruebas unitarias para dejar un reporte: pytest; zonard hace tu validacion
+					. Analisis de calidad{
+						. 
+					}
+				}
+			}
+		}
+	}
+
+	. sonarqube cloud{
+		. Cobra por lineas de codigo
+		
+		. Coverage: Porcentaje de pruebas
+		
+		. New Code: Pull request
+		. Measures>New Code: Todo lo rojo es lo que no esta cubierto (la automatizacion de prueba no esta testeada)
+		. Se detecta los codigos duplicados por archivo
+	}
+	. ¿Que nos llevamos?{
+		. El codigo que no escribimos tmb es nuestro
 	}
 }

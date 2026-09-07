@@ -1,0 +1,569 @@
+# Temas S3
+
+  Meeting started: 5/9/2026, 7:19:54 p. m.
+  Duration: 136 minutes
+  Participants: Speaker, Speaker 1, Speaker 2
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/qXi9mhbkFKZNEyOG5eph?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: Las armas, ¿sabes? Se venó un video que me ha explicado bastante bien también a DREVU, y lo conseguí, así que mirá mostrárselo un chiquitito, que ve
+00:08 Speaker 2: ilustrativo. Quería lanzar con eso a la sesión. A ver, a todos. Gracias por ver el video Durante años, las empresas de software han funcionado manteniendo los diferentes departamentos independientes y aislados unos de otros. Entre estos departamentos encontramos a los desarrolladores que buscan siempre innovar, produciendo nuevos productos en menos tiempo. guiados por una tendencia en tanto. Por otro lado, los profesionales de operaciones deben implementar, configurar, optimizar recursos para el correcto funcionamiento del código y siempre buscan la tendencia hacia la estabilidad. Conforme a los desarrolladores, van terminando paquetes de código, los envíen a operaciones para que los implementen en un entorno de producción. Durante este proceso, en ocasiones se producen errores, lo que a menudo lleva a un intercambio de reproches entre operaciones y desarrollo, echándose la culpa unos a otros. Mientras operaciones solucionan la incidencia, los desarrolladores siguen adelante, generando un nuevo código y enviando las operaciones que tratan de preventizar este proceso para estabilizar y optimizar al máximo. Este desequilibrio termina generando conflictos y ralentiza la salida del producto con las consiguientes pérdidas económicas para el negocio. DevOx surge para derivar el muro entre departamentos, aumentando la comunicación con reuniones periódicas, poniendo en común sus activos, automatizando procesos. y facilitando una integración y retroalimentación continua. La implantación de DevOps conlleva beneficios para la empresa con una mayor flexibilidad, más calidad en el código y la implementación, incremento de la productividad, disminución de costes y una frecuencia de lanzamientos muy alta. La primera vez que me tocó
+02:45 Speaker 1: presentar DevOps, sustentar DevOps a gerencia, para que nos diera presupuesto para herramientas, para personas,
+02:52 Speaker 2: leí este video.
+02:55 Speaker 1: Y era explicarles a gerentes que ven temas de presupuestos, temas de ventas, o sea, noteing por qué invertir en el equipo. Y una de las primeras madreras,
+03:10 Speaker 2: cuando...
+03:16 Speaker 1: el gestor que intermedió esa reunión me dijo, oye, ¿cómo vas a mostrar esta lámina donde estás diciendo que dentro del área de TI no se comunican bien y hay una barrera entre ellos y hay problemas? O sea, pero no me lo dijo, era mi pata. Me lo dijo como un... Y eso es lo primero, ¿no? Oye, ¿sabes qué? Estamos sincerando de que hoy día no estamos trabajando bien dentro de la LTI. O sea, es... Por eso que tenemos que implementar eso, ¿no?
+03:48 Speaker 2: Entonces, este...
+03:50 Speaker 1: Esa es una... O sea, la verdad es cosa en la que me acuerdo de... De... Bueno, finales de tomar un pie y... Se pudo sustentar y... Ahora se habría crecido bastante bien. Eh... No sé, les queda preguntas, dudas, comentarios sobre el video. Ayudó este recet,
+04:08 Speaker 2: lo mismo.
+04:12 Speaker 1: Versa al santé, el ilustrativo le dio, así que... hoy día, bueno, a partir de esa clase la siguiente es el cajúz del final los que vamos a ir montando diferentes modalidades para ir sumando algunos puntos adicionales para el parcial así que el cajúz del final tiene bonificaciones para el podio de los tres estén atentos y para que avisen a las personas que te rían y para
+04:45 Speaker 2: que el cajúz del final
+04:51 Speaker 1: Para iluminar dónde estamos, pues como es un curso nuevo, me interesa también que estén con el mapa de en dónde estamos de todos los capítulos del curso. Hoy empezamos el capítulo 3, que es integración continua. Lo que ya hemos pasado, ya vimos el ciclo de vida de software, el values and mapping, las métricas DORA, y vimos la introducción a lo que era
+05:11 Speaker 2: DevSecOps,
+05:13 Speaker 1: lo que era CI. y CD, y dentro de CD, lo que es Continuous Deployment, Continuous Deployment. ¿Alguno se acuerda de la diferencia entre entrega continua y despliega continua?
+05:24 Speaker 2: El despliegue se supone que es automático y la entrega necesita una validación extra, humana.
+05:31 Speaker 1: La entrega continua necesita una aprobación de una persona.
+05:35 Speaker 2: El Continuous Deployment, igual es el despliegue. No
+05:43 Speaker 1: lo requiere, ¿no? Tiene las pruebas automatizadas y pasa todo eso. Entonces, bueno, ya tuvimos el primer laboratorio que fue dirigido y era el segundo. Al final de esta clase les voy a ir adelantando las cosas que vamos a ver y algunas tips para que vayan revisando para que les vaya bien en ese laboratorio. Entonces, el día de hoy nos subvertimos a lo que es integración continua. Hoy día vamos a ver... tres puntos principales. El primero es todo el esquema de versionamiento del código. Algunos han realizado con lo que es GitFlow,
+06:18 Speaker 2: TankBase, todo el
+06:25 Speaker 1: tema de gestión de librerías, cómo hacemos con las dependencias del proyecto, el proceso de ser BID en sí, cómo garantizar que ese BID siempre sea... sea inmutable, no se puede modificar en el tiempo. Y el tema de análisis de calidad de código. ¿Algunas de las son las herramientas SonarQ? SonarCloud. ¿Lo habéis usado? No, perdón. Ok, pues ahí va a haber también bastante aprendizaje. Y como lo hemos venido haciendo en los capítulos anteriores, no solamente ver qué herramienta de uso, ¿no? Es fundamentar el OK, esas son las características del equipo actual, de la empresa, del proceso, y por él elijo Deepflow, o por él elijo Tangle, o por él elijo GitHub Flow, que es otro punto de hacer. O, también podría ser, elija lo que elija, el problema no es el esquema de branches. ¿Todos estamos pensando que son branches?
+07:27 Speaker 2: ¿Un código fuente? ¿Sí?
+07:30 Speaker 1: ¿Sí? ¿Sí? ¿Seguro, no? Te dan la mano, con toda la confianza. Y
+07:35 Speaker 2: por ahí te sintamos un poquito más. Entonces...
+07:43 Speaker 1: Luego, y más importante, ¿cuál es el problema? Para empezar a saber cómo atacamos esa solución. ¿Qué solución le damos a ese problema? En base a estas diferentes frentes de integración continua. Entonces, arrancamos con
+08:06 Speaker 2: entender dónde
+08:09 Speaker 1: estamos en la integración continua. La integración continua nace porque alguien hace el commit. Hace el commit en el código fuente y ahí empieza este proceso de analizar o revisar o preparar el compilado. Entonces, ¿qué cosas ya vimos? Ya vimos que... Tenemos que ordenar el pipeline en base al costo de detección. Lo más rápido va primero, siempre y cuando no haya dependencia, que lo tengamos que mover definitivamente. Veíamos que, oye, si yo quiero correr pruebas unitarias y son muy rápidas de correr, no lo puedo hacer antes del BID, porque el BID es necesario para poder correr la prueba unitaria. Entonces, eso también hay que tenerlo mapeado en el proceso. Hablamos del tema de los lotes pequeños. Hacer pequeños incrementos
+09:00 Speaker 2: ayuda
+09:02 Speaker 1: a tener un flujo más fluido y ahora vamos a ver específicamente en cada punto por qué. Saludos, gracias. una potencial vulnerabilidad o una potencial issue, código también,
+09:49 Speaker 2: que sea de seguridad o
+09:50 Speaker 1: de funcionalidad también.
+09:55 Speaker 2: Entonces,
+10:00 Speaker 1: arrancamos con el expresionamiento de código. En los cursos anteriores quise entender alguno, me queda claro que todos han desarrollado juntos, todos han hecho proyectos donde más de una persona participaba. ¿Quién ha tenido que resolver conflictos de código? ¿Qué hacían? ¿Se realizaban? ¿Cada uno resuelve su
+10:27 Speaker 2: conflicto? ¿Cómo hacían? ¿Por qué creen que se ha dado? Digamos, cuando están muy desactualizadas en esta rama, cuando pasó un cuaderno a mí, y el pincho ya se quedó muy desactualizado, entonces tiene que actualizarlo para la mayoría de ellos.
+11:05 Speaker 1: Dale. Ok. O sea, había un desfase entre lo que ellos habían hecho y la versión, la última que ya estaba, y no actualizaban a tiempo.
+11:14 Speaker 2: Más o menos, hay una política que ha empezado
+11:17 Speaker 1: a decir, ¿a qué tiempo baja los cambios para mí? ¿Y cuánto tiempo más o menos pasaba entre que hacían su rama feature para pasarlo otra vez? ¿Alguno se le perdió código por no subirlo aquí? ¿Fue
+11:45 Speaker 2: a su repo?
+11:47 Speaker 1: Mi compañero acá borró una rama en medio. Yo le conté la otra vez que me borró una base de corrupción.
+12:00 Speaker 2: Yo tengo una anécdota. Una vez
+12:02 Speaker 1: está trabajando en una empresa de seguros, todavía no era DevOps, era arquitecto, pero me picaba el bichito este de ver cómo se fue el proceso a mejorarlo. Y veo que el equipo de desarrollo, código fuente, en esa época no existía todavía GitHub, ni siquiera había Git, era un antiguo que se llama Tortoise, S
+12:22 Speaker 2: -V-N,
+12:23 Speaker 1: la S era S-V-N anterior, esta version.
+12:27 Speaker 2: Y
+12:27 Speaker 1: la cosa es que el equipo de desarrollo no estaba versionando, no subía el código, pero tenía su máquina. Y tenía semanas en su página, pero no era un desarrollo local de tu proyecto de software, era el software de la empresa. Ya se han topado con los problemas de versionamiento del código. Entonces, lo que busca DevOps, o que impulsa DevOps en esa parte del asentamiento es
+13:13 Speaker 2: cuáles
+13:15 Speaker 1: son esas problemáticas que tienen para ver qué estrategia usamos para mitigar esos problemas. Así de sencillo. Como todo lo que hemos venido viendo, no es como poner una solución por ponerla, sino para realmente solucionar un problema o para estantarizarlo. Entonces, antes de meternos al asentamiento, pensando en lo que es AI, Acá lo que vamos a ir viendo a partir de acá es que hay como ideales. La teoría dice que integración continua debería ser esto, esto, esto. Pero cuando vaya a ser la realidad, no va a ser posible. Porque las empresas no están tan listas como para hacerlo así. Entonces vamos a tener que ir cediendo poco a poco,
+13:57 Speaker 2: ir
+13:59 Speaker 1: viendo a lo que el equipo está listo y el software que tienen está listo para. Porque van a ser muy pocas veces las que realmente van a poder implementar esto con un software de cero. Normalmente van a llegar y el 80% son aplicaciones existentes y hay 20% de nuevas cosas que vienen. Entonces ese 80% que ya está desarrollado de una manera y tiene una forma de trabajar de esa manera va a ser muy difícil de cambiar. Entonces, ¿qué es lo que buscamos con Intervención Continua? Que todo el equipo, al menos un día, integre su código. Que no pase de que te quedaste con el código varios días y no. Y ahí, eso genera, mientras más tiempo, más probabilidad de conflicto. Y finalmente, ¿por cuál es el propio conflicto? Que toma más tiempo y va generando esos collos de botella que veíamos en el local y el street mapping. El tiempo se hace más largo. ¿Qué es lo otro que buscan? Que hay una validación. Cada vez que se une el código, se corren estas validaciones de calidad, que vamos a ver un poquito más adelante en clase, donde vamos a ver, por ejemplo, oye, ¿cuántas líneas de código que se está subiendo se están duplicando con los que existen? Eso es una mala práctica. ¿Cuál es tu...
+15:09 Speaker 2: pruebas
+15:11 Speaker 1: unitarias? Hace unas semanas me comentaron que sí estaban formalizadas pruebas unitarias.
+15:15 Speaker 2: ¿Sí?
+15:17 Speaker 1: ¿Qué porcentaje de tu código está cubierto por esas pruebas unitarias? Porque la idea es que hay una métrica universal que es 80%, que no es fácil de conseguir, cuando tu código crece mucho, pero la idea es que todo nuevo software nazca con eso. Entonces, todas esas validaciones se van haciendo acá, en el día a día, para que no sea como al final, cuando yo voy a pasar a producción, recién validó eso. Esa es un poco la idea de creación continua. Y también que esos pequeños incrementos que voy haciendo de código
+15:48 Speaker 2: estén en
+15:50 Speaker 1: un estado desplegable, llamémoslo así. Sabemos que no está toda la funcionalidad completa de todo el software, pero esto que estoy agregando yo no está generando un problema. Es compatible con el ecosistema de lo que está viviendo en ese momento. Por ahí te le faltará agregar otras cositas al frontend para que esto luego funcione. Pero esto por sí solo no rompe nada.
+16:14 Speaker 2: Entonces,
+16:15 Speaker 1: que esté en un estado desesperable. Y si es que justo la integración continua falla y te está alertando de alguno de estos puntos que hemos conversado, puedes tomar acción y solucionarlo antes de incorporar ese cambio que ya sabemos que va a traer un problema para el software y para el equipo.
+16:37 Speaker 2: Entonces... ¿Cuál es un poco el costo de integrar la tarde?
+16:42 Speaker 1: Justo lo que hablaba de los conflictos. Si es que solo tenemos un día de cambios, no hay pocos puntos de cruce, ¿no? La probabilidad continúe. Si tenemos una semana, ya puede haber cruce en varios módulos. Si tenemos tres semanas, casi se crucen todos. Y dos meses ya tenemos que reescribir todo el software otra vez, ¿no?
+17:00 Speaker 2: Porque ya
+17:01 Speaker 1: todo se hace por tu lado, que va a ser por mi lado, cuando nos juntamos, no converse el código y hay que reescribirlo otra vez,
+17:07 Speaker 2: prácticamente.
+17:08 Speaker 1: Entonces, el costo de hacernos cargo de esto
+17:11 Speaker 2: más
+17:14 Speaker 1: adelante va a ser más alto para el equipo y para la empresa. Y cuando sucede este conflicto, estamos recargando esas colas de espera que haríamos el value-sign mapping. El value-sign mapping normalmente es codificación, pruebas, no hay ninguna actividad que diga resolver conflictos,
+17:39 Speaker 2: porque esas actividades no existen.
+17:41 Speaker 1: Y cada vez que salgan esas actividades inesperadas de bloqueos, se generan más colas de botellas que no dejan que
+17:47 Speaker 2: el flujo siga. Entonces,
+17:53 Speaker 1: vamos a ver ahora tres. Hay algunas otras, las más usadas,
+17:58 Speaker 2: de
+18:00 Speaker 1: los tipos de branching que se manejan. Si pueden levantar la mano, ¿quiénes están familiarizados con GitFlow? ¿Quiénes están familiarizados con algún esquema de branching? ¿Y quiénes conoce el concepto de branches?
+18:22 Speaker 2: O sea, ¿para qué serán los branches? Así estamos todos
+18:26 Speaker 1: alineados de para qué serán los branches. Para ver desde dónde nace la explicación. Pues acá tenemos diferentes branches. Tenemos un branch que se llama main. El concepto de tax. ¿Lo controlan? Los tags. Son las versiones, sí. O sea, voy a hacer un checkpoint de decir, ok, ya estamos en este punto de producción, le ponemos el nombre de versión 1.0. para saber que si algo pasa luego en la 1.1, podemos volver a la 1.0 o hacer referencia a, oye, en la 1.0 estaba así, en la 1.1. Los release notes, ¿les suenan? Que son con las notas de release, justo van asociadas a estos tags. En la versión 1.1 se resolvieron tales cosas, asociadas a tales funcionalidades. Para eso nos sirven los tags. Luego tenemos una rama que se llama Hot Fits. Los problemas en producción pueden salir en cualquier momento. Ya sea porque hay un bug, realmente, o ya sea porque el negocio dice, oye, nos palmearon el IGB de la noche a la mañana y ya está en el código fuente. Abre el código y eméntele a 19%. Entonces, ¿qué es lo que se hace ahí? Se abre una rama del email, se hace el fix y eso se vuelve a subir.
+19:41 Speaker 2: ¿Sí? Como ven acá.
+19:43 Speaker 1: ¿Ok? Esto se vendría para todo lo que son Hotfix. Hotfix llamémosle issues en producción que no pueden esperar el flujo regular o
+19:52 Speaker 2: cambios
+19:53 Speaker 1: urgentes de negocio que sean realizados como Hotfix. Si todo es Hotfix, todo es un problema porque vivimos en un incendio constante. No es la idea, por eso esta no tiene tantas bolitas rojas. Luego tenemos el concepto, y voy primero de abajo para arriba, antes de llegar al release. el concepto de rama Divelo. En GitFlow se conocen como ramas de larga duración o permanentes, la de Main y la de Divelo. Normalmente la de Main está asociada a producción y la de Divelo que está asociada al ambiente de desarrollo. A veces le meten una rama Cuba, si es necesario, o a veces simplemente le asocian a Release. Va a depender del escenario del...
+20:40 Speaker 2: del equipo,
+20:42 Speaker 1: del proyecto.
+20:43 Speaker 2: Y luego nace la rama feature,
+20:46 Speaker 1: que es, oye, tú vas a trabajar en la pantalla de cliente, tú vas a trabajar en la pantalla de los pedidos. Entonces, cada uno se va generando su rama de ese feature que van a trabajar y luego lo van uniendo a develop cuando están listos o cuando quieren, no completan la posibilidad, sino que están comprometidos para ese día para ir unificando. Entonces, ¿cuál es el circuito? El de Hotfix creo que quedó clarito, sencillo. ¿Cómo es el funcional de Divelo? Divelo nació con la rama de main. Main es la fuente de la verdad de producción. Siempre. Entonces, mi rama de feature normalmente nace de lo que está en main. Acá, por ejemplo, nació esta carrerita. Y se empieza a trabajar acá. Se genera una nueva versión y esto se sube a Divelo. ¿Para qué? Para que se valide en este ambiente. Y luego, cuando ya estamos listos como para preparar el pase a producción o que lo valíe el equipo de calidad, puede subir a release. Y una vez que ya estamos listos, ya esto viaja a producción.
+21:48 Speaker 2: ¿Sí?
+21:49 Speaker 1: Hacia media.
+21:51 Speaker 2: ¿Ok?
+21:52 Speaker 1: Y en intermedio acá pueden haber otras versiones trabajándose en el paralelo en Future, en desarrollo todavía, y que se irán uniendo luego. ¿Qué les parece esta foto? ¿Compleja? ¿Se
+22:06 Speaker 2: entiende? De chill, de chill.
+22:09 Speaker 1: La realidad es mucho más compleja que esta. Porque cuando vas con un cliente y le pintas esto, te dice, oye, pero yo tengo un problema, tengo dos proyectos en paralelo, necesito dos developers.
+22:21 Speaker 2: O,
+22:22 Speaker 1: oye, mira, estábamos trabajando en esto, pero ¿sabes qué pasó? Esta funcionalidad ya no va, hay que quitarla. Entonces ahí ya viene toda la magia de Git.
+22:35 Speaker 2: me he criado
+22:36 Speaker 1: en
+22:42 Speaker 2: esta
+22:51 Speaker 1: bolita de acá pueden haber 10, 20 cómics y a veces pasa de oye quiero llevarme tales cosas en tales cosas no Entonces, ahí normalmente lo que se hace es un poco eso. Me voy a llevar tales features o tales commits y el resto no. A veces funciona. Cuando el equipo de desarrollo, hazme la foto como ordenado, funciona. Pero cuando ha mezclado él, ahora sí funciona. Y él ahora sí, que es la clásica, se vuelve un caos porque esos commits no se entienden. Más adelante vamos a ver un poco también eso. ¿Cuál es la convención de copies para mejorar el problema? Entonces, lo que quiero que se diga es uno que tiene algunas ramas de larga duración, como la de develop,
+23:30 Speaker 2: sirve
+23:31 Speaker 1: cuando tienes releases programados. Acá, normalmente hay un equipo que va a trabajar en esta rama por un tiempo, con el release. Acá figura como uno solo, pero lo más probable es que acá le reboten y le digan, hay tal bug, baja otra vez, se corrige y sube otra vez. Hay tal bug, baja otra vez, se corrige y sube. Y así se va alimentando el release, así que realmente está listo, y ahí de recién pasa mail. Entonces, lo que normalmente funciona en GitFlow es para procesos complejos que tienen varios equipos, que tienen ambientes marcados. Normalmente en equipos grandes. Y también equipos que tienen baja maduración del proceso. ¿Por
+24:12 Speaker 2: qué?
+24:13 Speaker 1: Porque mientras... Acá hay su pro y su contra. Mientras más lejos estás de producción, quiere decir que más controles hay de por medio. Muy probablemente no automatizados. Pero el contra de eso es, mientras más ramas existan en la producción, estás más lejos y por eso va a ser más lento. Eso es uno del contra. Pero, casi todas las empresas ahorita usan ITFLOW. De peruanas, perdón, de grandes para la mayoría de cosas. Vamos a verlo otra vez. Esperemos, llega el mismo momento, pero es complejo. Es que acá en Delisicas tienen ITFLOW. La rama main, que vendría a ser, como les decía, producción. Release, que vendría a ser un esquema, algo así como CUA. Algunos le llaman staging, que es pre-producción. En develop, integro las funcionalidades, es permanente también. La rama feature normalmente se maneja en local. Y la rama hotfix también se maneja en local y luego va directo a producción para esos temas urgentes. Bueno, acá ya les contaba el tema de las planificadas,
+25:23 Speaker 2: las
+25:24 Speaker 1: ramas de larga duración. Ah, y el otro contract que también pasa ahí, era lo que hablábamos, ¿no? Como tengo varias cosas en paralelo operando y por mucho tiempo se van a dar conflictos. Va a ser natural. Y es a veces caro de reparar.
+25:46 Speaker 2: ¿Alguna
+25:51 Speaker 1: pregunta de Hitlo? Vamos con Trangbase. Trangbase es un concepto que está orientado a equipos que tienen una madurez alta, que ya tienen un proceso automatizado, sobre todo de validación de pruebas.
+26:11 Speaker 2: ¿Por qué?
+26:12 Speaker 1: Porque si se dan cuenta acá, ellos están generando ramas de fecho y directamente las mandan a producción. ¿Qué quiere decir? Que en este proceso se están corriendo muchas automatizaciones, porque esto diría que pase entre diario o semanal. de que van haciendo cardio constantemente. ¿Pueden servir Vax? Sí, se le puede llevar con otro nombre como Vax, para diferenciarnos un poco de los features, pero es lo mismo al final, se trabajan igual.
+26:40 Speaker 2: Entonces, ese
+26:43 Speaker 1: es un poco el deseo de muchos de llegar a esto, pero no es fácil. ¿Por qué? Porque es un equipo que no tiene madurez suficiente. Hace esto, está inyectando constantemente bugs a producción y problemas a producción porque no tiene el proceso maduro para hacer. ¿Usted trabajó en algún equipo
+27:00 Speaker 2: donde siete correctamente habían implementado este tipo de
+27:03 Speaker 1: método? Lo hemos hecho, yo lo he hecho para casos bien específicos. Más adelante vamos a hacer algo que se llama transfigura como
+27:09 Speaker 2: código.
+27:11 Speaker 1: en los proyectos de infraestructura como código, normalmente no tienes tantas cosas modificándose la parte. Haces unas cuantas cosas grandes al inicio, ya nace, y después tienes mantenimientos puntuales. Y hay ciertos proyectos de infraestructura como código que sí tienes que desplegar tu server de VESA, tu server de PROD y de CUA. Pero hay otros que son plataformas transversales, como por ejemplo los de monitoreo, como por ejemplo los de... los de networking. Es como que de una sola despliegas toda la base para todo. Entonces, esa no hace sentido tener branch de develop y de release, porque tú despliegas a un solo ambiente que es producción, no tienes más ambiente que producción. O sea, entre comillas, producción. Ahí tenemos que ir con un concepto de negocio, pero es un poco la naturaleza de cómo funciona eso. Entonces, ahí, en ese caso en específico.
+28:01 Speaker 2: Para casos chiquitos, digamos. Unos casos chiquitos
+28:06 Speaker 1: para que no partan el control y otros que tengan validaciones. Por ejemplo, en esta estructura como código, las validaciones que están puestas, en el caso que yo
+28:16 Speaker 2: trabajaba,
+28:18 Speaker 1: todavía no estoy usando así para los
+28:19 Speaker 2: proyectos que yo hago.
+28:23 Speaker 1: Valido, que no se rompe, cuando lo voy a levantar. O sea, hay una validación del... ¿Lo conocen Terrafront? Terrafront Plan. El S, y hay otro más que es, se pueden correr pruebas de seguridad al plan, antes que tú lo despliegas. Entonces, para que la seguridad no venga después y te diga, oye, el storage que pusiste, el público, no debería ser público. Ahí hay una herramienta que se llama check-out, por ejemplo, que corre sobre este mismo plan y te dice, oye, por si acaso, estas son las vulnerabilidades asociadas. Entonces, eso ocurre acá, en el pull request. Acá revienta y no te deja pasar.
+29:07 Speaker 2: este entonces aquí lo que está representando son tres ramas y bueno se supongo que se actualizan funcionalidades no sé rápidamente y si se encuentra un bug en producción inmediatamente se corrige
+29:35 Speaker 1: ¿Por qué? Ojo con esto. Esta no es una rama future, ¿verdad? Es rap future asterisco, ¿no? Porque esta de acá es una rama que dice future...
+29:44 Speaker 2: Ah, por tarea, ¿no? Por tarea. Y los
+29:52 Speaker 1: bats lo mismo, ¿no? No es una rama, pero es mi bats. Es bat
+29:55 Speaker 2: -trión... ¿Se cayó todo?
+30:00 Speaker 1: Bat-trión...
+30:05 Speaker 2: ¿Cuál es la diferencia entre Feature y Task?
+30:37 Speaker 1: Entonces, en el caso de Tramp Base,
+30:41 Speaker 2: todo
+30:43 Speaker 1: el equipo está integrando siempre contra la rama principal. Y estas ramas de trabajo adicionales que existen viven horas, no días. La idea está orientada a cambios pequeños. Y acá nace un concepto muy importante que se llama Future Flags. ¿Alguno ha escuchado de Future Flags?
+31:07 Speaker 2: El feature flag,
+31:08 Speaker 1: que lo vamos a ver un poquito más, es, imagínense su código fuente, el típico if,
+31:14 Speaker 2: else.
+31:16 Speaker 1: Entonces, eso lo que te permite poner es, oye, estoy implementando, tengo una aplicación que valía el cliente contra Renieck.
+31:24 Speaker 2: Entonces
+31:25 Speaker 1: ya tengo hoy la integración con el web service de Renieck. Pero Renieck está sacando una nueva versión. Pero todavía está en pruebas. Sin embargo, el código lo estamos sacando en Trangles. El código ya lo tengo implementado. pero todavía falta confirmar las pruebas. Pero ya está dentro del código. Entonces,
+31:43 Speaker 2: lo
+31:45 Speaker 1: incorporo y
+31:47 Speaker 2: le pongo un if de un
+31:48 Speaker 1: flag que dice qué versión de RENIEG estamos usando ahorita. ¿La función 1 o la función 2? Entonces, como la variable de entorno dice que estamos usando la 1, todavía va por el camino actual. Cuando ya queramos ir a la otra, simplemente cambiamos el valor de esa variable de entorno a 2 y vamos a ir por ese segundo camino. Entonces, como su nombre dice, el flag adquiere a nuevos features, que nos permite apagar cosas.
+32:15 Speaker 2: Y
+32:15 Speaker 1: esto normalmente se combina con el tema de transways para ver por dónde voy según qué cosas están listas.
+32:46 Speaker 2: Y
+32:46 Speaker 1: acá hay un punto más importante. Si no se tienen automatizaciones de validación del software, es imposible habilitar grandes. Sin eso vas a generar un caos constante
+33:00 Speaker 2: más rápido a producción.
+33:11 Speaker 1: Y ese es el otro que es Github Flow, parecido al Github Flow. Es un intermedio entre el Github Flow y el Trambrace. Se parece un poco más al Trambrace. ¿Cuál es la diferencia? Que esos son features largos. Son features paralelos que vamos a ir trabajando un buen tiempo. Alguna semana, tal vez. Y después lo vamos a ir mareando a main. Entonces, esa es un poco la principal diferencia con trampa. Acá tenemos un resumen de las tres. Entonces, en GitFlow, la vida de las ramas son semanas. O sea, el commit hasta que no llegue a la rama principal pueden pasar varias semanas. En GitFlow son días y en trampa son horas. la frecuencia integración git flow por el desbaja en git cap flow es media y en tram base es diaria Entonces, en GitFlow, tú puedes tener como varias versiones del software fluyendo al mismo tiempo. Tienes una versión que se está trabajando en release, otra en develop y otra que se ha producido. Entonces, eso te permite GitFlow. En GitHub Flow, se orienta hacia un producto. Entonces, esa rama feature que veíamos abarca un producto o una función del producto que se quiere liberar. y en Trankbase es desplazamiento de los features pequeñitos subiendo constantemente. El tema de las pruebas automatizadas
+35:02 Speaker 2: es,
+35:03 Speaker 1: como les decía, en Trankbase sí o sí, si no es imposible, en Geek Outflow también es necesario, y en Geek Outflow sí no
+35:11 Speaker 2: es deseable.
+35:15 Speaker 1: Y las banderas funcionalizadas, todos los feature flags. Acá sí o sí las necesitas porque si no, no podrías estar integrando código. Bueno, lo que es a Flow, a veces sí, a veces no. ¿Han escuchado seguramente el proceso de desarrollo de Spotify? ¿Dónde creen que están ellos? ¿A la izquierda o a la derecha? Ellos están más a la derecha. Ellos en Netflix son de los más powers en todo eso. Sobre todo en este tema de aprender a pagar funcionalidades. Y este concepto de aprender a pagar funcionalidades ya no es solamente en el código. Ya hay plataformas que te ayudan y ya no es que tú en tu código tienes que poner una cosa u otra. Si no que la misma plataforma, no, chauwe, Datadog. Datadog, ¿qué suena? Datadog es una plataforma también de
+36:09 Speaker 2: observabilidad. Ok.
+36:13 Speaker 1: Que te permite, por ejemplo, enviar los feature flags. Entonces imagínate, enviaste al código a cambiarlo así, o los valores ahí mismo, ¿no? Si no que en el mismo una plataforma más visual, tienes el mapa de qué feature flags están habilitados y por ahí los puedes aprender. Este tema, QFlags, suena chévere, pero es... También complejo, costoso y fundamental. No es tan fácil. ¿Por qué? ¿Qué costos tiene? Así como tienes tu código fuente que mantener,
+36:41 Speaker 2: ahora debes tener
+36:41 Speaker 1: mantenimiento de tus Twitch Flags. Mapear cuáles son las que tenías. Porque cuando empieza a crecer mucho, ya
+36:47 Speaker 2: es
+36:49 Speaker 1: un bosque de Twitch Flags. La idea tampoco es que estos vivan eternamente. La idea es que tengan un tiempo de conduciridad. Se terminan de usar, ya pasa producción, la nueva posibilidad y quito. Y todo eso porque ya no tiene sentido. Ya está la nueva funcionalidad implementada. Lo bueno, lo que nos permite hacer muy rápidamente es lo que les decía, activar o desactivar cosas para poder publicar sin que el usuario lo vea necesariamente.
+37:16 Speaker 2: Y en
+37:17 Speaker 1: caso lo hubiera puesto en producción y fallara, lo puedo reversar rápidamente. Le cambio el flag, va por otro camino y ya está. No pasa nada. Acá está más o menos como lo que les explicaba, cómo se ve más o menos. Eso es muy bien crudo, por decirlo. Si el plug no check out está habilitado, uso la función de no check out. Si no, no voy con el check out después. Hasta acá. ¿Están entendiendo? Interrumpen. Si
+37:59 Speaker 2: hay
+38:03 Speaker 1: diferentes maneras de implementarlo.
+38:18 Speaker 2: La
+38:19 Speaker 1: idea es, una vez que decimos, ya está, todo siempre va a ser true, borras esto y dejas esto solo. Ok. Entonces, veamos si quedó claro. Acá tenemos tres casos. Tenemos que responder tres cosas.
+38:57 Speaker 2: ¿Qué
+38:58 Speaker 1: estrategia de branching recomendarías?
+39:00 Speaker 2: ¿Por qué?
+39:01 Speaker 1: ¿Y qué métrica de Dora moveríamos con esa decisión? ¿Se acuerdan de la métrica de Dora?
+39:13 Speaker 2: Si
+39:13 Speaker 1: nos ponen el nombre, se te quieren inscríbalo, no pasa nada.
+39:22 Speaker 2: ¿Alguna, alguna? ¿Alguna?
+39:24 Speaker 1: ¿Alguna? ¿Alguna?
+39:33 Speaker 2: Lead time para cambios. Una vez
+39:36 Speaker 1: que ocurre un error de producción, ¿qué tan rápido me recupero
+39:38 Speaker 2: de ese problema? Lead time para
+39:41 Speaker 1: cambios. Desde que hago el cambio hasta que llegue a producción, ¿cuánto tiempo pasa? Frecuencia de despliegue, ¿qué tanto despliega producción a la semana, al mes? La tasa de fallos, ¿qué porcentaje trae
+39:59 Speaker 2: un error?
+40:00 Speaker 1: qué tan rápido me recupero de los problemas y el lead time que es desde el clavo del primer comer hasta el medio producción cuánto tiempo pasa entonces
+40:07 Speaker 2: vamos con el primero imagínense
+40:10 Speaker 1: una startup cinco desarrolladores es una aplicación web desplean cuando esté listo y quieren desplegar a diario
+40:18 Speaker 2: ¿Qué opción les recomendaría?
+40:24 Speaker 1: ¿Qué condición necesitan para que sea Transbase? ¿Y qué métrica ahora moverían con eso?
+40:40 Speaker 2: El lead time es
+40:45 Speaker 1: uno de los más añorados por negocio. El lead time es, desde que la gente de marketing se le ocurrió una idea, es tan rápido que lo sacamos al mercado.
+40:55 Speaker 2: Para tener una idea de esa, RIMAC
+40:59 Speaker 1: y Pacífico, los dos tuvieron la idea de sacar un seguro de auto de pago por kilómetros. Esto que era, te pones un GPS en tu carro. Normalmente el pago de seguro de auto como es, tú pagas un motor mensual fijo, y la cantidad de auto que están asegurados en Perú es muy baja. Entonces sacaron este que era, tú pagas un valor chiquito, mensual. y otra variable en base a la cantidad de clientes que tú recorras. RIMAC sacó primero el producto, pero lo sacó como un MVP. ¿Cómo era? Eran solo ciertos clientes seleccionados, llamaban, vinían, instalaban GPS, y luego tenían un proceso manual con el proveedor, que el proveedor venía, perdón, el GPS le envandaba la información a RIMAC. veían cuántos kilómetros, y eso a mano, con archivos, lo metían a su core, a su sistema, para poder cobrar al cliente. No escaló,
+41:53 Speaker 2: no lo fue bien, no lo
+41:55 Speaker 1: masificaron. Pacífico se demoró más en sacarlo, pero trabajaron todas las integraciones con el core, lo mismo, con un proveedor, pero integraciones vía API, todo
+42:06 Speaker 2: automotizado, y
+42:11 Speaker 1: finalmente salió. No digo que el lead time uno va a ser mejor, ya, porque Fernando lo sacó primero, pero muy acotado y no habló de desarrollo rápido para... Finalmente, la funcionalidad que necesitaban para resolver uno la hicieron aquí. Entonces, a veces ese lead time es clave para aprovechar una oportunidad de negocio. Pero es el lead time, a nivel negocio, es una de las cosas que más... Pero si tienes un alto lead, también en las otras métricas bajas, tampoco son mucho. Bueno, banco peruano. Tenemos 40 desarrolladores. Es una aplicación móvil con requisitos mensuales, con
+42:47 Speaker 2: fechas fijas.
+42:48 Speaker 1: Cada versión pasa por dos semanas en Cuba, mientras que desarrollo está trabajando en el siguiente requisito. Y el equipo de riesgo personal exige evidencias de qué versión es la que ha llegado a producción y quién la aprobó. Y normalmente tenés como tres versiones trabajándose en paralelo.
+43:12 Speaker 2: Es suficientemente robusto para ver con lo que se está exigiendo. Siempre estructura a nivel de las armas, a nivel de los planes.
+43:24 Speaker 1: ¿Y quién métrica Dora con eso esperan asegurar?
+43:26 Speaker 2: La frecuencia de FLEGUE. Mira,
+43:35 Speaker 1: frecuencia de FLEGUE es el tiempo que dicen mensuales. Entonces eso no va a cambiar.
+43:40 Speaker 2: La
+43:41 Speaker 1: frecuencia de FLEGUE sí, porque va a rotar. Y también el tipo de recuérdense. Posiblemente, ¿no? Más probable es el de tener que hacer fallos porque el tiempo de recuperación del servicio normalmente está asociado más cuando ya estás en producción, qué procesos sigues o qué herramientas tienes para recuperarte de ese problema.
+44:03 Speaker 2: Pero también
+44:04 Speaker 1: podría continuar con eso. El último, Repositorio y Frutura como código. Tengo el código fuente Terraform, que es mantenido por 4 personas, solo la rama main se despliega sobre un ambiente, y los cambios pueden demorar algunos días.
+44:39 Speaker 2: El despliegue cada hora, o se despliegue cada hora.
+44:43 Speaker 1: ¿Porque están días? Sí. Porque los funcionarios demoran días.
+44:49 Speaker 2: La cantidad de desarrolladores está mucho. La cantidad de desarrolladores está mucho. Pero puede ser.
+44:57 Speaker 1: Pero el tránsito también puede trabajarlo, si es que pudieran hacer cosas en un solo día.
+45:04 Speaker 2: ¿Y qué métrica de
+45:05 Speaker 1: Dora moveríamos con este?
+45:14 Speaker 2: ¿Tiempo de restauración? ¿Tiempo de restauración?
+45:26 Speaker 1: Yo creo que sería... Yo creo que sería un poco igual que el anterior, ¿no? En estabilidad.
+45:32 Speaker 2: Porque van
+45:35 Speaker 1: a seguirse demorando unos días. Por ahí también el lead time no se va a mover tanto. Pero vas a tener como un proceso más estable. ¿Alguna duda de los casos? Lo que pasa es que no va tan... Ah, ¿a este caso? Este caso de acá sería el de... Es igual que el B. Sería la tasa de fallos. Y por él se podría derivar también la de tiempo de recuperación.
+46:28 Speaker 2: Pero sobre todo la tasa de fallos.
+46:38 Speaker 1: Entonces, con eso, tenemos ya lo que es esquemas de branching. ¿Versionado semántico? ¿Les suena? ¿Han trabajado
+46:50 Speaker 2: esto antes? ¿Lo han visto?
+46:52 Speaker 1: ¿El X, Y, Z? ¿De qué versión le pongo
+46:55 Speaker 2: a mi teoría? ¿Cómo decían
+47:01 Speaker 1: normalmente cómo versionarlo? Creo que había SIS por atrás. ¿Cómo definirías este versionado semántico?
+47:21 Speaker 2: ¿Y
+47:21 Speaker 1: para qué nos ayuda a saber esto? Por ejemplo, tú imagínate que estás usando la teoría. Estás usando la teoría, la 241. Y ahora viene la... La siguiente es la 301.
+47:41 Speaker 2: O sea, cuando el mayor, también el mayor, sabes que no sea compatible. O
+47:46 Speaker 1: sea, que muy probablemente no sea compatible. Sí. Muy probablemente. Sí. Muy probablemente no sea compatible y tengas que cambiar tu código. No solamente cambia la variable a la versión digital, sino que el contrato de la API cambió. Ahora tiene más, tiene otros datos obligatorios que yo no tenía previsto, tengo que agregarlos. Las funciones de la librería que usaba ahora han cambiado. Entonces, cinco cosas pasan. Entonces... Eso nos sirve para cuando usamos librerías. Y ahora imagínense que ustedes están construyendo su software y ustedes le están poniendo un tag a su librería. ¿Para qué también serviría esto? Ahora ustedes no son los consumidores, ustedes
+48:22 Speaker 2: son los proveedores.
+48:35 Speaker 1: Es asociado a los release notes. Tener clara la evolución de tu producto, qué funcionalidades tiene cada una de tus versiones. Entonces, cuando le vas poniendo ese nombre de tag o de la versión a tu producto, puede tener esa transformación. ¿Alguno de ustedes ha usado esto? Para taggear. ¿Lo has hecho a mano? ¿Lo has hecho con una automatización? A mano.
+49:12 Speaker 2: ¿Ok?
+49:15 Speaker 1: Y cuando lo hacemos a mano, ¿qué sucede? El criterio de quién es colocarle si muevo el 3, si muevo el X, Y o el Z. Para que estemos organizados, lo que acá nos dice
+49:24 Speaker 2: es X, Y, Z. De izquierda, de derecha, a izquierda.
+49:30 Speaker 1: Depende de la persona, ¿no? Entonces, a mí se me ocurrió de, oye, no, esto es un patch, no pasa nada, me metí la pata, puedo generar un problema. Entonces, hay automatizaciones que nos ayudan a
+49:46 Speaker 2: auto
+49:47 Speaker 1: -asignar las versiones para que garanticemos que esto vaya más alineado a la realidad. que estemos ordenados y eso nace de los commits. ¿Alguno ha trabajado con convenciones de commits? ¿Qué convenciones de commits son normalmente en el mercado? Básicamente es ponerle un título o una forma descriptiva al commit.
+50:14 Speaker 2: FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX. FIX.
+50:21 Speaker 1: FIX. FIX. FIX. FIX. FIX. FIX. Podría agarrar el código y compilarlo, ¿cierto? Por nosotros. Él también, podemos agarrar la funcionalidad que revise los cómics, y en base a los cómics, él mismo, y vea cuál está la última versión desplegada, él diga qué versión es la que corresponde ahora. Entonces, si es que él encuentra que estamos hablando de features, que veamos que nuestra convención es fin,
+50:52 Speaker 2: ok, entonces...
+50:53 Speaker 1: modifica la Y, el segundo valor de las versiones. Si estamos hablando solamente que en los commits hay fixes, solamente mueve la Z, la última. Y digamos que en esa convención tenemos el signo de migración para cambios mayores. Si identifica el mayor, perdón, el signo de migración es asociado a un incremento mayor, entonces mueve la X. Entonces esto hace que ya no dependa de una persona. ver cómo cambia el índice Y a Z. Si no es la misma automatización, en base a estas reglas, ver qué versión le asigna nuevo. Pero, siempre y cuando, los desarrolladores que hicieron los commits hayan respetado esto. ¿Aún ustedes han trabajado con algún hook local que te obligue a que tu commit siga algún patrón y si no, no puede hacer el commit? o una regla por ahí. Hay algo que se llaman los hooks locales, como el nombre ahorita es el previo, que tú lo configuras en tu máquina y esto te obliga aquí en el commit, antes de que puedas hacer el push, si no cumple con el estándar que se ha definido, no te deja subir. Tienes que renombrar el commit para poder subirlo. Para otras cosas más también se usa. Veremos si el curso nos da para ver algunas de esas cosas. Pero también es interesante. Entonces, de esta manera se alinean los dos. Tenemos el versionamiento semántico XYZ para poder trackear qué versión estamos usando actualmente y a qué versión podemos subir. Y también qué versión tiene nuestro código.
+52:40 Speaker 2: O nuestro producto.
+52:43 Speaker 1: Entonces, con esto... Tenemos la trazabilidad, sobre todo trazabilidad. Y bueno, como les decía, necesitamos disciplina del equipo en
+52:54 Speaker 2: los cómics y
+52:55 Speaker 1: por ahí las automatizaciones ayudan a que no se pasen el patrón. ¿Hasta ahí? ¿Alguna duda? ¿Pregunta?
+53:12 Speaker 2: Entonces, vamos con las
+53:15 Speaker 1: librerías.
+53:26 Speaker 2: ¿Hay algún...
+53:27 Speaker 1: Desde que empezaron a hacer... Ahora hay LP3 también, ¿no? ¿Hay LP1 o LP3? ¿Quién es
+53:33 Speaker 2: LP3? Ya murió, Diego. LP3 murió. ¿Por qué no lo hacían así? Claro, se me mantienen los nombres. ¿Pero su hijo
+53:41 Speaker 1: fuera...? Era un amigo, ¿qué están haciendo ese? Formación 3. Formación 3. Bueno, la formación 3.
+53:49 Speaker 2: La pregunta es, ¿en alguno
+53:51 Speaker 1: de los proyectos que han desarrollado... ¿No han usado ninguna librería? ¿Hay alguno que tenga papeo que no hayan usado librerías?
+53:58 Speaker 2: En todo, en todo. En todo, en todo.
+54:01 Speaker 1: En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En
+54:05 Speaker 2: todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En todo, en todo. En
+54:14 Speaker 1: todo, en todo. En todo, en todo. En todo, ¿Han escuchado del problema que hubo el año pasado con las debidas de NPM?
+54:26 Speaker 2: ¿Qué es el código?
+54:28 Speaker 1: ¿Qué has escuchado? La web clave,
+54:31 Speaker 2: se vi enteras de mi vida. ¿Alguno que lo quieras explicar? Había una dependencia que cuando tú ejecutabas, automáticamente, o sea, el código ya va escrito, ya en local. Así como cuando hace uno NPM Installing. Se ejecuta en varios scripts que bajan las cosas. Esa cosa te bajaba. Esa cosa descompilaba un batch 64 que realmente tenía el código de un malware. Lo inyectaba, lo ejecutaba. Eso te hacía un escaneo de clave general. Hasta de cuáles de tu digital. Y luego se sumaba también. No dejaba agua ir. Para
+55:18 Speaker 1: que los demás tengan mapeado, en tus librerías, en tu código, sobre todo los de Frontend, tienen librerías NPM vinculadas, y ciertas librerías, de las más usadas, fueron hackeadas. Entonces ellos reemplazaron esa librería por una librería con un malware. Entonces cuando tú la bajabas, él lo que hacía era escaneaba todo tu repositorio. y sacaba todos los secretos que tenías. Incluso tenía acceso, como estaba dentro de tu GitHub, tenía acceso a las variables de entorno de tu GitHub. Y todo eso se lo robaba y lo pasaba. Y era como una... Esto se va expandiendo, expandiendo, expandiendo, porque capturaba algo más y trataba de entrar ahí, trataba de entrar ahí, trataba de entrar ahí. Un alumno de DP2 del año pasado perdió su
+56:09 Speaker 2: cuenta de GitHub por eso. se la secuestraron con ese tema. Y
+56:17 Speaker 1: perdió acceso, tuvo que conversar con GitHub durante un tiempo para que le puedan regresar a la cuenta. Porque ¿qué pasó? ¿Qué le hicieron? Un poco más allá. Como tenían acceso a su GitHub completo, le empezaron a disparar todos los pipelines a la vez. GitHub tiene un máximo de cuántas ejecuciones de pipeline puedes hacer al mes. De forma gratuita. Entonces, le empezó a bloquear la cuenta por abuso, por intentos de abuso. Porque intentaba que él tenía algo... O sea, él no afectó la cuenta, señor. Todo un lío ahí, por un buen tiempo. Lo peor es que no afectó solo a su cuenta, sino que él tenía
+56:54 Speaker 2: acceso a otras cuentas de bandidas,
+56:57 Speaker 1: yo qué sé. También afectó a las otras empresas. Así es. Es un tema no menor. ¿Cómo evitamos eso? Gracias. Por ejemplo, se puede usar PNPM,
+57:16 Speaker 2: que tiene más seguridad. Yo, sinceramente, todavía no
+57:26 Speaker 1: he entendido bien cuál es la diferencia entre uno y el otro, para esto en específico. Pero a mí me suena de que es como que hackeen al que yo emite y que yo pienso que él es, y de repente no es.
+57:40 Speaker 2: Y ahí, si
+57:41 Speaker 1: una es esa, Pero otra es, que así como tú pones contra qué, ubica lo que es el archivo lock dentro de tu presentación de FM.
+57:55 Speaker 2: ¿Para qué sirve?
+58:00 Speaker 1: ¿Para qué sirve? Para fijar la
+58:02 Speaker 2: versión y que no saber una nueva que probablemente sea atacada.
+58:08 Speaker 1: Exacto. Normalmente cuando ponemos la dependencia, le ponemos, yo quiero la 5 asterisco. Usted puede estar agarrando la 511, la 512, la 513. Entonces
+58:18 Speaker 2: cuando yo pongo el lock,
+58:20 Speaker 1: ya le estoy colocando específicamente, quiero la 511. Y le voy a poner apellido también. Hay a veces un poquito más. Entonces, esas son maneras de ir evitando un poco esto. Hay otras más que las vamos a ir viendo más adelante. Es un repositorio local
+58:42 Speaker 2: que lo vamos a ir viendo.
+58:46 Speaker 1: Entonces, bueno, ya saben un poco que se puede dar este tema de las librerías anidadas. ¿Qué genera esto? Vulnerabilidades heredadas. Como les explicaba, no se compromete solamente la librería, se compromete todo el proyecto. Entonces, el problema se expande. Luego está el tema de la suplementación de nombres. También se puede dar, ¿no? Pone en librerías un nombre muy parecido, así como las páginas fake, y entras a la otra y no te das cuenta, ¿no? Pones a la otra y no te das cuenta. O también por ahí de librerías que ya no están mantenidas y pueden tener vulnerabilidades acumuladas. Y acá viene el tema del NIST. El NIST, recordemos que es el Instituto de Estados Unidos que regula, que fomenta las mejores prácticas de seguridad. Y que hay una sección específica para cómo hacer toda esa gestión de terceros. Una serie de pruebas y recomendaciones que vienen, pero nos vamos a ver más adelante. Entonces, bueno, por ahí, luego pueden hacer este ejercicio. Yo lo hice con el... Ustedes conocen todos el Paideia que utilizamos, ¿no? ¿Sabe lo que es Paideia por dentro? Moodle. Moodle es un sistema open source, CMS. Entonces ahí corre esos scripts equivalentes en PHP. Y miren, Moodle tiene declaradas directamente 48 librerías. Que ellos en su código opuesto no necesitan 48. Pero cuando hace el install, jala todo lo demás que necesita por debajo, termina jalando 118 librerías. Casi el triple debería
+01:00:41 Speaker 2: ser realmente en
+01:00:43 Speaker 1: instancia. Esto crece mucho más. Este es un poco lo que ya adelantaba de los archivos lock para poder setear la versión. Entonces, como les decía, sin un archivo de bloqueo, cuando yo declaro el 4.x, como le diría que yo necesito, él puede agarrar hoy día la 4.2.1 y mañana, pasado, la próxima semana que ya celebrará una versión, viene la 4.3.0 de forma automática sin que yo lo esté controlando.
+01:01:24 Speaker 2: Entonces...
+01:01:24 Speaker 1: Eso me puede afectar tanto funcionalmente como también a nivel de posibles vulnerabilidades como la que contábamos hace un rato. El archivo de bloqueo lo que le va a poner es ese apellido a la librería. Va a ser la 4.2.1.
+01:01:39 Speaker 2: No va a asegurar que trae solo eso.
+01:01:45 Speaker 1: Entonces, con eso que sucede, el pipeline va a agarrar ese archivo para asegurar que esa es la versión que se está jalando. Y cuando yo quiera realmente actualizar esa versión, va a ser una decisión mía, no va a ser una decisión del vecino, de que justo el proveedor que yo no conozco, que está en Estados Unidos, o en China, o en la India, que están en la mayoría, manteniendo estas librerías, la actualizó y no le di vuelta. Este punto es como el avanzado de lo que hemos visto. Pero supongo también lo que pasa mucho en las empresas corporativas. Genial, tenemos un montón de librerías de la comunidad. Sin embargo, yo el equipo de seguridad y gestión dentro de TI de la empresa digo, uy, qué riesgo que te consumimos aquí en librería de la comunidad. No, tenemos que hacer un whitelist de decir, estas son las librerías que están permitidas. Y no solo eso, para asegurarme de que no estés yendo al repositorio público, las pongo en un repositorio privado,
+01:02:57 Speaker 2: me llamo como Artifactory,
+01:02:58 Speaker 1: y nosotros, cuando vayamos a compilar nuestras aplicaciones, vamos a ir con este repositorio local, para asegurar de que la versión está controlada por nosotros. pues han descargado esa librería pública y la han puesto en este repositorio local. Entonces eso nos permite garantizar que no sea manipulada y además garantizar también que no estén compilando contras librerías de afuera. Eso se puede restringir en el proceso de compilación de que le dice, oye, no puedes ver otras librerías que no sean estas. O no puedes ver otro repositorio externo, perdón, más que este. Hay configuraciones también para decir, ok, primero anda este y si no está, recientemente vas al de afuera. Pero es un poco la idea que se conoce como repositorio de artefactos y el proxy interno. Entonces, eso también ayuda a qué pasa si es que justo el repositorio que usábamos donde la librería de comunidad se cayó. Y tengo un paso a producción. No puedo hacer el paso porque la librería... Imagínate preguntarle a tu usuario, oye, no, se cayó el servidor de no sé quién.
+01:04:07 Speaker 2: de Google, porque
+01:04:08 Speaker 1: nosotros no somos una de ellas, pero por eso, organizar librerías nos podemos hacer ricos de lo que tiene sentido. Entonces también esto ayuda a garantizar que está la disponibilidad de las librerías bajo nuestro control. Bueno, el control letral que ya les contaba. La trazabilidad de estos artefactos con estas herramientas. Por ejemplo, JFrog es una de ellas. Nexus es otra. Bueno, AWS tiene la propia, que es en Artifactory.
+01:04:45 Speaker 2: Tiene su auditoría
+01:04:48 Speaker 1: de accesos, ¿no? ¿Quién fue el que accedió a publicar la librería? ¿Quién fue el que accedió a consultar la librería? Esa trazabilidad también queda ahí en la herramienta. Y lo otro que nos permite también es, ustedes se van a generar artefactos que son compartidos dentro de la empresa. Son librerías comunes. Entonces, esas librerías también se pueden subir a estos repositorios locales para
+01:05:10 Speaker 2: que otros lo puedan consumir. ¿Qué gusta ver en las empresas que una librería segura? Gracias, mi análisis.
+01:05:18 Speaker 1: Mejor regalos y revistas de seguridad. Escaneo. Vamos a ver más adelante. Zengler es una de ellas. ¿Cómo sabemos que Zengler es segura? Zengler es muy buena porque el año pasado era muy chistoso porque la mayoría de vulnerabilidades que se han generado en los últimos dos años, los grandes, han venido por los componentes de seguridad.
+01:05:49 Speaker 2: Es muy chistoso, pero es real.
+01:05:57 Speaker 1: Entonces, para entender un poco mejor cómo funciona este tema del Artifactory. Cuando tengo un repositorio público, tengo los developers que van vía internet y descargan ahí las librerías. Con el esquema del Artifactory intermedio, los developers no van directo a la pública, sino que ellos van al Artifactory local. Nosotros al interno tenemos un proceso que, controlado por nosotros, quiere ver qué cosas descarga para el factory y disponibilizamos para los desarrolladores. Entonces, esto ya a través de políticas se bloquea de que ellos no pueden llegar directo a la pública. Este es un poco el esquema de cómo funciona.
+01:06:44 Speaker 2: ¿Qué tamaño de empresa ha dado esas prácticas que parecen costosas? No es tan caro. Cobran normalmente por uso. O sea, normalmente te cobran por
+01:06:55 Speaker 1: uso, por cantidad de bikes almacenados, cantidad de tráfico. Más que costo, es madurez del equipo. Porque acá, ¿qué pasa? Necesitas un equipo que mantenga esto. Entonces, va más que nadie por esa parte. Entonces, todas las empresas del grupo Crecor tienen esto. Las pasarelas de pago también las tienen. Si vamos a otro rubro, probablemente las avícolas, o por ahí algunos e-commerce, que son como menos controlados por el gobierno o por la SBS, eso sí puede ser más allá todavía. Pero todo eso finalmente es madurez de tipo de procesos que requieren esfuerzo, gente y finalmente inversión. Entonces, mande la mano.
+01:08:41 Speaker 2: Vamos bien, vamos muy rápido. Vamos bien. Más rápido, más rápido. Atrás, también nos quiero
+01:08:47 Speaker 1: escuchar atrás.
+01:08:53 Speaker 2: ¿Tienes dudas?
+01:08:56 Speaker 1: Entonces, hacemos un break de 10 minutos. Como estamos en la sesión anterior, ¿cuál era el BIM? Construimos una sola vez, y eso que hemos construido, le hablo de tres veces. Y acá nace un concepto que es artefacto inmutable. ¿Eso es la palabra inmutable?
+01:09:13 Speaker 2: No cambia. Esto tiene que ver con, por ejemplo, cuando compilas un docker y lo dejas como una... Está asociado a un hash. Ya cuando vas a pliegar el tema este, ya cuando ha hecho otra compilación posterior, no coincide.
+01:09:33 Speaker 1: O sea, incluso los dockers, tú puedes, como... Depender de la configuración que le pongas al registry, donde subas un docker, si te permite reemplazarlo con otro, o ya nunca, por más que... Porque el hash... Es como, así como tu comité tiene un ID. Bueno, pero son dos cosas. Uno es el hash y otro es el tag. Pero, sí, la idea inmutable quiere decir que una actividad se generó, nada lo modifica. O sea, tal cual viaje a donde te van a viajar. A Cuba, a desarrollo, etc.
+01:10:08 Speaker 2: Y otro
+01:10:11 Speaker 1: punto importante también es cuánto tiempo me demora hacer el vídeo. Imagínense una aplicación que tiene muchas librerías. Tiene que hacer el install de todas las librerías. Eso puede
+01:10:21 Speaker 2: demorar.
+01:10:29 Speaker 1: Entonces, lo primero es el artefacto inmutable, que es lo que hablábamos ahorita, una vez que ya se construyó, no se modifica. ¿Cómo se logra esto? Básicamente es que el proceso haga las validaciones y lo implemente de tal manera de que ese fin permanezca igual durante todo el tiempo. Eso, nuevamente, como le decía al inicio, es lo ideal.
+01:10:54 Speaker 2: van a pasar
+01:10:54 Speaker 1: muchas situaciones en las cuales la aplicación, el equipo, no
+01:11:00 Speaker 2: estoy listo todavía para esto. Te doy ejemplos
+01:11:02 Speaker 1: con algunas consultorías que me han tocado. El pecado más grande, pero que, bueno, le costaba mucho el equipo sacarlo de ahí. El archivo de variables de entorno vive dentro del repo, en cada rama. Entonces eso es como lo más doloroso. Cada vez que lo compilo,
+01:11:18 Speaker 2: es odiar. Entonces...
+01:11:22 Speaker 1: Cada ambiente tenía su propio bit con su
+01:11:24 Speaker 2: propio archivo variable. Fue el ideal, que
+01:11:28 Speaker 1: las variables no estén dentro del bit, sino que las variables estén por fuera, y una vez que se va a esperar,
+01:11:33 Speaker 2: ahí resencillé. A veces es
+01:11:35 Speaker 1: posible, a veces no funciona.
+01:11:40 Speaker 2: Sobre todo en el tema de NPM, normalmente van dentro.
+01:11:44 Speaker 1: Pero ahí te iguales, el proceso ya lo incorporo.
+01:11:48 Speaker 2: Con respecto a CYC manager, en cuanto administrado se puede decir. En vez de poner el archivo, meter el archivo a la instancia. Esa es la cifra, ¿no? La pueden cifrar por líneas. Simplemente lo pones en la plataforma. En Google, así. Puedes poner las variedades. Y lo asignas al Cloud Run. Creo que sería correcto, pero no importa.
+01:12:19 Speaker 1: Sí. O sea, eso es lo que volvemos a volver a ver más adelante. Lo que es el Secret Manager. El Secret Manager es asociado, por ejemplo, más a Backend. Porque el Secret Manager es una bóveda de secretos. Puede ser el Gold de HashiCorp, puede ser el Secret Manager de cualquiera de las nubes. Este es una forma de autenticar tu aplicación o tu componente contra ello para que te den los secretos. Y un frontend que ocurre en un browser no tiene manera de autenticarse. Si ponen señales potenciales, cualquiera la roba y puede acceder. El signo de manera normalmente se usa para el banco. Lo veremos un poco más allá de aquí. Entonces, Es un poco el reto de hacer que el artefacto sea inundable, la idea, que el mismo artefacto vaya viajando por todo el proceso. Que las configuraciones de parámetros sean externas y reyecten el despliegue, que es lo que les decía hace un ratito. Y también con esto podemos identificar la versión. Con esto bautizamos a nuestro compilado, a nuestro build, con el XYZ. Con qué versión estamos bautizándolo. Y finalmente, ese compilado... vive en algún repositorio. Ya sea un artefacto, dice es una librería, un registro, dice es un contenedor. Son cosillas que veré un poquito más adelante, ya cuando volvemos la parte del despedido. cosas que se hacen pero la idea es que no deberíamos hacerlas construirlo cada vez que vamos a ir a Cuba y otra vez lo construimos en periodo de producción
+01:13:53 Speaker 2: cuando
+01:13:58 Speaker 1: estoy en ese proceso en Cuba se hizo con la librería 3.0 y en producción nos fuimos con la 4.0 no se probó lo mismo Entonces, para eso el tema del lock que hablábamos antes para asegurar que todo el circuito vaya con lo mismo. Entonces, primeramente lo que se quiere es que lo que se vaya a desplegar sea lo que se ha probado y validado durante todo el proceso. Ese es el objetivo, finalmente, del tema del circuito, ser notable. Entonces, ¿cómo se ve un pipeline que maneja el tema del BIM? Lo primero, seteamos la configuración del ambiente. Así como en sus máquinas ustedes instalan el Node versión 20, o setean que se usa la versión 20, acá en el pipeline también tiene que decirle qué versión de Node vamos a usar. Luego está la instrucción para poder hacer el build. Y acá es donde este proceso del NPMCI o Continuous Integration es el que va a agarrar ese Package Lock JSON que hablábamos antes y va a asegurar que se están usando las librerías que queremos, las versiones de librerías que queremos. Y el otro punto que les decía hace un momento, que probablemente puede ser la realidad es el tema del tiempo del build. Acá aparece también el concepto de caché. ¿Les suena el tema de la caché?
+01:15:31 Speaker 2: ¿Para qué creen que se puso en la caché acá?
+01:15:38 Speaker 1: El proceso de compilación, ¿cuántas veces lo hacen ustedes en su máquina?
+01:15:43 Speaker 2: Para reducir el tiempo de la compilación, lo guardas como que en memoria. Sí, exacto. ¿Qué
+01:15:52 Speaker 1: es lo que guardas en memoria? Las librerías. O sea, las librerías para no tener que estar descargándolas cada rato de internet. Las guardas en memoria. Porque la parte más, normalmente, en software, la parte más larga es descargar las librerías.
+01:16:08 Speaker 2: instalarlo.
+01:16:08 Speaker 1: Entonces, esta caché lo que ya hace es, ya tiene pre-configurar las librerías, y ahora solamente es hacer el build de tu código. Incluso, hay algunas frameworks que nos ayudan a como recompilar solamente lo que ha cambiado. Entonces, es un poco más avanzado y varía un poco la tecnología. Entonces, ¿para qué me sirve esta configuración de la caché? Es justo eso, poder acelerar cuando mi proceso es muy lento de compilación. Me permite acelerarlo. A veces es compatible, a veces no, pero es el objetivo de la caché. Poder acelerar el proceso de cumplir.
+01:16:44 Speaker 2: Para
+01:16:45 Speaker 1: poder hacer el caché de las dependencias. Y el último punto es poder tener identificado la versión del artefacto. Acá le está colocando el SHA, el número largo del cómic. Entonces con eso tenemos identificado... Imagínense que ustedes esta librería la publican. Y dicen, oye, ¿esta librería de qué versión de mi código se correlaciona? Porque por un lado está el B generado y por otro lado está el código código. Pues si a usted le gusta el chat como apellido de la versión, ya sabes qué commit está asociado a tu repositorio de código. Ya sabes en qué punto se quedó esa versión. ¿Está acá alguna pregunta? ¿Cuántos están familiarizados? ¿Se puede levantar
+01:17:40 Speaker 2: la mano? ¿Cuántos están familiarizados? No
+01:17:42 Speaker 1: con este nivel como tan detalle, pero ¿quiénes están familiarizados con los yamels de Yidhavachos?
+01:17:50 Speaker 2: ¿Tienen idea de...? Bueno.
+01:17:55 Speaker 1: Entonces, les voy a mandar cierta información para que se vayan familiarizando más con eso, porque en el siguiente laboratorio ya van a hacer ustedes su propio pipeline. Entonces, C5TQ. que lo conozcan. Ah, tienes que hacer internet ahí para poder
+01:18:10 Speaker 2: hacerlo
+01:18:13 Speaker 1: con más ayuda, ¿no? Pero sí es bueno que tengan una idea de cuál es la estructura, qué cosas son los steps. Este RansOn, ¿se acuerdan que lo veíamos la vez pasada? Que es un en qué
+01:18:25 Speaker 2: ambiente está corriendo el pipeline.
+01:18:28 Speaker 1: Por ejemplo, si esa es una aplicación .net. las que no soportan correr en Linux no podría ser Windows, tendría que ser Windows entonces
+01:18:40 Speaker 2: esa es un poco la idea que se va favorizando
+01:18:45 Speaker 1: un poquito con la sintaxis con algunas opciones básicas con
+01:18:51 Speaker 2: instalación de desbloqueo se refiere a solo usar las librerías que ya ha descargado de internet y ya ha cogido sus versiones específicas las que estén especificadas en el log JSON
+01:19:14 Speaker 1: Entonces, esto también me ha pasado mucho con los desarrolladores, cuando tienen un software muy grande, y que le han puesto miles de leverías, que ya incluso muchas de ellas no las utilizan, pero no saben cuáles y todavía no se animan a quitarlas, el tiempo de compilación se hace larguísimo. Imagínate tú, normalmente en tu máquina va a compilar un poco más rápido con el pipeline, el pipeline normalmente tiene menos recursos que tu máquina. Entonces, imagínense esperar 20 minutos, 30 minutos, una hora, a que la aplicación compile, ni siquiera desplegado todavía, solamente compile y que te diga, se cayó la compilación.
+01:19:55 Speaker 2: Entonces, si
+01:19:57 Speaker 1: pasa eso, el desarrollador no lo va a usar, se va a fijar bastante, pero sobre todo no lo va a usar, que es lo más importante. Y la otra, nosotros lo que le estamos pidiendo es, usa esto lo más posible. o sea, lo más frecuente posible, por estos patches chiquitos que estamos haciendo, lo que creamos como práctica, ¿no? Commits seguidos, integraciones seguidas. Entonces, si se va a demorar una hora en copilar, yo no voy a estar haciendo todos los días, subiendo código para esperar una hora que esto me dé feedback. Tenemos que hacer que este tiempo de pylon sea lo menor posible. Entonces, El límite, o sea, debemos apuntar siempre a 3 minutos menos. Bueno, el límite más o menos son 10 y a 20 es excesivo. Cuando vayamos avanzando en el pipeline, vamos a ver que estamos empezando con un pipeline así. Los pipelines normalmente son así, porque tienen validación de calidad, de seguridad, y se empiezan a paralelizar las validaciones para que justo este tiempo no se haga tan largo. Pero lo vamos a seguir viendo más adelante. Lo que quiero seguir acá es que es importante el tiempo y las prácticas que seguimos para que ese tiempo bajen. Una de ellas es la cacheta.
+01:21:21 Speaker 2: Ok,
+01:21:22 Speaker 1: ahora vamos al tema de análisis de calidad. Preguntaba antes si alguno había escuchado algo de Sonar Cloud o Sonar Cube. ¿Has visto algo de él? Esa es la herramienta más popular de análisis de calidad. No he conocido una empresa que no use esa herramienta para análisis de calidad, sobre todo porque tiene una versión free, súper súper buena y completa. La puedes costear todo en tu infra, puedes usar la SaaS, tiene muchas variedades. Bueno, también hay una versión paga en la SAS. Pero más allá de la herramienta, la herramienta popularizó un poco todo esto, pero ¿cuáles son las métricas que acompañan esa relación de calidad? La primera es
+01:22:04 Speaker 2: la cobertura.
+01:22:05 Speaker 1: ¿Qué porcentaje de tu código fuente está cubierto por tus pruebas sanitarias?
+01:22:11 Speaker 2: Mientras más
+01:22:12 Speaker 1: porcentaje de tu código está cubierto por pruebas sanitarias, tienes una mayor probabilidad de que tu código no se rompa. Claro, si a todas las pruebas sanitarias le has puesto 1 igual 1, no se ve nada. Y eso no se da cuenta de eso. Es uno de los problemas de esto. Esto mide de
+01:22:31 Speaker 2: que tu
+01:22:32 Speaker 1: código tiene configurado la prioritaria. Ahora, ¿qué has puesto en las pruebas sanitarias? ¿Le has sacado la vuelta y le has puesto cualquier cosa? No se da cuenta. Pero por lo menos ayuda a tener esa cobertura. ¿Qué más mide? Mide el porcentaje de duplicación de código fuente.
+01:22:50 Speaker 2: Siempre hablan de... Ustedes no
+01:22:54 Speaker 1: sé qué evolución de código han visto,
+01:22:55 Speaker 2: pero... El
+01:22:58 Speaker 1: tema del código Spaghetti, el tema del desarrollo de clases en objetos, y
+01:23:05 Speaker 2: el tema de módulos
+01:23:07 Speaker 1: comunes. O sea, si usted está desarrollando un software. en muchas partes de tu código hay algo que se va a repetir en muchas partes de tu aplicación hay un componente que se va a repetir la idea es hacerlo una sola vez disponible en una función y que se reduce por todos lados no pegues ese código en todos varios lados es un poco la idea de eso lo que mide la duplicación es eso que no dupliques tanto código y eso se ve en porcentaje Esto analiza el código y le dice, oye, este porcentaje de acá, estas líneas se duplican por las de allá. Me parece que el objetivo, ahora lo vemos en la herramienta que les muestro un ratito, pero hay objetivos ya como de mercado, o sea, como les decía, el porcentaje de industria aceptado de cobertura es 80%. O sea, hay un 20% de código que se espera que no esté cubierto. En líneas duplicadas, me parece que el esperado es máximo 3% de líneas duplicadas. Luego viene el tema de la complejidad. Ciclos computacionales, que es el código fuente de la forma como lo has aplicado, qué tan complejo se hace de ejecutar. O si podría ser un poco más sencillo a lo complejo que lo has implementado. Entonces son los ciclos computacionales que está abarcando el código. Entonces la complejidad, saludos. Luego vienen los issues. Esto acá te detecta si tú has puesto un Y2, que se queda en un grupo infinito, lo detectas como un issue y te alertas. Oye, acá se va a caer tu publicación. Esos son los issues. Y la última es la deuda técnica, que lo que hace esto es, en base a los puntos anteriores, te va diciendo, oye, este issue,
+01:24:54 Speaker 2: según... O
+01:24:56 Speaker 1: sea, la herramienta es tan completa que te dice dónde está y te sugiere qué hacer.
+01:25:00 Speaker 2: Y además,
+01:25:01 Speaker 1: te dice... Según lo que yo conozco, para hacer esto te deberías demorar tres minutos, un minuto, una hora, dos horas. Suma todo, de todos los issues que tiene tu aplicación, y te dice que
+01:25:13 Speaker 2: tu deuda técnica son
+01:25:15 Speaker 1: tres días de trabajo. ¿Qué cosas no mide? Esto no mide si es que
+01:25:28 Speaker 2: las
+01:25:32 Speaker 1: pruebas a las que estás apuntando es algo que vale la pena probar o no. Porque para él son líneas de código. ¿Qué hay cosas ahí dentro? No se ha dado ni idea. No ve si el diseño de resolución es adecuado o no. Si el requisito de lo que está pidiendo el usuario se cumple o no. Esto es... Sé que la palabra calidad muchas veces la asociamos con
+01:25:56 Speaker 2: CUA,
+01:25:57 Speaker 1: pruebas funcionales, pero en este caso, que es calidad de código, es meramente cómo
+01:26:04 Speaker 2: está la
+01:26:05 Speaker 1: calidad del código internamente. No de qué tan cercano es a lo que espera el usuario. Y bueno, es lo mismo con la estructura y con lo que el negocio necesita. Entonces, ¿para qué nos sirve la calidad? Nos sirve para detener lo que es evidentemente malo. O sea, lo que no cumple con la calidad esperada. Pero no podemos con eso certificar de que está buena la aplicación. Porque para que sea buena la aplicación, ya vienen luego las pruebas funcionales de la aplicación. Otro dato tan importante es la cobertura. Acá viene el tema de correr los unitests para saber qué porcentaje se cubrió o no se cubrió. Ahora, si esas pruebas unitarias fueron exitosas o fallidas, la herramienta no lo sabe. La herramienta solamente ha visto qué porcentaje de cobertura se está dando, pero no si esas pruebas fueron exitosas o no. Es otra cosa importante para esta análisis de calidad de código. Y otro concepto que nos trae la calidad de código es, ok, chévere, ya tengo esas métricas, pero ahora necesito algo que detenga y que no me deje pasar en el pipeline, si es que no estoy cumpliendo alguna de esas métricas. Y para eso nacen los Quality Gates. Los Quality Gates
+01:27:32 Speaker 2: son
+01:27:34 Speaker 1: estas como barreras que te dicen, oye, si no tienes el 80% de pruebas cubiertas, no te dejo pasar. Ahí el pull request le saldrá fallido al developer,
+01:27:48 Speaker 2: le saldrá ahí el detalle, él tendrá que corregir,
+01:27:51 Speaker 1: lanzará el cambio otra vez, vuelve a correr la validación de quality gate, y ahí le dirá, ya, pasaste, ya llegaste al 80% de prueba. Para eso nos sirvió el quality gate, para poner esa barrera y el pilot mismo lo detenga al desarrollador antes de que siga el proceso. Entonces, esa regla se configura en la misma herramienta, explícitamente te está diciendo ahí qué valores son el objetivo, el resultado es sí o no, no hay como tal vez,
+01:28:20 Speaker 2: y
+01:28:22 Speaker 1: definitivamente te detiene.
+01:28:24 Speaker 2: Ahora,
+01:28:25 Speaker 1: esto nuevamente, como les decía antes, es el camino ideal. Hace poco implementé una consultora de... Es una empresa consultora hacia minas. Yo le hice una consultoría a esta empresa consultora de minas para implementar las DevOps. Les he implementado pilas para todos los sabores de tecnología que tienen. Pero todas tienen el Quality Gate configurado, pero apagado. Porque sus equipos no están listos para que les empiece a bloquear. Porque si les bloqueo, no desarrollan nada. No podría pasar nada. Entonces, bueno, está configurado, tenemos que capacitar los equipos y en algún punto ya podemos prenderlo para bloquearnos. Es evolutivo. ¿Por
+01:29:09 Speaker 2: qué un 80%? ¿Sabes que unos 100% de pruebas deberían pasar para los 100% de follar? Sí,
+01:29:17 Speaker 1: es diferente. Tú has dicho que 100% de pruebas deben pasar. Ya. Eso recordemos que es
+01:29:22 Speaker 2: el
+01:29:26 Speaker 1: porcentaje de pruebas que hay que automatizar. ¿Qué quiere decir? Que el 20% no es que no se pruebe el 100%. Se tiene que probar el 100%. ¿Sí? Esto lo que te dice es qué porcentajes están automatizados.
+01:29:37 Speaker 2: Ah, los 100%.
+01:29:38 Speaker 1: El 80% está automatizado a medida de pruebas unidades. Entonces, imagínate, ahora es una aplicación de calculadora. Tiene las cuatro operaciones básicas, más o menos por entre. Entonces, esto lo que te estaría pidiendo es que, bueno, va a estar en 75%, ¿no? Pero bueno, imagino que es 75%. Imagina que automatizas tres operaciones. Ahí tienes el 75% cubiertas
+01:30:05 Speaker 2: de las... del
+01:30:08 Speaker 1: 100% de módulos que tienes implementado. Ahora, como decía antes,
+01:30:13 Speaker 2: si en tu...
+01:30:15 Speaker 1: si en la de suma no pusiste suma, pusiste resta, esto no se da cuenta. ¿Cómo te dejó pasar? ¿Cómo sabe que está automatizando? Supongo que la persona que mira el QR está viendo cuántos porcentajes... La herramienta, el framework de pruebas, ya tiene eso implementado. Hay dos cosas ahí. Uno... El framework ya sabe.
+01:30:39 Speaker 2: ¿Alguna acá ha usado,
+01:30:41 Speaker 1: ha implementado pruebas militarias?
+01:30:44 Speaker 2: ¿Chiquitas?
+01:30:45 Speaker 1: ¿Tú más o menos? ¿En qué lenguaje?
+01:30:48 Speaker 2: En Java. ¿En Java?
+01:30:50 Speaker 1: ¿Con el J2D? ¿Cómo funcionan normalmente las automatizaciones de pruebas? Tienes tu código fuente clásico, instalas un framework adicional que te va a crear una carpetita test por ahí. Y este le va haciendo referencias a las clases o a los archivos de tu proyecto principal. Entonces, por ejemplo, el modo cliente es buscar cliente. Entonces, implemento la automatización de buscar cliente. Y en este código, yo instancio cosas en mi aplicación para poder validarlas. Entonces, ahí el framework reconoce qué partes ya estás probando y cuáles todavía no.
+01:31:29 Speaker 2: Ahora.
+01:31:30 Speaker 1: El mismo framework genera unos archivos internos con esas cantidades de líneas de código que ya se han probado y las que no estén ahí se consideran como esas líneas no han sido probadas. Y ahí saca los porcentajes y te dice, este es el porcentaje de pruebas que se ha valido probado. Ahorita entramos a la herramienta con un par de cosas que tengo ahí para borrar.
+01:32:06 Speaker 2: Bueno,
+01:32:07 Speaker 1: entonces, como les comentaba, está el tema de los umbrales. El quality gate es pasas o no pasas. Ese pasas o no pasas está basado en las métricas. Y esas métricas tienen umbrales, valores que te dicen pasas
+01:32:22 Speaker 2: o no pasas. El
+01:32:23 Speaker 1: 80% vendría a ser un umbral, que es el esperado. Entonces, normalmente ahí configuran un valor básico. Si es un software que ya existe y ya tengo 20 issues, ok. Máximo tú puedes tener 20 issues. Si tienes 21, ya no pasa. Entonces, esos son los umbrales, son los valores que se le colocan dentro del QualityGate para decir qué puede pasar y qué no. Ahí también se pueden configurar excepciones para ver qué cosas por ahí están exceptuadas y eso hace que el QualityGate pase igual. es el valor básicamente que se configura en cada una de las métricas Y importante, para remarcarlo nuevamente,
+01:33:16 Speaker 2: la
+01:33:18 Speaker 1: idea es con el quality gate esté prendido, para que el equipo se entere de que tiene un issue, y con eso pare y lo resuelva. Pero para eso hay que ir con el equipo, trabajar, que lo entiende, que diga, ok, esos son mis valores actuales, entonces parto de acá, me pones ese bloqueante, y ya sé que no puedo generar nuevos problemas de calidad. Sin ese trabajo, no se puede con los umbrales. La idea es que luego, a futuro, vayas bajando los umbrales para que sea más estricto y ya te acertas a la mejor práctica posible. Entonces, ¿cómo se vería en el pipeline esta validación? Creo que en el anterior no les expliqué de estructura del pipeline, así que ahora sí necesito un poquito más para explicarles. Hay ciertas palabras dentro de GitHub Actions que son como reservadas, como esta de jobs. Acá se declaran
+01:34:22 Speaker 2: cuáles
+01:34:24 Speaker 1: son los jobs que van a correr, porque dentro de un mismo YAML tú puedes tener varios pipelines definidos. Acá, por ejemplo, hay dos, validar y desplegar. Lo siguiente que se declara es sobre qué plataforma va a correr. Acá estamos diciendo que va a correr sobre Ubuntu y usa la última versión. Eso puede tener una problemática, porque si sale en una nueva versión de Ubuntu y mi aplicación no es compatible con eso, se cae. Y luego vienen los pasos del Python. Steps, es otra palabra reservada. Ransom, otra palabra reservada. Este validar, acá le puedo poner lo que yo quiero, como nombre de yo. Y luego revienen los pasos. El pipeline, así como su código fuente, puede usar librerías externas. Y este users está usando una librería externa. Es un action, que es como un paso del pipeline, que ya es standard, que es el checkout de código. Esto lo que hace es hacer checkout de código fuente de esta aplicación. Ese es un atributo más para el checkout. no traiga todo el historial sino que traiga la última versión nada más porque no es necesaria en ese momento Luego acá ya hace la instalación de librerías. Este, por ejemplo, es un PHP. Perdón, un Python. Por eso es un PIP install del requirements. Acá está el log. ¿Se acuerdan del tema de que especifiquen las versiones? Acá ya está. Y acá corre las pruebas. En caso de Python, la librería para hacer las pruebas unitarias es PyTest.
+01:36:05 Speaker 2: Acá está corriendo las...
+01:36:09 Speaker 1: Las pruebas unitarias, y bueno, acá está la sintaxis un poco para que deje
+01:36:13 Speaker 2: el
+01:36:14 Speaker 1: reporte de pruebas unitarias como un XML. Y luego que ya viene el análisis de calidad. Acá está comentado así como acción del servicio de análisis. Que este le dé que sea uno customizado que nosotros hagamos. Estos actions de uses se pueden usar de la comunidad. Como esos que están acá. Como ese que está acá. O tú también puedes crear uno personalizado. E instanciarlo acá. Pero bueno, le dejas que acá luego, por ejemplo, use uno de Sonar, le pasas un token de Sonar para que se autentique con toda la herramienta y le das como input este XML y el código fuente. Y con eso ya Sonar puede hacer su validación.
+01:37:00 Speaker 2: Y bueno, al final es ya
+01:37:01 Speaker 1: el desplegar, que lo que agarra es... Ya se ejecuta el display en sí. Cuando se ejecute este paso de acá, este paso, si es que no es exitoso, va a detener el
+01:37:20 Speaker 2: pipeline.
+01:37:21 Speaker 1: Es como en el Linux, en una función de bash exit1, exit0, si devuelvo falso o positivo, perdón, positivo o negativo,
+01:37:33 Speaker 2: esto
+01:37:35 Speaker 1: de esa manera lo detiene. Sale un error, y bueno, ahí puedes ver en el log luego, según cómo se ha configurado, cuál fue, por qué es que se ha caído, en qué paso se ha caído. Entonces, de esa manera, paras el despliegue si es que no cumple el quality case.
+01:38:09 Speaker 2: No tengo una duda para el tema. Hay un requiemment que está en .log. Hay un requiemment que está en .log. Sí. ¿Por qué .log?
+01:38:25 Speaker 1: En el NPM... Tienes tu Package.json y tu Package.json En el Package.json especifican las versiones específicas de las librerías O sea, si en TXT has puesto alguna versión muy amplia, o sea, si no todos los dígitos de las versiones, en el log puedes especificar las versiones
+01:38:49 Speaker 2: Es por
+01:38:52 Speaker 1: lo que tengo que decir ahorita. O sea, para que no usen TXT con versiones muy amplias, sino que uses las versiones Quería mostrarles acá
+01:39:04 Speaker 2: el solar. Esta es la
+01:39:21 Speaker 1: herramienta de SonarCloud. SonarCloud de SonarQ con un SaaS que lo disponibiliza. Es gratuito. Todos pueden, con una cuenta de GitHub, crearse su usuario acá.
+01:39:34 Speaker 2: Y te va a permitir
+01:39:34 Speaker 1: infeccionar repositorios
+01:39:36 Speaker 2: públicos de GitHub.
+01:39:38 Speaker 1: No privados.
+01:39:39 Speaker 2: Para los privados sí cobran.
+01:39:43 Speaker 1: Solo por curiosidad, ¿cómo cobran ellos? Cobran por cantidad de líneas de código. Entonces, es como si compras una bolsa de líneas de código, todos tus repos llegan al límite y tienen que hacer la app.
+01:39:53 Speaker 2: Así como la licencia de Google Drive.
+01:39:59 Speaker 1: Entonces, bueno, acá pueden ver listados todos los repos. Y acá te va a dar las métricas. SolarCube ha ido evolucionando como menciona las métricas para darle un nombre más de negocio cada vez y ya no le vuelve tanto como issues.
+01:40:14 Speaker 2: Acá está la línea indicada,
+01:40:16 Speaker 1: acá está el tema de coverage. Lo que no mide es porque el proceso de compilación y
+01:40:22 Speaker 2: el
+01:40:23 Speaker 1: esfuerzo de compilación y la vinculación que se ha hecho del repo no ha incluido justo el archivo de reporte de pruebas. Por eso está en la línea. Cuando no se ha incluido el reportaje de pruebas, no.
+01:40:35 Speaker 2: Exhala la línea.
+01:40:37 Speaker 1: Acá, por ejemplo, este está súper bien, está 95%. Este
+01:40:41 Speaker 2: también está súper bien, está 97%.
+01:40:45 Speaker 1: Y acá, si entramos a un proyecto en específico, por ejemplo, voy a entrar... Acá también hay una diferencia que hace de código nuevo o todo el código existente. ¿Qué cosa es código nuevo? Es el último pull request que es lo que ha traído. Todo el código es todo el main que es lo que tiene. Y si entramos a cada uno de estos puntos, podemos ver, por ejemplo, el coverage. En el Overview de Pobras. Bueno, acá te incluso te ha dado una evolución
+01:41:31 Speaker 2: de, en el tiempo,
+01:41:33 Speaker 1: cómo ha ido fluyendo tu
+01:41:36 Speaker 2: cobertura, de
+01:41:39 Speaker 1: lo que tenías antes a lo que tienes ahora. Bueno, acá solo está analizando un archivo. Este es el contenido del archivo. Todo lo que está en verde es lo que él considera que ya está abarcado por la prueba unitaria implementada. Todo lo que está acá en rojo es lo que no está cubierto.
+01:42:15 Speaker 2: Profe, ¿a qué se refiere con que no está cubierto, que no fue testeado? Que no está
+01:42:20 Speaker 1: dentro, la automatización de prueba que se ha hecho no incorpora esas líneas. Esa casuística no está cubierta. Estoy cambiando
+01:42:31 Speaker 2: a otro zonar que
+01:42:32 Speaker 1: tiene otros proyectos que he trabajado que son más completos. Esta es una plataforma de trading mexicana para hacer trading de bolsa. Esta casa está horrible. Tiene 16.5% del poder ubicado.
+01:43:05 Speaker 2: Gracias por ver el video. Gracias por ver el video.
+01:43:24 Speaker 1: Vamos con los issues. Acá están los issues que, como les decía, detectan ya potenciales errores que un cliente o un usuario se puede encontrar. Entonces, por ejemplo, acá hay temas de HTML, acá hay una recomendación que es un proceso
+01:43:40 Speaker 2: por issue en vez de malware. La práctica este te
+01:43:45 Speaker 1: lleva exactamente a cuál es la línea de código afectada, por qué este es un issue. y las recomendaciones de qué hacer.
+01:43:57 Speaker 2: Entonces es bastante
+01:43:58 Speaker 1: chévere la herramienta para
+01:44:01 Speaker 2: todas esas políticas. Y no sé si dieron cuenta, pero
+01:44:05 Speaker 1: te las categorizan, ¿no?
+01:44:06 Speaker 2: Para las medium, high.
+01:44:08 Speaker 1: Hay unas que son bloqueantes porque son como, esto bloquea al usuario. Las high son altamente probable que algo pase.
+01:44:17 Speaker 2: Y lo que les decía, 7
+01:44:19 Speaker 1: minutos de cuartos minutos.
+01:44:30 Speaker 2: ¿Usted sabe cómo determina que está duplicado? Porque evidentemente hay muchas palabras de servicio. A
+01:45:02 Speaker 1: ver, mira, esta de acá te dice que hay 16% de líneas duplicadas. Específicamente acá, en este archivo, te dice que hay 43 líneas duplicadas.
+01:45:22 Speaker 2: No, perdón. Lo gris está ubicado.
+01:45:29 Speaker 1: Y acá tenía la referencia de dónde está. ¿De dónde viene ese código duplicado?
+01:45:38 Speaker 2: Entonces... Entonces detecta el código duplicado entre archivos. Ah, entre archivos, correcto. Es en el top, Rick. Es chistoso porque algo que ha pasado es que el reporte
+01:46:27 Speaker 1: de criaturas comunitarias, se llama HTML, se
+01:46:32 Speaker 2: ha subido al reporte. Entonces lo está
+01:46:34 Speaker 1: interpretando como si fuera código. Y claro, es HTML el reporte que lo está duplicando. Y por alguna razón subió, se pueden colocar excepciones para que ciertos archivos sí los revise y ciertos no. Así que con eso evite los faltos positivos. Acá creo que con esto que vamos a hablar de que
+01:46:56 Speaker 2: estén usando el mismo repetido en un HTML en un archivo.
+01:47:02 Speaker 1: Entonces acá, en el class index, tiene estas líneas que también están repetidas
+01:47:07 Speaker 2: en el function index. Es fácilmente eso.
+01:47:13 Speaker 1: Y digamos, pensando que eso fuera una aplicación real, la idea sería que uno incluya al otro.
+01:47:18 Speaker 2: Así que
+01:47:21 Speaker 1: con eso quedamos claro.
+01:47:57 Speaker: Acá está, por ejemplo, que dice el código cubierto. Y por acá, seguramente, acá está. También, aparte de este código, no está cubierto. Entonces, en la parte de la automatización de pruebas, tendríamos que hacer los error
+01:48:19 Speaker 1: a propósito para que eso se pueda validar. Creo que eventualmente debería ser la misma línea de importación en ASO. Es casi seguro que los informes no los... Tiene cierta lógica eso, no es como tal mundo. Sí, tiene bastante lógica de ver qué sigue.
+01:48:48 Speaker 2: ¿Tiene un ejemplo? Veamos eso. No es tan... tan
+01:48:55 Speaker 1: textual. Tiene contexto para ver qué sigue. Por ejemplo, estos importes, este import JSON. Este import JSON
+01:49:27 Speaker 2: seguro está en varios archivos.
+01:49:31 Speaker 1: Y no es considerado como código complicado. Esta es la otra parte de deuda técnica que le decía. Miren, acá tiene sumarizado que reparar o solucionar
+01:50:05 Speaker 2: todos los estudios que he encontrado de eso
+01:50:08 Speaker 1: de morir a 5 horas.
+01:50:10 Speaker 2: 60.
+01:50:13 Speaker 1: Habrán algunos que no hacen sentido por alguna razón.
+01:50:16 Speaker 2: No sé
+01:50:18 Speaker 1: si tienen alguna duda o pregunta por esto.
+01:50:26 Speaker 2: Tiene una capa gratuita limitada Todos
+01:50:31 Speaker 1: los repos
+01:50:34 Speaker 2: públicos son limitados Está de moda, profesor
+01:51:32 Speaker 1: Hasta donde entiendo, todo lo que es repúblico es rápido. Tiene ciertas restricciones. Por ejemplo, solo canaliza la rama mexicana.
+01:52:10 Speaker 2: Pero profesor, ¿entonces solo ve producción además?
+01:52:17 Speaker 1: Como rama, como rama persistente en la mente. Los públicos es, todos los que quieran. Tú le mandas a avisar a ver lo que quieres ver y él te analiza.
+01:53:08 Speaker 2: ¿Sabe acá donde se ve las... las organizaciones que forman parte? En el otro apartado, en el otro apartado, en el otro apartado, en el otro apartado, en la imagen de la puesta. Ahí hay... 20. Ahí hay... 20. ¿Qué es lo que se llama? ¿Qué es lo que se llama? ¿Qué es lo que se llama? ¿Qué es lo que se llama? ¿Qué es lo que se llama? ¿Cómo dice el profe? ¿Qué? ¿Misiones?
+01:54:16 Speaker 1: A veces.
+01:54:30 Speaker 2: ¿Por qué se me cuenta? ¿Por qué se me cuenta? ¿Por qué se me cuenta? Está muy seguro, muy seguro. Ayúdanse a los proyectos en grupos.
+01:55:27 Speaker 1: Lo que necesitan de cuidar es que no hagas un ataque de fuerza bruta. Entonces, agarran y miden la cantidad de invocaciones a la ATI que estás teniendo desde la IP, de salida.
+01:55:38 Speaker 2: Si todos estamos conectados en la laboratoria, haciendo laboratorio
+01:55:40 Speaker 1: contra INTA, todos estamos conectados con la IP.
+01:55:44 Speaker 2: ¿Dónde estás? Entonces, eso podría tener la mala suerte de que
+01:55:48 Speaker 1: INTA nos está interpretando que todos somos tú. Ay,
+01:56:09 Speaker 2: ¿cómo se hace esto?
+01:56:16 Speaker 1: Corre un análisis de zona y acá te sale cuál es
+01:56:20 Speaker 2: el
+01:56:25 Speaker 1: resultado de ese análisis. Entonces, acá te dice pasó o no pasó. y según las reglas que tu le configures te deja hacer merge del pull request o no te deja hacer merge del pull request no se si recuerdan que eso les pasaba en el repositorio en el laboratorio que habían varios que tenian como que forzar el pull request para poder pasarlo si de la misma manera pasa con el quality gate si te sale rojo no te deja pasar y bueno si tu tienes permiso de dormir puedes igual Eso es un poco SonarCloud y yo que estamos al lado con eso.
+01:57:16 Speaker 2: Es un poco
+01:57:20 Speaker 1: lo que va a pasar en el laboratorio. Es acá, lo voy a dar un doble check y se lo mando utilizado luego. Así va a ser el rubrico, ¿no?
+01:57:29 Speaker 2: Pero ¿cuál es la idea? La idea es que ustedes puedan ejecutar un pipeline. No
+01:57:35 Speaker 1: lo quiero complicar con esta parte de esto. Pero no se distraigan, porque el objetivo ahorita es que salgan en la parte de CID. GitHub tiene una... Tiene una forma también de
+01:57:46 Speaker 2: publicar finalmente el link con
+01:57:48 Speaker 1: un artefacto, que ahí lo podés descargar. Entonces, que llegue hasta ahí,
+01:57:52 Speaker 2: sería suficiente. No lo voy a dejar de esta parte, no lo voy a dejar de todo.
+01:58:00 Speaker 1: Pero eso sería un poco de error.
+01:58:02 Speaker 2: Simplemente comparte,
+01:58:04 Speaker 1: que pueda compilar
+01:58:05 Speaker 2: el sistema de
+01:58:07 Speaker 1: rodaje, que corre por las hospitales, y
+01:58:11 Speaker 2: que...
+01:58:13 Speaker 1: Envíe el reporte de fuerzas unitarias y el código fuente a SONAR para que pueda hacer la validación. Entonces le voy a pasar por favor la info para que puedan crear sus cuentas en SONAR Cloud. Básicamente entrar a SONAR Cloud, seguir el next, next, next con la
+01:58:28 Speaker 2: cuenta de GitHub y ya está. Ahora acabo creando mi cuenta. Me voy a creer mi cuenta, pero no sé cómo funciona.
+01:58:34 Speaker 1: ¿Cuál era tu nombre? Disculpa, que tenía un problema con
+01:58:36 Speaker 2: tu cuenta de GitHub. Divano. Divano. Divano. Gracias. Gracias.
+01:58:42 Speaker 1: Gracias. La idea de este laboratorio es que puedan crear ese pipeline y puedan correr dos escenarios. El escenario que el umbral falla y el escenario que el umbral es exitoso.
+01:59:21 Speaker 2: En el laboratorio
+01:59:34 Speaker 1: van a trabajar con el umbral que viene por defecto. Hay una parte de administración de los proyectos. Acá hay una parte de las misas, uno de los proyectos
+01:59:50 Speaker 2: donde se vincula... pero no sé qué es así, no hay iniciación un lenguaje Voy a chequear nuevamente cómo está
+02:00:57 Speaker 1: la parte de... Me parece que el upgrade que le han hecho a esto le ha restado funcionalidades de configuraciones del gateway, del gateway, del quality game. Entonces, me parece que por efecto, si funciona, el de por efecto va a funcionar, pero no lo van a poder personalizar. O sea, no van a poder variar, me parece. que no sea que te pida 80% sino que te pida solo 50% de personas unidadarias. Ese tipo de cosas me parece que no es como trabajar. Lo chequeo y en base a eso lo comunico esta
+02:01:30 Speaker 2: parte de la zona como comunidad. Profe, ¿hay alguna configuración en momento de crear la cuenta? Porque yo ya creé la mía y la vinculé con mi cuenta y quizás no me salen los proyectos.
+02:01:41 Speaker 1: Tienes que mirar a la derecha, darle nuevo. ¿A analizar como proyecto? Ah, no. Gracias.
+02:01:51 Speaker 2: Uff, ¿cuándo voy? Yo era el de prueba 3. Si pero al momento de crearte la cuenta ahí te da la opción que vea repose particular o todo hasta el frente Ok. Bueno. Entonces,
+02:02:37 Speaker 1: les decía que a partir de esta clase, los Pancud vienen con modificación de puntos.
+02:02:42 Speaker 2: Así que, para tener más... Vamos a ver con eso. Gracias, vamos a ver cómo va.
+02:02:50 Speaker 1: Entonces, el primer puesto va a tener más un punto.
+02:02:53 Speaker 2: El segundo y el tercero. Tengo sueño, señor. Tengo sueño. ¿Cómo se va? No, no, no. Gracias por ver el video Somos 29, ¿no?
+02:04:40 Speaker 1: O sea, somos 32 en el aula, pero creo que somos 29. ¿Falta alguien para esperarlo? ¿Dónde estamos?
+02:05:06 Speaker 2: Música, broja, música. No se pasa nada. No se pasa nada. ¿Qué? No
+02:05:51 Speaker 1: se puede hacer nada.
+02:06:01 Speaker 2: Seguimos.
+02:06:19 Speaker 1: Sirve para mantener ramas de funcionalidad de duración de días que buscan pasar a producción rápidamente.
+02:06:31 Speaker 2: Confío, confío.
+02:06:56 Speaker 1: Es bien difícil llegar a la producción, salvo que sea un hotfix, por ahí podemos ir
+02:06:59 Speaker 2: rápido a la producción
+02:07:02 Speaker 1: con GitFlow. TrankBase. Estamos hablando de días. Recuerden que TrankBase ha hablado de horas.
+02:07:09 Speaker 2: Entonces, sin
+02:07:10 Speaker 1: ese también es difícil. TrankBase no conversa por eso porque es un tema de días. En este caso es GitFlow, porque justo GitFlow habla de días. ¿Qué significa cada una de las siglas?
+02:08:11 Speaker 2: La
+02:08:12 Speaker 1: X para actualizaciones mayores, la I para menores y la X para patch. 6 menores.
+02:08:21 Speaker 2: Seguimos. Mantiene la tabla igual. ¿Para qué sirve el Quality Gates? ¿Para qué sirve
+02:08:32 Speaker 1: el Quality Gates? No, sí.
+02:08:36 Speaker 2: Fácil, fácil. El verde, si no. Es el rosa. Para variar que eso más funciona. Es el borrado.
+02:08:56 Speaker 1: ¡Gracias! Como aseguro, el Bill sea igual
+02:09:22 Speaker 2: siempre. ¡No! Pucha, me confundí. Madre, todo por no ser completo, ¿no? Era por... Ya puede estar, no quiero ver. No leyes la maldita,
+02:09:45 Speaker 1: ¿no? El archivo, ¿no? El que nos pone las versiones de librerías para asegurar que en el tiempo nos haga una nueva y se vaya con otra versión que no queremos. El desorden del equipo le dificulta entender qué está en producción. ¿Qué
+02:10:10 Speaker 2: les gustaría preguntar? ¿Qué es eso?
+02:10:35 Speaker 1: Si necesitamos entender qué cosa es lo que está en
+02:10:37 Speaker 2: producción, necesitamos
+02:10:40 Speaker 1: ambas cosas, ¿no? El semantic version asociado al
+02:10:43 Speaker 2: baño y sabes que está bien.
+02:10:46 Speaker 1: Porque si no, no sabemos cuáles son las versiones en las que realmente están
+02:10:48 Speaker 2: en producción. Se ha
+02:11:07 Speaker 1: identificado que el equipo modifica el compilado antes de llegar a producción. ¿Qué práctica necesita implementar?
+02:11:21 Speaker 2: Ya, ya, confío. Seguimos, la 8.
+02:11:56 Speaker 1: Necesitamos liberar responsabilidades rápido. Algunas restancias que son terminadas, pero no dan error. ¿Qué hacemos?
+02:12:17 Speaker 2: ah no, me cagaste hoy Si él, no, no. Daniel, no soy Álvaro. Tiene la punta.
+02:12:39 Speaker 1: Juan no es una métrica
+02:12:41 Speaker 2: de cariño. Fácil, fácil.
+02:13:08 Speaker 1: Candidate de código, o sea no es una métrica, ¿no? La cobertura de UNITES era la que veíamos, es si es una métrica principal. A ver cómo se pone la tabla. No.
+02:13:19 Speaker 2: No. No
+02:13:23 Speaker 1: está bien.
+02:13:39 Speaker 2: No, solo me quiero grabar. ¿Cómo está? ¿Cómo está? Y Daniela. Uy, joder. Mira, ahí está Jorge Vicente. Bueno, se pierde ese vicio. Gracias, porque si no te vas a buscar como loco. No se puede ver, no se puede ver.
+02:15:03 Speaker 1: La importancia de integrar la forma seguida, y ojo que el pilot nos ayude con eso, porque si el pilot es muy lento, no nos va a incentivar por integrar seguida. La estrategia de branching se decide en base en las capacidades que tiene el equipo y la aplicación. Si no tengo pruebas automatizadas, por más que quiera trangways, no voy a poder trangways. El código que no escribimos, también es nuestro. Las librerías que incluimos
+02:15:33 Speaker 2: son
+02:15:34 Speaker 1: parte de nuestra aplicación. Querramos o no, hay que verar también por eso. No podemos solucionar el fix de ellos, pero sí tenemos que estar atentos a que si esa librería tiene un potencial issue, usar una versión que ya tenga corregido ese issue. Más adelante vamos a ver cómo medir eso, cómo validarlo y qué hacer. construir una vez, desplegar varias, el tema de tener el build inmutable, y lo que decía con el tema de integrar seguido, si el tiempo del pipeline de integración es muy alto, no lo vamos a usar, entonces también importa bastante que el tiempo del CI sea lo menor posible para que lo puedan adoptar todos.
+02:16:16 Speaker 2: Entonces, eso de todo, si tienen alguna duda, pregútenla. La PPT la va subir. Gracias.
+  
