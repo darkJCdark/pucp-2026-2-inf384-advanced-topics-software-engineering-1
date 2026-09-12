@@ -1,11 +1,164 @@
-. {
-	. {
+. INTEGRACION CONTINUA{
+	. LABORATORIO 2{
+		. Los 4 defectos
+		
+		. Evaluar duraciones{
+			. Tal vez es mas lento el nuevo pipeline, pero es mas seguro
+		}
+		. DORA{
+			. Se puede mejorar esta metrica con los temas de Integracion Continua
+			
+			. Tasa de despliegue
+			. Tasa de fallo
+			
+			. El tiempo minimo de recuperacion a veces no pasa por la integracion continua
+		}
+		. Lo que no se resolvio{
+			. No nos damos cuenta si alguien ha subido una credencial
+			. Que nos garantiza que el paquete final es el que queremos
+		}
+	}
+}
+
+. ENTREGACION CONTINUA{
+	. El mismo hallazgo cuesta distinto segun donde aparece{
+		. En el commit
+		. Antes de fusionar
+		. Antes de publicar{
+			. Se aprobo el pull request sin revisar vulnerabilidades y la validacion sí se dio cuenta
+			. Por lo que se redirige al autor o se corrige
+		}
+		
+		. Mientras mas a la derecha identifiques el error, aumenta el tiempo de espera y afecta al Value Stream Mapping
+	}
+	. Cuando un control pertenece a esta etapa{
+		. RAPIDO{
+			. Si metes un control que demora mucho tiempo, el desarrollador evita subir codigo, por lo que la cola se hace mas grande
+		}
+		. DETERMINISTA{
+			. Debe ser blanco o negro
+		}
+		. ACOTABBLE AL CAMBIO{
+			. Identificar el delta del cambio
+			. New code{
+				. Este evalua nada mas el pull request
+			}
+			. Overall code{
+				. Evalua todo el repositorio
+			}
+		}
+		. NO EXIGE AMBIENTE DESPLEGADO{
+			. Ethical Hacking hace pruebas de seguridad cuando el proyecto esta desplegado
+		}
+	}
+	. CONTROLES QUE CALIFICAN Y NO CALIFICAN{
+		. DETECCION DE SECRETOS{
+			. Existen controles en el pipeline para que no te deje subir secretos
+			
+			. No hay una herramienta buena
+			
+			. No solo revisa el new code, sino tmb se revisa el historial
+		}
+		. ANALISIS DE COMPOSICION DE LAS LIBRERIAS{
+			. Se tiene que identificar las vulnerabilidades de los componentes de mi codigo
+			. Existe bases de conocimiento de vulnerabilidades de las librerias publicas
+			
+			. Docker{
+				. Tiene una imagen
+				. Te almacena librerias
+			}
+			. Si no esta seguro el artefacto, se desactiva
+			
+			. Herramienta: Dependency Tracker{
+				. Esta en red privada
+				
+				. Los componentes o microservicios con la cantidad de vulnerabilidades
+				
+				. Revisa las librerias y ve las vulnerabilidades conocidas en la base de conocimiento
+				
+				. Score: Que tan riesgosa es la vulnerabilidad
+			}
+		}
+		. ANALISIS ESTATICO DE SEGURIDAD{
+			. Es como el sonnar qube cloude
+			. Hallazgos en tu codigo
+		}
+		. ANALISIS DE CONFIGURACION E IaC{
+			. Herramienta Cheko evalua la infraestructura como codigo
+		}
+		
+		. El analisis dinamico no va aca
+	}
+	. DISEÑO DEL HALLAZGO{
+		. Severidad no es prioridad{
+			. Severidad declarada{
+				. ¿Se ataca ahora la vulnerabilidad?
+			}
+			. Alcanzabilidad
+			. Exposicion{
+				. ¿Que tan facil es llegar a el?
+			}
+			. Existencia de correccion{
+				. ¿Ya existe una correccion de esto?
+			}
+		}
+	}
+	. DISEÑO DEL CONTROL{
+		. Por que son dos compuertas y no una{
+			. Analisis de calidad{
+				. Si encuentro un falso positivo, no lo manejo bien y se acumula, no lo ven como mucho ruido
+			}
+			. Analisis de seguridad{
+				. Si encuentro un falso positivo, no lo manejo bien y se acumula, es un reto de las herramientas de seguridad
+				. 
+			}
+		}
+	}
+
+	. EJEMPLO{
+		. Se usa el drawio para los pipeline
+		
+		. Build App: En el PR que se crea, ¿se genera el compilado?
+		. Escaneo SAST: Analisis de codigo estatico{
+			. Vulnerabilidades del codigo fuente de tu aplicacion
+		}
 		. 
 	}
 }
 
+
 . {
 	. {
-		. 
+		. {
+			. 
+		}
+		. {
+			. 
+		}
+		. {
+			. 
+		}
+	}
+	. {
+		. {
+			. 
+		}
+		. {
+			. 
+		}
+		. {
+			. 
+		}
+	}
+	. {
+		. {
+			. 
+		}
+		. {
+			. 
+		}
+		. {
+			. 
+		}
 	}
 }
