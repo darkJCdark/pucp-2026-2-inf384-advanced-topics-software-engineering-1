@@ -122,43 +122,109 @@
 		. Escaneo SAST: Analisis de codigo estatico{
 			. Vulnerabilidades del codigo fuente de tu aplicacion
 		}
-		. 
+	}
+	
+	. DISEÑO DEL GATE DE SEGURIDAD{
+		. BLOQUEAR O REGISTRAR{
+			. Bloquear todo desde el primer dia
+			. Registrar siempre, detener nunca{
+				. No hay switch para cambiar las cosas
+			}
+			
+			. 1: Detiene lo nuevo, inventaria lo heredado
+			. 2: Umbral por tipo de control, no uno solo
+		}
+	}
+	. POLITICA DEL GATE{
+		. LA EXCEPCION CON FECHA DE VENCIMIENTO{
+			. Cheko
+		}
+	}
+	. NIST SP 800-218 - SECURE SOFTWARE DEVELOPMENT FAMEWORK: Donde cae cada control en el marco de referencia{
+		. Reutilizar software de manera segura
+		. Revisar y analizar el codigo
+		. Pruebas automatizadas en un ambiente
+		. Constantenmente analizar el codigo porque pueden nacer nuevas vulnerabilidades
 	}
 }
 
+. CASO 1{
+	. Se describe el VLSM{
+		. Hay 5 equipos de desarrollo
+		. Hay un equipo de QA
+		. El equipo de Infra ocupa una ventana
+		
+		. Dev -cambios-> QA
+		. Infra -vulnerabilidades-> Dev
+		. Hay un cuello de botella en QA
+		
+		. Validaciones de seguridad que se hacen{
+			. Dependencias (SCA: librerias) <- Si esta disponible
+			. SAST (seguridad de codigo) <- Si esta disponible
+			. Configuracion del servidor <- Necesita que este corriendo el servidor, asi que no lo podemos atacar
+		}
+		
+		. En el dev, esta el pipeline del escaneo de seguridad (SCA y SAST)
+		. Dev->QA->Seg
+		
+		. Quality gate
+		
+		. Ventanas de freezing
+	}
+	. Ventana{
+		. Momentos
+		. Digamos que las pruebas a la semana son con 4 ventanas
+	}
+	. INSIGHTS{
+		. Gestion de ventanas
+	}
+	. PREGUNTAS{
+		. 1: Se escanea solo en la configuracion del servidor
+		. 2: Todo lo antiguo se registra y todo lo nuevo se retiene
+		. 3: Depende de la seguridad. Condicionales solo al ID de la vulnerabilidad
+		. 4: Metrica dora Lead Time y Tiempo de restauracion
+	}
+}
 
-. {
-	. {
-		. {
-			. 
-		}
-		. {
-			. 
-		}
-		. {
-			. 
-		}
+. CASO 2{
+	. 1: {
+		. Dependencias
+		. SAST: Credenciales
 	}
-	. {
-		. {
-			. 
+	. 3: Gate{
+		. Radiografia de la foto actual: 10 isues criticos
+		. Los que son identificados con nombre y apellido
+		
+		. 10 vs 10+1
+		. Detienes lo nuevo y registras lo viejo
+		
+		. Dia especifico: Se aprobo el pipeline y llego a produccion
+		. Tres semanas despues: El analista hizo sus pruebas de validaciones de las que se puede automatizar y las que no; el analista si vio vulnerabilidades
+		
+		. En produccion, estan las automatizadas
+		. ¿Porque el analista si encontro algo?{
+			. La biblioteca de vulnerabilidades entre produccion y la del analista no es la misma
+			. En el tiempo de 3 semanas, nace nuevas vulnerabilidades
 		}
-		. {
-			. 
-		}
-		. {
-			. 
-		}
+		. Siempre es la culpa del proceso
 	}
-	. {
-		. {
-			. 
-		}
-		. {
-			. 
-		}
-		. {
-			. 
-		}
+	. 4: Dora - Frecuencia de despliegue
+}
+
+. THE THREE WAYS OF DEVOPS PRACTICE{
+	. Flow and System Thinking
+	. Amplify Feedback Loops{
+		. Conversaciones eventuales cada vez que ocurre un prolema
+		. No hay una mejora continua
 	}
+	. Culture of continual experimentatioon & learning{
+		. Equipo que busca constantemente las mejoras incrementales
+	}
+}
+
+. QUE NOS LLEVAMOS{
+	. Que el pipeline salga bien no quiere decir que este bie
+	. Calidad y seguridad son diferentes
+	. Algunos controles se pueden implementar y otros no
+	. Que issues de seguridad priorizo; hay herramientas que te dicen cuales issues son explotables desde internet
 }
