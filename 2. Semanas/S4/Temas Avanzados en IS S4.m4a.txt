@@ -1,0 +1,445 @@
+# Temas Avanzados en IS 1
+
+  Meeting started: 11/9/2026, 9:21:25 p. m.
+  Duration: 121 minutes
+  Participants: Speaker, Speaker 1, Speaker 2
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/vAZivLHBwberUrUBIuYw?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: ¡Gracias! Bueno, vamos arrancando. Vamos a empezar con dar una mirada al laboratorio 1, para que también les siga como todos estén lineados.
+00:23 Speaker 2: Yo lo he estado revisando rápidamente
+00:25 Speaker 1: a grandes rasgos. Lo veo bien. Al inicio estaba preocupado, la verdad, pero ya muchas personas eran preocupadas y sé que se trajeron bastante
+00:36 Speaker 2: en la primera parte.
+00:39 Speaker 1: Hoy día seguimos con el capítulo 3, que es integración continua, la parte de seguridad. Bueno, vamos a meterlo lleno ahí. Espero que alcance el tiempo al final.
+00:50 Speaker 2: Estos conectados todos por Zoom para conectar
+00:52 Speaker 1: mis datos, que es donde son mis algunos proyectos, para mostrarles en la vida real, pipelines, cómo se ven. Más grande, más complejo. Pero bueno, para que lleguemos un cachito al final. Entonces, hoy día vamos a la revisión del app 2, empezamos
+01:08 Speaker 2: con eso.
+01:11 Speaker 1: Luego nos metemos a todo el tema de seguridad, cómo entra esto en la integración, así como calidad tiene un quality gate en seguridad, también aquel tiene un gate. Ahí tiene más variantes que la calidad que llevamos. Y bueno, al final es un caso
+01:27 Speaker 2: grupal para hacer eso. Entonces, en el vertebre 2 hablaban
+02:03 Speaker 1: de 4 defectos del pipeline, ¿no? El pipeline salía verde o no salía verde en el inicio. Si no,
+02:08 Speaker 2: estaba bien.
+02:09 Speaker 1: Pero en realidad cuando hacía un doble clic, había ciertas prácticas que no se estaban siguiendo de forma adecuada. ¿Alguno recuerda algunas prácticas que
+02:16 Speaker 2: no se seguían formando? ¿Qué
+02:21 Speaker 1: es ese archivo? ¿Qué
+02:24 Speaker 2: es lo que está mal ahí? El log tenía versiones fipas y el punto txt creo que tenía versiones mayores igual a tales.
+02:38 Speaker 1: ¿Qué pasaba con compilaciones futuras?
+02:41 Speaker 2: No iba a haber
+02:43 Speaker 1: explicabilidad. no haber una inmutabilidad del componente generado. Este es el primero.
+02:57 Speaker 2: Luego,
+02:58 Speaker 1: si hay un proyecto chiquito, el tema de instalación de librerías era segundos, pero igual no estaba manejando el tema de caché. Este no se nota tanto, pero hay proyectos cuando crece en un motor que puede tirar minutos descargando librerías, sobre todo los .NET.
+03:35 Speaker 2: Las versiones, creo que cada vez que actualizabas, siempre se mantenía el mismo nombre paquete. No había una versión de .x, .y, .z.
+03:46 Speaker 1: O sea, no se estaba versionando de forma semántica el resultado del panel. Es el último. ¿Y el otro?
+03:58 Speaker 2: No hay dependencia.
+04:01 Speaker 1: Publicaba sin importar la validación. No hay un check de la validación. Ese era el cuarto punto. ¿Qué tiene que ver con el quality gate? Entonces, respecto, hay un tema de evaluar las duraciones. Al inicio ustedes corrieron el panel varias veces y vieron cuánto duraba. Y después, cuando abarraron con los comentarios, oye, ahora es más lento el panel. ¿Por qué creen que ahora es más lento el panel? ¿Y es necesario que sea secuencial? Sí. Exactamente. Esos son los que tenemos con los trade-off. Es como el tira y afloja de, oye, no puedo ser más rápido, inseguro y sin calidad. Y tampoco puedo ser más lento y verificar todo. Entonces, es como buscar el punto intermedio de ver qué cosas amarramos y qué cosas no amarramos. Entonces, eso viene un poco con cómo se va comportando esa parte del tiempo. Entonces,
+05:13 Speaker 2: pero,
+05:13 Speaker 1: si daban doble clic. En una vez que implementaron la caché, se daba un doble clic en el stage que tenía la instalación de librerías, y lo comparaban con el mismo stage de instalación de librerías
+05:23 Speaker 2: sin caché,
+05:25 Speaker 1: íbamos a ver que había una mejora en ese punto, en ese punto del dispositivo.
+05:31 Speaker 2: Para que
+05:34 Speaker 1: lo tengan ahí claro. Y lo otro que veíamos acá es, acá estamos evaluando todavía la parte de... con integración continua, ¿cierto? Todavía no íbamos al despliegue. Por ahí publicamos el artefacto, pero no estamos desplegando el artefacto todavía. Entonces, ahí les traje los términos de, y más o menos las métricas Dora, ¿se acuerdan las métricas Dora?
+06:02 Speaker 2: La tasa de cambio, la tasa de errores, tiempo
+06:11 Speaker 1: de recuperación
+06:12 Speaker 2: y
+06:14 Speaker 1: el lead time. De esos cuatro, la frecuencia de despliegue, la tasa de cambio con error, el lead time y el tiempo de recuperación. cuál de los cuatro podemos mejorar o impactar con los temas de CI Pero todos son los que sí podemos, ¿no? Porque la tasa de despliegue, si no hay despliegue, no podemos saberlo. Todos no tenemos el despliegue todavía. Y la tasa de recuperación, el meta into recovery, yo diría, sí y no. ¿Por qué? Imagínense lo siguiente. Hicimos un cambio y generamos un problema de producción. Desde ese momento hay que solucionar ese problema. Y ese proceso de solución pasa por el CI. Entonces, si mejoramos ese CI, para poder ayudar a solucionar el problema, sí ayudaríamos a mejorar el mitad de intercordio. Pero no siempre, porque simplemente es simplemente eso, y despliega la versión anterior. Pues ya no pasa por CI. O es un tema de infra, de chale, solucionar tal cosita. Sí y no. Debe ser más como tanto, los otros sí.
+07:44 Speaker 2: Son más... más únicos.
+07:54 Speaker 1: Eso, no sé si le queda alguna duda, pregunta.
+07:59 Speaker 2: ¿Perdad? No. Ok.
+08:06 Speaker 1: Entonces, en ese laboratorio pudimos ver análisis de calidad, ¿cierto? ¿Qué cosa no pudimos ver? Si es que alguno tenía un componente con una vulnerabilidad conocida, ¿no? Eso es algo que no lo pudimos validar. El balance es el de verde, no está validando nada de eso. Si alguno por ahí había subido una credencial al repositorio, también no nos damos cuenta. Ni nada que lo revisar ni lo saber dar. Si por ahí hay algún patrón en el código que tiene alguna vulnerabilidad y eso se puede explotar. Eso tampoco salió. Y lo último, que es ¿qué nos garantiza que ese paquete que se generó al final y se publicó es exactamente el que queremos? Y tenemos inventariado los componentes cambian Howden. Qué librerías, qué versiones están subiendo ahí. Eso es un poco lo que viene ahora en esta parte del proceso. Entonces... Ahora, imaginemos que tenemos un... Ya sabemos que tenemos un hallazgo en el código. Imaginemos que eso nos dimos cuenta justo cuando íbamos a hacer el commit. ¿Quién corregirá eso? ¿Te diste cuenta que la idea que estás usando tiene una vulnerabilidad en la versión actual? ¿Quién podría corregirlo? ¿En manos de quién estás?
+09:56 Speaker 2: De tú
+09:57 Speaker 1: mismo, ¿no? Que estás haciendo cambios. Entonces, la velocidad en hacerlo, el costo de hacerlo, es
+10:02 Speaker 2: bajo.
+10:04 Speaker 1: Imagínate que lanzaste el commit, ya mandaste el pull request, ya lo está revisando alguien más para poder hacer el merge. Y él se da cuenta ahí. Él lo rebota y te dice, oye,
+10:18 Speaker 2: tienes que solucionarlo.
+10:19 Speaker 1: Pero tú ya estás viendo otra funcionalidad. Dices, ya, en un rato lo veo. Entonces ahí empieza a ver una cola. una demora de eso se queda ahí y empieza a ser un poco más larga la atención y más costoso porque tú te desenfocas nuevamente y tienes que volver a ver eso y solucionar. Imagínate al que revisó el pull request, en un momento tampoco lo vio y aprobó el pull request. aprobó el pull request y eso siguió el proceso pero en el proceso teníamos la validación justo antes de publicar el artefacto pero esto imaginemos un equipo grande donde este acá era un equipo de 5 personas que desarrollaron esto se lo pasaron al otro equipo grande de 20 para integrar el código de todos y se dieron cuenta justo al final entonces rebota otra vez hacia abajo y el costo de esfuerzo y de tiempo que que toma es mayor. Y la peor de todas es que
+11:17 Speaker 2: pasa en producción.
+11:19 Speaker 1: ¿Alguno ha tenido alguna experiencia con alguna vulnerabilidad en producción? No que hayan puesto, que hayan visto. Muy
+11:29 Speaker 2: bueno, gracias.
+11:41 Speaker 1: ¿Ustedes algunos vivió los
+11:45 Speaker 2: ransomware?
+11:51 Speaker 1: ¿Les suena a lo que es el ransomware? ¿Qué es el ransomware?
+12:10 Speaker 2: El autor tuvo un ataque
+12:11 Speaker 1: de ransomware a una vez subliné en Google. ¿Y qué hicieron? Yo estaba en una empresa justo cuando el tema del ransomware... No,
+12:23 Speaker 2: no, salí antes de saber cómo terminó todo.
+12:25 Speaker 1: Pero sí me acuerdo que les solicitaban dinero. Un poco más allá del impacto. Este ejemplo puntual es como bien catastrófico y no es de una aplicación que la empresa ha desarrollado. Porque esto ya tiene que ver con procesos, con que la persona no descargue el video de mire gatito que salta del techo o una cosa así. Que te da el correo y por curioso lo quieres ver. Tiene que ver eso más con políticas. Pero ese tema del rango, ¿no? Total impacto. que muchas empresas a todos nos dijeron apaguen sus computadoras no sabemos cuáles están infectadas y cuáles no van sobre sus casas y más tarde les avisamos y vuelven o no claro, todos los que no eran TI lo que eramos TI era ¿qué hacemos para solucionarlo? tú me lo veías a mí, yo era arquitecto y estaba corriendo por USB del equipo de operación y seguridad a toda la máquina para ayudar a a poner un parche, era un parche de Windows me acuerdo lo que había que poner Pero es el impacto, paraliza a una empresa.
+13:32 Speaker 2: Y
+13:33 Speaker 1: cuando la empresa, digamos, es la culpa, o sea, imagínense, no sé, sale un despliegue de una aplicación de la banca por internet, un banco, y por error alguien deja una puerta, un backboard. plantear directo sin login. Algún
+13:52 Speaker 2: DNI que no te quede login. Lo dejaron
+13:55 Speaker 1: para pruebas y se les quedó. Este tipo de cosas son así, pero pueden generar un impacto muy grande. Entonces, este no es solamente corregir el problema. El impacto es mucho mayor. Entonces, estas casuísticas que les sigo contando desde en qué momento se identifica el hallazgo, ¿cómo lo llamarían en el Valuzing Martin que vimos en la organización? En el verso de mapping vimos que generaban ciertas problemáticas. ¿Qué nombre le pondría a esas
+14:45 Speaker 2: problemáticas?
+14:47 Speaker 1: ¿Qué era lo que decía que el verso de mapping se fuera más largo? Ah, el tiempo
+14:52 Speaker 2: de espera, ¿no? El tiempo de espera.
+14:54 Speaker 1: Entonces, mientras más a la derecha generes el rayazgo, el tiempo de espera va a ser mayor y va a afectar más a tu verso de mapping. Entonces, adelantar ese control o esa validación finalmente va a ser una decisión de costo. Es un beneficio para la empresa. Entonces, ya, genial. Sabemos que tenemos que implementar controles de seguridad de nuestro país. Pero ahora, ¿qué controles de seguridad han escuchado por ahí que son necesarios en las aplicaciones, en el proceso de desarrollo? Uno de los más conocidos, pero les suena. Estreo de seguridad, valesión de seguridad, son nombres. Pero el más popular para mí es el ethical hacking. ¿Les suena el ethical hacking? La Lídica Senging es como el más... es una mezcla entre funcional y técnico, porque la persona, o sea, no solamente es una herramienta que la conectas y ya, sino que defines los trucos, entiendes el proceso, y en base a eso ves que es posible esta cística, podrías probar y validar.
+16:09 Speaker 2: Eso es de 1002, también hay controles. Hay controles, que cumplir. También el Mitre Atar. Mitre Atar, dale.
+16:25 Speaker 1: Bueno, hay una serie de pruebas como esas. Hay otras que son, tal vez, un poquito más... No tanto en el producto, sino más en los ingredientes del producto. Como por ejemplo, esa librería que vas a usar de JSON. Para que tu certificación entienda por qué es JSON. ¿Tiene vulnerabilidades? ¿No tiene vulnerabilidades? ¿Está usando solo la última versión que no tiene vulnerabilidades o no? Entonces, esas otras baby steps, como steps previos más chiquitos, también tienen ciertos pasos de valencia de seguridad que hay que chequear y liquidar. Entonces, la idea para que esos controles funcionen, primero que tiene que ser rápido. Si estás metiendo un control en el proceso de desarrollo del desarrollador del día a día, que se demora... muchos minutos en correr, el desarrollador le va a sacar la vuelta.
+17:21 Speaker 2: O
+17:21 Speaker 1: va a evitar subir código. Si evita subir código y se acumula mucho código,
+17:28 Speaker 2: finalmente se
+17:29 Speaker 1: que la cola se manda. Entonces, tenemos que hacer que ese proceso sea rápido. Entonces, eso va a ayudarnos a ver en qué parte del proceso ponemos ese control. Tiene que ser determinista, tiene que ser blanco o negro. No puede ser como, a veces es gris y mañana es verde. No,
+17:48 Speaker 2: tiene que ser el
+17:49 Speaker 1: mismo resultado. Y el otro punto importante también es que tiene que ser aportable al cambio. Ustedes ayer cuando hicieron un laboratorio, hicieron una prueba de subir código sin pruebas sanitarias. Y ahí vieron cómo el resultado desavaluaba el new code versus el overall code. ¿Y quién puede contar cuál es la diferencia entre el overall code y el new code en evaluación de calidad?
+18:22 Speaker 2: Yo recuerdo que decía que no se evaluó el mismo código, porque el ordenador también incluía el código de legado, que si se podía evaluar todo eso, entonces como que iba a ser imposible, que todo iba a ser error, básicamente, y no tendría que corregir muchas cosas, entonces el ordenador era más para que desde ese punto empezara a conseguir el ordenador.
+18:46 Speaker 1: Exacto, el ordenador es evaluar todo el riesgo. El new code es evaluar el pull request, el
+18:52 Speaker 2: cambio que estamos dando en ese momento.
+18:54 Speaker 1: Es importante saber la foto del order para ver cuál es la radiografía de la situación real de toda tu aplicación. Pero cuando tienes una aplicación, como dices, legada, o sea que tiene un isoreal largo y ya tiene muchos componentes implementados. y que no han hecho pruebas de validación de calidad antes, seguro te va a salir un backlog de cosas por hacer gigante. Entonces, es importante que la herramienta que corramos acá de seguridad, podamos identificar el delta, los adicionales, versus lo que ya estaba, para enfocarnos en lo nuevo. Seguramente vamos a tener que reparar lo antiguo, pero esto lo iremos haciendo a poco. Pero lo que sí queríamos hacer es, oye, hasta acá nomás, cerramos el caño. Ya no entra ni una sola vulnerabilidad más. Anotamos ahorita, ¿cuántas hay? 60, listo. 60. No más, ya no entra más. Entonces, cuando volvemos a correr, si entró 61, hoy es adicional, ¿cuál es? Es esta. No puede pasar. Tienes que solucionarlas y no lo pasamos. Y el último punto, para esta etapa donde estamos en la integración continua, es que la validación no debe pedirnos que ya esté desplegado el cambio. ¿Existe un programa de seguridad cuando el cambio está desplegado?
+20:15 Speaker 2: Sí, lo contaba el ethical hacking, por ejemplo.
+20:18 Speaker 1: Hay otro que veremos más adelante que se llama el... El DAST, que es el análisis de seguridad dinámico. Esto lo que hace es una herramienta súper inteligente y potente, que así se conecta. En la primera clase preguntaba por Selenium, que es automatizar pruebas. Entonces tú le pasas tu Selenium en esta herramienta de seguridad y él hace una, sobre eso, monta... Pruebas de seguridad, automatizadas. Pero ya a nivel de UI intentando inyectar cosas que... Trata de romper tu aplicación. Eso es lo que hace la dinámica. Pero esa requiere que tu aplicación ya esté corriendo en un cerro. Entonces, eso no es parte de la parte SI todavía. Entonces, esa es nuestra condición para los controles que podemos implementar ahora. Entonces, recapitulando. Uno es que sea rápido. Que sea terminista. Que dé el mismo resultado siempre. Que podamos identificar cuál es el meta del cambio que se está haciendo en este momento de la aplicación y evaluarlo sobre eso. Y que no necesitemos que la aplicación esté en un ambiente para poder hacer esa validación. Para poder validar librerías,
+21:39 Speaker 2: ¿les suena que tiene que estar desplegado o no?
+22:09 Speaker 1: Entonces, ¿cuáles son los cuatro que vamos a ver en este proceso? Está, detección de secretos. ¿Alguno ha visto algún control de este tipo antes? Que se desarrollando y por error suben un secreto que no debieron, como el password de la base de datos, y te rechazan y te digan, no, no puedes subirlo. Existen controles en el pipeline que te revisan y no te dejan subir. Entonces, ese es un punto. Si tiene secretos o no tiene secretos. Aquí sí hay un tema. Porque todavía las herramientas que identifican los secretos no están tan maduras respecto a... Si tú le pones un password o el password, te va a decir, oye, hay un password. Pero no realmente es el password. Entonces, ahí ya tiene que tener un ojo humano a decir, no, ¿sabes qué? Falso positivo. El segundo es análisis de composición. ¿Es composición de qué? De las librerías. Oye, mi implicación necesita varias librerías para funcionar. No solamente hay que identificar vulnerabilidades de mi código, sino también vulnerabilidades de los componentes que necesita mi código como reto. Todo el árbol de las dependencias. ¿Cómo lo hace? Todas las librerías normalmente son públicas. Todas las librerías que usamos normalmente son públicas. Las bases. Entonces, estas librerías públicas existen bases de conocimiento de vulnerabilidades. Y lo que hace esto es lo compara con esto. Y te dice, oye, la versión del JDK que estás usando ahorita tiene tales vulnerabilidades. Te recomiendo que vayas a poner a la versión tal que ya lo tienes solucionado. Eso es lo que hace el análisis de composición. El análisis estático de seguridad es muy parecido a lo que vimos en Zona cuando veíamos potenciales issues de calidad. El y-true que les decía, si conoces un y-true, Zona te lo va a identificar y te va a decir, oye, acá tienes un problema de calidad. El análisis estático de seguridad apunta a
+24:48 Speaker 2: hallazgos
+24:50 Speaker 1: de seguridad de antipódico. Lo menciono, pero con muchos huecos y lagunas mentales de cómo era cuando declaras las clases. Y pones una pública cuando no necesariamente las clases deberían ser públicas. Según el aspecto donde lo estás colocando, esto acá está alerta y te dice, oye, por si acaso tal clase la funciona pública, pero no debería estar ahí, no debería ser pública. Podría ser accesible y explotada de esta manera. Y el último que tiene que ver con
+25:26 Speaker 2: lo
+25:27 Speaker 1: que es infraestructura y configuración. Les contaba una herramienta que se llama Checo. El mundo es muy bueno para esas cosas. Es libre. Y lo que hace es evalúa que infraestructura es un código y que da potenciales vulnerabilidades que va a tener infraestructura. Oye, en Tuvaque,
+25:46 Speaker 2: lo has puesto público.
+25:47 Speaker 1: Es el temorismo ideal.
+25:49 Speaker 2: o
+25:50 Speaker 1: en Topic Gateway no le has puesto el Right Limit y te podrían hacer un ataque de inyectar un montón de transacciones. Este tipo de cosas necesitan
+26:02 Speaker 2: algo.
+26:06 Speaker 1: ¿Has tenido alguna pregunta con los cuatro? Un último punto que ya lo mencioné antes es que el
+26:18 Speaker 2: análisis dinámico no va a estar porque necesita
+26:21 Speaker 1: que la obligación esté estudiada. Entonces vamos a ir viendo uno por uno. El tema de secretos realmente es... Hay muchas herramientas free y es muy fácil de implementar. El tema es una vez que informamos los secretos, ¿qué hacemos? ¿Qué creen que haríamos si una vez que identificamos que hay un secreto que a mí ya lo puso y ya subió al red?
+26:45 Speaker 2: ¿Qué queríamos hacer?
+26:48 Speaker 1: Crear otro secreto. Crear otro secreto. ¿A qué te lo quieres? O sea, generar otro token.
+26:56 Speaker 2: O sea, como rotarlo.
+26:58 Speaker 1: Es el primer punto. ¿Por qué? Porque una vez que ya subió, tenemos que asumir que eso ya fue puesto. Pasó a mí una vez, en una empresa donde estuve, que una web, no fue repositorio de fuentes, sino fue que... un archivo environment se había publicado junto con la web y cualquiera entraba a la URL del archivo E y lo podía ver. Entonces, cuando seguridad detectó esto, nos pasó la voz y era una empa, así. Había que rotar el kirchner, así que el kirchner se fue dando el págora, quedaba el págora. Fue una chamba larga. Son de esas que no quieres hacer porque no son nada de ocio. No son interesantes, son tontas, pero bueno, hay que hacerlo igual. Pero ese es el primer punto. No solamente el borrarla, sino también rotarla. Y también tengan en cuenta que como hay un historial de Git, se va a quedar por ahí también. También esta herramienta lo que hace es no solamente evalúa el new code, esta herramienta también revisa el historial. Revisamos para ver si en algún punto hay algún tipo de estos vulnerabilidades de mostrar secreto. Se tiene que asignar un dueño inmediato, justo lo que les decía, una vez que pasó esto, que se detectó este tema y que estaban publicadas credenciales. de una emergencia, con los principales líderes, y oye, esto lo cerramos hoy. No sé si les ha tocado, pero a mí me ha tocado un par de veces, una parriada, un milato, y todos ahí parriando, y yo tratando de matar el problema. A veces pasa, y justo ese día fue eso,
+28:59 Speaker 2: que se
+29:00 Speaker 1: había detectado una vulnerabilidad y teníamos que rotar las credenciales urgentemente. Y último punto, ¿por qué creen que se suben secretos? ¿Cuál creen que es el motivo por el cual se suben secretos?
+29:18 Speaker 2: No saben configurar el documento que está utilizando, y Dignore tiene que verlo. No existe Dignore, no lo pone.
+29:27 Speaker 1: ¿Desconocimiento? Sí. ¿Cree que alguien lo hace Adriel?
+29:37 Speaker 2: Puede ser. Puede
+29:38 Speaker 1: ser.
+29:41 Speaker 2: No va de testigo o
+29:43 Speaker 1: de conocimiento. Uy, se me pasó esto ahí. Para curado. Ahora más, que ustedes pulsamos de ahí, es next, next, next, ¿así todo por mí? Puede pasar más sesión. Y acá es un punto muy importante, y
+30:02 Speaker 2: me
+30:02 Speaker 1: traslado nuevamente a las primeras clases que vimos. ¿Se acuerdan del pilar de cultura?
+30:10 Speaker 2: ¿Del CAMS?
+30:14 Speaker 1: Ahí hablaban del tema de si hay un problema,
+30:18 Speaker 2: o
+30:20 Speaker 1: sea, si ocurre un problema en el proceso de desarrollo, por alguien que metió la pata, de quién es el culpable. La persona, la herramienta, el proceso, el
+30:33 Speaker 2: proceso. El proceso,
+30:35 Speaker 1: algún hueco tiene que no ha podido cubrir esa metida de paja. La experiencia importante de eso, que es el proceso por el cual se están inyectando los secretos. Lo resto no es un poquito más, no lo hemos capacitado suficiente, no está claro, no funciona para todos los casos. Algo está pasando de que hizo de que esa persona metiera el secreto por otro lado. Entonces ahora vamos al árbol de dependencias, que es justo esta araña de todas las librerías que estamos subiendo. Ya vimos el archivo de bloqueo,
+31:10 Speaker 2: que es el
+31:11 Speaker 1: que tiene las versiones exactas de las librerías que vamos a usar. Esto lo necesitamos sí o sí, porque si no, no sabemos a qué librerías le buscamos
+31:20 Speaker 2: vulnerabilidades.
+31:30 Speaker 1: ¿Ustedes se acuerdan? Una cosa es la librería que ustedes instalan y la otra es la que esa librería necesita por detrás. Entonces la mayoría de vulnerabilidades salen por esas otras librerías transitivas, que son como las que se heredan por detrás. Y a veces también son las más difíciles de corregir. Una de las cosas que hablamos una vez en DevOps fue... Justo eso. Me estoy adelantando bastantes cosas. Espero que me puedan seguir. ¿Todos estamos familiarizando más o menos con los dopers? La imagen docker lo que hace es te empaqueta una serie de librerías de sistema operativo y algo más para que luego tú corras solamente la aplicación ahí y ya está lista para poder ejecutarse. Pero esta docker tiene una imagen base. Así como tu laptop tiene un sistema operativo Windows, no sé cuál es Trans. La imagen del Docker también. Tiene una versión, cualquier cosa,
+32:40 Speaker 2: un Engine Ends.
+32:43 Speaker 1: La versión no la tengo de la mano, pero uno, tres, cuatro, por ejemplo. Entonces, en esa empresa nosotros homologamos que todos los microservicios que teníamos desplegados tuvieran la misma imagen base.
+32:56 Speaker 2: Chega.
+32:58 Speaker 1: Pero ¿qué pasa? En el mundo salen vulnerabilidades día a día. No es como, si tu imagen ahora tiene vulnerabilidad, no quiere decir que en dos horas no se tiene vulnerabilidad. Entonces, nosotros escaneábamos de forma recurrente, diaria. ¿Por qué? Porque nuestro pylon bloqueaba sin notar vulnerabilidades. La idea era nosotros enterarnos. Antes de que tú hicieras un cambio de publicación pasado mañana y el pylon se caiga, era yo darme cuenta que esa imagen base que yo te había dicho que está buena y que la uses, yo darme cuenta antes de que tenía algo. y a ver si me he dado cuenta que tenía algo pero no podía hacer nada porque es una imagen de la comunidad y tengo que esperar que la comunidad ponga el fix para poder hacer el upgrade de la imagen base y ya tener una nueva versión estable y segura entonces eso es nuevamente el pro y contra el trade-off de uso de librerías Pero cuando ya estoy en la última versión estable y sale un back, una vulnerabilidad sobre esa, no me queda otra que esperar a que salga el fix. Hay decisiones que se toman que dices, oye, no, sabes que el riesgo es tan grande que chau, lo bajas. Es raro, pero puede pasar también. Entonces, justo yo por ese punto, no se corrige solamente como lo vulnerable, sino lo que genera, lo que va a pasar. Y ahí básicamente es subir la dependencia y si no, tienen que esperar o desactivar el artefacto.
+34:43 Speaker 2: lo
+34:46 Speaker 1: primero es que usamos Hay varias formas. La más segura, pero cara, es pagar tu soporte de Red Hat, para que Red Hat te dé el soporte de las imágenes base. ¿Cuánto cuesta? Yo justo les toqué la puerta y les condicé. ¿Qué pasa en este caso en especial? Ellos eso lo van a hacer, o sea, ellos como negocio, ese no es su negocio. Su negocio es, en ese caso Red Hat estaba junto con IBM y estaban vendiendo clases de Kubernetes, licenciamiento de Kubernetes o premios. Nosotros son Kubernetes de la nube, no nos importaba eso. Pero él te decía, la única forma que yo le doy soporte de imágenes jardonizadas, se dice como imágenes muy seguras y de loca, es que tú me pagas mi licencia de Kubernetes. Entonces no tenía ningún sentido, yo paro de licencia
+35:45 Speaker 2: de Kubernetes solamente para que me dé.
+35:47 Speaker 1: No voy a usar tu cogerente, solamente para que me des imágenes de docker. O sea, eran 100k al año, 80k al año, 200 dólares. Era una locura, no tenía sentido. Ese es como el camino ideal.
+36:08 Speaker 2: Los otros,
+36:09 Speaker 1: cuando no tienen ese presupuesto y también no hace mucho sentido por cómo se ponen las figuras, es... implementar estas herramientas, que te van alertando y te van mostrando qué cosas. Y la otra, que también la misma vez pasada, es yo no dejo que tu aplicación se vaya de nuevo a traer librerías. Yo te pongo un repositorio intermedio, próximo, que es que tenga un eyewitness de librerías permitidas. Con eso, un poco omitivo, esa potencial de que traiga cualquier librería. Esas son bolas. Y hay un concepto que... Me costó entender y aceptar, sobre todo aceptar, más que entender, que es lo que llaman la seguridad por capas. Uno puede implementar todos los controles en un solo punto. Siempre hay, puede ser lo más tonto, ¿verdad? La aplicación tiene que tener un login. Es una primera capa. Y esa aplicación está desplegada en una infraestructura, que no está en una laptop que puede acceder a cualquiera. Es otra capa. Y esta laptop tiene un individuo. Es otra copa más de seguridad. La seguridad está en diferentes niveles y tapas. Cada uno es complementario. Y la idea es que si se salta uno, hay otro más abajo que te cuida y que no llegue el trabajo. Juega un poco todo eso para lo que tú vayas.
+37:28 Speaker 2: No es solamente una cosa. Bueno, me estoy acordando ahorita de cuando me dijiste
+37:38 Speaker 1: seguros y que en seguros la data como que es muy bien cuidada, sí, me acordé de banca que estuve antes y
+37:45 Speaker 2: dije, bueno, banca tiene que ser más,
+37:47 Speaker 1: ¿no? Lo que pasa es que yo estaba en un banco que era bien particular, un banco que operaba como, yo siempre decía que era un banco que operaba como consultora, o sea, dependía mucho de las personas, era una persona y se moría el know-how que quedaba ahí. Era el banco que tenía más tarjetas de crédito. En ese momento, competíamos con Interbank, el que tenía más tarjetas de crédito. El banco Faradero, ¿cuánto tiempo que ya no se le hizo? El banco
+38:12 Speaker 2: Faradero hace 5 años.
+38:15 Speaker 1: En esa época, ¿habían cada vulnerabilidad?
+38:20 Speaker 2: Bueno,
+38:21 Speaker 1: en esa época, fue hace tanto tiempo que ya era más difícil explotarlas porque menos personas las conocían y no era tan accesible. Me
+38:33 Speaker 2: vienen a la cabeza
+38:34 Speaker 1: los hallazgos que tuve en un momento. Y el último punto, antes que le empiece a adeverar todas
+38:47 Speaker 2: las cosas,
+38:50 Speaker 1: que eso también te permite tener todo el inventario de artefactos que usa tu aplicación. Eso es sumamente valioso. Y no solo eso. Ahora te vas a hacer una herramienta que se llama SEMI. ¿Cómo lo puedes ver? Tu ven DC Tracker. Que también es libre, pero lo tienes que instalar. No viene como un SaaS. Bueno, la versión SaaS sí es paga, pero tú lo puedes instalar en tu máquina, así que vamos a hacerlo. Digamos que cada uno de ustedes tiene una aplicación.
+39:17 Speaker 2: Por alguna
+39:19 Speaker 1: razón, los cuatro usan la misma librería. Entonces, vamos a sacarme un árbol de que tú puedes ver quiénes usan esta librería.
+39:26 Speaker 2: Entonces,
+39:28 Speaker 1: sacarme un árbol de que tú puedes ver de tu aplicación, qué librerías tiene y qué vulnerabilidad exponente tiene, como también al revés. Voy a decirle a las librerías, ver qué vulnerabilidades tiene y qué aplicaciones están impactadas por eso. Tienen las dos pistas. Entonces también te ayuda mucho a tener un mejor gobierno y control de todo eso. ¿A alguno le ha tocado ver cómo se ve una vulnerabilidad? ¿Qué datos tienen en esta fase de conocimiento de la vulnerabilidad?
+40:42 Speaker: Gracias. Esta es una herramienta que se llama Dependency Tracker. Yo acá tengo un pipeline que está conectado a esta herramienta del código de la aplicación que reporta acá todas las unidades de estas aplicaciones.
+41:29 Speaker 1: Porque esta herramienta, al ser una herramienta que tiene vulnerabilidades, no se expuesta a internet, está en red privada. Acá está cada uno de los componentes, cada uno de estos es como un microservicio, o por ahí un cronet, son componentes de aplicaciones. Y cada uno, acá a la derecha,
+41:58 Speaker 2: acá a
+42:01 Speaker 1: la derecha pueden ver que dice cuántas vulnerabilidades tienen. Y en este caso es Dependency Tracker, tal cual como suena, son de las dependencias.
+42:22 Speaker 2: Lo que hace es
+42:28 Speaker 1: agarra las librerías, de qué versión es, y mira el Knowledge Base, las principales bases de conocimiento publicadas, de las vulnerabilidades conocidas de esas librerías. Justo le había comentado antes de que esto corra. Hay dos momentos del análisis, ¿no? El análisis del pipeline del momento. Y las otras que son programadas, depende de tu negocio, de tu dinamismo, que sea diario, semanal. Entonces acá están, por ejemplo, las librerías que consumes. ¿Qué versión es? Bueno, el tipo de librería también, ¿no? No, porque el afán es un visor nada más. Este es un motor. Este se podría decir que es el Sonar Cloud, o el Sonar Cube,
+43:25 Speaker 2: de dependencias.
+43:27 Speaker 1: De dependencias de abrigo. ¿Esto
+43:30 Speaker 2: corre, te parece que no toca la costa? O sea, ¿corre, te parece que no toca la costa? O sea, ¿corre, te parece que no toca la costa? O sea, ¿corre, te parece que no toca la costa? O sea, ¿corre, te parece que no toca la costa? O sea, ¿corre, te parece que no toca la costa? O sea, ¿corre, te parece que no toca la costa? O sea, ¿corre, te parece que no toca la costa? O sea,
+43:37 Speaker 1: ¿corre, te parece que no toca la costa? O sea, ¿corre, te parece que no toca la costa? Entonces, está el árbol
+43:57 Speaker 2: de todas las dependencias y
+43:59 Speaker 1: cómo cada una se va expandiendo el árbol de las dependencias. Eso es lo que quería mostrarles. Cuando hay una vulnerabilidad, se catalogan con códigos. Si vamos a estudiar esto, vamos a ver los CDs. Este es el código mundial, digamos, que le asigna esa vulnerabilidad. Y eso le da
+44:33 Speaker 2: un score. El
+44:38 Speaker 1: score es qué tan riesgosa es esta vulnerabilidad.
+44:47 Speaker 2: La fuerza te explica de
+44:49 Speaker 1: qué trata, a veces también te dice incluso cómo explotarla, cómo solucionarla. Dependiendo del tipo de vulnerabilidad hay más o menos información.
+45:02 Speaker 2: Entonces,
+45:03 Speaker 1: lo que quiero que se queden ahí es
+45:05 Speaker 2: con
+45:06 Speaker 1: que existen vulnerabilidades. con esa severidad declarada. Ese es el CBE y ese score que le pone la comunidad según la naturaleza de esa vulnerabilidad. Entonces esa es la puntuación que viene por defecto. ¿Qué quiere decir? Que mi pipeline ya lo va a tener. Ya va a saber qué es. Y no sé si vieron que también ya era catalogada como High, Medium, Low o
+45:31 Speaker 2: Critical también.
+45:33 Speaker 1: El otro punto es la alcanzabilidad. ¿Qué quiere decir? Ok, esta es una vulnerabilidad que tiene la librería de la librería. Pero ese lugar donde está, yo no lo uso. En mi aplicación no tiene una forma de llegar ahí. Si alguien realmente quisiera explotar ese camino, tendría que hacer varios pasos más. No solamente como invoca tal parte de mi aplicación y ya por ende se explota esa vulnerabilidad, sino que tendrían que inyectar un código en mi aplicación que invoque esa vulnerabilidad en la librería y ahí recién invitaría. Llegar a alcanzar esa vulnerabilidad es más complejo.
+46:17 Speaker 2: Pero
+46:17 Speaker 1: el poder determinar eso no es tan sencillo así como lo explica, ¿no? O sea, hay que entenderla, revisarla y explicarla. Eso ahorita todavía depende de personas. No sé si hay alguna herramienta que ella lo hace, simplemente personas. Y hasta incluso no es 100% concluyente, ¿no? Hay un criterio ahí que decir sí y no. Porque yo les he dicho como el camino más fácil, pero hay unos que están medio en el limbo de ver si es explotable o no. El otro es qué tan fácil, qué tan expuesto está. O sea, qué tan fácil es llegar a él. ¿Está expuesto a internet? Lo que le habla de seguridad por capas. No, no, se tiene que saltar el firewall sin poder explotar esta vulnerabilidad. Y el último, que es, oye, ¿ya existe una corrección de esto? ¿Se simplemente mueve la diversión y está? ¿O no? Entonces, no solo nos tenemos que guiar de la severidad declarada. Tenemos que ver el resto de criterios para determinar qué hago con esa vulnerabilidad. Si la ataco de una vez, si la soluciono, o no, todavía no. Ahí va a haber un poco la priorización de que por dónde vamos.
+47:38 Speaker 2: ¿Alguna pregunta ahí?
+47:47 Speaker 1: ¿Por qué tenemos dos gates? Una autoridad y una de seguridad.
+47:52 Speaker 2: ¿Ustedes son? ¿No puede ser nosotros? Gracias por ver el video.
+48:29 Speaker 1: Eso no es el mismo.
+48:30 Speaker 2: Se va por otro lado. Ok.
+48:33 Speaker 1: ¿Es lo mismo o estamos pensando más como si hablamos de seguridad y seguridad? La calidad me dice, ¿está bien consumido o no? Mientras que seguro me dice, ¿lo puedo explotar? La calidad revisa el cambio en sí de código, la seguridad revisa el cambio y las dependencias. Lo que hablaba antes del falso positivo. ¿Qué pasa si en calidad encuentro un falso positivo? Y no los manejo de todo bien y se acumulan muchos. Ya el equipo de desarrollo dice, bueno, ese es ruido y lo ignoro. En seguridad, si es que tengo un falso positivo, eso genera mucho ruido. Y cuando empiezo a ignorar, por ahí ignoro uno que realmente sí valía la pena revisar o si era válido. Ese es el riesgo de tener muchos falsos positivos acá. Y es un reto de las herramientas de seguridad. Las herramientas de seguridad son de las más caras en implementar en este proceso. Las análisis de código estático, como Fortify... Por si fue uno de los más grandes y los primeros a implementar esto, y los grandes bancos acá la usaron, al inicio tuvieron muchos problemas con eso, muchos falsos positivos. Tenía todo un equipo revisando una corona diciendo no, esto no hay problema, no le das caso. Y estaba dando alerta. Pero creo que peor que el falso positivo es el falso negativo. El falso negativo en calidad es una deuda técnica que no detecté y se acumuló. En seguridad, es un incidente con una exposición en producción. ¿Quién autoriza una excepción de calidad? Normalmente el equipo de desarrollo, el líder técnico. Mientras que en seguridad, lo ideal sería que después el equipo responde por riesgo, seguramente el equipo de seguridad. Pero normalmente el que autoriza la excepción es seguridad. ¿Es posible tener
+51:09 Speaker 2: el ratio de la incidencia de falsos negativos y sea siempre 0? ¿Es posible?
+51:19 Speaker 1: Para que tengamos una idea, ¿cómo nos enteramos de un falso negativo?
+51:25 Speaker 2: Tengo
+51:26 Speaker 1: un ejemplo. Esta es la manera que les mostraba. Cuando tú la instalas, tu librería de vulnerabilidad está vacía. Tú tienes que definir cuáles van a ser las bibliotecas de librerías que vas a usar. Entonces, si yo no las declaro completas, no voy a tener el abanico de una biblioteca completa de mi herramienta. Cuando veo una librería que sí lo tiene, en ciertas bibliotecas públicas, ahí me va a salir un falso negativo. Entonces, esa es una que se me ocurre. La otra que podría ser un falso negativo es... Lo que desayamos hace un rato, ¿no? Evalué la aplicación antes de ayer y no me sirvió nada porque realmente no había nada. Pero ayer descubrieron la vulnerabilidad y la publicaron. Y si yo lo corro hoy, ahora sí sale. Pero yo le llevo la opción. No sé si esa es la otra. Pero esa es cómo te la juegas. La idea está tratando de llevarlo a cero, pero va a
+52:32 Speaker 2: ser difícil ser 100%.
+52:45 Speaker 1: Antes de ir a ver este diseño del gate de seguridad, volvamos a hablar. Esta empresa es una empresa que tenía todo el marco de DevOps muy, muy incipiente, muy inicial. Entonces, ¿qué era su proceso inicial? Tenía un rama de Iberlox, rama Cuba. No había ningún tipo de pipeline para develop,
+53:35 Speaker 2: y después siempre hacían manual.
+53:37 Speaker 1: Y para Cuba sí tenía un pipeline. Y acá después veremos más adelante el tema de CD. Pero se dan cuenta de nada de seguir. No hay validación de calidad, seguridad, de nada. Ese es el baque. Y el pronome era peor. Todo era manual. Y solamente las pruebas o el post S se hacían de forma organizada. Entonces, le diseñamos cuál iba a ser el nuevo proceso. ¿Se dan cuenta la diferencia de controles y cosas es abismal? Yo también considero que es algo malo. Todavía, por ejemplo, con esa empresa nos está apostando de que todo el equipo lo adapte. Porque yo siento que ha sido un cambio, o sea, ha sido, ha sido, ha sido, ha sido muchos escalones a la vez. Lamentablemente los líderes técnicos, el credente quería que se hubiéramos la valla rápido. Bueno, ahí no hemos podido como intermediar eso. Entonces acá, por ejemplo, sí, sí, a ver, pero yo me tomo zoom. ¿Se ve?
+54:42 Speaker 2: Más o menos.
+54:45 Speaker 1: Entonces, ¿qué es lo que hacemos acá? Tenemos primero, en el pool request que se crea, hacia Divelo, corren una serie de validaciones. Oye, ¿la aplicación combina o se carga? En este caso, si usan contenedores, entonces, la imagen de contenedor, ¿se genera o no se genera? Aparecen ya las siglas, no se los enseñó a mostrar ahora, pero ahora para que se me den que decir un poquito. El SCA, el Software Composition Analysis. Que justo lo creamos hace un momento.
+55:25 Speaker 2: El SAST es
+55:32 Speaker 1: el análisis de código estático.
+55:51 Speaker 2: Esta versión, así
+55:53 Speaker 1: como Zona Cloud, también tiene gratuita, con ciertas limitaciones de
+55:57 Speaker 2: lo que funciona. Entonces,
+56:01 Speaker 1: así como les decía, el SAS es el software análisis... ¿Qué es el estático? El análisis de código estático, ¿perdónde? Análisis de código estático. Es el equivalente a sonar en bugs de calidad de código llevado a seguridad. Entonces, por ejemplo, el que está diciendo acá, oye, tienes unas variables... que no está sanitizando y podría estar generando SQL Injection. En este caso son unos mongos y dicen, no, SQL Injection. Pero es un poco lo mismo que en SQL Injection los que conocen. Entonces, te está advirtiendo sobre eso. Oye, te pueden hacer un cross scripting también. Entonces, todo ese tipo de vulnerabilidades son las que detecta el SAST. Que tienen que ver directamente con el código fuente de tu aplicación. Y acá te da la línea. Es como te dice. Es como te dice. Es
+57:03 Speaker 2: como te dice.
+57:08 Speaker 1: Es como te dice. Es como te dice. Es como te dice. Es como te dice. Pero bueno.
+57:23 Speaker 2: Acá te dice.
+57:24 Speaker 1: Solucionalo de esta manera. Entonces. Eso es el SAS. Luego viene el SSA, que es el Software Composition Analysis. Ese sí depende de ese tracker que veíamos antes. ¿Cuáles son tus librerías? ¿Cuáles son las vulnerabilidades de esas librerías? Luego, ahorita lo vamos a ver en otra figura, pero es, oye, tu imagen Locker, como la estás declarando, también puede tener vulnerabilidades. Entonces checo y puede analizar también más todo. ¿Por qué? Las herramientas chéveres te dan la información. Pero cada uno te la da de una manera diferente. Entonces, ¿cómo le hacemos la vida más fácil al desarrollador, al libre técnico, para mostrarse la mejor en GitHub?
+58:31 Speaker 2: Con el scripting. Y, de verdad, ahorita les vamos a dar un cómo.
+58:34 Speaker 1: No como el código, sino como lo bonito que se puede ver una scripting.
+58:41 Speaker 2: ¿Ves por ejemplo acá?
+58:42 Speaker 1: Tenemos un... Acá tenemos este pipeline que corrió a raíz de un pull request. Y acá ha ocurrido acá uno de los pasos que les he contado ha ocurrido acá.
+59:05 Speaker 2: Y acá abajo van a ver... El
+59:09 Speaker 1: resumen. Oye, Sengre, que es el análisis del código estático de SAS, te ha alertado sobre estos puntos. Entonces ya vamos a tener que irte a la herramienta a ver, aunque a través de los play scripting podemos inyectar
+59:28 Speaker 2: acá el resultado.
+59:30 Speaker 1: Un checo, analizando el Dockerfile, ha encontrado que no tiene declarado un health check para ver si tu servicio levanta bien el Docker o no. El usuario con el que está corriendo puede ser un root y deberías declararlo con privilegios más aportados.
+59:49 Speaker 2: Entonces, todo eso también lo puedes
+59:50 Speaker 1: inyectar acá.
+59:52 Speaker 2: Incluso,
+59:53 Speaker 1: el resumen de SolarCube también
+59:54 Speaker 2: está acá.
+59:58 Speaker 1: En este caso, no se detectaron secretos.
+01:00:03 Speaker 2: Entonces, el clic sale libre. Si
+01:00:07 Speaker 1: falló, hay varias cosas para solucionar.
+01:00:11 Speaker 2: Y
+01:00:12 Speaker 1: así. Entonces, esto sale a este nivel.
+01:00:16 Speaker 2: Y...
+01:00:19 Speaker 1: Lo otro también chévere es esta. Acá estoy en el pull request. Acá, en el comentario del pull request, se pone el resumen de lo que pasó en el pipeline. Tú imagínate como desarrollador técnico, ya tenés que ir a los blogs del pipeline y a ver cada pasito, ¿no? Sino que ya está resumido acá, en la foto completa es lo que pasó. Eso también se trabaja poco a poco. Nuevamente desde abajo para arriba. Primero las herramientas, de ahí que salen, vas unificando la información y después mostrándola acá, alineándolo con tu usuario, en este caso de liga técnico,
+01:01:01 Speaker 2: para que usted le pudiera mostrar.
+01:01:07 Speaker 1: Entonces,
+01:01:09 Speaker 2: eso es esto.
+01:01:11 Speaker 1: Listo en cómo se ve de otro lado. Así que a ver cómo se ve, llame de eso.
+01:01:36 Speaker 2: ¿Se dan cuenta?
+01:01:37 Speaker 1: ¿Ven que se llame? Es chiquito, ¿no? Y tiene un montón de cosas. ¿Por qué? Porque nosotros no hemos determinado lo que se llaman... Lo vamos a ver más adelante.
+01:01:48 Speaker 2: Pero
+01:01:48 Speaker 1: esto mismo puede crear templates. Entonces, yo nosotros, así como este, si se dieron cuenta que en el PCCacker había como 20, 30, 40 aplicaciones. Y había muchas que tenían la misma estructura, la misma aplicación. Entonces yo no repito el llame gigante en cada una, sino que hago es un temple que recibe parámetros. Y tengo otro lado, ese llame grandote. Entonces solamente en cada récord referencio al temple y le doy los parámetros. Entonces mi temple de acá, por ejemplo, se llama CI base. Y recibe esos parámetros, que son específicos de esta aplicación.
+01:02:28 Speaker 2: No los quiero marear por esa parte, por
+01:02:30 Speaker 1: alguien más adelante, pero es como para que sepan que eso se puede hacer también.
+01:02:34 Speaker 2: Es algo chévere
+01:02:36 Speaker 1: de...
+01:02:48 Speaker 2: ¿Cómo estuviesen haciendo funciones? Bueno, declarando, invocando este código. Sí. Acá está. Este es el template.
+01:03:09 Speaker 1: Y lo curioso, lo van a ver acá. Acá se desplandó las variables, y acá sí van a haber explotado los jobs, ¿no? Esto corre en Google, tú recibe tales cosas, esos son los steps, etcétera, etcétera, etcétera. Ahí ya viene el más grande, este sí tiene varios libros. Pero acá incluso también alguno puede anidarlo con otras librerías más, con librerías que van a ver bien. Algo que me lleve un poco de laboratorio es ir trayéndole acá a la clase cosas un poco más técnicas para cuando vayan a ver el equivalente de este
+01:04:07 Speaker 2: laboratorio. Si hay alguna pregunta,
+01:04:28 Speaker 1: también es
+01:04:30 Speaker 2: que
+01:04:31 Speaker 1: hay un montón de herramientas de seguridad y calidad, pero todas están apagadas. Todas dejan pasar todo a todo. Si te dan cuenta que hay unas variables,
+01:04:41 Speaker 2: son el blocking.
+01:04:47 Speaker 1: La idea es que una vez que el equipo ya lo empiece a usar, realmente, esto lo cambiamos a true y ahí sí... Si no cumples con las cosas, el pilot no te deja pasar y no puedes hacer mal hecho tu poder. Pero todavía no estás aprendiendo. Estas son las libres. Estas son las formas como lo hemos hecho parametrizables para que, está en la evaluación, pero todavía no te pases. Cuando lo prendas y después le pones.
+01:05:49 Speaker: ¿Hacemos un break? ¿Ahorita? ¿Te parece? Ya. De
+01:05:56 Speaker 2: frente, ya de frente. Nos vamos tembrando un poco. ¿Ya se ve? Sí.
+01:06:19 Speaker 1: Ok, entonces, implementamos los controles, identificamos... ¿Vulnerabilidades? Ahora, ¿qué hacemos? ¿Bloqueamos o solo registramos que está la vulnerabilidad? ¿Qué pasa si bloqueamos todo desde el primer día? Los desarrolladores se mantienen encima, ¿no?
+01:06:52 Speaker 2: Y
+01:06:53 Speaker 1: finalmente lo que van a hacer es, ¿cómo les saco la vuelta a esto? Porque no me deja trabajar. Es imposible de la noche a la mañana prenderlo. ¿Y qué pasa si llevamos al otro extremo? No detenemos nada y solamente registramos todo. Pero nunca hacemos el switch para empezar a parar las cosas. Es el número que hay como un recorte más, nada más lo ve. Es como en calidad. tener el análisis en un umbral que te permita sacar más de vulnerabilidades o de issues de calidad. Todo lo adicional que salga de esto desparas. Esa es la idea de tener todo lo nuevo. Inventaríamos todo lo negado, esa es como la línea base. Todo lo nuevo que salga de ahí en adelante no deja pasar el
+01:07:50 Speaker 2: proceso.
+01:07:54 Speaker 1: Ahora, necesitamos umbrales diferentes según los tipos de control. Normalmente un alineamiento que se tienen las empresas es, en esta categorización que se le hace a las vulnerabilidades, si tú tienes una high o critical, no puedes pasar a producción. Pero si tienes una medium, tienes una semana para repararla. Puedes pasar a producción,
+01:08:24 Speaker 2: pero tienes una semana para repararla. Si
+01:08:26 Speaker 1: tienes una low, tienes dos semanas para repararla. Pero sí es importante que vaya con un dueño y un plazo. Entonces, esos alineamientos de hasta dónde te dejo pasar y en cuánto tiempo hay que solucionar, son reglas del juego que se ponen antes, para que la idea es que ya todos jugamos con esas reglas, y con eso nos estamos tomando como tomando decisiones en cada issue que va a salir. Si no, ya tenemos algo más o menos analizado. Seguramente van a salir casuísticas extrañas, o específicas que van a tener que analizarse, pero debes poner como esas condiciones antes de que la hayas usarlas, y él no reglas el juego para la vida del mundo. Ok, entonces, ¿salud una vulnerabilidad? Si me hicieron excepción para poder pasar a producción, necesito una fecha de vencimiento de ese hallazgo.
+01:09:29 Speaker 2: Si
+01:09:30 Speaker 1: no, la van a pasar toda la vida y nunca la soluciono y lo pasan por alto. Hay que explicar por qué es que no lo estamos corrigiendo ahorita. Oye, no lo estoy corrigiendo ahorita. porque el impacto es en muchas funcionalidades y ahorita es mucho riesgo poder probar esas funcionalidades y ya tenemos que hacer la producción. Hay que necesitar quién les está autorizando y el plazo. Y acá, un punto importante también es ir midiendo cuántas excepciones abiertas tenemos. Porque si ese número crece siempre, tenemos un problema también ahí. Es un saludo a la bandera del gay y ya todos están poniendo excepciones. Y el otro punto importante acá también es... El otro muy importante acá es, oye, ¿qué significa la excepción? Estoy quitando el gate por completo y ya todos pasan. Estoy quitando la misma regla para todas las aplicaciones. Estoy poniendo la excepción específicamente para esa vulnerabilidad, para esa aplicación. Porque es muy diferente donde pongas esa excepción con el hueco que estás generando de la cantidad de cosas que pueden entrar por ahí. Por ejemplo, la herramienta que les contaba antes, Checo, que permite configurar inscripciones. Tú corres Checo y le mandas el archivo a analizar, y hay un parámetro adicional que tú le puedes colocar, oye, exceptúate estos IDs de vulnerabilidades. Y lo que va a hacer Checo es, en cualquier lugar
+01:11:17 Speaker 2: donde encuentre esa vulnerabilidad, la vas a exceptuar y
+01:11:19 Speaker 1: la vas a dejar pasar. Está generando hueco para todo el proyecto. Hay otra forma de poner excepciones. Abres el archivo específico donde está tu vulnerabilidad y le pones una etiqueta a esa línea donde está la vulnerabilidad diciéndole, oye, esta línea se aceptó A. Entonces, ya estás focalizando la excepción a la línea involucrada con la vulnerabilidad y no a todo tu proyecto. Entonces, ¿cómo se ve la anatomía del pipeline? Lo primero es, necesitamos detectar los secretos que están en el repo, pero necesitamos todo el historial del repo, para que este git leak, o el que fuera, pueda evaluar tanto el código actual, como el historial de comillas hacia atrás, a ver si me encuentras alguna credencial por ahí.
+01:12:18 Speaker 2: En el caso de las dependencias,
+01:12:20 Speaker 1: Necesitamos los archivos de configuración de dependencias para poder
+01:12:23 Speaker 2: devolver cuáles son estas dependencias.
+01:12:27 Speaker 1: Específicamente con el archivo . En el caso del código estático, vamos a hablar de muchas herramientas que usemos.
+01:12:43 Speaker 2: Acá, como
+01:12:44 Speaker 1: esto está en GitHub, GitHub tiene su propia herramienta de análisis de seguridad de código. Pero te exige que tengas el plan Teams o Enterprise. En GitHub han visto que hay un tab de código y un tab de issues. También tienen un tab de hallazgos de seguridad. Por eso lo que le dice acá es, oye, esta acción puede escribir eventos de seguridad en un repo. Porque como él tiene todo automatizado ahí con la herramienta, va a analizar los códigos y él mismo ya lo va a escribir ahí como eventos de seguridad en el octavo. Vamos a ver si encontremos un repo que tenga eso o alguno público. Entonces, para poder publicar, yo necesito que pase por todos esos controles. Si alguno falla, se cae el pulgar. Y lo otro también importante es ver de estas, cuáles ponemos paralelas. Porque normalmente las de seguridad son las que más tiempo toman en
+01:14:03 Speaker 2: correr.
+01:14:04 Speaker 1: Entonces, no sé si vean las que yo les mostré. Estaba todo paralelo.
+01:14:29 Speaker: ¿Quieren? ¿Se dan cuenta? Todos han perdido los ojos. Todos corren a verlos. Todos corren a verlos. Todos corren a verlos. Todos corren a verlos. Todos corren a verlos. El cómic corre después.
+01:14:55 Speaker 1: Si se encuentran, miren a que pueden ser aquí. Cuatro minutos han valorado.
+01:15:08 Speaker 2: ¿Los 5 corren por allá?
+01:16:08 Speaker: En este ejemplo es... Estos van en paralelo. O sea, primero corren pin. Luego van todos en paralelo. Y después corren todos estos. Y se pueden seguir con él.
+01:16:38 Speaker: Ok. Les
+01:16:41 Speaker 1: hablaba de una idea del NIST. El NIST. ¿Algún se acuerdan de lo que es? Es un marco, ¿no? NIST. Entonces, ¿qué es esto? Es un documento público. un PDF de unas 60 páginas, donde te habla por cada una de las partes del desarrollo de software, las consideraciones que hay que tener en cuenta. Te habla desde el proceso, hoy el desarrollador tiene que tener varios privilegios, no debería tener, no sé qué, no sé cuánto, debería controlar las cosas, pero nunca te va a decir, usa tal herramienta o tal otra. Es full proceso y full lineamientos. Entonces acá hay cuatro. que hablan sobre un poco las cosas que hemos mencionado, con los códigos, ahí se los quieren luego alinear o buscar en el NPF. Si vas a re-usar software, que sea de forma segura. Tienes que correr el análisis de composición, el SCA, y controla ese inventario de componentes. No puede ser como libre que cada uno traga la peligrosidad. revisa y analiza el código ahí viene el análisis del código estático y también el
+01:18:16 Speaker 2: código secreto
+01:18:22 Speaker 1: Tienes que probar el código, porque vienen las pruebas automatizadas. Y lo que va a venir más adelante es el análisis dinámico. Este sí ya habla de un ambiente correcto. Y el último punto, no solamente tienes que sacar la foto de la vulnerabilidad en un momento, tienes que constantemente estar analizando el código de la aplicación porque pueden salir vulnerabilidades nuevas. Entonces tienes que hacer un análisis. continuo. Entonces, este marco del NIST, todo lo de seguridad siempre lo usan como biblia para partir de ahí a sus lineamientos. Siempre viene evidencias. Entonces la idea es, en lo posible, que nuestros parklines nos consigan toda esa evidencia para que cuando vengan las famosas auditorías una vez al año, no te tomen toda una semana en... Pantallazo aquí, pantallazo allá, copiar, pegar, copiar. Es lo que algunas veces tendrían que hacer cuando el proceso no lo tenemos 100% maduro.
+01:19:26 Speaker 2: Para poder sacar estas... O
+01:19:28 Speaker 1: sea, ¿qué es lo que hace una auditoría? Viene y te dice, ok, dame tu lista de pases a producción de los últimos tres meses. Algo de eso de Gira, Seminau, de herramientas que utiliza. Y te dice, ok, de esto de acá, he hecho un muestreo de estos 15 pases, necesito que me des. ¿Cuál es tu proceso de desarrollo? Este, y tienes tus controles. El OK del Cuba, el OK del Técnico, el OK. Para cada uno lo pases, dame la evidencia que
+01:19:54 Speaker 2: tienes el OK del Cuba, el OK del Técnico.
+01:19:57 Speaker 1: Entonces, si eso está en correos, si eso está en Whatsapps,
+01:20:01 Speaker 2: en Chat, Teams,
+01:20:03 Speaker 1: tienes que conseguirlo. Pero si los tienes todos en la plataforma como parte del pipeline, no hemos visto esa parte, pero el pipeline te permite tener como steps de esperando una aprobación de una persona.
+01:20:31 Speaker 2: Bueno,
+01:20:32 Speaker 1: ¿alguna pregunta?
+01:20:38 Speaker 2: Son
+01:20:58 Speaker: tres casos ¿Alguno quiere? ¿Alguno quiere? ¿Alguno quiere? ¿Alguno quiere? ¿Alguno quiere? ¿Alguno quiere? ¿Alguno quiere? ¿Alguno quiere?
+01:21:39 Speaker 2: ¿Alguno quiere? El negocio se mueve por campañas, Día de la Madre, Fiestas Patrias, Cyber y Navidad. Bueno, en campañas se congela todo cambio a que no sea corrección crítica. Fuera campaña el equipo corre para dejar listo lo del día siguiente. Como trabaja el equipo, cinco equipos de desarrollo, un monolito de catálogo y bueno, precios más seis servicios que se lo... que se le colgaron encima en los últimos tres años. Todo se integra contra el ERP y el ERP solo existe en dos ambientes, producción y uno de pruebas. Bueno, ese ambiente de pruebas es único y los cinco equipos se lo reparten por ventanas que se coordinan en una hoja compartida. Lo que duele hoy, la ventana del ambiente es el recurso escaso de flujo. Un cambio pasa más tiempo esperando su ventana que siendo construida o probado. Los congelamientos de campaña acumulan cambios. Cuando se abre la ventana después del congelamiento, entra un lote grande y los defectos se mezclan. Los datos de prueba del ambiente se degradan. Cada equipo los deja como los necesita y el siguiente los encuentra distintos. Validación de seguridad. El escaneo de seguridad lo corre el área de infraestructura. Contra la aplicación ya desplegada en ese ambiente, ocupa una ventana completa. Esa ventana la pierde otro equipo y el equipo de desarrollo recibe el resultado de un correo. Días después, cuando ya está trabajando en otra cosa, el escaneo revisa de todo. Dependencias, código y configuración del servidor sin distinguir qué necesita la aplicación corriendo y qué no. Ahí están las preguntas. ¿Pero a qué se refieren con ventanas?
+01:24:16 Speaker 1: Son como momentos. Digamos que las pruebas de esta aplicación toman una semana. Entonces al mes tienes cuatro posibles pruebas para hacer, cuatro ventanas. Este caso acá, que cuenta acá, es típico de empresas, no digamos de las más digitales, pero sí de las que tienen cierto software licenciado, que te permite máximo voz ambiente, si no puedes abrir un tercero, y generar este tipo de problemáticos. Hablamos de un SAP,
+01:25:00 Speaker 2: hablamos de...
+01:25:01 Speaker 1: si es cierto, se repesa. ¿Otros? Otros realmente...
+01:25:09 Speaker 2: Vamos para preguntas y tal vez de ir a preguntas por preguntas. ¿Qué parte del escaneo actual
+01:25:15 Speaker 1: necesita la ventana del ambiente? Como dice la ventana del ambiente, ¿se refiere al ambiente de prueba? ¿Qué parte del español actual necesita la ventana del ambiente? ¿Y qué parte del no renuncia? Si se dan cuenta, y es difícil de entenderlo así, está como texto, ¿cierto? O sea, acá te están
+01:25:38 Speaker 2: escribiendo el values mapping, pero está en texto.
+01:25:41 Speaker 1: ¿Alguno se anima a dibujar cuál es el mapping apostado?
+01:25:44 Speaker 2: ¿Para poder entenderlo mejor? El delegado. No, estoy muerto. No,
+01:25:51 Speaker 1: el delegado puede seleccionar a alguien. Tenemos el grupo de desarrollo, ¿no? Y de ahí lo que dice es que son cinco, ¿puede ser? Sí, cinco grupos de desarrollo.
+01:26:40 Speaker 2: Ok,
+01:26:42 Speaker 1: son cinco.
+01:26:43 Speaker 2: ¿En Cuba cuántos hay?
+01:26:47 Speaker 1: ¿Cuántos hay? ¿Cuántos ambientes de Cuba hay para poder probar?
+01:26:56 Speaker 2: Solo uno, ¿no?
+01:26:58 Speaker 1: Todos vienen contra él. ¿Y qué dice la seguridad? El escaneo de seguridad lo corre el área de infraestructura contra la aplicación ya desplegada en ese ambiente, o sea, de Cuba, y ocupa una ventana completa de ese ambiente,
+01:27:20 Speaker 2: de Cuba.
+01:27:22 Speaker 1: O sea, viene acá el tipo de infra y ocupa una ventana.
+01:27:40 Speaker 2: Entonces, imagínense esto.
+01:27:43 Speaker 1: Viene el primer equipo.
+01:27:45 Speaker 2: Estoy listo para probar.
+01:27:47 Speaker 1: Está feliz.
+01:27:49 Speaker 2: Viene Cuba.
+01:27:50 Speaker 1: Cuba dice, todo bien. Viene Infra. No puede entrar otro equipo todavía. Valida. Encuentra hallazgos. Y le manda un correo con
+01:28:03 Speaker 2: todas las unidades que encontró. Bonita.
+01:28:07 Speaker 1: Ya cambia un poquito.
+01:28:10 Speaker 2: porque
+01:28:10 Speaker 1: tiene que ir a corregir todas las cosas. Mientras, él manda su cambio, como lo pruebe, mientras que le está asfixiando todo, cuando ya está listo, todavía no lo puede plegar, porque ahora Infra está validando las vulnerabilidades de él, y le manda a él otro su correo con sus otras vulnerabilidades. y otra vez ocurre en un circuito. Hasta que finalmente sus cambios pasan limpios y realmente pueden pasar al siguiente estadio de pasar por eso.
+01:28:43 Speaker 2: ¿Cierto?
+01:28:43 Speaker 1: ¿Sí? ¿Se entendió el circuito? Sí.
+01:28:45 Speaker 2: Hay un código de botella. Hay un código de botella.
+01:28:49 Speaker 1: Entonces, sí, hay un muy evidente código de botella del ambiente de Cuba. Sin embargo, es muy probable que acá tengamos que convivir con esto,
+01:28:58 Speaker 2: porque en Cuba tenemos
+01:29:00 Speaker 1: un tema, por ejemplo, del licenciamiento. Ahorita no estamos en ese estadio, tal vez más adelante podamos ver qué opciones tenemos para romper ese juego. Pero ahorita, de lo que hemos visto en clase, como él está haciendo todas las variaciones de seguridad, ¿qué variaciones de seguridad está haciendo? Ahí lo dicen.
+01:29:23 Speaker 2: ¿Qué variaciones de seguridad hago? ¿Dependencias? Dependencias.
+01:29:36 Speaker 1: SASS.
+01:29:41 Speaker 2: Para que
+01:29:44 Speaker 1: se vayan finalizando con las cifras, SSA.
+01:29:47 Speaker 2: ¿Y cuál es el otro, perdón? SSA Software
+01:30:05 Speaker 1: Composition Analytics.
+01:30:06 Speaker 2: Dependencias o Composition.
+01:30:09 Speaker 1: Así debería. Dice, revisa todo, dependencias,
+01:30:15 Speaker 2: código y configuración del servidor. Sin distinguir si es que necesita
+01:30:18 Speaker 1: la aplicación corriendo y que no. Para estos de acá, ¿cuáles necesitan la aplicación corriendo? ¿Cuál de ustedes necesita el servidor corriendo? No lo podemos atacar en este proceso todavía de CI. La dependencia, hablábamos antes de que solo necesitas el BIL. Y el BIL no necesitas el servidor de la aplicación para eso. Y el SAS. ¿Qué se les ocurre que podríamos hacer? Si dibujamos un poquito acá el flujo, tenemos acá el D, que seguramente primero pasa por D, por local, luego pasa por Cuba, y luego pasa por seguridad. Y
+01:32:04 Speaker 2: acá en seguridad tenemos los tres puntos, ¿no?
+01:32:08 Speaker 1: El SCRA y el cómplica.
+01:32:19 Speaker 2: Entonces,
+01:32:20 Speaker 1: ¿en qué paso podríamos pasar esas dos para poder darle feedback al desarrollador más posible? ¿Dónde podríamos curar eso
+01:32:32 Speaker 2: con un pipeline? En depth. ¿Cómo
+01:32:40 Speaker 1: sería? El desarrollador lanza el cambio, viene el pipeline, analiza esto, le da feedback, con eso ya puede corregir al menos estas cosas y llegar limpio al siguiente proceso.
+01:32:52 Speaker 2: A eso
+01:32:55 Speaker 1: va este caso.
+01:32:58 Speaker 2: ¿Todos la ven? ¿Sí?
+01:33:09 Speaker 1: Entonces, de ese escaneo actual de seguridad que se hace, ¿cuál realmente necesita la ventana del ambiente? ¿Cuál necesita el ambiente de Cuba? De los tres.
+01:33:21 Speaker 2: ¿Y qué
+01:33:24 Speaker 1: parte no necesita? Las dos primeras. Y esa debería ser parte de la violencia.
+01:33:32 Speaker 2: Ahora,
+01:33:33 Speaker 1: ¿cómo hacemos con los controles? Ya la aplicación existe, ¿cierto? Seguramente tiene un backlog de cosas por solucionar. Ya puse el pipeline acá. Ya tengo el análisis de Composition Analysis, de Dependencias y de SAS. ¿Qué hago con el Quality Gate? El que es el decisor. El sí o no, pasa o no pasa. ¿Lo prendo o no lo prendo? ¿Se acuerdan? ¿Lo prendemos para todo? ¿No lo prendemos para nada? ¿Puede ser válido? ¿Se acuerdan que nosotros hacemos una primera corrida y ya tenemos un número de issues? Un número de hallazgos. Digamos que es X. Es que este ahora tiene X
+01:34:46 Speaker 2: más 1. ¿Qué hacemos? ¿Lo dejamos pasar?
+01:34:49 Speaker 1: Pues ya no los vamos a pasar. Ya no los vamos a pasar. Entonces, justo la pregunta a lo que va es esto. ¿Qué controles de seguridad detienen y cuáles solo registran? Todo lo antiguo solo se registra, pero todo lo nuevo detiene.
+01:35:07 Speaker 2: Va por ahí.
+01:35:12 Speaker 1: Ahora, tenemos un pase de emergencia. Estamos en plena campaña. Aún lo ha tocado trabajar en empresas que tienen estas campañas de Navidad.
+01:35:21 Speaker 2: Hay
+01:35:22 Speaker 1: algo que se llaman las ventanas de spreezing. Normalmente son 15 días antes de la fecha. Nadie pasó producción, por si acaso. Sobre todo Navidad.
+01:35:34 Speaker 2: Una vez, la hija experiente general
+01:35:37 Speaker 1: estaba en un país no sé cuál. Navidad y se le habían bloqueado la tarjeta de débito. Por intento fallido de clave. Y nos llamaron para desbloquear la tarjeta de débito. Pero el sistema estaba hecho porque eso no pasa. Por el sistema de seguridad. Así que tuvo que usar la tarjeta de trono. Muy curioso porque nos elevaron el tema así de emergencia. El sebo por cierto que está con la tarjeta de trono. Pero es que se la campaña.
+01:36:06 Speaker 2: Bueno.
+01:36:11 Speaker 1: Entonces, tenemos un pase de emergencia en plena campaña, pero el nuevo gate que hemos implementado nos está deteniendo el pase porque justo está agregando una nueva vulnerabilidad y no nos deja pasar.
+01:36:24 Speaker 2: ¿Qué debemos hacer? Hacemos el paso, ¿no? Depende de la seguridad, ¿no? De la vulnerabilidad.
+01:36:32 Speaker 1: Dale. Y
+01:36:35 Speaker 2: si
+01:36:38 Speaker 1: tuvieramos que poner una excepción, ¿a qué nivel podríamos dar una excepción? ¿Saltamos el gate completo?
+01:36:46 Speaker 2: Condicionales, ¿no? Condicionales solo a la...
+01:36:49 Speaker 1: A la idea de esa vulnerabilidad y específicamente para esa aplicación. Dale. Ahora, con esos nuevos controles, ¿qué metricadora estaríamos moviendo?
+01:37:28 Speaker 2: Si ocurre un issue, nos vamos a poner menos en
+01:37:30 Speaker 1: solucionarlo porque vamos a pasar más rápido por el proceso.
+01:37:32 Speaker 2: En ese caso, ya
+01:37:35 Speaker 1: no se tomaría toda la ventana del ambiente. Podría ser. Podría ser que le tome menos tiempo. ¿Alguna pregunta con el caso? Financiera de Andes. La empresa financiera de créditos de consumo con colocación en tiendas salieras y un app de clientes. El área de riesgos tiene peso en las elecciones de tecnología. Hay una auditoría interna anual y un comité de cambios en producción que sesiona una vez por semana. ¿Cómo trabaja el equipo? Cuatro equipos de desarrollo. Packet en Java, un par de servicios en .NET. El app en React Native y release mensual planificada. Además de pases de parches cuando algo se rompe. Cada release pasa por el comité antes de salir. Lo que duele hoy. El gobierno está al final del flujo. Un cambio termina de construirse y entra a una cola de revisiones que se atiende por lotes, una vez por semana. La lista de verificación de seguridad vive en una hoja de cálculo. Se llena a mano, con el código ya congelado y la fecha ya comprometida con el negocio. Un solo analista conoce la lista completa. Cuando está a ocasiones, la revisión se posterga o se aprueba sin revisar. La evidencia para la auditoría se arma a mano en carpetas compartidas, días antes de que llegue el auditor. Validaciones de seguridad. El analista revisa el mismo conjunto de controles en cada entrega. Una parte de esa lista es verificable de forma automática, versiones de dependencias contra vulnerabilidades conocidas, patrones de códigos ya catalogados, presencia de credenciales en el repositorio. La otra parte exige criterio y ninguna herramienta la cubre. Hoy las dos partes se revisan igual, con el mismo esfuerzo y en el mismo momento. Primero, ¿qué controles de la lista se automatizan en el pipeline? Luego, ¿cuáles se quedan con el analista y por qué? Respecto a los controles que pasan en el pipeline, ¿cuáles detienen y cuáles solo registran? El pipeline aprobó un release y salió producción. Tres semanas después, la auditoría interna encuentra una vulnerabilidad que la lista del analista sí habría detectado. ¿Qué pasó? Es culpa del analista de la herramienta. ¿Qué cambien para la próxima? Y por último, ¿qué métrica
+01:40:27 Speaker 2: ahora movemos en esta vez? Vamos a la primera Ahora
+01:40:35 Speaker 1: sí, ¿aún voluntario para dibujar el chujito?
+01:40:38 Speaker 2: ¿Nuevo mejor? ¿Yo puedo proponer algo? Dale, chabobo No escuché bien Otro brofe, no escuché bien, brofe A ver,
+01:40:55 Speaker 1: ¿alguno que con la experiencia del anterior caso les suene qué controles de la lista se automatizan que deberían comenzarse en el baile? ¿Y cuáles se quedan? Al primero, ¿cuáles son los controles? ¿Qué sucede? Las herramientas SAS ya tienen también incorporado la revisión de SIGRETS. Pero el análisis del SAS es mucho más largo y completo. Hay herramientas específicas solo para Zengreb. No sé si se dieron cuenta que en el ejemplo que yo les mostré, tenía GitLeak solo para Zengreb, que corría así, en segundo, y tenía el SAS, que era el Zengreb, que era un poco más largo. Entonces, tenemos esos tres, y aparte dice que hay una parte que no es manual. Entonces, ¿qué parte automatizaría? Ahora, ¿cómo hacemos con el gate? ¿Qué pruebas detienen y cuáles dejan pasar? Cuando implementemos estas variaciones automáticas, vamos a tener que identificar cuáles son. Y vamos a tener un gate que deberíamos concluir que nos bloquee algo, ¿cierto? ¿Cómo ponemos el umbral? Actualmente, esta es mi aplicación. Internamente tiene un motor de líneas carpetitas y archivos de línea de código. Esto ya existe hace tres años, digamos. Tiene tres años de historia de código. Nunca le hemos corrido análisis de código. Hoy día sacamos la radiografía de cómo está. Es la primera foto. Y esto me arroja que tiene...
+01:44:08 Speaker 2: issues críticos, 5
+01:44:14 Speaker 1: altos, 4 medios,
+01:44:22 Speaker 2: por
+01:44:24 Speaker 1: ahí 2 bajos. Esa es la realidad fría de la foto actual. Ahora tengo a Miguel. Viene el desarrollador y a esto modifica cuatro archivos. Corro otra vez el análisis y la nueva foto me dice, oye, ahora cae 11, 5, 4 y 2. ¿Debería pararlo? ¿Debería dejarlo pasar?
+01:44:55 Speaker 2: ¿Por qué no lo paramos? No es mínimo.
+01:45:05 Speaker 1: Eso lo vamos a hacer ahorita como bien directo solo por números, pero lo ideal en realidad es específicamente estos 10. O sea, es como anotar estos con nombre y apellido. Ok, los que sabemos que son identificados es el CBE1, CBE2, los códigos de los identificadores de vulnerabilidad con nombre y apellido. Entonces, esos son los que acá dejo
+01:45:32 Speaker 2: pasar.
+01:45:32 Speaker 1: El resto, que salgan adicionales a esos, sí lo significa. Entonces, acá lo estoy haciendo con números para que sea más visual, más rápido de verlo. Pero en realidad debería ser así.
+01:45:41 Speaker 2: Entonces, claro,
+01:45:41 Speaker 1: ¿por qué? Porque acá está 10 más 1. Esta ya no debería existir. Entonces, le reboto y le digo, oye, este 1,
+01:45:49 Speaker 2: corrígelo.
+01:45:50 Speaker 1: Hasta que no lo corrija, no te dejo pasar.
+01:45:54 Speaker 2: Es un precio de lo que nos comentó sobre la de detener lo nuevo y registrar lo viejo.
+01:45:59 Speaker 1: Exactamente. Detener lo nuevo. ¿Con eso quedó más claro? Entonces, el Pylon aprobó un release y ya salió producción. Tres semanas después, corre a la auditoría y encuentra alguna vulnerabilidad que la lista del analista sí habría detectado. ¿Qué pasó? ¿Creen que puede haber pasado?
+01:47:10 Speaker: A ver acá. Acá en un
+01:47:19 Speaker 1: día en específico, corrió nuestro...
+01:47:22 Speaker 2: Nuestro pipeline y
+01:47:30 Speaker 1: aprobó el pase.
+01:47:31 Speaker 2: Sí.
+01:47:32 Speaker 1: Aprobó el pase y esto llegó a producción. Ya está bien de tiempo ya. en el día tres semanas después
+01:47:51 Speaker 2: vino
+01:47:55 Speaker 1: la analista
+01:47:56 Speaker 2: hizo
+01:47:59 Speaker 1: su prueba de validaciones recordemos
+01:48:02 Speaker 2: que tiene dos pruebas las que
+01:48:05 Speaker 1: se pueden automatizar y las que no y encontró¿Por qué salieron acá y no salieron acá? Durante la clase hemos mencionado algunos ejemplos que a veces pasan. Una de las posibilidades. Hay varias preguntas. Una de las posibilidades. ¿Qué diferente puede haber acá y acá? No,
+01:48:41 Speaker 2: puede ser que ahí tenga un papel automatizado.
+01:48:48 Speaker 1: O sea, acá están ya las automatizaciones que hemos puesto, ¿no? De las que mencionamos. Las tres. Sí, acá corrieron esas tres automatizadas. Pero allá, cuando ha corrido esas, se me ha salido una más. Tal vez la prueba automatizada no probó un caso que la virtual ya había mapeado. Exacto. Una cosa que le decía, que tu biblioteca de vulnerabilidades que configuramos acá, puede que haya incluido todas las que incluías.
+01:49:15 Speaker 2: Eso es una cosa.
+01:49:17 Speaker 1: La otra es el tiempo. En tres semanas pueden haber generado nuevas vulnerabilidades sobre estas librerías que existían. Eso también puede haber pasado. Es un tema del tiempo.
+01:49:31 Speaker 2: ¿Y el
+01:49:32 Speaker 1: problema de quién es la culpa? ¿Y qué podríamos hacer diferente para la próxima? ¿Cómo mitigamos el primer caso que dijeron de la biblioteca?
+01:50:02 Speaker 2: Lo único que podemos hacer sería verificar que la versión de la biblioteca sea la
+01:50:10 Speaker 1: más estable. O sea, sean las mismas. Que no haya un gap entre yo tengo la biblioteca ABC y yo tengo la AB. Oye, sentémonos y veamos de una vez y homologuemos la
+01:50:19 Speaker 2: biblioteca. Y para
+01:50:24 Speaker 1: este tema de las vulnerabilidades... Es que acá ya está congelada, solo que lo que pasó es que acá en la 1.2.1, en la semana 2,
+01:50:41 Speaker 2: un hacker,
+01:50:42 Speaker 1: un ethical hacking, la nube de un community, identificó que esta tenía una vulnerabilidad en específico y la publicó en internet porque encontró que la tenía. O sea, es una vulnerabilidad que se detectó después.
+01:50:54 Speaker 2: Profe, pero como mencionó, lo que se puede hacer es descargarle a las librerías actuales que no tienen ninguna vulnerabilidad y almacenarlas en un servidor local.
+01:51:05 Speaker 1: Ojo que no es que no tenga la vulnerabilidad, es que todavía no se ha detectado que tiene la vulnerabilidad, pero la tiene. Ese es el problema. Entonces, acá se detectó que se tenga vulnerabilidad y se va a tener. ¿Qué cosa es lo que se hace ahí? Se hacen controles automatizados periódicos. Así como este de acá, tengo mi proceso que corre cada vez que lanzo el pase. Tengo un proceso diario, semanal, que me encanea todas las aplicaciones. Porque la automatización ya la tengo. Simplemente la programo para poder estar al tanto de qué cosas están
+01:51:36 Speaker 2: saliendo nuevas. La última vez que me hace,
+01:51:39 Speaker 1: pues me da alertar de, oye, equipo de desarrollo, trabajen en esto y pueden hacer algo urgente. Otra cosa que han escuchado de la vulnerabilidad que salió es así, que tenía muchos generos de desarrollo de Log4j. ¿Ustedes saben lo que es Log4j, de Java? Es la clásica librería de Java para loggear, para logs, entonces,
+01:52:01 Speaker 2: Log4j.
+01:52:03 Speaker 1: Salió una vulnerabilidad, pero se fue así, crítica, porque todas las bancas tienen todo sobre Java. Y todos usan Log4j. que podían explotarla. Era una forma bien fácil de explotarla y impactaba. Todos tenían que hacer un app de librerías del JDK de Java.
+01:52:27 Speaker 2: Esa es la
+01:52:28 Speaker 1: diferencia del ransomware. El ransomware era un tema externo. Este era un tema interno que todos tenían que cambiar y utilizar las librerías. Bueno, a nivel de capas se pusieron ciertos controles en el firewall de que no permitía ciertos protocolos o ciertas acciones y con eso evitaban que alguien pudiera explotar esa vulnerabilidad de la puerta. Entonces también empezó a mitigar para dar más tiempo a ella que estos equipos terminaban de hacer las
+01:52:54 Speaker 2: actualizaciones. Por último,
+01:52:57 Speaker 1: ¿qué métrica de ahora movemos con esos cambios? Porque si ya entras, ya no lo dejes en el auditor, tal vez. ¿Está el FES? ¿Está el FES?
+01:53:17 Speaker 2: Si,
+01:53:21 Speaker 1: pero no se emplee y puedo hacer más pases, ¿no? Claro. Te dejo el tercer caso, está publicado esto en Paireia.
+01:53:44 Speaker 2: Solo está el primer caso nada más. Solo está el primer caso nada más. Mira acá a la izquierda, no se puede hacer. Ah no, solo ha subido un PDF nada más. Si, si, es que es un solo PDF, pero a la izquierda no.
+01:54:01 Speaker 1: es
+01:54:02 Speaker 2: que subí un pdf, no un docs o enlace Esto no lo vimos el otro
+01:54:28 Speaker 1: día, pero es una de las cosas...
+01:54:30 Speaker 2: Ya
+01:54:31 Speaker 1: con la experiencia que han tenido, hay un libro que les salió en la primera clase, que es el de Jenkin,
+01:54:40 Speaker 2: con el de Phoenix Project.
+01:54:43 Speaker 1: Es una novela de una empresa de tecnología y cuenta cómo aprendió... de los problemas que iba teniendo, cómo los iba resolviendo. Y él nombra estos tres ways. First way, second way, los tres ways, los últimos. El primero es el flujo clásico, donde tenemos dos áreas, una de negocio, una orientada a negocio y otra orientada al cliente, a la estabilidad de la operación. Simplemente esto funciona en un solo sentido. Desarrollo, desvío operaciones, despliega, despliega, despliega, despliega. Operaciones nunca me dicen, descubro bien, descubro mal, mejor a esto, mejor a nada. No existe esa retroalimentación. Es una comunicación de un solo sentido, por eso es Spears Way. Y la idea ahí es tratar de llevar las cosas... De izquierda hasta la derecha, de desarrollo de las operaciones, lo más rápido posible, pero enfocado simplemente en negocio, sin importar lo que diga operaciones. La second way incorpora un feedback al proceso. Va con desarrollo y le dice, oye, este último cambio que mandaste ha tenido estas problemáticas. ¿Qué te parece si las mejoras? Pero esas conversaciones son muy eventuales. Cada vez que ocurre un problema, nos sentamos a ver qué fue lo que pasó y a ver cómo lo solucionamos. Pero son muy eventuales. No es algo
+01:56:29 Speaker 2: como...
+01:56:31 Speaker 1: No hay una mejora continua, pues están en la cancha. Y la Thrillway, que es como la que se busca, que ya genera el cambio cultural, es un equipo que constantemente está buscando estas mejoras incrementales.
+01:56:46 Speaker 2: Entonces, hay
+01:56:47 Speaker 1: una retroalimentación de ambos lados para cómo hacemos mejor el proceso. Entonces, este es un proceso que se va dando en el tiempo, no es de la noche o de la mañana.
+01:57:26 Speaker 2: ¿Qué nos llevamos hoy? Bueno,
+01:57:39 Speaker 1: lo primero, para ir cerrando, lo que vimos es el aeropuerto, ¿no? Que el panel salga bien no quiere decir que el panel esté bien. Puede tener ciertos temas de... De mejora, no mejores prácticas puestas que hay que implementar, ¿no? Como la caché, como el tema del archivo log para librerías, etc. Calidad y seguridad, son dos gates diferentes.
+01:58:07 Speaker 2: No se pueden mezclar con uno solo.
+01:58:11 Speaker 1: Donde implementar los controles, todo lo que hablábamos allá, ¿no? Algunos controles se van a poder meter, otros no. Si el control es muy lento, no vale mucho la pena meterlo en el día de hoy del desarrollador. Solo va a poner una entrada en un termino. ¿Qué issues de seguridad priorizo? La seguridad nos da una pista, pero no solamente nos basta con eso. Hay que ver qué tan fácil de acceder es. Hay herramientas que dicen de estas... issues que están encontrados, cuales son explotables desde Internet. Entonces, una vez estamos
+01:59:00 Speaker 2: trabajando en un cliente, que
+01:59:02 Speaker 1: fabrica muchos autos, que son chinos, japoneses, que la cantidad de vulnerabilidad que tenía era abismal, 10.000 vulnerabilidades. Por donde empiezo. Entonces, esta herramienta es más claro que es una herramienta. Eh... te segmentaba,
+01:59:29 Speaker 2: nos quedamos con 80.
+01:59:30 Speaker 1: O sea, de los 10.000, enfócate en esos 80, que son los que sí se pueden explotar desde Internet. Ahí nos da mucho mejor foco para
+01:59:38 Speaker 2: ver cuáles acabamos primero.
+01:59:41 Speaker 1: Entonces eso es para ver cómo priorizamos la atención de los hallazgos. Y si ponemos excepciones, que sean puntuales, que tengan un deadline muy responsable.
+01:59:54 Speaker 2: ¿Alguna pregunta?
+02:00:09 Speaker 1: ¿Cómo hago para...? La seguridad es uno de los datos. El otro dato es lo que mencionaba antes. Ok, la librería tiene una vulnerabilidad en tal punto, pero mi aplicación no usa ese punto de la librería. Entonces, la alcanzabilidad no está tan cercana. Entonces, ese es el otro punto. Y el otro punto es la exposición. Lo que decía, lo puedo explotar desde internet o tengo que vulnerar varias capas para poder hacer la exposición. Y la última es, oye, simplemente es cosa de mover la versión de librería y ya está. ¿Ya existe la corrección o no? Son esos cuatro criterios para ver... Ahí va a variar mucho el criterio de las personas que lo evalúan y las personas que lo evalúan.
+02:01:07 Speaker 2: Gracias,
+02:01:15 Speaker 1: no sé si hay algún otro punto más.
+  
