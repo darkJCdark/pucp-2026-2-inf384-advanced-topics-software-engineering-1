@@ -1,0 +1,739 @@
+# Temas
+
+  Meeting started: 18/9/2026, 11:55:16 p. m.
+  Duration: 146 minutes
+  Participants: Speaker, Speaker 1, Speaker 2
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/OJU2lD4BjY2ahDoEmU8j?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: ¿Está grabando un compañero?
+00:03 Speaker 2: No se preocupa.
+00:06 Speaker 1: ¿Veis? Sobre que hay que cambiar este... sesión...
+00:09 Speaker 2: Arquitectura empresarial, tal vez. Sí,
+00:12 Speaker 1: pero... Hay un migrador ahí, ¿no? ¿De qué tratar? Realmente el migrador de arquitectura empresarial. Uy, no sé. Analizan el caso
+00:18 Speaker 2: y dependiendo de la fase, core, de todo el negocio, pues tenemos que analizar. Pero tenemos que analizar un caso de negocio y nos dividimos en diferentes grupos dependiendo de los procesos core y que también tienen problemas dentro de la empresa. ¿Tiene que ver toda la arquitectura del caso de negocio y que se va a implementar en estos seis procesos. Cada grupo tiene un proceso en particular y todo cambio que se vaya a proponer en un nuevo ASIS. debe coincidir en todos los procesos, de tal manera que si en un proceso hay servicios de negocio que se ejecutan en nube o de manera local, sí sea coherente y no haya cruces o cosas raras. Claro, eso vamos a ver el marco de TOGAF, pero recién después de parciales. De hecho es la última semana de clases.
+01:30 Speaker 1: Arrancamos la sesión. Hoy ya toca ver ya entrar en la parte del despliegue. No vamos a ver todavía el despliegue. Si es la aplicación, vamos a ver los pasitos previos al despliegue. Se centra en cómo construir el artefacto y el artefacto esté listo ya para el despliegue. Y la parte de infraestructura como código. Si en algún momento tenían dudas o no conocían un poco lo que es este Terraform, hoy nos vamos a meter un poquito de eso.
+01:57 Speaker 2: Y bueno, al final,
+01:59 Speaker 1: en la lámina de las fijas, el presidente lo volvió. Gracias. Bueno, bueno, centramos en la ruta. Estamos en la sesión 5, despliegue continuo. Y hemos terminado la integración continua. En la siguiente clase ya vamos a ver el despliegue en sí de la aplicación, ya para poder usar la aplicación una vez desplegada. Estamos en un paso previo. Un poquito para entender dónde estamos y cómo va para el curso.
+02:41 Speaker 2: Entonces, hoy día,
+02:42 Speaker 1: vamos a recapitular un poquito lo que era el trago continuo y el desplego continuo, cuando elegir cada una. Vamos a meter todo lo que es gestión de artefactos, cómo hacer registro, mutabilidad. Hoy también, los que no conocen mucho Docker, vamos a meternos a lo
+02:55 Speaker 2: que es Docker.
+02:58 Speaker 1: Como código que les comentaba, específicamente con Terraform, por ahí las fijas del Lab 3, y también vamos a tener un cajuto al final, también con puntos
+03:05 Speaker 2: adicionales. Entonces,
+03:12 Speaker 1: ¿dónde estamos respecto al pipeline? Ya hemos pasado por la parte de integración, de hacer BIP, pruebas de calidad. Vimos algunos temas de seguridad la semana pasada y ahora llegamos a la parte de publicar y desplegar. Hoy vamos
+03:26 Speaker 2: a ver como los pasos previos a.
+03:28 Speaker 1: Entonces, ¿qué cosas ya tenemos resueltos en este proceso con lo que ya hemos visto? Ya tenemos previsto el tema de que los artefactos hay que construirlos una sola vez. para el archivo de... ¿Recuerdan cómo se llamaba este archivo que me permitía bloquear las librerías?
+03:45 Speaker 2: Luego
+03:46 Speaker 1: tenemos las variaciones de calidad y seguridad que tiene la publicación. Le
+03:56 Speaker 2: debes tener un
+03:57 Speaker 1: quality gate y un gate de seguridad también, un umbral que nos permite decir si estamos listos para explicar o no. el tema del versionamiento y la trazabilidad de ese versionamiento con los commits y también velar porque el payment se ejecuta en minutos y no en horas porque si no nadie lo usa Entonces, ¿qué cosa? No hemos respondido todavía del proceso. Que es lo que vamos a apuntar ahora. Oye, ¿dónde queda ese artefacto? ¿Dónde se publica? ¿Qué es lo que pasa con ese artefacto? ¿Quién lo va a buscar para poder hacer el despliegue? ¿Cómo hacemos para manejar el mismo artefacto por los diferentes ambientes? ¿Quién creó ese ambiente? ¿Esa infraestructura quién la creó? ¿Cómo se creó? Y una vez que está creada, ¿cómo la mantenemos en el tiempo? Porque esa infraestructura no la creas una vez y se queda ahí. Va a venir, si me falta RAM, me falta CPU, crean este nuevo storage para más archivos, etc. Va a haber mantenimiento. Entonces, ¿cómo conviven los
+05:23 Speaker 2: cambios a futuro cuando
+05:25 Speaker 1: una vez crea una infraestructura base? Entonces, vamos a meternos en lo que es gestionar los datos. Y antes de eso, para capitular, entrega continua y despliegue continua. ¿Se acuerdan de la diferencia?
+05:42 Speaker 2: La entrega continua recurría a intervención humana y el despliegue continuo. Entonces,
+05:52 Speaker 1: en la entrega continua, si bien la automatización existe para poder hacer el despliegue, Necesitamos un disparador humano. Hay alguien que le tiene que dar play al último paso para que ejecute el despliegue. Acuerdo varias veces en reuniones de integración con mi equipo DevOps, estando en el taxi a la casa donde íbamos a hacer la juerga, y la gente sacaba su laptop para hacer los pasos de producción en pleno taxi. O sea, se caía el paso de producción, y lo molestaban mucho a los DevOps. los
+06:21 Speaker 2: otros equipos que su trabajo era dar play porque
+06:24 Speaker 1: realmente ya habíamos automatizado todo de hacer el pase de darle play pero por tema de permisos solamente lo hacían ellos mientras que el de play continuo o eso y ya tenemos un proceso super maduro que tiene pruebas automatizadas y por ende este último paso se puede hacer de forma automática nadie tiene que entrar a dar play no es necesaria esa revisión pero para ello es necesario tener una madurez suficiente para Entonces es una decisión de gobierno de
+06:51 Speaker 2: ver qué
+06:52 Speaker 1: tanta flexibilidad y facilidad quiero dar, cómo también madurez. ¿Estamos listos para realmente hacerlo de esa manera o no? No solamente tener la herramienta.
+07:04 Speaker 2: Y,
+07:05 Speaker 1: como verán, acá en Perú no conozco ninguna organización que trabaje realmente con desfile continua. Todos están en entrega continua. Y ahí... Como dato, siempre que vean las siglas CD por ahí,
+07:20 Speaker 2: porque si se dan cuenta,
+07:22 Speaker 1: todas las siglas son en inglés. Entonces, Continuous Deployment,
+07:26 Speaker 2: Continuous Delivery.
+07:28 Speaker 1: Las dos son CDs. Vamos a abreviar. Pero normalmente cuando se usa el término CD, es Continuous Delivery. O sea, por lo menos en el CD siempre es Continuous Delivery. Nunca llega a ser Continuous Delivery todavía. No
+07:41 Speaker 2: lo he visto todavía.
+07:46 Speaker 1: Pero bueno, no está mal porque sería peor querer hacer teutino y no estar preparados y estar tumbando carros de producción porque no hay mucho las variaciones necesarias para
+07:56 Speaker 2: poder hacer ese pase. Entonces,
+08:05 Speaker 1: metiéndonos al artefacto. Ya pasaba el clásico, en mi máquina funciona. En mi máquina funciona, pero cuando lo aplicamos al servidor ya no funciona. Te preguno, te preguno. Entonces justo el artefacto lo que trata de cuidar es eso.
+08:19 Speaker 2: Es cómo
+08:20 Speaker 1: hacemos que tengamos una versión
+08:22 Speaker 2: del
+08:24 Speaker 1: artefacto inmutable que tenga todo lo necesario para ejecutar el sistema, salvo las variantes del torno. Y que con eso, ese paquetito lo podamos llevar a cualquier lugar y con eso pueda funcionar sin problemas. Justo para romper el tema de, en mi máquina funciona. Entonces, ¿qué cosa contiene eso? Contiene el paquete de la aplicación. Por ejemplo, los que conocen más el tema de Java, por ahí dice, Layer, YAR, War, o por el bundle del compilado del NPM, o cualquiera de las otras aplicaciones, eso vendría a ser el paquete de la aplicación. Luego tenemos otra posible imagen del contenedor. La vamos a ver un poquito más adelante. ¿Qué cosa es imagen del contenedor? La imagen del contenedor ya contiene la aplicación, contiene las dependencias que la aplicación va a correr. Ese contenedor también tiene un sistema operativo, va a ser ahí corriendo. Ahora vamos a ver un poquito eso. Entonces, este contenedor es el mismo contenedor que corre en cada uno de los ambientes. Contiene exactamente lo mismo. Y otro tipo de artefacto que tenemos son las plantillas de infraestructura, que vienen a la parte de infraestructura como código. Así como yo construyo mi contenedor para crear una aplicación, yo construyo una plantilla para emplear mi infraestructura. Necesito crear, yendo a términos de AWS, un papel de c3. Es como un file storage, digamos, una carpeta compartida, a través de la cual puedo meter archivos por ahí. Entonces, ¿qué me permite el artefacto? Que tengo un esquema de versionamiento que es inmutable. Una vez que lo construí, estoy seguro de que nadie más lo edita después. Tengo trazabilidad, que es muy importante. ¿Qué commit generó esa versión? Esa trazabilidad es muy importante tener. Ahora vamos a ver cómo se puede lograr. Y todo está autocontenido. O sea, todos los componentes ya están dentro del artefacto. Solo le falta... las variables de configuración del ambiente que se inyectan en el display.
+10:33 Speaker 2: Entonces,
+10:34 Speaker 1: si yo cambiara, digamos, si hice el display de esa, el display de Cuba, del artefacto,
+10:41 Speaker 2: yo
+10:42 Speaker 1: cambio el artefacto y voy a desplegar a producción, ya rompí
+10:47 Speaker 2: todo
+10:48 Speaker 1: lo que yo había validado en Cuba, se rompió, no sirve nada, porque el artefacto ya es otro. Y hay un riesgo de que haya metido algo que no haya podido probar en desarrollo cubano. Me pasamos con un cliente, tuvimos 3 horas ahí metidos, pensaron que no tenía infraestructura, ellos han tratado de ayudarlos y había alguien que había hecho un pase, que no había probado una ruta y bueno, les bajó el sistema a medio día, que había cambiado por ahí los servicios y no nos habría validado completamente el
+11:16 Speaker 2: desarrollo. Entonces, esas cosas pasan
+11:19 Speaker 1: en el día a día, dependiendo de la madurez de cada equipo y los llamadores del proceso nuevamente, también es lo mismo. Y bueno, finalmente, en esto que les cuento, lo que vamos a hacer es endurecer el proceso para que nadie pueda hacer esos cambios directos sin pasar antes por Cuba. Es un cliente chiquito. Quería muchas facilidades antes y volvía. Ya se está poniendo un poquito más rígido. ¿Alguna pregunta?
+11:52 Speaker 2: Ok, entonces,
+11:54 Speaker 1: ¿cómo se hace el tema del versionamiento?
+11:58 Speaker 2: ¿Cómo
+11:59 Speaker 1: va funcionando ese tema de ir promoviendo las versiones? Imaginemos que yo tengo una versión de una aplicación, la 1.4.0. Primero registro la versión y luego esta va fluyendo entre los diferentes ambientes. Desarrollo, Cuba, producción. Entonces promover es mover el artefacto al siguiente estadio, al siguiente ambiente que corresponde. Y si se dan cuenta, este artefacto está siendo exactamente el mismo de uno a otro. Es la 1.4.0. Es exactamente el mismo. Entonces cada ambiente va a hacer unas validaciones distintas, con data de pruebas diferentes tal vez, con casos de pruebas diferentes, seguramente personas diferentes también lo prueban, para ir asegurándose de que esto va a llegar a producción de la manera ideal. Y lo otro es, hay cierta metadata asociada a este artefacto que me permite identificar,
+12:58 Speaker 2: por
+13:00 Speaker 1: ejemplo, el commit es asociado, de qué proyecto es. Varios datos que se pueden agregar con metadata para poder determinar de dónde viene.
+13:09 Speaker 2: Entonces,
+13:10 Speaker 1: sin trazabilidad, o sea, imagínense tener desplegado lo acá pero no saber qué versión es, con no saber de qué commit viene y tener una problemática acá, como lo que me pasó a mí ayer.
+13:23 Speaker 2: Entonces, genera
+13:27 Speaker 1: finalmente 4 horas, 5 horas de indisponibilidad de la aplicación para negocios por no saber. qué versión de la que está desplegada, cómo solucionamos este posible problema.
+13:37 Speaker 2: Entonces, a
+13:40 Speaker 1: esto ataca la situación.
+13:42 Speaker 2: Poder tener trazabilidad, hacer algún
+13:44 Speaker 1: incidente y a
+13:47 Speaker 2: ver qué cosa puede causar ese problema.
+13:51 Speaker 1: Es el de detenernos. Entonces, ¿cómo generamos esta trazabilidad? Hay diferentes formas. Hay unas más exactas y otras tal vez que son un poco menos exactas y que pueden generar un problema también. ¿Quiénes han trabajado con Docker? ¿Conocen en términos los tags? ¿Siempre usan el latest?
+14:17 Speaker 2: Los
+14:17 Speaker 1: tags en Docker se usan mucho esta nomenclatura que deben haber acá, dos puntos y este es como el tag que le estás colocando. Entonces yo puedo generar una imagen Docker. Y la bautizo, digamos, le pongo un tag, una etiqueta, como en cualquier dato, José, Hola, lo que fuera. Hay ciertas convenciones, latest siempre es como la última versión estable, pero el latest de hoy no es el mismo latest de mañana ni de ayer, porque el tag es siempre el mismo que el latest, no te está diciendo nada más. Hay otras maneras que es poner una versión específica. Entonces, la 1.2. Ah, bueno, es así. Ayer fue la 1.4.0, ayer fue la 1.3.9,
+14:55 Speaker 2: ayer fue la 1.4.2.
+14:57 Speaker 1: Pero, a veces pasa de que, uy, nos falta una cosita, pero ya, solucionala y de la changa, justo la 1. Ya habías lanzado la 1.4.2, vuelve a explorar la 1.4.2 ahí mismo. Y le mandaste un cambio, porque ya no es la misma. Pero hay un dato que es la que sí nos hace que sea específicamente, o sea, que sea único. Que es conocido como el SHA, o el hash, el digest, o la huella criptográfica. Ustedes han visto los commits. Cuando hacen su commit, sale
+15:32 Speaker 2: ahí un ID.
+15:34 Speaker 1: Entonces, estos acá pueden ser el ID del commit. Pueden ser unas que tú compilas el
+15:39 Speaker 2: artefacto, te sale un...
+15:48 Speaker 1: Esa es la más exacta que nos permite iluminar, esa es la versión que estoy despegando en ese momento.
+15:54 Speaker 2: Entonces, esa
+15:57 Speaker 1: referencia de huella pictográfica justo nace cuando se genera el artefacto y nos garantiza que sea único. Mientras que el tag, esas latest, divelo, cuba, lo que queramos bautizarlo, o versiones específicas, Tienen la variable que alguien puede cambiarlo. Entonces, no te da esa explicación.
+16:18 Speaker 2: Entonces,
+16:19 Speaker 1: si le preguntaran, ¿cuál sería la mejor manera de identificar qué cosas está corriendo en producción? ¿Cuál de los tres elegiría?
+16:31 Speaker 2: Tercero.
+16:33 Speaker 1: Va a poder trasear otra. ¿Qué commit está corriendo?
+16:40 Speaker 2: Ok.
+16:42 Speaker 1: ¿Han pensado que la ven antes?
+16:44 Speaker 2: ¿Se ven muchas veces? Creo que sí.
+16:48 Speaker 1: ¿Tienen dudas de lo que es un contenedor versus una máquina virtual? Este es el traje para que están todos alineados de ir de lo más abajo hacia la
+16:58 Speaker 2: generación de un contenedor.
+17:01 Speaker 1: Entonces, solo para
+17:02 Speaker 2: recapitular un
+17:03 Speaker 1: poquito, la clásica es que antes teníamos solamente hardware físico, que todavía tenemos varios que hay en Bechica, y sobre esos se dieron cuenta de, oye, ya tenemos más
+17:13 Speaker 2: espacios para los data centers,
+17:15 Speaker 1: ¿qué hacemos? Virtualizamos máquinas dentro de, ¿no? Y ahí es donde vienen esos temas de los hipervisores, que son los que corren encima de la máquina física y te permiten tener máquinas virtuales. Y acá tú puedes tener una con Linux, una con Windows. Pero tú tienes que hacer cargo acá de administrar tanto los recursos en la máquina virtual como en el sistema operativo y las aplicaciones. Tienes que cargar de todo. ¿Cómo funciona un contenedor? Un contenedor es como si fuera una aplicación corriendo dentro de una máquina. Esta puede ser una virtual, puede ser una física, lo que sea. Y dentro del contenedor, ¿qué cosa corre? Es una imagen de un... base de un sistema operativo. Pero no solamente existe un operativo, viene ya con un paquete de cosas según lo que tú necesites. Si es una aplicación NPM, entonces seguramente usarán una imagen base alineada del NPM. Si es una Java, necesitarán algo como JDK. Y así, tú puedes personalizar qué imagen base de contenedor necesitas para poder correr la aplicación. Entonces eso es lo que varía acá, ya no solamente elijo Linux Windows. u otro, sino también elijo
+18:28 Speaker 2: qué
+18:30 Speaker 1: librería base necesita mi aplicación para correr. Y base no me refiero a las que tú instalas en tu aplicación, esas van a ir como parte del paquetito de tu aplicación. Me refiero a qué framework usa como tu aplicación para correr. Python, Java, eso es lo que viene como base de esta imagen, base del contenedor. Bueno, el serverless era solo para que tengan
+18:52 Speaker 2: la diferencia. Está
+18:55 Speaker 1: orientado. Igual el serverless puede usar contenedores, pero no los quiero mezclar. No los quiero confundir. Pero la diferencia con el serverless es que te olvidas de qué es lo que está corriendo dentro. Tú tienes una aplicación y te encargas de la aplicación pura. Y ya te olvidas del resto de cosas.
+19:10 Speaker 2: Entonces,
+19:11 Speaker 1: eso era un poco para situarnos en el contenedor.
+19:17 Speaker 2: Entonces,
+19:18 Speaker 1: ¿cómo genero yo un contenedor?
+19:20 Speaker 2: Acá vamos a poner la...
+19:21 Speaker 1: Para generar contenedores, primero necesito la receta del contenedor, que es el Dockerfile. Yo con esta receta puedo
+19:30 Speaker 2: generar una
+19:32 Speaker 1: imagen de contenedor, un Dockerimage, que vendría a ser, por ejemplo, estos paquetes de paqueques, ¿no? Yo puedo generar con esta receta muchos de estos. Pero... Yo ahora ya tengo la receta, ya tengo este paquete que me permite hacer diferentes paquetes. Pero finalmente cuando yo instancio un croquet image, yo sino
+19:57 Speaker 2: o
+19:58 Speaker 1: desplieo un paquete, vendría a ser acá el contenedor. Entonces, ¿qué me permite tener esto? Me permite tener una receta, me permite tener una imagen que puede ser reproducible en muchos contenedores. Por ejemplo, hay imágenes públicas del JDK de Java. Allá hay una imagen básica del JDK de Java. Hay alguien que ha hecho esa receta, que ya declara todas las librerías necesarias para que el JDK de Java se pueda instalar. Eso vendría a ser acá lo que queríamos.
+20:31 Speaker 2: Y todos
+20:32 Speaker 1: nosotros lo instalamos para poder cada uno crear su aplicación Java. Entonces, esa es un poco la secuencia para crear la diferencia entre las tres.
+20:42 Speaker 2: ¿Alguna duda? ¿Está bien hasta ahí? ¿Rápido?
+20:52 Speaker 1: Ok, ahora, haciendo un doble clic más. ¿Cómo se construyen estas recetas? Estas recetas se construyen por capas. Siempre partimos de una imagen base. Siempre hay una imagen base de la cual la vamos a partir. Para ver ese término alpine por muchos lugares, ese término por convención se usa para las imágenes más ligeras. Una de las claves en los contenedores es que la imagen sea lo más ligera posible.
+21:25 Speaker 2: Entonces, cuando
+21:26 Speaker 1: tú quieres usar una imagen base, hay muchas versiones. Y si yo usara el Note 20, similar alpine, seguramente no pesaría 55 megas, sino probablemente pese 500 megas. Entonces ese tiempo va a ser mucho más alto del
+21:41 Speaker 2: que podría ser
+21:44 Speaker 1: para... Mientras que más pese, más tiempo va a ser la compilación de Docker, más tiempo va a ser el despliegue del contenedor. Así como cuidábamos en el pipeline que el tiempo sea lo menos posible, en las imágenes de las recetas tenemos que cuidar de que sea lo más ligero posible. No meter grasa de que no se va a usar. Entonces, cada línea que yo voy agregando a mi Dockerfile, mi receta, va a generar una capa. Entonces, se van acumulando. Entonces, lo que cada capa escribe, por más que la siguiente lo borre, igual va a quedar guardado en alguna de esas capas. Yo por acá declararía una variable, un secreto, un pecado, ¿dónde es esto? Si yo metí acá un secreto, por más que la capa pueda sacar lo borro, si yo veo el historial, va a pasar ahí. O sea, va a estar la vulnerabilidad igual en el historial del contenedor. Y acá, imaginemos lo siguiente. Esta es mi receta. Yo primero declaro que
+22:57 Speaker 2: lo voy a hacer desde esta versión
+22:59 Speaker 1: de imagen base. Mañana yo hago un cambio en mi aplicación y cambian los archivos que están dentro de este Order App. ¿Qué significa eso? Lo primero es desde qué imagen base van
+23:14 Speaker 2: a
+23:17 Speaker 1: ser mi contenedor. La segunda, ¿cuál va a ser mi directorio de trabajo para este contenedor? Ahí hay un paréntesis. Este contenedor está corriendo, es un archivo más que cubra en tu aplicación. Entonces imagina que tú tienes tu clásica aplicación con tu carpeta source ahí. Entonces, este Worddir app lo que hace es instancia dentro del Docker. Imagina como si el Docker fuera una mini máquina virtual que se coloca ahí. Y en ese docker
+23:47 Speaker 2: crea una carpeta app.
+23:49 Speaker 1: Está vacía en este momento. No hay nada. Entonces lo siguiente que hace es copiar los archivos necesarios para que esta aplicación pueda correr. En este ejemplo está el package.json. No tiene mucho sentido que con esto corra tu aplicación, pero va más o menos por ahí. Después, mira, acá lo que hace es copiar el package.json, luego compila. Esto va a bajar todas las librerías. Y al final, come source. Con esto, lo que está haciendo finalmente es instalar las deberías copiar todo el source al contenedor.
+24:25 Speaker 2: ¿Por qué
+24:27 Speaker 1: lo hacen? Por partes. Incluso por este principio que está acá. Imaginemos lo siguiente. Yo hago un cambio en mi código fuente, en lo que está en el source. Cambio algo en el HTML, lo más sencillo. Cuando yo vuelva a hacer un Docker build, él va a agarrar y va a revisar. Oye, ¿ha cambiado esto? No. Entonces tomo de la caché de mi máquina, que ya tengo esta capa 1 resuelta. No la vuelvo a descargar, no la vuelvo a tratar de debiliar.
+25:01 Speaker 2: La salto.
+25:02 Speaker 1: ¿Ha cambiado algo en esta ruta? Tampoco. ¿Ha cambiado algo en el package JSON? No, no empleo librerías nuevas. Lo pasa. El NPMCI lo volverá a correr sobre esto. También lo va a hacer lo mismo, porque no hay nada nuevo. Y recién acá, esta la reconstruirá. Pero, si yo instalara una nueva... librería, ese archivo si va a cambiar, él se va a dar cuenta que esta capa es diferente, así que tendrá que reconstruir todo de acá para abajo. O sea, la capa donde encuentre cambios, todo de ahí en adelante lo vuelve a reconstruir. Eso significa el tercer principio de que un cambio invalía a todas sus cambias y las de arriba. Por las siguientes. Gracias a este invertido. Y bueno, este es el último que les decía, ¿no? Cada paso que yo voy haciendo se queda ahí, perennemente, en esa capa. Por más que en la siguiente yo la pueda borrar o necesitar, en esa capa se quedó escrita. La imagen base que yo declaro... ¿Puedo probar una vez al contenedor que
+26:19 Speaker 2: salga? Ahí va.
+26:45 Speaker: Si ven acá a la izquierda, ese es mi... Yo, por ejemplo, viene a ser la aplicación que adentro tiene, en ese caso es un Python, por ejemplo, que básicamente es un servicio de dotación de algún portátil.
+27:11 Speaker: Acá es el archíbulo, con las librerías específicas que va a encargar. Y ese es el OpenPile.
+27:23 Speaker 1: Slim es el otro término que se utiliza por convención para las imágenes
+27:29 Speaker 2: más chiquitas
+27:31 Speaker 1: posibles.
+27:33 Speaker 2: Acá, por ejemplo, está desagrando un Python 3.12 Slim, que es lo mínimo posible.
+27:49 Speaker 1: Estoy buscando el Dockerfile de ese para que tengan idea de donde nace ese, para que lo puedan pegar ahí y lo tengan también.
+28:26 Speaker 2: De hecho acá, yo he buscado... Esa área se llama Docker Hub, que es uno de los repositorios principales
+28:34 Speaker 1: donde están todas las imágenes de los contenedores Norman,
+28:38 Speaker 2: o sea, de las
+28:39 Speaker 1: recetas que todo el mundo usa. Entonces, este mismo Python 3.2.0
+28:45 Speaker 2: Slim, lo he buscado acá para que podamos ver qué
+28:48 Speaker 1: contiene. Yo he encontrado aquí acá la receta. Espero que estén los pasos.
+29:04 Speaker 2: Él, internamente,
+29:05 Speaker 1: seguramente declara
+29:08 Speaker 2: una imagen base.
+29:11 Speaker 1: Acá por lo que veo es Debian.
+29:14 Speaker 2: Y luego hay
+29:16 Speaker 1: una serie de pasos para poder configurar el Python en esa imagen base. Esto ya nos está dejando listo una imagen Docker de la cual nosotros partimos, que
+29:26 Speaker 2: es esta.
+29:27 Speaker 1: Entonces ese es nuestro punto de partida. Y sobre eso le vamos a dar una serie de instrucciones. Acá, por ejemplo, estoy declarando simplemente etiquetas de uso, descripción, todo lo que quieras para poder identificar. Luego le estoy declarando por ahí variables de entorno. Le estoy diciendo, lo que comentaba hace un momento, cuál va a ser la carpeta de trabajo del contenedor. Y luego le voy a ir copiando archivos
+29:59 Speaker 2: desde el
+30:02 Speaker 1: proyecto que tienen acá, app, de Quiernes.io. Lo está copiando, ¿no? Lo está copiando a esta carpeta A. Este WorkDim es como decir CD A. Entonces acá ya está copiando esto a
+30:19 Speaker 2: ese directorio.
+30:21 Speaker 1: Y luego está corriendo el distal para cargar los libreríes. Luego está copiando todo el contenido del punto A, del A.
+30:36 Speaker 2: y acá está declarando que
+30:38 Speaker 1: va a crear un usuario en tu contenedor que es AppUser. Si yo no declarara este usuario, por defecto del contenedor, siempre usa root. Entonces, esta es una buena práctica de seguridad. Siempre
+30:51 Speaker 2: declarar al usuario que vas a correr su contenedor.
+30:57 Speaker 1: El expose es, ok, ya compilé,
+30:59 Speaker 2: ya está lista la privación para correr, acá le estoy
+31:02 Speaker 1: diciendo qué puerto va a exponer el contenedor hacia afuera. Le va a ser el puerto 5.000.
+31:09 Speaker 2: Además, está declarando que el
+31:11 Speaker 1: doctor va a tener un health check. ¿Están organizados con lo que es health check? Health check, como su nombre dice, es chequeo de salud. Chequear la salud del contenedor. Entonces, un intervalo de cada 30 segundos. con tres reintentos y esperando hasta tres segundos como time out voy a correr este comando
+31:36 Speaker 2: que finalmente va a chequear que esta
+31:38 Speaker 1: URL me responde un 200. Si me responde un 200, es que está bien. Si no responde un 200, es que hay un problema. Y por ende, el contenedor notifica que hay un problema con ese
+31:49 Speaker 2: contenedor. Si yo le pusiera esto,
+31:51 Speaker 1: mi contenedor puede levantar, pero tal vez la aplicación dentro no está disponible. Entonces, este gadget lo que me permite es chequear si tu aplicación dentro del contenedor está bien. ¿Han escuchado QRT seguramente? Todas las aplicaciones que utilizamos ahorita de banda, la gran mayoría, los cuentos están con lambda, pero la gran mayoría están informes. Entonces imagínense si ustedes, o sea, seguramente habría un servicio ahí que se llame listar cuentas de tiempo. Ese servicio podría caerse, podría tener un problema. Ellos no tienen uno, tienen 20, 30, 50. réplicas de ese contenedor corriendo
+32:35 Speaker 2: para poder satisfacer la demanda de todos los
+32:37 Speaker 1: clientes que tienen, los millones de clientes que tienen. ¿Cómo saben si ese contenedor está caído o no? Por el headcheck. Este headcheck es el que le dice a una persona, porque una persona se está chequendo y es imposible, hay automatizaciones encima, está alerta que le dicen, oye, ¿está bien o no está bien tu obligación? Este headcheck funciona para
+32:58 Speaker 2: eso. Y finalmente,
+33:02 Speaker 1: Este paso de acá es el que, así como usted corre en el NPM RAM, ya para que lo que usted corre, puedan verla. Este último paso es el que hace eso. Ustedes han trabajado con el Python, el Jay Unicorn, ¿lo conocen? El Jay Unicorn lo que hace es,
+33:18 Speaker 2: levanta como
+33:20 Speaker 1: un, hace como un Nginx,
+33:22 Speaker 2: como que disponibiliza el Python
+33:24 Speaker 1: como si fuera una aplicación para correr. De esta línea lo que se está haciendo es eso. Es como si tú corrieras esto así.
+33:37 Speaker 2: Es decir, uno tras otro.
+33:38 Speaker 1: Son comandos uno tras otro de cómo va a levantar la aplicación. Lo que se está haciendo acá es eso y vas a levantar el Unicorn utilizando esta aplicación en el puerto de su dominio. Entonces, eso
+33:58 Speaker 2: es...
+34:09 Speaker 1: Esto es previo a esto. Acá estamos construyendo el contenedor. Lo que tú dices está por acá.
+34:29 Speaker 2: Es esto. O sea, acá es como la consola donde tengo todos los contenidos
+34:32 Speaker 1: y le doy play para que corra. Pero para que este contenidador llegue acá, yo no voy a construirlo brevemente y publicarlo
+34:40 Speaker 2: acá. Incluso eso es lo que estamos viendo ahorita acá. Estoy recapitulando.
+34:49 Speaker 1: Todos necesitan una imagen base que le dejes que sea lo más ligera posible
+34:53 Speaker 2: para
+34:54 Speaker 1: resolver lo que tu aplicación necesita. Y luego le vamos mostrando etiquetas variables. Esto depende un poco de la aplicación.
+35:03 Speaker 2: Se declara cuán va a ser director de los probar va a correr. Nunca se puede suportir a aplicación. Se van a ver casi todas las cosas.
+35:10 Speaker 1: Lo primero en copiar son las librerías. Es importante una explicación. ¿Por qué? Recuerden que cada línea que ejecutamos genera una capa y que si yo vuelvo a compilar el contenedor, ahorita lo vamos a compilar para que entiendan un poco la secuencia. Si yo cuando compilo el contenedor modifico una capa más arriba, se vuelve a ejecutar todo lo de abajo. Cuando tú compilas una aplicación, ¿normalmente qué demora más? ¿Descargar las numerías o compilar tu aplicación en general? Descargar las numerías demora más, ¿cierto?
+35:53 Speaker 2: Entonces, este pip install de acá
+35:59 Speaker 1: demora más. Que bueno, en Python no se compila, ¿no? Pero, bueno, imaginemos que en Python se compilara. Acá, digamos que si esto fuera un Java, acá tú harías el copiado del Java y luego la compilación. En este caso no es necesario. Pero imaginemos que, ya estamos en Python, tú modificas algo de tu código fuente, pero no incluyes nuevas librerías.
+36:25 Speaker 2: Entonces,
+36:26 Speaker 1: cambia este paso, estos de acá están igualitos, y por ende se invalida todo lo de abajo. no se valida lo de arriba. Lo de arriba se ejecuta de la caché y no demoras más tiempo en compilar contenedor otra vez. Pero si tú pusieras esto arriba, él va a invalidar todo el tema de requirements y librerías. Por más que no han cambiado, lo va a invalidar porque es la forma en que funciona el contenedor.
+36:52 Speaker 2: lo Docker,
+36:53 Speaker 1: de invalidar las capas hacia abajo y volver a construirlas. Entonces, por eso es una buena práctica primero colocar las librerías primero y después el tema de la aplicación. Lo más común es cambiar la aplicación más clave. Arriba. No se ve, porque no lo estoy diciendo yo, oye, es Linux, pero él por defecto, Python, ya trae el sistema operativo. que antes con el trabajo es un devian internamente
+37:24 Speaker 2: lo
+37:28 Speaker 1: va a enredar de acá arriba O sea, si yo quisiera algo más puro, o sea, algo más...
+37:37 Speaker 2: no tan... no tan trabajado como esto, yo podría poner
+37:40 Speaker 1: ahí directamente, que era un Rectal, por ejemplo. Como una imagen base de Rectal. Pero eso quiere decir que esto encima, ya vas a tener que instalar Python, PIP, y todo lo demás que la aplicación corre. Acá te estás ahorrando todos esos pasos, porque este ya no viene instalado. Entonces, esa es la idea de usar imágenes base preconfiguradas para tu operación. Que ya tienen toda la base para que tu operación sea lo que te corre.
+38:29 Speaker 2: Esta es la
+38:32 Speaker 1: imagen base.
+38:41 Speaker 2: Esta es la
+38:42 Speaker 1: imagen base del Python. La que está atrás. Que nosotros no la hemos hecho. La ha hecho alguien más, la publicó en la comunidad y él sigue usando simplemente.
+38:51 Speaker 2: Entonces
+38:52 Speaker 1: él ya está declarando un devian que está usando esto por dentro. Miren, ella instala todo
+39:00 Speaker 2: esto por nosotros,
+39:01 Speaker 1: pero esto ya viene por defecto en la imagen Docker. Ya configura qué versión de Python va a usar. Ya instala todas las deberías necesarias para que esto corra por
+39:17 Speaker 2: empresa del Python.
+39:21 Speaker 1: Entonces todo esto ya viene. Todo esto, para nosotros, es esta línea. Pero es importante elegir cuál que
+39:32 Speaker 2: le coloco.
+39:42 Speaker 1: Acá abajo se ve el terminal. Si se ve bien, ¿cierto?
+39:51 Speaker 2: Ponemos que le damos a zoom.
+39:53 Speaker 1: Atrás.
+39:59 Speaker 2: Para arriba. Entonces.
+40:05 Speaker 1: Acá estoy. En esta carpeta.
+40:09 Speaker 2: Estoy en la misma altura donde está este archivo de otro file.
+40:12 Speaker 1: Acá tengo el ritmo que me guía. Igual. Pero lo que voy a hacer es este Dockerbin.
+40:23 Speaker 2: Y lo voy a...
+40:24 Speaker 1: Ahorita olvidémonos un poco de lo que hemos visto del SHAD, de lo del DJ y eso. Ahorita seguramente no
+40:30 Speaker 2: importa un poco eso. Ahorita más importa el tema de
+40:32 Speaker 1: cómo genero la imagen del contenedor. Entonces lo primero que voy a hacer es generar... A ver si me deja, porque ya lo hice antes. Y a veces cuando ya tienes una versión, se me deja. Mira. Si se dan cuenta acá, miren, está yendo
+40:43 Speaker 2: capa por capa. Entonces, vamos a hacer algo. Voy a agarrar y voy a modificar este.
+41:04 Speaker 1: Voy a decir...
+41:12 Speaker 2: Se que se va a caer, no importa. Entonces te lo voy a borrar para
+41:16 Speaker 1: que vean la diferencia.
+41:19 Speaker 2: He modificado el lock.
+41:20 Speaker 1: El lock en que line está en esta, ¿no?
+41:24 Speaker 2: Voy a borrar el circuito y se cayó.
+41:31 Speaker 1: Pero miren, te encuentras esto. Hizo caché hasta el paso previo.
+41:39 Speaker 2: de esa capa.
+41:40 Speaker 1: Y cuando fue a copiar eso, cuando ya se cayó por otras cosas, ya no pudo servir tanto que le fallan la dependencia de librerías. Pero lo que quiero que vean es eso, ¿no? Como modifique ese archivo que está en una capa superior, de ahí para abajo, lo trató de volver a ser todo.
+42:00 Speaker 2: Pero para confundidas todavía.
+42:04 Speaker 1: Ahorita yo lo que hice fue modificar este archivo. Entonces, en la corrida que había hecho yo antes,
+42:12 Speaker 2: como yo ya había tenido el build previo,
+42:15 Speaker 1: había usado todo de la caché. Como cambié esto, invalidó la caché de todo esto para abajo y trató de volver a hacerlo. Y al tratar de volver a hacerlo, se cayó.
+42:28 Speaker 2: Lo voy a resaltar. Y
+42:36 Speaker 1: ahora, como lo voy a hacer, lo voy a volver a salir.
+42:41 Speaker 2: El
+42:41 Speaker 1: tema de la caché, volvemos a usar caché para que se den cuenta que era igual delantero que ya teníamos. Y ahora lo siguiente es,
+42:49 Speaker 2: solo
+42:50 Speaker 1: para esta prueba local.
+42:53 Speaker 2: Empezamos a una prueba local.
+42:56 Speaker 1: Veamos qué imágenes tengo de este contenedor.
+43:00 Speaker 2: El concurso lo trataba, bueno, acerrarlo hace dos horas. Yo lo había compilado, por eso se acercaba hace dos horas.
+43:06 Speaker 1: Miren, esta imagen pesa 159 MB. La imagen base que estábamos usando de Python, que es esta. Pesa... Acá le he bajado a propósito para poder ver cuánto pesa. Este Python pesaba 152 megas. Y la nuestra que hemos hecho ahora, que es la Docker Example, pesa 159 megas. Quiere decir que le hemos agregado 7 megas de nuestra obligación. Es como si fuera una pieza de Legos que se va sumando. Agarras la pieza de Lego que ya tienes del Python. Y le agregas piezas encima. Sé que salen cosas de James y Isla y otras cosas que no son de la mitad de la prueba. Ok. Eso es chévere. Ahí ya puedo ver eso. Y lo otro que puedo ver acá es el historial de los cambios que ha tenido mi imagen.
+45:17 Speaker 2: De los diferentes cambios que se han ido haciendo.
+45:20 Speaker 1: Es que hay cosas desde hace dos horas, que son las mías, pero también acá hay cosas desde hace dos semanas. ¿De dónde salen estas dos semanas? De hace dos semanas, eso es lo que creé hoy. Tienen la imagen base de Python, como es de la comunidad. hace dos semanas le han estado haciendo mantenimiento entonces
+45:37 Speaker 2: estos
+45:38 Speaker 1: cambios que se ven acá abajo son de esa imagen base si esa imagen base ahorita alguien la cambiara y yo estoy usando la misma versión y han publicado sobre la misma me va a volver a generar todo otra vez desde
+45:48 Speaker 2: arriba y
+45:56 Speaker 1: lo último Normalmente lo que tiene es una
+46:11 Speaker 2: vez que se crea el Docker Hub, se crea su propio Docker
+46:16 Speaker 1: Hub y se hace copia de Smart. Y en su proceso otra, ¿cuál
+46:22 Speaker 2: es la idea?
+46:23 Speaker 1: Como hablaban de librerías de las aplicaciones para tener una realidad en algún momento. Tienen vulnerabilidades, solo que no nos han descubierto Lo mismo con los contenedores Tienen vulnerabilidades, solo que no nos han descubierto Por lo que nos descubren, nos reparan
+46:36 Speaker 2: y vuelven a publicar Nos fixerán y vuelven a publicar la versión nueva Entonces, si tú haces lo que comentas, te vas a perder las actualizaciones Tendría que generar fotos
+46:45 Speaker 1: que actualicen esta copia que están haciendo Pero es el camino correcto
+47:43 Speaker 2: Ahora lo que voy a hacer es correr el contenedor. O sea, el contenedor está compilado,
+47:47 Speaker 1: pero no se está ejecutando todavía ese contenedor en mi máquina. Entonces, acá con esto, ya está corriendo.
+47:58 Speaker 2: Acá vemos que está corriendo ese contenedor. Y, ¿cómo
+48:08 Speaker 1: validamos que ese contenedor está corriendo? Bueno, esto expone una API. Entonces, lo que está exponiendo... Acá hay algo que no se ve en el Dockerfile, porque es un tema del Python y
+48:33 Speaker 2: del... del... del...
+48:37 Speaker 1: Unicorn, este de acá. Él, por defecto, expone la aplicación en el 8080. Por eso, cuando yo hago un curl al localhost 8080, esto internamente... al J Unicorn y el J Unicorn internamente va al puerto 5000 que es donde está esta aplicación corriendo en el contenedor y la aplicación me está devolviendo el contenedor se llama Slight Digital que es ese mismo agarre el
+49:05 Speaker 2: 9242 que
+49:07 Speaker 1: ahora es ahorita y hola este mensaje de contenedor y cuál es la versión del contenedor que está corriendo y lo otro es ¿se
+49:17 Speaker 2: acuerdan que hay un head check?
+49:20 Speaker 1: Ese wheelchair también lo podemos... Eso es, está corriendo internamente. Pero nosotros también lo podemos variar desde acá. Y te dice, está todo cierto, está bien.
+49:55 Speaker 2: está corriendo el contenedor entonces con
+49:58 Speaker 1: eso vemos que podemos hacer el docker build en el docker build se le especifica cual
+50:03 Speaker 2: va a ser como el tag
+50:05 Speaker 1: con el cual se está se está generando el build de ese contenedor y luego el docker ram para correrlo localmente
+50:13 Speaker 2: para ver un poco que la operación
+50:16 Speaker 1: lo voy a parar un punto importante que no hemos visto es si van a tener opciones Este Container Engine. ¿Qué significa este Container Engine? Que no es que yo tenga el Windows y le pongo mi Dockerfile, lo corro, se va a caer. Te va a decir, no encuentro el demonio de Docker. Porque necesitas el Docker corriendo, como aplicación, el Docker, corriendo en tu máquina, para que reconozca qué cosa es Docker. Así como si sabes el CLI de AWS, de Azure, lo que sea, para poder correr el CLI o el Python de la primera vez en tu máquina, tienes que instalar docker en tu máquina y el agente de web tiene que estar corriendo para que todo partido de ahí pueda levantar dockers en tu máquina. En mi caso, contenedorlo ya. ¿Se acuerdan que les mostré ese, cuando me preguntaron, lo del asplay a los contenedores y sale? La ballena. Esa es la herramienta que está en máquina para
+51:29 Speaker 2: poder correr los contenedores. ¡Suscríbete al canal!
+51:41 Speaker 1: Esa imagen base que yo coloco, hay que tener cuidado que imagen base coloco. Si yo coloco una de hace 5 años, que no se actualiza, es muy probable que tenga una serie de vulnerabilidades. Por más que la aplicación funcione, va a estar super expuesta. Porque seguramente no tiene parches desde hace 5 años, definitivamente vulnerabilidades que no lo van a atacar. Entonces, es una decisión de seguridad, hay que tener cuidado con cuál uso. En las etapas, que ya lo vimos, con unas capas, También es importante de, mientras que yo pongo una imagen base más grande, es más probable que tenga más vulnerabilidades. Entonces, eso es lo que se conoce como superficie de ataque. No es solamente un tema de tamaño para tiempo de compilación, que sea más rápido. También, si yo pongo una imagen más grande, aumenta la probabilidad de que la imagen tenga más vulnerabilidades. Y bueno, el declarado del usuario en contenedor, que era lo que les comentaba. Bueno, más adelante, en este capítulo, vamos a ver... cómo escaneamos la vulnerabilidad que tiene un contenedor.
+53:11 Speaker: Entonces, con lo que hemos visto hasta ahora. ¿Qué malas prácticas creen que está
+53:23 Speaker 1: siguiendo este Dockerfile?
+53:28 Speaker 2: No hay un ID claro de la última versión del Docker. ¿Un ID
+53:33 Speaker 1: claro de la última versión del Dockerfile? ¿De cuál te refieres? Me
+53:35 Speaker 2: refiero al primer comando, Lattice. Claro, estás sacando
+53:40 Speaker 1: la última versión, pero no es una en específico. Dale, usted es el primero.
+53:45 Speaker 2: Hay un secreto
+53:46 Speaker 1: que está puesto ahí, en la 4. ¿Alguien más?
+53:49 Speaker 2: Se está volcando todo el código puente. Se
+53:52 Speaker 1: está volcando el código puente. ¿Qué cosas nos debería colocar?
+53:54 Speaker 2: Un punto ahí, por ejemplo. Dale, es un punto ahí. Un
+53:58 Speaker 1: git ignore. ¿Un git ignore debería ir dentro del contenedor? No. No, no es necesario. No. Dale, ese es el 2. Nos faltan 3, 5 y 6.
+54:11 Speaker 2: Ah, sí. ¿Cuál le parece tener que instalar el MPMSI? ¿Sabes?
+54:33 Speaker 1: Exactamente, el CI usa el logo y por ende usa la cacheta. El install no. Un tip.
+54:41 Speaker 2: Ahí.
+54:42 Speaker 1: Y de los dos últimos, ¿les suena algo?
+54:45 Speaker 2: Por ejemplo, acá hay uno. Para los que no ven,
+54:48 Speaker 1: acá están instalando el pur, el bim, el git. No se utilizan. Estamos aumentando
+54:57 Speaker 2: la... La superficie de la máquina.
+54:59 Speaker 1: La superficie de la máquina. Son herramientas más de desarrollo. No tiene sentido desarrollar el contenedor de la aplicación. ¿Con qué va a correr esto? ¿Por qué no se quiere que sea con el root? Porque si alguien vulnerara y entrara, podría ser lo que sea.
+55:34 Speaker 2: Hay
+55:35 Speaker 1: muchos ataques que se han hecho de esa manera. Saltan al contenedor, cuando tienen acceso a todo y el contenedor está en una red, desde ahí salta lo que le da la gana. O instala cosas en el contenedor también y puede ser más cómodo. Entonces, el primero, lo que decían, el TAG móvil, la base, y además, hay tema importante, no es un Alpine, no es un Steam, es una máquina muy pesada, probablemente esta de... Una de las pruebas
+56:10 Speaker 2: de trabajo que vi en algún momento,
+56:13 Speaker 1: que era muy buena, era para una empresa de afuera, en la entrevista, fue una entrevista técnica. donde agarraba y me daba un contenedor, una imagen, un Dockerfile y me decía,
+56:24 Speaker 2: repáralo, 10 minutos.
+56:27 Speaker 1: En vivo ahí en línea
+56:28 Speaker 2: con las dos personas.
+56:32 Speaker 1: Ese tipo de cositas son tips ahí ahorita
+56:35 Speaker 2: para el mercado, son bien valorados.
+56:37 Speaker 1: Saber cuáles son las buenas prácticas y saber qué hacer con eso. Vamos bien. En esa época no
+56:44 Speaker 2: veía tantos detalles, así que no agarré esa chamba.
+56:50 Speaker 1: Luego de copiar todo el contexto que ya lo vimos, ahí puede ir hasta el .git del historial. Se puede estar copiando ahí. No tiene sentido que el .git vaya dentro de la aplicación. El .em, etc. Lo del CI, el npmci versus npminstall. El npminstall no usa el log file. El secreto era evidente. Se están usando herramientas de desarrollo. No tiene sentido. Y el último, el proceso, como no estamos declarando usuario, estamos ordenando como nuestro.
+57:27 Speaker 2: Ahora,
+57:29 Speaker 1: pensando en cómo sería un Dockerfile ideal. Ideal es que declares, por ejemplo, toda la versión específica, exacta, y que sea una versión ligera. También que declares
+57:41 Speaker 2: el...
+57:42 Speaker 1: que copies el lock específicamente, que uses CI. Que tengas una parte para el build separada de la parte del RAM ya de la aplicación final. Acá hay algo que está puesto. Se los comento. Es como la parte avanzada. Esta lámina incluso la voy a ocultar. Porque tiene ya cosas más elaboradas. Que no quiero confundirlos más. O llevarnos tanto por esa publicidad. Porque eso acá puede ser tan profundo. Y hay muchas cosas que ver dentro del Dockerfile. Más allá. Pero en Dockerfile también puedes como... segmentar tu Dockerfile por una parte que sea hasta acá creo para desarrollo y con eso estoy listo pero para producción hay otras cosas adicionales que hay que tener en cuenta entonces se puede como segmentar ir agregando cosas según el estadio donde estoy en el contenedor por eso es que ven acá miren de agregado en el beat va a ser acá pero para el runtime va a ser de acá en adelante ¿Por qué esto está así dividido? Porque en algún punto, tú quisieras simplemente ver si tu Docker, si el contenedor compila o no compila. Y con estos pasos ya estás. Ahí no tienes que hacer el resto de declarar al usuario, ni exponerlo. Porque solamente quieres que se compila. Entonces, por eso es que se especifica esta parte en especial. Y ya cuando quieres correrlo, aparece la parte del rampa. Solo sin privilegios, sin privilegios, el tema del genche, también. Hay una buena práctica también, así como existe el gitignore, existe un dockerignore. En la misma, así como tienes tu dockerfile en la ruta, puedes poner un archivito arcosadito que sea dockerignore. Entonces, él por defecto ya va a ignorar ciertos archivos que no quieres que suban. Si se te escapa un copy punto punto, ya eso de ahí no lo copias.
+01:00:16 Speaker 2: Lo hace por bien. Así para que lo tengan
+01:00:20 Speaker 1: mapeado el dockerignore. Entonces, imagínense que ya tiene su contenedor,
+01:00:36 Speaker 2: chévere,
+01:00:37 Speaker 1: pero cuando van a ir de un ambiente a otro, naturalmente, la base de datos es diferente por cada ambiente. No es la misma de Cuba que de producción. Entonces, la parte de la configuración es la que tiene que vivir por fuera.
+01:00:52 Speaker 2: ¿Qué cosa?
+01:00:53 Speaker 1: Viaja dentro del abstracto, está todo el tema de código, las librerías, todos los valores que van por defecto. Y lo que se inyecta en el despliegue viene a ser la URL de servicios, la data de conexión de base de datos. Estos acá, por ejemplo, no los hemos visto, pero tú al Docker RAM le puedes dar parámetros. Y esos parámetros se los inyectan al momento de correr. Eso es una manera. Hay ciertas aplicaciones, sobre todo las de NPM, que te obligan que en el build les metan esos parámetros. Porque tienen que vivir dentro. No puede ser en el RAM. Es una particularidad muy específica del NPM. Todo el resto probablemente es en la ejecución.
+01:01:34 Speaker 2: Y
+01:01:34 Speaker 1: lo que no tiene que vivir en el repositorio ni en el artefacto, bueno, son todo el tema de contraseñas,
+01:01:40 Speaker 2: de certificados privados...
+01:01:45 Speaker 1: El artefacto en sí no sabe en qué ambiente está corriendo, ¿no? Porque es lo mismo, para él es lo mismo de esa cuba propia. Todo lo que pones encima de él, después,
+01:01:53 Speaker 2: es que
+01:01:54 Speaker 1: determina en qué ambiente está. Y justo el tema de secretos es el que se determina en el momento del despliegue.
+01:02:20 Speaker 2: Ok, entonces,
+01:02:22 Speaker 1: ya vimos cómo se construye Docker en la máquina, ¿no? Totalmente. Ahora, ¿cómo haríamos esto en un país? Es muy parecido.
+01:02:33 Speaker 2: Vamos a saltarnos un poquito a esta parte de arriba y vamos a
+01:02:36 Speaker 1: ir directamente a los pasos. Primero, descargo el código, el check-out, ustedes ya lo han visto. Calculo la versión, ahorita nos miramos cómo lo está calculando, generalmente determina una versión. Acá hay una parte que se llama autenticar contra el registro. Eso lo mencionamos, pero muy por encima. Docker Hub le decía que es el
+01:02:57 Speaker 2: registro,
+01:02:59 Speaker 1: o sea, es como la librería pública más grande que hay de todas las imágenes de contenedores. Pero cada nube tiene su propio registro. En AWS está el SR, en Azure está el ACR, Azure contiene el registro en Azure, en AWS es el ACI contiene el registro. ¿Qué tema tiene Docker Hub? Docker Hub va a hacer la librería más popular y por defecto, incluso un Docker por defecto, cuando tú le haces un pool, cuando yo hice el Docker Pool, lo estás sacando de ahí. Con el tiempo empezó a poner restricciones, porque tiene tanto consumo que, por ejemplo, si yo ahorita hiciera mucho Docker Pool, me voy a empezar a bloquear. Tiene un rate limit, porque no tengo cuántos, pero son 10 o 100 por 5 minutos, por 10 minutos, por una hora. Entonces, después, ahora ya no puedo descargar más contenedores. Me tengo que, dos opciones, o autenticar en Docker Hub, que ahí me da un aspecto mayor, o lo que sostiene hacer mejor en las empresas es, ya no usas, lo comentabas, ya no usas el registry de la comunidad, sino usas tu registry de tu nube en específico. Yo descargo las imágenes ahí. Hasta incluso puedes configurar un reenrutamiento. O sea, yo la descargo de mi registry. Si él no la encuentra, él se va al otro lado, la saca, y luego va a ser acá. Esa es magia. La idea es que las descargues y las tengas tú en tu propio registro. Entonces, por eso está acá la autenticación contra el registro. Esa es autenticación, ya sea contra Docker Hub, contra AWS, contra Azure, para poder descargarme las librerías que necesite. O, perdón, las imágenes base que necesite.
+01:04:43 Speaker 2: Entonces, hago el Docker Build.
+01:04:47 Speaker 1: Acá viene, le están poniendo, a ese docker bill le están colocando tres tags diferentes. Uno con la versión, uno con el tag to environment, digamos acá le están poniendo como develop, wow, producción. Acá le están poniendo, la versión me refiero que le están poniendo, por ejemplo, 1.3.0. Además le están poniendo otro tag que sea trd. Y aparte le están poniendo lo que les decía, que es el único, que es el chat del comit. que es el ID, este, el arregote, que me identifica realmente de dónde está viniendo este contenedor. ¿Cuál de los tres me ayuda con la trazabilidad para ver desde dónde viene el cambio?
+01:05:28 Speaker 2: ¿La versión?
+01:05:30 Speaker 1: ¿El tacto del ambiente? ¿O el ID del comité?
+01:05:33 Speaker 2: El ID del comité
+01:05:36 Speaker 1: es el que realmente me va a decir, oye, esta imagen viene de tal cambio de tu historial de cambios de código web. Y bueno, finalmente es publicar estas imágenes al registry para ello luego poder desplegarlas.
+01:05:52 Speaker 2: Entonces,
+01:05:53 Speaker 1: ¿cuáles son un poco las consideraciones a tener en el pipeline cuando me voy a usar los contenedores? Primero, al igual que veíamos en la parte de integración, solamente escribimos esto si es que pasó las validaciones de calidad y seguridad. Está el NITS, acá arriba. Segundo, Este tema no lo hemos visto todavía, lo vamos siguiendo, pero esta parte de acá de permissions, ID token, lo que está haciendo es, diciéndole el pipeline, oye, pipeline, yo como entidad GitHub, como cuenta de José del Castillo, tengo configurada en la organización de José del Castillo ciertas conexiones,
+01:06:35 Speaker 2: por
+01:06:37 Speaker 1: ejemplo, con el registry de AWS. Entonces, yo estoy autorizando el pipeline, de poder generar este token para poder consumir eso.
+01:06:49 Speaker 2: Entonces,
+01:06:49 Speaker 1: de esta manera, se están generando tokens efímeros. O sea, cada vez que se ejecuta esto, él va a ir, esta conexión que ya se tiene entre la organización de GitHub contra el RACY, y va a generar un token en ese momento. No estamos colocando acá un solo contraseña fija. Se podría también, pero no es una buena pregunta. ¿Por qué? Porque es el token efímero. Si alguien lo roba, lo va a poder usar una hora y después ya muera. Para eso sirve esta parte de acá. Declarar que el toque se puede utilizar. Luego es la versión que se hereda del build. Ya vimos en las clases pasadas cómo generar esas versiones. Esa versión se hereda acá y se utiliza. Y finalmente se tallera con lo que les estábamos comentando. Y lo más importante, no
+01:07:41 Speaker 2: olvidar de poner ya el
+01:07:43 Speaker 1: que nos va a identificar realmente cuál es la que está con él.
+01:07:50 Speaker 2: ¿Hasta ahí? ¿Alguna duda con infraestructura? A mi no me quedo muy claro qué es el registro que mencionó hace rato. Así como existen registros
+01:08:10 Speaker 1: de fuentes, las imágenes necesitan dónde vivir. Es el registro y es un directorio de imágenes donde viven. Docker Hub es
+01:08:22 Speaker 2: un registro.
+01:08:26 Speaker 1: Es una biblioteca de donde tú puedes descargar esas imágenes. Por ejemplo, Kubernetes. Imaginemos Kubernetes que está cubriendo, o de una máquina virtual que está cubriendo, y
+01:08:37 Speaker 2: tiene que
+01:08:37 Speaker 1: descargar un contenedor para poder ejecutarlo. Él se tiene que conectar a un registry para descargar ese contenedor. Para eso son los registros. No solamente para publicarlo, sino para que los que consumen lo usen de ahí para poder utilizarlo. Son 8 y 20. ¿Quieren hacerlo de largo? De
+01:09:02 Speaker 2: largo, de largo. Seguimos entonces.
+01:09:11 Speaker 1: ¿Infraestructura como código? ¿Quiénes han trabajado antes con infraestructura como código? No.
+01:09:19 Speaker 2: Muy bien. ¿Con cuál ha trabajado? Terraform. Terraform, ok. Terraform, ahorita es lo más popular,
+01:09:30 Speaker 1: lo más utiliza. Pero antes de meternos a la parte técnica, ¿qué problemas son los que resuelven y hacen? O sea, ¿para qué has usado tu Terraform? Tu código era el mismo o cambiaba?
+01:10:13 Speaker 2: Pero lo que usamos es para acelerar la configuración. Exactamente. Antes de introducirlo como código,
+01:10:22 Speaker 1: crea lo clásico, entras en tu consola de la nube y ejecutas el wizard, ¿no? Siguiente, siguiente, siguiente, siguiente, una vez. Luego de cuba, otra vez. Siguiente, siguiente, siguiente. Vamos a pronunciar. Siguiente, siguiente, siguiente. Alguien mete la pata, uy me olvidé del paso 5. O no le puse la coma en el nombre. Y mete la pata con eso. porque es error operativo. ¿Qué pasa? Eso lo pasó antes.
+01:10:44 Speaker 2: Entonces,
+01:10:46 Speaker 1: un poco lo que trata de solucionar, son unas cosas que trata de solucionar y es eso.
+01:10:53 Speaker 2: Lo
+01:10:54 Speaker 1: otro también es, oye, lo hice una sola vez, pero ya no recuerdo cómo se sigue. Entonces, los pantallazos incluía Word con pantallazos paso por paso.
+01:11:07 Speaker 2: Para eso eso también solucionó el funcionario como código.
+01:11:11 Speaker 1: También la otra es, oye, lo puse de una manera en mesa y de otra manera en cuba. No me di cuenta.
+01:11:17 Speaker 2: Entonces, lo mejor también te permite eso.
+01:11:19 Speaker 1: La misma receta la despliega en diferentes ambientes. Y el tema del tiempo. Ese tema del tiempo se hace con pinzas.
+01:11:28 Speaker 2: ¿Por qué? Porque, yo creo que sí es cierto,
+01:11:34 Speaker 1: construir,
+01:11:35 Speaker 2: crear
+01:11:36 Speaker 1: tu computadora como código, bueno, ahora con ahí es más rápido, pero crear tu computadora como código la primera vez te va a costar tiempo. Porque es como desarrollar una aplicación
+01:11:45 Speaker 2: chiquita, pero tienes que desarrollarla.
+01:11:47 Speaker 1: Entonces, ir a un wizard a crear cinco pasos va a ser más rápido que crear tu proyecto de TeraFone y todo demás. Es más rápido, una vez que ya lo tienes creado, ejecutarlo. Eso sí, definitivamente es más rápido. Pero la creación inicial, toma, tómate. Y lo más importante también es, si tú lo haces por el wizard, ¿quién valido verifica que lo que has hecho está bien? No estás metiendo otra vulnerabilidad ahí. ¿Cómo versionamos esos cambios? ¿Quién sabe qué cosas modificaste tú? ¿Qué modificó él?
+01:12:24 Speaker 2: Es difícil
+01:12:25 Speaker 1: llevar esa transabilidad si lo haces por el wizard. Las herramientas te dudan, pero tienes que ir como al módulo de auditoría, a ver quién hizo qué Pero no tienes algo fácil de acceder como
+01:12:34 Speaker 2: si fue el código puente de tu
+01:12:37 Speaker 1: editorial de tu git Hay
+01:13:12 Speaker 2: algo que he hecho la combinación para el break Entonces, estos
+01:13:21 Speaker 1: puntos ya nos tocamos Ya, entonces, al tener la infraestructura como código, todo lo que vimos en el capítulo anterior, para hacer validación de calidad, de seguridad, versionar, ahora ya lo conseguimos para la infraestructura también. Como es código, se puede implementar todo eso.
+01:13:42 Speaker 2: Y
+01:13:42 Speaker 1: también la trazabilidad de los cambios, ¿no? Oye, alguien implementó una infraestructura y agregó tal servidor o tal storage, pero ¿quién fue y cuándo fue? Y vas a poder ver quién fue y cuándo fue. De la otra manera se hace mucho más difícil. Ahora, hay dos enfoques en tu libro como código. El imperativo y el declarativo. En el imperativo, acá es como si estuvieras desarrollando...
+01:14:15 Speaker 2: los
+01:14:15 Speaker 1: pasos para poder habilitar esa infraestructura. Entonces tienes que manejar la lógica y decir, ok, primero crea la red,
+01:14:25 Speaker 2: después crea la subred,
+01:14:27 Speaker 1: después crea la regla de seguridad de
+01:14:30 Speaker 2: firewall,
+01:14:31 Speaker 1: luego crea la máquina virtual. Tú tienes que programar eso y armar la secuencia. Por ende, tienes que saber en qué está la infraestructura para ver qué voy haciendo. Mientras que en el declarativo, es como si fuera, tú dices, yo quiero tener un servidor con esas características. Como tu lista de Papá Noel, yo quiero tener esto, yo quiero tener lo otro, yo quiero tener lo otro, simplemente lo declaras. Y ya la herramienta hace el mix para ver qué cosa hace primero. Tú no tienes que... que especificar qué cosa hace una cosa u otra. Hay excepciones donde sí, tienes que poner los links entre qué cosa hace una u otra, pero la gran mayoría de componentes, él tiene ese poder para determinar si yo estoy declarando una máquina virtual y estoy declarando una red y digo, esta máquina virtual se va a conectar a esa red o se va a desplegar a esa red, él ya sabe que primero desplega la red y después desplega la máquina virtual. Eso ya lo maneja en el declarativo. Mientras que en el declarativo, tú tienes que encargarte de poner, primero pongo la línea de crear la red, y después pongo la línea de... Más vamos a irnos a ver esta de la derecha. Porque acá está Terraform, que es un poco de los más ejemplos que vamos a ver. Aunque, ahora se está usando mucho lo que es CDK también. Pero bueno, por el día Terraform es más igual, más usado todavía.
+01:15:57 Speaker 2: Entonces,
+01:15:59 Speaker 1: Lo primero es, chévere, puedo tener infraestructura, crear como código con platillas. Ahora vamos a ver un ejemplo. Pero necesito algo que me diga en qué estado está esa infraestructura. O sea, a lo mejor es lo siguiente. Nace de cero. Creo un
+01:16:22 Speaker 2: servidor.
+01:16:23 Speaker 1: La primera vez. Así como tengo mi historial de commits, de Git. En infraestructura tengo mi historial de estados. Mi momento del estado de en qué estado está la infraestructura ahorita. Qué cosas ya se crearon de lo que está declarado y qué cosas todavía no. Eso lo vemos con el state de la infraestructura. Y este state es el archivo más importante en un material como código porque es el que te dice en qué estás ahorita. qué cosa ya aplicaste en la infraestructura que estás esperando y qué cosa todavía no has aplicado. Entonces, este archivito es importante que no esté solo en tu máquina. Es importante que esté en un lugar centralizado para que si más de una persona va a hacer cambios en la infraestructura, todos vayan contra el mismo archivo de estado. Imaginemos que él hace el primer cambio y su archivo quedó en su máquina. Tú vienes y sobre ese mismo proyecto haces un cambio. No tienes el archivo de estado. Primero la herramienta va a pensar que todo lo que estás haciendo es nuevo.
+01:17:28 Speaker 2: Y va probablemente
+01:17:30 Speaker 1: destruir lo que ya hizo. O va a crear cosas adicionales que ya había hecho.
+01:17:34 Speaker 2: Dependiendo un poco de la lógica de lo que está implementado. Eso no lo vamos a seguir aquí. Lo que está en State tiene sentido que su comité también tiene que estar en nosotros. No.
+01:18:00 Speaker 1: El Carbon State hay una manera de manejarlo que es subirlo a un storage. Si estamos usando la WS puede ser un S3.
+01:18:08 Speaker 2: No importa.
+01:18:11 Speaker 1: No importa sobre la infraestructura que no se crea, esto puede dividir en AWS y tu infraestructura la crea es en otro lado. No pasa nada.
+01:18:24 Speaker 2: Lo voy a quitar un poco más fuera, ¿verdad? Para los dos. El stack. Todos
+01:18:42 Speaker 1: entendamos el concepto del stack. El stack es un archivito. Lo que va a tener este state es la declaración de, oye, existe, yo ya tengo en mi registro, que existe una máquina virtual que se llama
+01:19:10 Speaker 2: BM1, que tiene
+01:19:14 Speaker 1: dos decores. Y tenemos otra máquina virtual.
+01:19:26 Speaker 2: BM2.
+01:19:28 Speaker 1: Esto es porque vino una persona, creó su proyecto Terraform. TF son las siglas de Terraform. Ella creó su proyecto, se desplegó y eso generó ese archivo esteril. Luego vino Juan. Y él no tenía este archivo. Pero quiso trabajar sobre este mismo proyecto.
+01:20:02 Speaker 2: Y ahora él declaró, acá
+01:20:04 Speaker 1: ya estaba la BM1,
+01:20:06 Speaker 2: la BM2, y él a
+01:20:11 Speaker 1: la BM1 y BM2
+01:20:12 Speaker 2: le agregó BM3.
+01:20:15 Speaker 1: Cuando él trate de ejecutar esto, como este no tiene un state, él va a pensar que nada de eso existe, y lo va a tratar de, y digamos que acá está AWS atrás, recibiendo todas esas instrucciones.
+01:20:30 Speaker 2: Entonces,
+01:20:31 Speaker 1: esto de acá ya existirá, dm1, dm2, y existen.
+01:20:37 Speaker 2: Él lo ejecuta, se
+01:20:38 Speaker 1: va a generar un nuevo archivo state,
+01:20:45 Speaker 2: con lo mismo,
+01:20:46 Speaker 1: y además con m3,
+01:20:48 Speaker 2: y lo voy a tratar de ejecutar acá. Y voy a tratar de crear otra vez,
+01:20:51 Speaker 1: dm1, dm2, y ahora la dm3. Eso es si no usara el mismo state. ¿Qué pasaría si ellos dos sí están viendo el mismo state? La herramienta va a identificar que el BBM1 y el BBM2 están igualitos, no han sido modificados. Entonces,
+01:21:14 Speaker 2: voy a agregar acá.
+01:21:17 Speaker 1: el BM3. Y por ende, cuando haga el cambio hacia WS, solamente va a agregar el BM3 y esto ya no lo va a agregar otra vez. Para eso es simple state. Para que todos guarden el orden, el registro de qué cosa es lo último que se ha actualizado. Ahora, ¿cuáles son las prácticas para poder usar esto de la mejor manera? Imaginemos lo siguiente. ¿Qué pasa si él y él mandan un cambio al mismo tiempo? Va a ser una carrera. El primero que lo agarre va
+01:21:51 Speaker 2: a tratar de despegar.
+01:21:53 Speaker 1: Pero si no hay algo que me diga, oye, para, hay alguien que está ejecutando lo primero, tú no puedes hacerlo ahorita. La instrucción va a tratar de hacer los dos a la vez y van a haber luego
+01:22:03 Speaker 2: cosas
+01:22:05 Speaker 1: que no queremos en la máquina final. Van a haber discrepancias que no queremos.
+01:22:10 Speaker 2: Entonces ahí es
+01:22:13 Speaker 1: el primer concepto, que es el del lock. del terraphone o del state del terraphone ¿Qué es una clásica bandera? Un semáforo. Entonces, cuando alguien lanza un cambio, esto de acá se prende en 1. Si inmediatamente, en el segundo siguiente, él quiso hacerlo, va a revisar esto, o sea, la herramienta misma, revisa este log y dice, no, está en 1. Lo siento, pero ahorita no puedes. Está ocupado el canal. No puedes pasar. Él terminará, y cuando termine el proceso, esto lo vuelve otra vez a 0. Entonces, si él en ese momento quiere hacer el cambio, hoy sí lo va a estar pasando. Ese es el lock del terminal state. Entonces, ¿qué necesitamos acá, técnicamente? Necesitamos dos cosas. Un lugar donde vive este state, centralizado para todos. Y necesitamos este flag disponibilizado también para todos. ¿Cómo se logra normalmente en AWS? Al menos, esto de acá es un archivito que vive en un SPS. ¿Quieres un pequeño bebé? Y esto es una tabla. ¿Conocen Dynamo?
+01:23:31 Speaker 2: Es una tabla que
+01:23:33 Speaker 1: tiene
+01:23:36 Speaker 2: un JSON que
+01:23:37 Speaker 1: simplemente tiene esa línea que dice lock. Y está prendido para... Entonces, cada vez que yo lanzo el Terraforma Apply, esto va a tratar de chequear. Primero, el
+01:23:48 Speaker 2: archivo lo sacara de acá.
+01:23:51 Speaker 1: Primero, chequeé el Dynamo a ver si está disponible o si está disponible. Si está disponible, lo bloqueo en uno. Lo siguiente que hago es, saco el archivo acá arriba, ejecuto el comando de terfón plan, terfón plan. Ahora vamos a hablar de terfón plan, terfón plan. Esto es lo que hay que entender un poco la secuencia del state y del tema de semáforo. ¿Se entendió?
+01:24:14 Speaker 2: ¿Se entendió mejor lo que es el state? Con esto vamos a ver las
+01:24:20 Speaker 1: láminas de lo que viene ahorita. Entonces, a eso me refiero con esto. El estado se guarda en remoto, no se guarda en la máquina local. Este state puede tener datos sensibles.
+01:24:37 Speaker 2: Hay
+01:24:37 Speaker 1: que también manejarlo con cuidado. Ahora, veíamos que hay herramientas con el tema imperativo y declarativo.
+01:24:59 Speaker 2: Y
+01:25:00 Speaker 1: también, como el sistema de futuro como código, que es muy utilizado, muy necesario, hay diferentes formas. Hay unas que son nativas del proveedor. Por ejemplo, CloudFormation es propio de AWS. El RM de Azure es
+01:25:16 Speaker 2: propio de Azure.
+01:25:17 Speaker 1: Todas esas, KNK es nativa del proveedor. CDK es nativa del proveedor. Solo nos sirve para desplegar en ese vendor, en ese núcleo. Multiproveedor vendría a ser pérrafo. Y esta de lenguaje general a veces puede confundirse, porque a veces es un mix. Por ejemplo, en lenguaje general tenemos Pulumi. ¿No se han escuchado Pulumi? Pulumi... Es agnóstica a la nube, como un teléfono, no le importa que nube sea, pero no es declarativa, es imperativa. Tienes que programarlo en lenguaje. Entonces, esa se viene por acá. CDK, por
+01:26:02 Speaker 2: ejemplo, el
+01:26:05 Speaker 1: CDK de AWS, tú lo puedes hacer en Python, en Node.js, tiene diferentes lenguajes de lo cual lo puedes hacer. Eso es lengua general, pero te amarra un solo vento. Y de orquestación, acá vendrían los llames de cubanetes. ¿Algunos habrán tomado llames
+01:26:23 Speaker 2: de cubanetes?
+01:26:26 Speaker 1: ¿Qué han visto?
+01:26:29 Speaker 2: Yo lo vi, pero no en Gobernantes como tal, sino en AppChift. Más que todo, la configuración de los posts y los límites que pueden tener para uso de recursos. Sí, también. Si eran Gobernantes, definía un deployment. Bueno, no recuerdo bien, pero sí, más que todo definía un deployment. Así
+01:26:52 Speaker 1: como tenemos el State, Tiene como ilustrar el futuro como código. Y bueno, los archivos terrafón, ahorita luego vamos a ver. En la orquestación, que son los archivos YAML y Kubernetes, ahora acá lo que tú declaras principalmente es, oye, tengo este contenedor que es mi servicio, un par cliente, y quiero que no despliegues y tengas... Tres réplicas, cuatro réplicas. O sea, quiere decir que no despliegas uno solo, sino cuatro o cinco, porque va a tener una alta demanda. Entonces, eso, tú lo declaras, es un archivo llave para que los clientes entiendan eso.
+01:27:25 Speaker 2: Esa viene a ser esa parte acá de lo que está haciendo. Entonces,
+01:27:32 Speaker 1: ¿cómo se hace cada uno? Bueno,
+01:27:34 Speaker 2: en la
+01:27:36 Speaker 1: cantidad del proveedor hay una plantilla que se declara.
+01:27:39 Speaker 2: Son básicamente los archivos de código.
+01:27:41 Speaker 1: El multiplicador es el del lenguaje declarativo, que son los archivos JSON del carro. Luego este lenguaje general puede ser, como les decía, Python, Node, etc. Normalmente estos manifestos son YAMLs. El estado, el state que veíamos acá. Acá normalmente, si vas a hacer un CloudFormation, un CDK, lo administra la propia nube. Tú no tendrías que hacer cargo de eso. Él internamente ya lo maneja. Cuando es multiplicador, como lo que mencionaba,
+01:28:25 Speaker 2: sí, tú
+01:28:27 Speaker 1: tienes que encargarte de ver dónde pones el state. Yo le puse la pregunta, ¿no? El S3, o el Dynamo.
+01:28:34 Speaker 2: El mismo con el columning,
+01:28:36 Speaker 1: de la imagen en general. Y en el caso de YAML, también, el cluster lo administra, ¿no? Si dos personas lanzan el YAML al mismo tiempo, ya el cluster determina quién entra primero. Respecto a la complejidad, Cuando vamos a empezar, si ya conoce la nube, es fácil hacerlo. Bueno, no es fácil, pero no es tan complejo porque ya entiendes un poco cómo va. Multiplador, acá sí es un poquito más complejo porque tienes que aprender la nube y
+01:29:06 Speaker 2: además el
+01:29:07 Speaker 1: Terraform en este caso. Terraform tiene sus propias librerías, su propia sintaxis.
+01:29:11 Speaker 2: Tienes que aprender ambas cosas.
+01:29:14 Speaker 1: En el más general, acá es básicamente como si fueras un desarrollo. También tienes que conocer algo de la nube. Pero acá usas muchas librerías que ya trae la nube. Entonces también te ayuda en ese sentido. Es básicamente aprender a lo que ya sabes desarrollar, aprender las librerías y en base a eso utilizar qué recursos tienes que crear. Acá sí es un poco más complejo porque hay una sintaxis bien específica. El Kubernetes es como si fuera un panel de avión. Tienes mil opciones para hacer. Entonces YAML te permite manejar todas esas complejidades. Bueno, el tema de portabilidad es esto que llevo acá, ¿me lo puedo llevar para un lado o para otro? El de multiproveedor, que es el tema de Terraform, siempre se dice que no, yo lo hago en Terraform para que lo puedas crear en cualquier nube. Eso es mentira. Ahora vamos a ver un ejemplo. Porque cuando tú declaras un recurso en Terraform, tú te dices, esto usa bucket S3 de AWS. Tú quieres usar, no sé cómo se va a utilizar la red.
+01:30:20 Speaker 2: Un storage.
+01:30:21 Speaker 1: El equivalente al... En Azure es el storage
+01:30:23 Speaker 2: account. En Azure vas
+01:30:25 Speaker 1: a tener que reescribir ese código y cargarlo con las librerías de Azure. O sea, no es tal cual de... No te va a intentar porque Azure usa otras librerías por nombre. Entonces, no es del todo como... No es del todo... Está en realidad. O sea, lo que tú no desarrollas así, pero es un esfuerzo más complejo del que tengas que implementar realidad. Ahora que veamos el
+01:30:50 Speaker 2: proyecto de ejemplo... Bueno,
+01:31:01 Speaker 1: los riesgos acá, acá te amarras a un solo proveedor. Acá está todo el tema del manejo del estate, que veíamos a la izquierda. En el tema de lenguaje general, acá es la complejidad de manejar toda una aplicación aparte para todo esto. Y también que es más difícil de auditar. Y acá lo que suele suceder en los YAMLs es que a veces, eso también pasa en los otros, pero acá parece más, no les ha tocado hacer cambios en caliente sin tocar el YAML. Y a veces los YAMLs que tienes configurados se quedan desfasados de los que realmente están en el servidor. Eso lo vamos a ver luego. Pero esto es configuración drift. Aplica para varios de ellos. Imagina lo siguiente. Tú no serviste el wizard para hacer el cambio de infraestructura. Tú lo hiciste con infraestructura como código. Pero alguien vino y no sabía utilizar el Terraform, no sabía que estaba el Terraform, entró el wizard y cambió la cantidad de CPU que tenía en tu máquina virtual. Tu state quedó despasado. Tu state decía dos B-Course y ya lo cambiaron a cuatro. Cuando tú vengas a tu Terraform
+01:32:04 Speaker 2: y vuelves a ejecutar esto,
+01:32:06 Speaker 1: va a tratar de cambiarlo a dos otra vez.
+01:32:08 Speaker 2: Porque los trata de garantizar.
+01:32:10 Speaker 1: Esos son los tips. Las diferencias que hay entre lo que hay en la realidad de estructura y lo que es en tu código. Ese es un reto a seguir. Eso es básicamente política, las herramientas, qué cosas podemos hacer.
+01:32:34 Speaker 2: Ahorita vamos a hacer una mini
+01:32:35 Speaker 1: demo de Terramón Si se dan cuenta, hay un archivo main que es el principal donde normalmente se declaran todos los recursos que tú vas a crear. Por ejemplo, lo que les decía hace un ratito, ¿no?
+01:33:28 Speaker 2: Yo les traigo un recurso.
+01:33:30 Speaker 1: Este de acá, AWS S3 bucket,
+01:33:34 Speaker 2: es una palabra reservada.
+01:33:37 Speaker 1: Estoy acá como invocando a la librería de
+01:33:40 Speaker 2: AWS que
+01:33:42 Speaker 1: me permite usar un bucket S3. Y este acá es un nombre que yo le pongo, José, Evo, lo que yo quieran. Es un nombre lógico que aparece para poder manejarlo dentro de mi interlocutor.
+01:33:57 Speaker 2: Y luego acá, declaro las
+01:33:59 Speaker 1: variables que necesita esta librería para poder crear mi banquete. Entonces, así como este recurso, yo creo que otros recursos que son complementarios para poder crear mi banquete.
+01:34:11 Speaker 2: Esa es la misma.
+01:34:12 Speaker 1: ¿Todos están formalizados un poco lo que es el banquete? ¿Es el 3?
+01:34:15 Speaker 2: ¿Es el más común? ¿No? En
+01:34:21 Speaker 1: AWS, tú puedes desplegar máquinas virtuales. Para hacer un ejemplo, una máquina virtual, que es como lo más conocido, es mucho más complejo y más grande, porque hay muchas cosas que declarar por una máquina virtual. Un Bucket S3 es como si tú tuvieras literalmente una carpeta de web drive disponible en la nube, donde puedes desplegar ahí archivos. Solo tiene muchas otras funcionalidades de manejo de historial, manejo de... Accesos controlados, acceso con llaves efímeras,
+01:34:54 Speaker 2: en negocios.
+01:34:57 Speaker 1: Y sobre todo el tema de persistencia y disponibilidad. Y es muy barato. Hay muchas personas que en vez de encontrar, cuando ya tienen muchas fotos, muchas cosas, en vez de pagar, poner un V-Drive, les ponen
+01:35:09 Speaker 2: una nube. El
+01:35:13 Speaker 1: costo por terabyte es que es chiquita. Entonces, lo pueden ver así. Estamos disponibilizando una carpeta, un AWS, donde puedo subir
+01:35:24 Speaker 2: archivos.
+01:35:28 Speaker 1: Y acá hay una serie de reglas que configurarle a
+01:35:31 Speaker 2: ese bucket.
+01:35:32 Speaker 1: Oye, ¿lo puedo observar en Internet
+01:35:34 Speaker 2: o no?
+01:35:43 Speaker 1: Y así, hay otras reglas de acceso que se van configurando, que
+01:35:50 Speaker 2: son un poco astrales.
+01:35:53 Speaker 1: Declarar si el báquete es público o no es público. Acá el tema del versionamiento. Los archivos que voy grabando ahí, ¿se versionan o no? Solo guardas el último y no puedes regresar a una versión anterior de ese archivo. Entonces, todo esto es declarar acá en ese archivo main. No es tan importante que conozcas a detalle esas cosas, pero lo que quiero que sea es el archivo main. Incluso, este archivo main se puede llamar cualquier cosa, se puede llamar José.
+01:36:22 Speaker 2: Es
+01:36:22 Speaker 1: simplemente un orden lógico de cómo distribuir mis...
+01:36:27 Speaker 2: Y
+01:36:27 Speaker 1: este local es como declarar una variable para luego poder usarla en diferentes lugares del archivo. Para poder declarar mi bucket name, mi
+01:36:37 Speaker 2: nombre bucket,
+01:36:38 Speaker 1: concatenando unas variables. ¿Dónde salen esas variables? Por acá se declara un archivo variables, donde declaro cuáles son las variables que va a recibir mi proyecto térmico. Eso es el variable. Luego, ¿qué más necesito? Necesito un archivo... Providers, que es el que declara acá qué provider de nube voy a utilizar. Yo podría declarar más de uno. Y acá también normalmente se declara cómo me voy a autenticar contra esta nube. Ahora yo estoy haciendo todo con lo
+01:37:14 Speaker 2: que tengo local, entonces no hay nada adicional.
+01:37:17 Speaker 1: Pero acá a veces también se declaran otros. datos más de cómo se va a autenticar este proyecto contra la nube para poder desplegar esto. Y ahora acá hay algunos otros datos o defectos que se tengan para que todos los recursos en Azure que cree, les coloque sus
+01:37:33 Speaker 2: datos. Entonces vamos a copiar los problemas ahí
+01:37:38 Speaker 1: acá. Otro importante es cómo funciona Terra. Terra me parece magia. Yo declaro ahí los archivos y mágicamente se crea todo. Pero ¿qué es lo que pasa realmente detrás de cámaras?
+01:38:08 Speaker 2: Terraform
+01:38:09 Speaker 1: son un conjunto de librerías. en Internet, en las bibliotecas de Tárrafo. Y hay una para
+01:38:20 Speaker 2: Azure.
+01:38:21 Speaker 1: Hay una para AWS. ¿Qué es lo que hicieron ellos? Ellos hicieron como un adaptador. Dijeron, oye, es muy difícil entrar al wizard y hacer paso, paso, paso cada una de las cosas. AWS ya
+01:38:36 Speaker 2: tiene una
+01:38:38 Speaker 1: API que me permite hacer todas las creaciones de todos los recursos. Ustedes cuando en sus máquinas instalan un CLI, de AWS, de Azure, internamente lo que están haciendo es invocando esta app. Y él internamente crea todos los recursos, todas las cosas que necesita de AWS. Entonces lo que Terraform hizo es enmascaró estas APIs en esta sintaxis nueva de Terraform. Hizo un equivalente para cada uno de los módulos. Entonces, oye, ¿qué es crear un bucket S3? Listo. Acá yo declaro un módulo de bucket S3. Que internamente, esto seguramente invocará a todas las APIs de
+01:39:21 Speaker 2: S3.
+01:39:22 Speaker 1: No las pinto todas, porque es imágenes de todo el CRUD. Crear, actualizar, borrar. Y no solamente... Cuando ustedes abren un bucket S3, hay... Cien. Al menos cien operaciones hay para hacer
+01:39:34 Speaker 2: diferentes cosas contra el baguette C3. Ok.
+01:39:38 Speaker 1: Entonces, ellos disponibilizaron estas librerías. Entonces, acá estamos nosotros,
+01:39:42 Speaker 2: creando nuestro proyecto de Terraform.
+01:39:45 Speaker 1: Yo declaro acá mi archivito que lo que va a hacer es instanciar esto y decirme, oye, Terraform, yo quiero usar esto que es disponibilizado.
+01:39:56 Speaker 2: Como
+01:39:57 Speaker 1: esto es una librería, tiene versiones. Entonces esto las va iterando. Esta API de acá también va iterando. AWS va liberando nuevos servicios. Va modificando servicios que están actualmente. Entonces, este no me mueve la versión, este mueve la versión, y por ende yo también voy a tener que ir actualizando a qué versión quiero ir apuntando sobre lo que voy a hacer. Entonces, en este archivo que les he mostrado acá, En este archivo que les mostraba acá, le está diciendo, oye, primero, Terraform en sí tiene su propia versión como motor. Y la otra es, ¿qué versión de AWS es la que voy a utilizar? Por ejemplo, estoy usando la librería de AWS 6.0.
+01:40:41 Speaker 2: Esta
+01:40:41 Speaker 1: acá es la 6.0, la que estoy utilizando en el proyecto. Esta es la forma como funciona Terraform. Yo instancio acá mi proyecto Terraform, que usa módulos disponibilizados por
+01:40:55 Speaker 2: el universo
+01:40:58 Speaker 1: Terraform, y él internamente va a invocar a las artes. Pero, ojo, eso se ve acá como si nuestro proyecto pasara por Terraform. En realidad no pasa, sino que todo esto se descarga a mi máquina como librerías internas. Y desde acá es que va a salir la petición hacia la API.
+01:41:18 Speaker 2: Para que tengan también en cuenta. No es que ustedes
+01:41:22 Speaker 1: corren a su local, la
+01:41:24 Speaker 2: nube de Terraform pasa a
+01:41:26 Speaker 1: BDS, la nube por fuera. Esos son librerías que se instancian en su máquina y desde su máquina misma ya viajan hacia el provider que fuera. Un poco para ilustrarlo.
+01:41:41 Speaker 2: con IA y con el CLID, ¿eso te permite...? Me decía que mejor no esté instalado y se bajaba el docker desde Terraform y desde Terraform hacía su derecho hasta levantar los planes y
+01:41:55 Speaker 1: la infra.
+01:41:58 Speaker 2: ¿Es adecuado o se tiene que trabajar ahí en instalaciones activas, no? No, pues yo era lo mejor.
+01:42:04 Speaker 1: O sea, me está diciendo eso, cuando tú
+01:42:06 Speaker 2: vas a correr Terraform...
+01:42:08 Speaker 1: Si tienes que descargar, así como que descargas Python para correr Python en tu máquina, tienes que descargar el Terraform para
+01:42:12 Speaker 2: correrlo en tu máquina.
+01:42:15 Speaker 1: Y el Terraform te lo puedes correr directo en tu máquina o instalas un contenedor que el contenedor tiene el Terraform instalado. Es más complejo lo segundo, pero se puede.
+01:42:23 Speaker 2: Yo lo comentaré directo.
+01:42:25 Speaker 1: Por lo igual el Terraform no se instala, es un Excel nomás. Copias, pegas... Recapitulando un poquito, tenemos un archivo donde les declaro qué recursos son los que quiero desplegar. Declaro un archivo donde indico cómo me voy a conectar contra esa nube. Otro donde le coloco qué versión de Terrafon voy a usar y qué versión de la librería de la nube para la conexión voy a utilizar. Luego están las variables. Declarar las variables que puedo utilizar para
+01:43:10 Speaker 2: mi
+01:43:10 Speaker 1: proyecto. ¿Cuál es la idea de estas variables? Es que tú puedas ir desplegando esto de maneras diferentes, con datos diferentes. Puedo desplegar varios maquetes C3, por ahí, bajándoles las diferentes variables.
+01:43:26 Speaker 2: Entonces, yo
+01:43:32 Speaker 1: no he subido el state.
+01:43:36 Speaker 2: Ahora les muestro luego otro proyecto,
+01:43:39 Speaker 1: para que vean cómo se maneja el state de
+01:43:41 Speaker 2: forma... Entonces,
+01:44:11 Speaker 1: ¿cuáles son los comandos? ¿Cuál es la línea de comando que se utiliza?
+01:44:23 Speaker 2: Esta parte de acá es para configurar la conexión a la nube.
+01:44:26 Speaker 1: Lo que me interesa es que vean esta parte de acá. ¿Cuál es la secuencia de pasos para poder correr de forma correcta? La primera es init. ¿Qué hace el init? El init lo que va a hacer es, ok, tú has declarado acá que necesitas el recurso de bucket S3. que necesitas en el recurso.
+01:44:58 Speaker 2: Él va a agarrar,
+01:44:59 Speaker 1: se va a conectar acá y va a descargar esas versiones y esos módulos a tu máquina. O sea, imagínense la cantidad de módulos que tiene AWS acá abajo. Hay de todo. Las de IA, las de Machine Learning, las de todo, todas las dos generaciones.
+01:45:16 Speaker 2: Él no se descarga todo.
+01:45:18 Speaker 1: Se van a descargar solamente las que estás descargando todos tus recursos. Entonces, él lee esos recursos, viene y se descarga solamente esos módulos a
+01:45:26 Speaker 2: tu máquina.
+01:45:27 Speaker 1: Eso hace el límite. Descargar todas
+01:45:29 Speaker 2: las dependencias a tu máquina.
+01:45:34 Speaker 1: Y lo otro que hace el INIT es identificar, según la configuración de tu proyecto, dónde está declarado el state. Porque el state se puede declarar, no es mi idea, pero se puede declarar de forma local o se puede declarar de forma remota, como lo que veíamos allá. Entonces, el INIT es el que va a agarrar y va a decir, ok, está remota, ¿me
+01:45:59 Speaker 2: puedo conectar a ese lugar remoto?
+01:46:00 Speaker 1: ¿Tengo forma de llegar al banquete C3? Y sacar el archivo. Eso hace el INIT. Descarga librerías y setea la
+01:46:09 Speaker 2: ubicación
+01:46:10 Speaker 1: del SATA. Este acá es opcional. Es el format. El format es que cuando has implementado las indentaciones, si se dan cuenta, aquí, ven que acá hay varias indentaciones.
+01:46:40 Speaker 2: A propósito vamos a hacer esto.
+01:46:42 Speaker 1: Esto no va a fallar, va a funcionar.
+01:46:48 Speaker 2: Pero el Terraform Format lo que hace es... ¿Vieron que regresó el tab? ¿Se había colocado?
+01:47:00 Speaker 1: Básicamente eso, por ejemplo, las higitaciones. Pero no te hace
+01:47:02 Speaker 2: nada más. No, no, no es... Es opcional. Ese paso no...
+01:47:09 Speaker 1: Luego está el Validate. El Validate también es opcional, en realidad. Tú podrías desplegarlo. Sin embargo, es muy útil porque si yo acá meto la pata y digo, uy, se me fue un 2 y no me dijo el tab. Desvalide, lo que va a agarrar va
+01:47:31 Speaker 2: a chequear las
+01:47:34 Speaker 1: librerías, cómo esperan los atributos y cómo tú los estás mandando. Entonces, él no espera un atributo que sea blog public
+01:47:43 Speaker 2: acls2.
+01:47:46 Speaker 1: Él lo espera sin el 2. Entonces, ya te está validando, antes de que corras nada,
+01:47:51 Speaker 2: esto. Entonces es una forma de
+01:47:54 Speaker 1: caliar rápidamente que la sintaxis y la integridad de tu archivo está bien. Y luego viene el plan. El que ya se conecta al state, lo bloquea, hace el lock del state y dice, yo estoy trabajando, nadie más puede pasar por acá. Y compara lo que está en el true state versus lo que quiero hacer. Acá me está pidiendo el nombre de una variable.
+01:48:28 Speaker 2: Yo le voy a dar la
+01:48:30 Speaker 1: misma que yo puse antes. Hay diferentes formas de pasar las variables. Ahorita como no se lo estoy dando directamente, me lo está pidiendo. Entonces lo que me dice es, oye, esto viene acá, ¿qué es el plan? Lo bien bonito, lo más significa que está agregando, lo menos, rojito, significa que está eliminando. Y hay otro simbolo que te voy a dar a la cara, que es cuando lo está modificando. Entonces acá lo que te está diciendo es, oye, estás agregando
+01:49:08 Speaker 2: todos estos recursos,
+01:49:11 Speaker 1: todos estos atributos y estos recursos. Y acá al final te da un resumen de cuántos estás agregando, cuántos estás cambiando y cuántos estás estudiando. ¿No sé si se acuerdan que hace un par de semanas yo les conté una
+01:49:24 Speaker 2: historia de que me borré una base de datos por no realizar el plan?
+01:49:28 Speaker 1: Estaba haciendo varios trabajos de estos. Estaba haciendo varios trabajos de estos, haciendo cambios. Y como ya habían varios... No, chequeaba el resultado del plan y mandaba la siguiente acción que ahorita hago, que es el apply, que ya se ejecuta el cambio. Y no me di cuenta y de repente salió destruyéndose la base de datos. Porque había un cambio que había hecho, que no me había percatado, que se destruyera y se volviera a
+01:49:55 Speaker 2: crear. Esa
+01:49:58 Speaker 1: es la importancia de revisar siempre el plan. Entonces el plan lo que nos da es esto. ¿Qué cosas se va a crear? ¿Qué se va a cambiar? ¿Change? ¿Y qué se va a destruir? Y el apply, el apply nos va a volver a pedir la variable. Y dice, oye, por si acaso voy a crear esto. ¿Está seguro? Sí. Esto lo que está haciendo ahorita es creando recurso por recurso. Ya terminó. Entonces, miren, ahorita, en esos segundos que ha demorado, ya creo un banquete de interés en la nube de AWS.
+01:51:02 Speaker: Vamos a hacer el camino largo, vamos a hacer el camino corto. Acá yo estoy
+01:51:08 Speaker 1: conectado en este clip a mi nube de AWS.
+01:51:14 Speaker 2: Acá podemos ver, miren
+01:51:16 Speaker 1: acá lo que hemos dicho es, he creado este bucket name con este nombre.
+01:51:20 Speaker 2: Entonces vamos a buscar todos los bucket
+01:51:25 Speaker 1: S3. Estoy listando todos los bucket S3 que están en mi cuenta de AWS. Y estoy quitando solamente lo que se llamen así.
+01:51:33 Speaker 2: Entonces ahí está. Está
+01:51:34 Speaker 1: creado y está creado, podría ser de un minuto. Si viéramos todos los patrocinadores creados ahí, me hace una pieza más grande.
+01:51:43 Speaker 2: Otras cosas están creadas ahí.
+01:51:51 Speaker 1: Pues ahorita ya hemos desplegado esta estructura. ¿Qué pasaría si yo agarro y digo, ya sabes qué? Ya no quiero que se esté en false, quiero que se esté en true. Y vuelvo a correrlo al frente.
+01:52:15 Speaker 2: Miren, acá he vuelto a correr, cometí el mismo error.
+01:52:18 Speaker 1: He corrido el apply sin el plan antes. Lo bueno es que acá me está diciendo, ¿está seguro o no está seguro? Pero bueno, la idea es que siempre corran el plan antes. Hasta incluso el validate antes, por si habíamos logrado antes. Eso es como que te ahorra... Si se dan cuenta, el apply demora un poco más de tiempo y el plan también. El validate fue así. Esa es la idea. Con el mismo concepto que hablábamos enseguida. Si va a fallar algo... vayamos por lo más rápido para que te des cuenta que está fallando miren, ya no sale que va a agregar nada, dice que va a cambiar uno si ponen el simbolito amarillo, le dice esto es lo que voy a cambiar este de acá lo voy a poner de force a true y este lo voy a cambiar de true a force ¿está seguro? lo pongo en sí entonces
+01:53:06 Speaker 2: va
+01:53:06 Speaker 1: y ya está,
+01:53:08 Speaker 2: ya lo cambió ahora
+01:53:14 Speaker 1: voy a hacer un cambio un poco más drástico
+01:53:19 Speaker 2: Voy a poner, a propósito,
+01:53:21 Speaker 1: este número que le he estado colocando yo,
+01:53:24 Speaker 2: este código
+01:53:26 Speaker 1: de acá, que le he estado colocando yo, que es mi código de alumno, él lo está usando como nombre del bucket. Los buckets, como ahora ya cambiaba, pero normalmente el nombre que le colocabas tenía que ser único en el mundo. Entonces, acá normalmente concatena muchas cosas para que sea único en el mundo. Le voy a poner otro dígito. Lo va a cambiar de nombre. AWS es una política que tú no puedes cambiar el nombre de un market de interés. Lo que va a hacer es, miren acá, hay cinco para destruir y cinco para crear. Yo no le he hecho que destruya nada. Eso es más o menos lo que me pasó en la base de datos. No le he hecho que destruya nada, sino que él, por consistencia de cómo funciona esta API de acá, Él ya lo maneja al interno de...
+01:54:18 Speaker 2: Ok, destruyo y vuelvo a crear. Y ahorita
+01:54:24 Speaker 1: voy a empezar a destruir y luego crear.
+01:54:33 Speaker 2: Ya me creo y ahora tengo
+01:54:34 Speaker 1: el bucket con otro nombre. Ya no existe el anterior. Si hago este grep, lo vuelvo a hacer, ya no me va a salir nada.
+01:54:41 Speaker 2: Ya no está con ese nombre, ahora está con este otro nombre que es el
+01:54:44 Speaker 1: mero 1. Entonces vamos a terminar con el destroy. Así como el apply te crea, el destroy te destruye todo lo que está declarado en tu carro. Si hay que hacer una prueba, normalmente al final se
+01:55:01 Speaker 2: borra el destroy para
+01:55:03 Speaker 1: dejar el ambiente tal cual estaba. Ahora
+01:55:10 Speaker 2: le pongo la misma variable.
+01:55:16 Speaker 1: por si acaso voy a borrar todo esto aseguro si o no Bueno, con esto, hemos
+01:55:29 Speaker 2: probado ahorita la...
+01:55:31 Speaker 1: No sé si ahí tienen alguna
+01:55:33 Speaker 2: pregunta.
+01:55:36 Speaker 1: Recapitulando, los comandos del carro son el INIC para descargar todas las integridades.
+01:55:42 Speaker 2: Formas para las identaciones. Identaciones, validar...
+01:55:46 Speaker 1: Para validar sintaxis y integridad. El PLAN para ver cuáles son los datos que va a ser. Y el PLAN para ejecutar los datos. El DISTROY, el PAGE con todo lo que hiciste antes. Entonces, la idea es, como les decía, poder leer el plan antes de desarrollar la playa. Esto por dos cosas, ¿sí? Una es para que el cambio esté seguro de lo que es, y lo que puede haber pasado, de que alguien más modificó antes que tú,
+01:56:35 Speaker 2: algo, y
+01:56:36 Speaker 1: lo que tú pensás que está de una manera, ahora va a estar de otra. Entonces, ese plan es importante porque te permite validar tu cambio versus lo último que está, que es lo que va a ser realmente. Cuando tú lees el plan, normalmente lo que primero debes revisar es qué cosas se van a destruir, si es que se va a destruir algo. Eso es lo más importante de revisar antes que el
+01:56:56 Speaker 2: resto de cosas.
+01:57:02 Speaker 1: Una buena práctica es, ¿se acuerdan del tema de los pull requests? Ya llevando el terraforma a cómo funcionaría esto en DevOps. Así como hay una ejecutación unilocal, también se puede ejecutar en el pipeline. ¿Cuál es la idea que ejecuta en el pipeline? Es, primero yo lanzo el pull request del cambio que yo quiero hacer en infraestructura. El pull request todavía no ejecuta, no desplegó ninguna infraestructura. Es un intento de cambio. Y este pull request lanza el plan. Y te dice, por si acaso, este pull request lo que va a modificar, cambiar, destruir, es esto. Y si tú le haces merge a ese pull request, ahí recién se ejecute el apply y se ejecuta el cambio. La idea de controlar con el pull request es vincular el pull request al plan. Es una buena pregunta. Bueno, no lo llegué a hacer, pero si yo hubiera lanzado con el mismo código, sí lo hice al inicio. No, no lo hice porque no había hecho el apply, pero si yo lanzo dos veces el apply y no hago ninguna modificación, me dice, no hay modificaciones que hacer y no hace nada. Si lanza los veces lo mismo,
+01:58:13 Speaker 2: no hace ningún cambio.
+01:58:29 Speaker 1: Ahora, lo que les decía antes, ¿qué hubiera pasado
+01:58:32 Speaker 2: si
+01:58:34 Speaker 1: yo entraba por la consola VOLC y modificaba algún parámetro del bucket C3? Si yo lanzaba otra vez mi apply, o mi plan, y identificar el cambio, iba a intentar volver a hacer el cambio que yo tengo en mi terraform hacia la temperatura que está desplegada. Ahí ocurre lo que se llama con los drifts. Es un oye, yo no modifique nada en mi terraform, ¿por qué me sale algo nuevo? es porque alguien más ha modificado algo a través de la consola directamente, por el CLI o por fuera, por fuera de tu proyecto de trabajo. Eso pasa y le des controlarlo y poner lineamientos o controles para que eso no suceda. Pero una buena práctica ante eso es vender un pipeline que cada una vez al día, una vez a la semana, esté corriendo plans de noche. Probablemente para identificar si alguien ha hecho un cambio o no.
+01:59:29 Speaker 2: Entonces la idea...
+01:59:34 Speaker 1: ¿Cuál es la idea de eso?
+01:59:35 Speaker 2: Que te entregues
+01:59:37 Speaker 1: eso durante el día y no el día D que quieres hacer el paso de producción. Lo que tú querías desplegar es muy diferente con lo que está
+01:59:46 Speaker 2: realmente desplegado. Es un poco la idea de
+01:59:48 Speaker 1: que tener un proceso... programado que te vaya dando ese feedback durante las semanas Entonces, ok, una vez que pasó eso, ¿ahora qué hacemos? Oye, cambiaron los dos B-Cores que había puesto acá, lo cambiaron a cuatro de forma manual. Entonces, lo primero es, oye, ¿qué pasó? Se conversa. Oye, no, sí, necesitamos ahora que sea cuatro. Ok, voy a mi Terraform y lo pongo en cuatro. Este Terraform lo voy a tratar de aplicar, a veces tratará de hacer el cambio, a veces dirá, oye, son iguales, no pasa nada y no hace nada, dependiendo del cambio que se da. Pero normalmente es eso, es llevar el cambio que se hizo por fuera, llevarlo al poder. la idea
+02:00:30 Speaker 2: entonces
+02:00:37 Speaker 1: llevándolo al pipeline llevándolo
+02:00:42 Speaker 2: al pipeline tenemos
+02:00:45 Speaker 1: un poco el mismo circuito que teníamos en el local primero validar
+02:00:56 Speaker 2: la
+02:01:04 Speaker 1: Lo primero es el limit. Descargarles las librerías. Lo segundo es el validate. Todo esto es en la parte inicial para determinar rápidamente si acá hay un problema o no. Luego viene el plan. Acá este plan lo he hecho en tres partes. Este check-up lo vamos a ver luego,
+02:01:28 Speaker 2: en
+02:01:28 Speaker 1: las siguientes dos sesiones más, que es para ver qué posibles vulnerabilidades está teniendo la infraestructura. Así como
+02:01:42 Speaker 2: veíamos
+02:01:46 Speaker 1: para lo que es la calidad de código de seguridad en tema de sangre, para seguridad de código, En seguridad e imprescindible como código, Checo es una herramienta gratuita que también se puede utilizar. Acá tiene sus truquitos, ¿no? Se dan cuenta, genera el plan, pero ese plan lo genera en un archivo. Pero el Checo necesita el archivo como JSON, entonces hay que hacer un comando adicional para volver este archivo JSON. Y recién ese archivo se lo puedo coger al Checo. Y con eso el Checo me da ahí
+02:02:14 Speaker 2: un feedback. Esto lo tengo para probarlo, no lo probé. Si no, yo te lo corro y
+02:02:20 Speaker 1: lo vemos muy rápido. Checo, lo que me va a dar es una lista de, oye, he revisado estas políticas de seguridad en base a los recursos que estás utilizando, en esta parte de acá.
+02:02:31 Speaker 2: He chequeado estas
+02:02:32 Speaker 1: políticas de seguridad y estas políticas pasaron bien y estas políticas han fallado. Te sugiero que hagas tal cosa. Lo mismo que habíamos conseguido en seguridad de código, lo mismo pasa con Checo. Te dice cuáles son las vulnerabilidades y te recomienda cómo solucionarlas. Entonces, ese es el punto 3. de analizar la seguridad.
+02:02:52 Speaker 2: Y finalmente,
+02:02:53 Speaker 1: si es que todo el plan pasa bien,
+02:02:56 Speaker 2: recién
+02:02:58 Speaker 1: ejecuto el apply. Ese es el último paso. Acá hay un issue importante. Este pipeline acá se va a quedar esperando a que tú le digas yes. Así como lo pasaba a mí, que le diga un plan yes. El Python de GitHub no tiene ninguna consola para que tú le pongas Yes, salga ahí pegado por siempre. Hay un atributo adicional que es el auto-approved. No es que el Yes, sino que el mismo es auto-approved. Ahí tienen alguna pregunta.
+02:03:47 Speaker 2: En la rueda, como yo digo, entiendo que hace cambios a nivel de infraestructura, pero eso también incluía a nivel de sistema operativo como parche de seguridad.
+02:04:00 Speaker 1: Depende de lo que incluye a su industria como código. Por ejemplo, ¿será el sistema operativo donde corre la aplicación? Imagínate que tú tienes una máquina virtual que ha sido desplegada con el industria como código. y ahí corre tu aplicación. Cuando tú has declarado tu máquina virtual en un inventario como código, tú le has puesto qué sistema operativo, qué imagen base de máquina virtual va a usar. Ahí sí ya estabas administrado el sistema operativo con el cual corre tu aplicación. Pero depende del recurso que estás usando de nube,
+02:04:36 Speaker 2: porque
+02:04:38 Speaker 1: hay ciertos recursos de nube donde tú sí administraste el sistema operativo. Y hay otros recursos de nuevo donde no administras el sistema operativo. En un banque de S3, tú no administras el sistema operativo. ¿Qué usará AWS por debajo para disponibilizar esa carpeta compartida? Quién
+02:04:51 Speaker 2: sabe.
+02:04:53 Speaker 1: Si estamos hablando de un Lambda, tampoco administras el sistema operativo. Pero estamos hablando de un S2, un instance S2, o en Azure, una máquina virtual.
+02:05:01 Speaker 2: Ahí sí tú
+02:05:02 Speaker 1: controlas con tu ciudad como código, este sistema operativo está usando ese servidor. Así, el componente que está acá. ¿Declaras que es el número tú en tu vida? Sí.
+02:05:13 Speaker 2: Tú lo declaras de Ciron. Profe, no se ve nada.
+02:06:27 Speaker 1: Esto de acá, he cobrido acá el comando de Chico contra
+02:06:33 Speaker 2: el
+02:06:35 Speaker 1: archivo del output del plan. Y acá, esto es lo que te dijo. Oye, he chequeado que no tengas acodeado ningún access key ni secret en tu proyecto de tarrafón.
+02:06:49 Speaker 2: Todo bien.
+02:06:51 Speaker 1: Pasó. He chequeado que...
+02:06:55 Speaker 2: Que
+02:07:00 Speaker 1: no admitas a cualquier usuario que acceda al WP3C3. Pasó.
+02:07:04 Speaker 2: Me pareció una que falló.
+02:07:05 Speaker 1: Falló que el ACL estaba deshabilitado. Porque justo en esta versión de plan, yo esto lo llevo como false. Y si dentro de esta documentación, lo justo lo que me va a decir es, oye, este flag pone
+02:07:27 Speaker 2: un true.
+02:07:29 Speaker 1: Es lo que te dice, este flag pone un true. Que es básicamente el flag que hay que poner en false.
+02:07:33 Speaker 2: Y por eso sale esta manera. Entonces, chévere de checo,
+02:07:41 Speaker 1: que es muy útil para esas cosas. hay
+02:10:02 Speaker 2: dos terafón Lucas, Sandra ¿qué? ¿qué? ¿sincronización, sincronización? ¿qué es continuo de supervivencia? la amarilla ¿qué es la casa? no
+02:11:24 Speaker 1: La lectura como código, al ser código, termine el ordenamiento, ¿no? Que sea más grato, ¿no? No depende del ser como código. El equipo puede desplegar cuando quiere, pero que alguien apreta el botón.
+02:11:48 Speaker 2: ¿Qué parte que describe eso? Integración contiene. Despliegue progresivo. Uy, ese es nuevo, ¿no? Pasar desde el commit hasta el buoy y más adelante, hasta llegar a la producción.
+02:12:42 Speaker 1: Integración continua, recuerden que era la parte de validar el beat. Validar la calidad, la seguridad. Esta pregunta habla de desplegar cuando quieres y que alguien aprieta el botón. La diferencia entre entrega continua y desplea continua.
+02:13:25 Speaker 2: La
+02:13:27 Speaker 1: imagen docker pasó en Cuba. Para llevar la producción, ¿qué hace un pilot correcto? Seguro que sí es buena práctica. Recordemos que la idea es llevar el mismo artefacto a todos los ambientes. Entonces, un display en Python correcto debería explicarlo. ¿Cuál? Reconstruye solo si el cambio cambia el Dockerfile. Si yo lo voy a llevar a producción y cambié el Dockerfile, ya pasé por Cuba, voy a generar un artefacto diferente que no ha sido validado en Cuba.
+02:14:37 Speaker 2: ¿Qué
+02:14:37 Speaker 1: dato responde con exactitud qué está corriendo hoy en producción? ¿El tag del latest, el número de versión, la fecha de último de TV o el digest de la imagen?
+02:14:55 Speaker 2: La fecha es fecha. La fecha es fecha.
+02:15:05 Speaker 1: ¿Se acuerdan del código del SHA?
+02:15:07 Speaker 2: Ah, ¿eso era? Es el 10. El 10, el SHA, es lo mismo.
+02:15:13 Speaker 1: Recuerden que el leites puede variar en cualquier momento.
+02:15:15 Speaker 2: También puede haber pasado leites, pero no necesariamente. Pero tienes que... Ahorita
+02:15:24 Speaker 1: existe una convención de que en la mayoría de las casas le ponen la que ocurre en conclusión al leites,
+02:15:29 Speaker 2: pero la idea,
+02:15:31 Speaker 1: pero la buena práctica era... Poder identificar cuál es con el código de ya, ¿no? Un Dockerfile declara en tbpassword y una instrucción posterior lo borra.
+02:15:56 Speaker 2: ¿Qué queda?
+02:16:00 Speaker 1: El valor desaparece, si es elegible, una capa que lo grabó.
+02:16:06 Speaker 2: Creo que es como el mío. No sé, me voy a volcar. No quisiera.
+02:16:15 Speaker 1: Recordemos que se van haciendo cambios por cada capa. Y en la capa donde lo hice, ahí se queda. Según la forma que se lo borré, igual queda en la capa donde se declaró. Si hicimos la mala práctica de poner la password ahí, va a quedar escrito. Por
+02:16:32 Speaker 2: más que lo borre luego.
+02:16:47 Speaker 1: ¿Cuál de estos valores queda fuera del artefacto y se inyecta en el despliegue?
+02:16:59 Speaker 2: No, no.
+02:17:15 Speaker 1: Las variables de entorno son las que van por fuera, que se inyectan ahí. Eso es lo que nos garantiza que cuando yo mueva el artefacto de un lado de un ambiente a otro, pueda seguir operando.
+02:17:28 Speaker 2: Por eso es la guardia de base a datos de los clientes.
+02:17:37 Speaker 1: Las dependencias se generan en el build, se viajan dentro del contenedor de todas maneras. El código volviendo dentro del
+02:17:43 Speaker 2: contenedor. Siempre.
+02:17:45 Speaker 1: Y el tag es parte del proceso antes de crear el contenedor.
+02:17:51 Speaker 2: ¿Por qué el
+02:17:59 Speaker 1: archivo de estado de estructura como código nunca debe quedar solo en la máquina de quien lo aplica?
+02:18:05 Speaker 2: En el local. No sé, creo que es... No sé. Es
+02:18:46 Speaker 1: por eso que lo ponemos en...
+02:18:50 Speaker 2: Por eso que no debe ser el local, no debe estar
+02:18:52 Speaker 1: disponibilizado en un lugar remoto.
+02:18:55 Speaker 2: Sí, Colombia, con los 15 minutos. ¿Los tienen las náblas y nunca sube el segundo lugar? No, 200 puntos. Algo 3.
+02:19:04 Speaker 1: Alguien cambió un recurso desde la consola durante un incidente. ¿Cómo se detecta?
+02:19:24 Speaker 2: Pucha, creo que era... ¿Lo hiciera? Casi le acabé. ¿Se
+02:19:32 Speaker 1: acuerdan lo que hablábamos de que si hay un cambio por fuera, estábamos en baila de forma diferente para ver quién había hecho los
+02:19:40 Speaker 2: cambios?
+02:19:43 Speaker 1: ¿Qué cambios habían diferentes? O sea, la idea es detectar cuáles son los cambios diferentes a lo
+02:19:49 Speaker 2: que yo tengo en mi interno.
+02:19:53 Speaker 1: Eso es lo que tengo que hacer para poder determinar ese cambio. ¿Qué entendieron por esa pregunta?
+02:20:14 Speaker 2: La palabra
+02:20:26 Speaker 1: recurso, consola, está
+02:20:28 Speaker 2: vinculada a la infraestructura. ¿Cuál es el
+02:20:48 Speaker 1: orden correcto de ejecutar los comandos enteros? No la demo. Bueno, el Validate es opcional, pero ese es el más completo. Para poder identificarlo con cualquier posible falla donde es posible. Ahí va antes del plan. A ver, vamos con la última. Ya, fácil, fácil.
+02:21:29 Speaker 2: Ya está.
+02:21:42 Speaker 1: Bueno, si yo no declaro el usuario, corre con RUT.
+02:21:46 Speaker 2: Esto no existe. Se acabó. Buenas noches. vamos a tener
+02:22:38 Speaker 1: dos pipelines uno que nos permita validar la calidad y seguridad de una aplicación vamos a generar el docker y lo vamos a desplegar las cosas para hacer nubes. Tenemos bien toda la parte previa de preparación de esto. Y para el parte de infraestructura como código lo mismo, vamos a tener un pipeline que pase por todos los estadios para
+02:23:18 Speaker 2: ver cuándo
+02:23:19 Speaker 1: y cuándo puedo desplegarlo a
+02:23:20 Speaker 2: el
+02:23:22 Speaker 1: terraforma salida en este caso. Esos son los dos puntos que vamos a ver. Entonces, les recomiendo que chequeen. Chequeen nuevamente la sintaxis de GitHub Actions, cómo defender un step de otro, repasar un poco lo que hemos visto en el Docker, que es el Docker Image, los comandos del push, del bit, del push, el tag. En Terra forman un poco lo mismo, los comandos que hemos visto. Bueno, ya hemos conversado lo que era el Docker Registry. Docker Hub, en específico el de AWS, que es el Elastic Container Registry, o SR, que si lo pueden dar una mirada, también sería ideal para que entiendan el concepto. Pero en esto se va a enfocar el laboratorio. ¿Alguna duda, pregunta?
+02:24:24 Speaker 2: ¿Va a haber alguna actividad previa al laboratorio?
+02:24:38 Speaker 1: y luego lo que vamos a hacer como actividad previa es que les de que les de el repositorio base o sea, no van a tener, es para que lo entiendan para que entiendan el proyecto
+02:24:48 Speaker 2: pero no van a
+02:24:50 Speaker 1: tener que accionar nada más que entenderlo o sea, por ahí la recomendación va a ser que los reposen en local ¿no? por ahí hay algunos comandos en local para que los reposen en local todos ya tienen acceso a su AWS en UK bueno, para terminar Confirmar la diferencia entre entrega continua y despliegue continuo. Ya saben que es el paso manual que confirma el final.
+02:25:28 Speaker 2: La
+02:25:28 Speaker 1: importancia de probar el artefacto. No debe necesitar nunca cambiar el contenido, solamente el entorno. Y ahí nos permite identificar la identidad. Es justo la huella digital o el 10 de ese artefacto. Toda la configuración tiene que vivir fuera del artefacto. La estructura como código lo que nos permite es poder revisar, funcionar, reconstruir nuevos ambientes a partir de esa versión de código fuente. Y cualquier cambio por fuera de la estructura como código del ambiente se puede validar con plans
+02:26:07 Speaker 2: corredor,
+02:26:09 Speaker 1: comando plan por fuera, ¿no? Lo ideal es tener algo recurrente que me esté correndo plans para ver si por allá lo cambia. Eso sería, no tengo ninguna pregunta final.
+02:26:26 Speaker 2: Profe, ¿va a subir el material de la clase? Sí, probablemente lo subo.
+02:26:31 Speaker 1: Lo subo y les pongo el link también de estos dos repos que les he mostrado. Los voy a subir como repos públicos para que también lo puedan
+02:26:38 Speaker 2: chequear. Gracias.
+  

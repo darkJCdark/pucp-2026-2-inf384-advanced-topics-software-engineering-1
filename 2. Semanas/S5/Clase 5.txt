@@ -1,11 +1,179 @@
-. {
-	. {
-		. 
+. LABORATORIO{
+	. 2 pipeline
+	
+	. Como depende un step de otro
+	. Comandos de docker
+
+	. acceso al aws locate
+}
+
+. a{
+. DONDE ESTAMOS EN EL PIPELINE{
+	. Archivo para bloquear librerias: lock
+}
+
+. ENTREGA CONTINUA Y DESPLIEGUE CONTINUO{
+	. En Peru, CD es continues delivery
+	. CD: DESPLIEGUE CONTINUA{
+		. Es necesaria la madurez
+		. No es necesaria la revisio
 	}
 }
 
-. {
-	. {
-		. 
+. QUE ES EXACTAMENTE UN ARTEFACTO DESPLEGABLE{
+	. IMAGEN DEL CONTENEDOR{
+		. Contiene la aplicacion y sus dependencias
 	}
+	. plantilla de infraestructura{
+		. carpera compartida en donde puedo poner archivos
+		. file storage
+	}
+	. si rompi el artefacto, hay problemas en qa
+}
+
+. tag y hyella criptografica{
+	. latest: ultima version estable
+	. sha: id del commit <- es mejor para la trazabilidad
+}
+
+. vm/contenedores/serverless{
+	. serverless{
+		. te olvidas de lo que corre dentro
+		. solo te centras en la aplicacion
+	}
+}
+
+. docker file/docker image/ddocker container{
+	. ya hay imagenes pulicas del jdk de java
+}
+
+. coo se construye y se almacena una imagen{
+	. se construye en capas
+	
+	. la imagen debe ser lo mas ligera posible asi que no dee haber cosas que no se va a usar
+	. la capa donde hay cambios se corrige todo desde ahi hasta adelante
+	
+	. docker hub: hay imagenes
+	
+	. cd = workdir
+	
+	. healthcheck: checkeo de salud
+	
+	. kubernetes{
+		. replicas del contenedor  corriendo
+		. el healthcheck avisa
+	}
+	
+	. from python<- python herada su sistema operativo debian que reemplaza todo un archivo
+	
+	. gunicorn: utiliza el python para levantar la aplicacion en un puerto
+	
+	. primero se descarga las lirerias
+	. se copia la aplicacion
+}
+
+. un dockerfile con malas practicas{
+	. no se ha definido el usuario, asi que usara el root
+}
+
+. un docker file con best practices{
+	. esta dividido porque solo quieres saber si compila o no el docker
+	. hay un docker ignore
+}
+
+. del build al registro{
+	. docker hub: libreria publica de todas las imagenes
+	. cada nube tiene su propio asr
+	. descargas el register de tu nube
+	
+	. el id del commit dice de donde viene la imagen
+	
+	. se genera tokens temporales
+}
+
+}
+
+. b: infraestructura como codigo{
+	. ¿que problema resuelve iac?{
+		. infraestructura como codigo: la misma receta en diferentes ambientes
+		
+		. si lo haces por el wizard, ¿quien lo valida? necesitas el modulo de auditoria
+	}
+	. infraestructura como codigo{
+		. enfoque imperativo
+		. enfoque ddeclarativo{
+			. terraform
+		}
+		. necesito el estado de la infraestructura
+		. historial de estados <- esto debe estar en todas las maquinas
+		. ¿que cosas ya se crearon?
+
+		. state{
+			. es un archivo
+			. tiene la declaracion que ya existe una maquina virtual con caracteristicas
+			. ademas, hay otra maquina virtal
+			
+			. tf: terraform
+			. mal{
+				. persona 1: vm_1 y vm_2 -> tiene un archivo state -> se conecta al aws
+				. persona 2: vm_1, vm_2, vm_3 -> se genera un nuevo archivo state-> agrega vm_1, vm_2 y vm_3 nuevamente
+			}
+			. bien{
+				. solo un archivo state que es actualizado con el nuevo vm_3
+				
+				. flag para todos: 'lock tf state' se prende en 1; esta en un json de dynamo
+				. para que haya un secuencia de quien sube el cambio
+				
+				. se necesita que el 'state' en s3 centralizado
+				
+				. 'state' puede tener datos senciblesss
+			}
+		}
+	}
+	. familias de herramientas y criterios de seleccion{
+		. kuernetes: decalras en un archivo yamal para la orquestacion de que tienes un contenedor y quieres replicas
+		
+		. cuando usas terraform, usas s3 para backend y par azure necesitas otras librerias
+		
+		. drift: diferencia entre lo que hay en la infraestructura y codigo
+		
+		. bucket s3{
+			. es una carpeta de google drive donde puedes desplegar archivos
+			
+			. archivo.tf
+		}
+	}
+	. cuando el ambiente real deja de parecerse a lo declarado{
+		. tf: Terraform es una herramienta de Infraestructura como Código (IaC) que permite definir y automatizar la creación de recursos en la nube mediante archivos de texto legibles. En DevSecOps, se usa para integrar la seguridad desde el inicio del ciclo de vida, asegurando que la infraestructura se configure de forma segura, repetible y sin errores humanos.
+		. aws tiene una api
+		
+		. bucket de s3
+		
+		. nuestro proyecto 'pasa por tf', pero en realidad se instancian las librerias en mi magina para viajar a aws
+		
+		. main.tf es el archivo que dice que recursos voy a usar
+		. .tf para la conexion a nube
+		. .tf para usar tf
+		
+		. secuencia de pasos para correr tf{
+			. init <- solocito recursos que necesitas; descarga los modulos que estan en tus dependencias en tu maquina
+			. fmt <- format: corrige implementado las indentaciones
+			. validate <- checkea las librerias, como espera el atributo y como lo espera
+			. plan <- se conecta al state y hace el lock; compara lo que esta en state vs lo que quieres hacer; siempre hay que revisar el plan
+			. apply <- crea los recursos; crea un bucket en s3
+			
+			. listo tods mis bucket en s3
+			
+			. codigo del bucket debe ser unico en el mundo
+			. cuando cambias de nombre, por consistencia del api destruye y vuelve a crear
+		}
+	}
+	. cuando el ambiente real deja de parecerse a lo declarado{
+		. drift
+		. buena practica es tener un pipeline
+	}
+	. la infraestructura recorre el mismo pipeline{
+		. issue: el pipeline de github se va a quedar pegado esperando el yes; hay autoaprube
+	}
+	. checkov
 }
