@@ -1,0 +1,1024 @@
+# Temas S6
+
+  Meeting started: 26/9/2026, 6:50:22 p. m.
+  Duration: 136 minutes
+  Participants: Speaker, Speaker 1, Speaker 2
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/tgGCydKLhmmtELruYdIi?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: Buenas tardes a todos. Por favor, que no se roguen.
+00:42 Speaker 2: Entonces, bueno, ahí estamos en la sexta sesión, fila continuo, pero ya pasamos, como les decía, a
+00:47 Speaker 1: ver temas de automatización de realidad,
+00:49 Speaker 2: después de seguridad, otra cosa más. Ahí estoy coordinando las siguientes sesiones
+00:54 Speaker 1: para ir para traer a algunos
+00:55 Speaker 2: invitados en algunas sesiones, para ver algunos permitas en especial. Bueno, pues vamos a empezar hoy día por revisar el laboratorio 3.
+01:13 Speaker 1: Le doy traje ahí corregido para que lo
+01:15 Speaker 2: chiquito de cómo quedaría. Pero chévere esto es cuando no se lo pide las validas, sino que realmente las pinta con un resumen. Se las empieza a pintar de todo el pilot porque en el operativo el día 10 es el día 11. Luego ya nos metemos a la versión de estrategia de despliegue, como parte del tema de hoy, flujo de aprobaciones y el frente de observabilidad de cara al pase. Más adelante del curso vamos a ver observabilidad un poco más a detalle, pero acá hay una primera parte que acompaña el pilot. Entonces, vamos directo al laboratorio.
+02:03 Speaker 1: Primero, vamos a aplicarse los directos en el
+02:05 Speaker 2: FIFA y bueno, ahí ya les quedan estas dos cámaras de referencia. Lo
+02:10 Speaker 1: que más
+02:12 Speaker 2: interesante o
+02:13 Speaker 1: más... Primero, ¿qué les
+02:17 Speaker 2: pareció? Por ahí he escuchado comentarios, por ejemplo, que con la IA se hace que sea más sencillo y ahí me queda toda vez la duda de... Claro, la idea está en Python, pero me quedé a la duda así, aprendí a la idea. Pregunto así abierto, porque recuerden que la idea de esto es que aprendan. Entonces, ahí le voy a seguir haciendo los procesos. No es necesario ponerlo más difícil de quitarle la IA, sino... Yo, sinceramente, este error lo vi un poco largo y le quité las preguntas de reflexión del final. Porque esas son las que tal vez tienen
+02:45 Speaker 1: ayudado a tener
+02:48 Speaker 2: mucho Python. Pero bueno.
+02:56 Speaker 1: Ah bueno, es que hubo muchas correcciones durante el laboratorio otra vez y a las 5 de la tarde recién se subieron todos. Estaba bien, porque tampoco no era muy complicado. Yo por mi parte lo que estuve haciendo era ejecutar por cada cambio que hacía y veía cómo estaba cambiando el workflow. Básicamente eso.
+03:27 Speaker 2: Un reto que tenía en este laboratorio era,
+03:31 Speaker 1: técnicamente... ¿Quiénes
+03:33 Speaker 2: conocen acá algo de Amazon?
+03:35 Speaker 1: No, no.
+03:37 Speaker 2: ¿SBS? ¿SBS conocen?
+03:41 Speaker 1: Bueno,
+03:41 Speaker 2: definir un contenedor. Pero cuando él quiere entrar en la nube, hay varias
+03:48 Speaker 1: formas de hacerlo. Pero de esas formas de
+03:50 Speaker 2: hacerlo, trata de elegir la más sencilla que es Lambda. Sin embargo, en Lambda, conozco muy pocos clientes que realmente usan contenedor con Lambda. Normalmente tiras el código directo en Lambda. Si quieres contenedor, te vas a otro servicio que se llama SS, que es el de contenedor services. Pero de crear un contenedor, un cluster de contenedor services,
+04:09 Speaker 1: iba a ser mucho más complejo para ustedes. Tenía
+04:11 Speaker 2: mucho más riesgo de que hayan problemas. por el lambda pero justo el lambda al tener estas características por eso tuve que modificar el
+04:23 Speaker 1: el archivo
+04:25 Speaker 2: base de docker porque si no, no iba a funcionarse bien eso es donde lambda los iba a rechazar entonces
+04:34 Speaker 1: y bueno,
+04:36 Speaker 2: por ahí hay algún validador de docker que tampoco le
+04:39 Speaker 1: he ido le eché entonces,
+04:41 Speaker 2: pero la idea es Le doy a los partners que ya estaban listos que les diera como para que guiaran y aceleraran un poquito su implementación.
+04:53 Speaker 1: Además de las correcciones, no sé, ¿hay algún otro feedback? ¿Alguna impresión del laboratorio? Me pude avanzar bien, o sea, me tardó como... Y esa parte sí la entendí, la estaban configurando dentro. Pero ahí fue el laboratorio, como se podía usar la ida, le pasé mi repositorio a la ida, y me resolvió el laboratorio. Entonces, yo pensé que estaba bien, lo avancé todo, y luego hice la construcción de... La imagen, entonces, ya no me había dado cuenta que el piso de ahí estaba mal, pero que no conocí, de nuevo, que estaba mal. La posición del piso de ahí, ahí ya estaba corregido. En mi caso, ya no pude hacer la grabación de premio, porque creo que fue el único de ahí. Con el trabajo, con el menor de tiempo, ya se había trabajado con el tiempo. Era mejor. Llevaba 25 minutos, ya estaba un poco más apurado, entonces no oí tanto de lo que leía en medio de una fundida, porque eso no estaba haciendo, porque se tenía que estar con tiempo. O sea, por ahí que el premio estaba... Yo lo subí, yo lo había subido a tiempo, pero luego me dio cuenta que me preguntaba unas cosas y lo volví a subir otra vez, pero yo cuando lo subí una, dos, tres veces creo, ya era hasta las seis y media, creo que lo subí, no es problema. Ahí chica, para entender un poco los cambios primero.
+06:32 Speaker 2: ¿Quieres entender un poco de qué va? No, o sea,
+06:35 Speaker 1: pedí dos fallos, pero al final... ¿Una aplicación o una infra? Exacto, claro. El de aplicación, yo lo había subido a tiempo con el de la aplicación. Y me había olvidado el otro. Ahí estaba haciendo... ¿Dale? Y ahí me había perdido. Sí, chequeamos. Está bien.
+06:55 Speaker 2: Bueno, aprovechamos entonces ahora de lo que nos hicieron con ella de entender un poquito más el panel de qué es lo que tiene y qué es lo que hace. Es un poco la idea.
+07:22 Speaker 1: Profe, tengo una pregunta sobre el Yamal de Setup Infra. ¿Eso se ejecuta en la vida real una sola vez o se ejecuta según los cambios? Ahí les cuento, tengo un répoca. ¿Se acuerdan? ¿Se acuerdan?
+07:44 Speaker 2: Que el Terraform necesitábamos dos cosas para
+07:46 Speaker 1: poder guardar el estado, ¿cierto?
+08:06 Speaker 2: ¿Se acuerdan para guardar el estado del Terraform que cómo usábamos?
+08:11 Speaker 1: ¿Dónde tenía que estar el estado
+08:12 Speaker 2: del Terraform? ¿En su máquina?
+08:15 Speaker 1: ¿En el repo de GitHub? ¿O dónde era lo ideal que esté? En un servidor separado. En un lugar centralizado. En este caso,
+08:23 Speaker 2: definimos que era un
+08:26 Speaker 1: lugar en AWS que
+08:29 Speaker 2: se conoce como Bucket S3. Esa no es regla, ¿no? Porque si tú lo haces en un... Si vas a Azure, hay un bloco de storage. Si te vas a GCP, habrá otra cosa que no se ha conocido, yo seguramente algo de GCP storage. Y incluso... ¿Cómo
+08:48 Speaker 1: se llaman los de Ethereum? ¿Hashcore? ¿Los dueños de Ethereum? ¿Hashcore?
+08:54 Speaker 2: Ellos también tienen su servicio de que tú mismo ustedes has estado con ellos. Pero bueno, me importa que está eso. ¿Y qué cosa es lo que veí? ¿Qué cosa era el State?
+09:05 Speaker 1: ¿El terrafón? ¿Recuerdan?
+09:12 Speaker 2: ¿Llegaron a ver cómo se veía un terrafón State por dentro?
+09:16 Speaker 1: No, no hay tiempo.
+09:42 Speaker 2: Es el que declara qué recursos son los que él está trackeando que ya se crearon. O sea, todo lo que se ponga en código de Terraform, él va a llevar el registro.
+09:54 Speaker 1: Ah, ok.
+09:55 Speaker 2: Ya ejecutamos una creación de OneRoute53. Ahorita lo olvidemos con OneRoute53 para no meternos en otro tema. Pero imaginemos que este es un servidor. ¿Se acuerdan del ejemplo que yo les daba de un Terraform State? Se va creando todo lo que ya creaste. Y ustedes no lo hacen. Eso internamente lo hace Terraform. Su propio motor ya va escribiendo y manteniendo ese State.
+10:17 Speaker 1: Entonces,
+10:18 Speaker 2: eso es lo que tiene Terraform State. El historial de los recursos que
+10:24 Speaker 1: ya se han creado.
+10:26 Speaker 2: Si esto no existiera...
+10:28 Speaker 1: Acá ustedes tienen un código con
+10:30 Speaker 2: el cual dicen que
+10:31 Speaker 1: sus
+10:32 Speaker 2: archivos están robando
+10:33 Speaker 1: .tf.
+10:36 Speaker 2: Donde ustedes acá declaran, oye, crea la máquina virtual 1, crea la máquina virtual 2.
+10:41 Speaker 1: Y declaran todo lo que quieren crear.
+10:43 Speaker 2: Si eso no existiera, no habría quien te dijera si esto ya está creado en la nube o no. Entonces, él te dice qué cosa ya se creó y qué no. Recordemos que Terraform es agnóstico a la nube.
+10:55 Speaker 1: O sea, no importa en qué nube vas a emplear, Terraform lo vas a gestionar por su cuenta.
+11:00 Speaker 2: Por eso crearon S-State, para no depender de qué nube sea. Si es AWS, igual se
+11:07 Speaker 1: gestiona acá. Si es H, igual se gestiona acá.
+11:09 Speaker 2: Ahora, ¿dónde subes todo este archivo? Puede ser AWS, H, no importa. Entonces, uno era eso. Y el otro era, ¿qué pasaba si dos personas tratan
+11:21 Speaker 1: de hacer un cambio a la vez? Un colita, ¿no? ¿Qué necesitábamos? Para
+11:27 Speaker 2: evitar que eran dos colisiones, ¿se guarda?
+11:29 Speaker 1: Una bandera. ¿Una bandera? ¿Sí? ¿Un semáforo? Un semáforo, un semáforo de... Oye, no, yo me estoy ejecutando, nadie más puede. El lock. El lock.
+11:39 Speaker 2: Que les comentaba que para el... para el laboratorio, entonces por ahí un comentario...
+11:46 Speaker 1: ahí
+11:47 Speaker 2: no estábamos creando un Dynamo para no hacerlo más complejo y bueno, el mismo... hay una forma en el Packet S3 que me gusta mucho, pero hay una forma en el Packet S3 que va a dejar el lock acá el Dynamo lo mejor es... perdón, para el lock lo mejor es un Dynamo, un
+12:03 Speaker 1: Dynamo Elite Y
+12:08 Speaker 2: este de acá lo que tiene es el flag. Básicamente el flag 1 o 0. ¿Alguien está corriendo o nadie está corriendo?
+12:17 Speaker 1: Entonces,
+12:18 Speaker 2: ese setup inicial que mencionas, ¿normalmente se corre sí o no? Sí. Esto de acá siempre va en el setup inicial por fuera de tu proyecto de terror. Porque necesitas alguien que cree esto antes de... Algunos lo crean con click, como se los dio Otros lo crean directamente por el wizard Otros
+12:35 Speaker 1: crean su propio terrafón por fuera Pero eso siempre va por... La
+12:40 Speaker 2: otra cosa que yo les creé Eso sí, normalmente no se pone ahí Es el SR
+12:45 Speaker 1: ¿Cuál es cosa del SR? El de registro, para las imágenes, ¿no? Para las imágenes de Docker, correcto El AWS es Elastic Container Race Que
+12:56 Speaker 2: lo que tiene es todas las imágenes de Docker Entonces... Cuando tú crearas un Lambda y le estás diciendo, oye, Lambda, usa tal Docker, tiene que existir ese Docker en algún registro.
+13:07 Speaker 1: Entonces, por eso yo creé esto previo.
+13:09 Speaker 2: En ese click que les di como setup, creaba esto y creaba eso.
+13:15 Speaker 1: Y así una
+13:16 Speaker 2: tercera cosa como parte de esto, que era subir de una vez una primera imagen Docker. La subí acá. ¿Por qué? Porque cuando ustedes fueron
+13:27 Speaker 1: a correr el despliegue de lambda,
+13:28 Speaker 2: la primera vez, él necesitaba que existiera una imagen que había creado ahí como referencia inicial. Si no, no iba a levantar el lambda.
+13:36 Speaker 1: No, no tenía que permitir el despliegue de lambda.
+13:38 Speaker 2: Ya lo pueden hacer después de otras versiones de aplicación. Pero debe ser un poco para
+13:42 Speaker 1: el esquema del laboratorio, porque lo hicimos así. Entonces, la primera pregunta es,
+13:47 Speaker 2: ¿normalmente hay un setup infra por
+13:50 Speaker 1: fuera del Terraform? Sí, para poder configurar el manejo de State.
+13:56 Speaker 2: Normalmente lo que tienes, yo
+13:59 Speaker 1: una vez una persona que yo admiro bastante, una ex jefa,
+14:03 Speaker 2: imagínense ella no estudió ingeniería, estudió diseño en la Toulouse,
+14:08 Speaker 1: pero es en la personal, que más la destruye técnicamente.
+14:12 Speaker 2: No sé si han escuchado hablar de Caleidos, empresa Caleidos,
+14:14 Speaker 1: es una consultora peruana,
+14:17 Speaker 2: son dos hermanas las dueñas, Claudia y Laura. Claudia
+14:20 Speaker 1: es la técnica, Laura es la convenciente, su hermano lo estudió acá también, pero...
+14:29 Speaker 2: Claudia diseñó un árbol de Terraforms. Imagínense algo así. Tienes que toda tu empresa, una empresa gigante
+14:43 Speaker 1: acá, que es la que
+14:45 Speaker 2: más procesa las transacciones financieras. Y es un poco el estándar de Terraforms. diferentes proyectos según el objetivo del proyecto. Hay uno que configurará
+15:00 Speaker 1: todo el tema de networking para
+15:02 Speaker 2: toda la empresa en general. Tendrás otro que configure por ahí todo el tema de observabilidad. Tendrás otro que configure todo el tema de seguridad, todo el tema de administración de roles, etc. Tendrás otro que haga el setup de todas las herramientas de DevOps. Y tendrás uno que sea el setup base de todo,
+15:36 Speaker 1: seguramente.
+15:38 Speaker 2: Y esto es solamente para poner la base de todos los proyectos. Ya después viene el proyecto C, la plataforma de cliente recién viene acá. Entonces, cada uno de estos es un megaproyecto de Terraform. Y los datos que este genera probablemente sean un input para este otro proyecto de Terraform. Entonces, eso es cuando ya ves proyectos de Terraform en escala a nivel dentro.
+16:08 Speaker 1: Entonces,
+16:09 Speaker 2: vamos pasando de lo más chiquito a lo
+16:12 Speaker 1: más grande. Entonces, bueno, ¿qué
+16:14 Speaker 2: cosa guarda el proyecto entonces de Terraform State? Esto es porque...
+16:24 Speaker 1: es
+16:26 Speaker 2: como construir una casa. Cuando
+16:27 Speaker 1: vas a construir una casa,
+16:28 Speaker 2: si la quieres igual construirla automatizada, tú no puedes querer realizar toda la automatización de golpe que
+16:34 Speaker 1: cree destruir el terreno, poner
+16:37 Speaker 2: las bases, la tubería, etc. Sino que vas armando parte por parte con ciertas automatizaciones. Entonces la primera automatización te arma todo el tema de D&D, redes. Tienes otra automatización que te armará todo el esquema de los roles que van a usar las aplicaciones. Tendrás otro que arme los pipelines para explorar las aplicaciones. Bueno, y antes de eso, perdón, debería estar el setup, que es el de Transfigure, u otras cositas básicas también.
+17:07 Speaker 1: Entonces,
+17:08 Speaker 2: se hace algo bien
+17:11 Speaker 1: bacán. Bueno, entonces,
+17:19 Speaker 2: ¿qué...? Todavía habéis visto claras confundidos
+17:22 Speaker 1: de qué cosas es en Terraform State. Si alguien me puede
+17:24 Speaker 2: contar qué cosas es en Terraform State.
+17:27 Speaker 1: ¿Qué guardas en Terraform State? Todavía hay dudas. O sea, yo entiendo que guarda, básicamente, qué máquinas actualmente ya existen ya y se están usando también.
+18:36 Speaker 2: ¡Gracias! El arreglo de recursos está vacío, ¿lo ven?
+19:22 Speaker 1: Entonces, voy a hacer un check para ver que no esté sufriendo el teléfono que
+19:27 Speaker 2: esté de otro lado. Entonces, acá, hacemos
+19:40 Speaker 1: un teléfono de PINIC. ¿El teléfono está bien? Y ahora le metemos el plan.
+19:59 Speaker 2: ¿Ven que acá generó un log info? Este log info, como lo estoy juntando todo en local, si yo agarro acá, miren, voy a ir acá a otra sesión, estoy en la misma carpeta,
+20:13 Speaker 1: y voy a también meter otro terrafo en plan. ¿Qué creen que va a pasar?
+20:18 Speaker 2: Acá hay un terrafo en plan en ejecución.
+20:20 Speaker 1: No están viendo una variable, pero está en ejecución. Está en lo opuesto. Esperen, vas a quedarse esperando tal vez, ¿no? Mira.
+20:30 Speaker 2: hay alguien mas con
+20:32 Speaker 1: el opuesto que es este este es el equivalente al
+20:37 Speaker 2: dynamos
+21:03 Speaker: o lo va a volver a ejecutar. Acá, el
+21:08 Speaker 2: plan ha liberado, pero el plan liberó log y este apply ha vuelto a generar un nuevo log. Teníamos
+21:23 Speaker 1: una leyenda, perdón. Porque no nos puede generar la variable, al final me dice,
+21:29 Speaker 2: ¿estás seguro que quiero hacer esto? Yo solo lo empiezo a crear. Miren acá el archivo de Terraform State. ¿Cómo está cambiando?
+21:40 Speaker 1: Se han agregado outputs. Estos outputs están agregados.
+21:45 Speaker 2: Y acá están los recursos que se han creado.
+21:50 Speaker 1: Por ejemplo, acá yo
+21:52 Speaker 2: tengo un recurso que se llama, que es del tipo AWS S3 Backer y se llama ejemplo.
+22:00 Speaker 1: Si yo busco acá, ejemplo,
+22:03 Speaker 2: acá sale. Hay un recurso que se llama ejemplo, que es del tipo AWS S3 Backer. No sé si con eso les queda más claro de para qué sirve el estate.
+22:14 Speaker 1: Ahora que lo ven ahí como paso a paso, ¿qué es lo que va pasando cuando yo lo explico?
+22:19 Speaker 2: Ahora vamos a ir al revés.
+22:21 Speaker 1: Miren, vamos a destruir todo lo que hay creado.
+22:37 Speaker 2: Y ahora empieza a destruir todo y otra vez el termo state se vació.
+22:43 Speaker 1: Ya no ha iniciado ni nada. Porque ya destruyó todo el
+22:49 Speaker 2: tracking que tenía, ya no existe. Porque ya esa infraestructura se ha creado. ¿Qué hubiera pasado si yo entraba a la consola de AWS y lo destruía a mano? El Terraform State no se enteró de eso.
+23:01 Speaker 1: Para él sigue existiendo.
+23:02 Speaker 2: Y recién cuando tratas de correr un plan o un plan, él
+23:05 Speaker 1: va a tratar de actualizarse, va a tratar de... Él lo que busca,
+23:07 Speaker 2: siempre lo que busca un proyecto Terraform es emparejar. Para él,
+23:10 Speaker 1: la fuente de
+23:12 Speaker 2: cómo está el estado es
+23:14 Speaker 1: el Terraform State. Y
+23:16 Speaker 2: su objetivo es que
+23:20 Speaker 1: tus archivos Terraform se
+23:24 Speaker 2: ejecuten... en el destino, en la nube que tú quieres. Pero si tú lo destruiste a mano, por fuera, yo ejecuto esto, y el plan, el Stein Saba María, yo iba a decir, oye, pero allá no existe, pues va a tratar de volver a crearlo.
+23:42 Speaker 1: Pero no se le quedó más claro,
+23:43 Speaker 2: ¿para qué funciona el terror Stein?
+23:58 Speaker 1: Lo
+23:59 Speaker 2: que pasa es que acá, recuerda que el plan,
+24:00 Speaker 1: que te dice cómo está, y en el arte, ahí no tenía como mucha... O sea, va a depender de ti,
+24:08 Speaker 2: no de la configuración telefónica que es lo que hace. Ok, entonces, volvamos al lado. Entonces teníamos algunos
+24:26 Speaker 1: pipelines que eran básicamente que construía la imagen, que
+24:32 Speaker 2: me decían que estaba cada uno.
+24:36 Speaker 1: Entonces veamos lo primero, veamos el
+24:38 Speaker 2: file, cómo quedó.
+24:44 Speaker 1: lo importante es lo primero
+24:52 Speaker 2: es que use una imagen
+24:53 Speaker 1: base
+24:55 Speaker 2: o una versión específica seleccionar el Worddir, luego que compre el código. Lo que ya hizo me
+25:06 Speaker 1: queda el compilado desde ese archivo y luego que compre el código.
+25:12 Speaker 2: Ya estos comandos específicos son un tema de
+25:14 Speaker 1: cómo funciona el Android. Puedo
+25:19 Speaker 2: manejar el bar y lo debería sentarnos. Entonces,
+25:25 Speaker 1: este es el Android File. Vamos ahora al otro action. Bueno, vamos a hacer el setup de infra, que básicamente
+25:38 Speaker 2: no tenía que hacer nada con eso, pero qué cosa es lo que 3D te crea, justo es el bucket
+25:43 Speaker 1: S3 donde vas a enterrar con el save, y el repositorio de imagen donde carga una primera imagen. Profe, ¿cómo podría conectar ese setup infra si ya pasaron mi sesión de cuatro horas en AWS, dado que se reinician las... Todo lo
+26:06 Speaker 2: que está ahí está vivo.
+26:07 Speaker 1: Todo lo que está apagado.
+26:08 Speaker 2: Lo prendes otra vez, lo puedes prender otra vez.
+26:11 Speaker 1: O sea,
+26:14 Speaker 2: que se apague el laboratorio no quiere decir que descubre lo que hiciste. Simplemente el acceso te lo ha
+26:20 Speaker 1: quitado. Pero él tiene todo
+26:22 Speaker 2: lo que dice ahí, vive todavía.
+26:24 Speaker 1: ¿Y no es necesario crear una nueva versión de ZPIN FLAG? Bueno, ¿con una nueva versión del bucket?
+26:28 Speaker 2: Cuando prendes tu
+26:30 Speaker 1: valor de otra vez, ¿no?
+26:43 Speaker 2: ¿Alguno entró a la consola AWS a entender y a ver qué es lo que se ha creado? Ahora vamos a los filetines. Vamos
+27:26 Speaker 1: primero con el filet de
+27:28 Speaker 2: aplicación.
+27:43 Speaker 1: Lo que
+27:46 Speaker 2: les decía de esto, nos parece como... Una cosa es poner
+27:51 Speaker 1: los controles acá adentro y se carga, pero no
+27:53 Speaker 2: sabes por qué se cayó. Y la otra es también que el mismo
+27:58 Speaker 1: pipeline te escriba en el
+28:01 Speaker 2: resumen, o en la parte visual del pipeline, un pequeño resumen de que fue lo que pasó en ese paso. Por ejemplo, acá, secretos. Secretos, está vinculado a este. Ah, no he encontrado ningún
+28:13 Speaker 1: secreto en el código.
+28:15 Speaker 2: Hago dependencias, hago dependencias. Mira,
+28:17 Speaker 1: encontré estas.
+28:19 Speaker 2: Como decía, esto no era parte de lo que les pedía, pero es un poco... Permite leer de manera más visual cuál es el resultado de lo que está ejecutando.
+28:29 Speaker 1: Igual,
+28:30 Speaker 2: según análisis estático y cuenta vulnerabilidad, se quita por acá. Y bueno, este es un poco el circuito, ¿no? Por un lado ocurría la ejecución de velocidades sanitarias, se subió el código a SonarQ, que pasaba el Quality Gate de SonarQ.
+28:46 Speaker 1: Y en
+28:48 Speaker 2: paralelo ocurrían las mismas
+28:50 Speaker 1: competencias realizadas.
+28:52 Speaker 2: ¿A todos les suena el pilot en este orden? ¿A
+28:56 Speaker 1: alguno le salió un poco diferente?
+28:59 Speaker 2: ¿Para el delito?
+29:01 Speaker 1: ¿Pero la calidad? ¿Pero la calidad? ¿Se quieta?
+29:09 Speaker 2: ¿Nuestra siedad está en la línea?
+29:12 Speaker 1: Claudio, pero la misma idea, bro. Pero lo importante es, ¿por qué no las
+29:19 Speaker 2: ponemos secuenciales? ¿Por qué algunas sí están secuenciales y otras no? ¿Por qué calidad tienen que esperar a pruebas?
+29:41 Speaker 1: del archivo de cobertura de prueba. El archivo de cobertura de prueba. Cuando tú ejecutas las pruebas unitarias, te arroja cuál es la cobertura de tu
+29:49 Speaker 2: proyecto. Y eso es un input para tu herramienta de calidad. Si no, no puede evaluar si cumples o no cumples con el porcentaje que
+29:58 Speaker 1: te da un proyecto de prueba.
+30:01 Speaker 2: ¿Y estos tienen alguna dependencia entre ellos?
+30:07 Speaker 1: ¿Qué pasa si los ponemos secuenciales?
+30:12 Speaker 2: ¿Cuál de ahí le menciona como el que más demora?
+30:17 Speaker 1: ¿El estático?
+30:21 Speaker 2: Normalmente se dan cuenta, los más lentos... Si le hubieran puesto todo secuencial, ¿a cuánto sería el tiempo? Acá el promedio de todo esto está en 1.38, todo. Si yo hubiera puesto todo secuenciales acá, hubiera sido casi un minuto más.
+30:54 Speaker 1: No es de esta cajita.
+31:01 Speaker 2: Entonces, ¿por qué le ponemos...? ¿De qué determina si le ponemos secuencial o no secuenciales? Uno, que realmente uno depende de dónde.
+31:10 Speaker 1: Dos,
+31:10 Speaker 2: recordemos que siempre el pattern tiene que ser lo más rápido posible. Entonces, no paralelicemos lo más posible.
+31:16 Speaker 1: Porque si no, vamos
+31:19 Speaker 2: a hacer que uno muere más, rápidamente.
+31:27 Speaker 1: Esta es la solución de elaboración. Estoy viendo mi ejecución, mi digamos, prueba en dos ejecutantes. Uno de los ejecutantes de calidad. ¿Y cómo se dice para que pasara la cobertura? Se empezó a hacer todo en el check. No, no, el check no es aquí porque depende de cómo lo construyes.
+31:47 Speaker 2: Pero la idea es un poco la lógica de... Uso lo que estamos hablando y la idea es
+31:52 Speaker 1: la lógica. Pasito, pasito.
+32:00 Speaker 2: Acá los tiempos son más o menos, ¿no? Todo va a ser igual, porque es el tiempo de que bajen los paquetes...
+32:07 Speaker 1: En el tiempo no hay tantos temas, además tiene la lógica porque está conveniente. Vamos al de infra.
+32:29 Speaker 2: En el de infra, más o menos lo mismo. Tienes, primero, validar. ¿Qué comandos de terrofón se ejecutan
+32:36 Speaker 1: en el validar? ¿Me suena? ¿De acuerdo?
+32:56 Speaker 2: El validar lo que hace es... Se fueron los comandos que acabo de ejecutar para poder desplegar el código. Primero
+33:05 Speaker 1: un init.
+33:05 Speaker 2: Un init es el equivalente al install de Python, al install de Node. Descargar las librerías. Eso es lo que hace el init. Descarga las librerías. Y también inicia el state inicialmente.
+33:23 Speaker 1: Luego el validate,
+33:25 Speaker 2: que es como el...
+33:26 Speaker 1: No es como el audit. ¿Ustedes están más familiarizados con Node? Bueno,
+33:34 Speaker 2: el audit es básicamente...
+33:36 Speaker 1: El
+33:37 Speaker 2: validate lo que hace es que compile. que no haya puesto nada que esté rojo, referencia a la variable que no existe, que no se compila, pero es igualmente como si fuera que copila, que no haya un error de sintaxis. Luego, políticas, esa es la parte de seguridad. que verifica si es que tu código tiene alguna vulnerabilidad. Pero cojo que no es vulnerabilidad que tu código esté mal escrito, perdón, que tu código tenga algo abierto, sino que la infraestructura que está generando tu código va a tener una vulnerabilidad. Eso es lo que chequea la política. Oye, tu lambda lo está poniendo público, cualquiera lo va a poder consumir.
+34:23 Speaker 1: Estoy inventando algo, porque no es tan así. Pero eso
+34:26 Speaker 2: sería un poco lo que te arrojaría a estas políticas. Un maquete C3 sí, definitivamente es una política que se revisa. Luego el plan ya es qué es lo que voy a implementar como cambios y el apply ya es la parte final. Yo podría hacer acá el aplicar antes que el plan.
+34:55 Speaker 1: ¿Había sentido?
+34:59 Speaker 2: ¿El plan qué cosa demuestra?
+35:05 Speaker 1: ¿Cuáles son los cambios que va a aplicar?
+35:15 Speaker 2: ¿Alguna duda o alguna pregunta de laboratorio?
+35:46 Speaker: Ok, nos volvamos a la clase de hoy, que es lo que nos hace un despliegue. Hasta donde hemos
+35:55 Speaker 2: llegado del pipeline, ya pasamos por hacer build, hasta la parte de seguir, control de calidad, de seguridad, ya publicamos por ahí nuestro doctor, ahora falta la parte de desplegar.
+36:09 Speaker 1: Entonces, ¿qué
+36:12 Speaker 2: cosas todavía no tenemos como
+36:13 Speaker 1: resuelta?
+36:16 Speaker 2: ¿Qué va a pasar cuando despliegue? ¿Vamos a tener que ir por disponibilidad? ¿O no?
+36:24 Speaker 1: ¿Alguno
+36:24 Speaker 2: de acá ha podido hacer pasas de producción? ¿Pero no la ves? ¿Pero no la ves? ¿Pero no la ves? ¿Pero no la ves? ¿Pero no la ves? ¿Pero no la ves? ¿Pero no la ves? ¿Pero no la ves? ¿Pero no la ves? ¿Pero no la ves?
+36:29 Speaker 1: ¿Pero no la ves? ¿Pero no la ves?
+36:41 Speaker 2: ¿Pero no
+36:42 Speaker 1: la ves?
+36:45 Speaker 2: Lo que hayan hecho el TP1 o el teléfono de software, cada vez que alguien desplegaba las soluciones, ¿había tiempo y disponibilidad de
+36:52 Speaker 1: la aplicación? ¿Hasta un rato una vez podías armar? ¿Hasta que me la desplegando?
+37:00 Speaker 2: ¿Qué te logro que usaron para
+37:02 Speaker 1: desplegar esas soluciones? No, no, sí, está bien, está bien. Bueno, para DP1 sí usábamos Docker, aparte de crear, primero va a ser el build para generar la ISO y ahí va a pegarlo. Y aparte, para la parte como estaba dentro de la infraestructura de la PUR. No teníamos libre acceso a todos los cuadros, sino que tiene salida en internet directo. Entonces, le pusimos un NX para solamente usar puertos 80. Pero
+38:04 Speaker 2: no tuvieron problemas de indifunibilidad.
+38:07 Speaker 1: Durante el tiempo que se hacían los cambios, o sea,
+38:10 Speaker 2: mientras se empleaba. Ah, sí, sí, genera disponibilidad. O sea, se bajaba y
+38:14 Speaker 1: después se levanta el otro. Bajamos, deteníamos el broker,
+38:18 Speaker 2: reivindicábamos y solíamos la reivindicación. Entonces ahí hay un tipo de disponibilidad. Entonces cuando hacen los falsos de producción, imagínense en empresas. Creen que también tienen, a veces sí, a veces no. Algunas veces han visto, no va a estar disponible en la banda por internet para hacer tales cosas en tal horario, o tal sistema no va a estar disponible en tal horario. Pero no se da siempre, no se
+38:40 Speaker 1: da eventualmente. Entonces,
+38:43 Speaker 2: uno de los puntos es eso. Creo que vamos a ver un poco ahora. ¿Cómo se manejan esas cosas? El otro tema de versiones lo vamos a ver más adelante. Y en los
+38:58 Speaker 1: procesos, los trabajos no han estado, hasta
+39:00 Speaker 2: en las prácticas, me contaban que no han visto todavía el proceso de base en producción, pero normalmente hay alguien que apruebe que el base en producción se puede hacer. Y una vez que ya hiciste el base en producción, ¿cómo sabemos que está todo bien?
+39:25 Speaker 1: Porque hay algo que tengo que validar.
+39:28 Speaker 2: Y ahora vamos a ver qué tan automatizado podemos hacer eso para que... Imagínense, el pylon despliega y el mismo pylon pregunta, ¿está todo bien? Y le ponemos ciertas reglas y si en cierto tiempo no hay respuesta de que todo está bien, automáticamente despliega la versión anterior.
+39:43 Speaker 1: Es un error. Eso por ejemplo puede ser un error. Para disminuir la...
+39:49 Speaker 2: la probabilidad de error entonces un poco se ha pensado en esto al dar más cuenta rápidamente de que hay un problema
+39:56 Speaker 1: entonces
+40:01 Speaker 2: Por eso se han dado posibles problemáticas de, oye, va a ser el ambiente caído, oye, si despido esa versión y esa versión no funciona, voy a aplicar a todos los usuarios. Por eso todas esas cosas han salido diferentes estrategias de cómo desplegar. Hay varias formas de cómo desplegar, no es solamente bajo el anterior, subo la nueva y ya está. Hay diferentes formas de hacerlo para tratar
+40:27 Speaker 1: de incluir el riesgo de que algo pase. Entonces, ¿se acuerdan del concepto de Future Flags? El desarrollo. Lo vimos en la parte de 6.
+40:38 Speaker 2: Cuando teníamos un Future Flags, algún desarrollo
+40:40 Speaker 1: casi
+40:43 Speaker 2: listo, pero no 100% operativo, y queríamos que se punte, y no lo veis después.
+40:52 Speaker 1: en la tercera
+40:54 Speaker 2: o cuarta sesión tenemos este concepto de los feature flags que justo lo que te dice es
+40:59 Speaker 1: los
+41:02 Speaker 2: if que ponías en tu código para que
+41:03 Speaker 1: usas en una parte u otra parte del código si la nueva funcionalidad no funciona usar la pasada y si ya funciona la activas y ya no se usa la funcionalidad pasada sino la funcionalidad nueva para ir por diferentes lugares.
+41:25 Speaker 2: Acá tiene otra
+41:26 Speaker 1: connotación.
+41:28 Speaker 2: ¿Han escuchado algo de A-B Testing? ¿Por qué se explican para los conceptos? A-B Testing. Hay muchas páginas, no por tema de display de DevOps, más por tema de marketing. Quieren probar, oye, ¿será que los clientes compran más en que el botón lo pongo? No lo pongo verde en vez de amarillo. Ya, entonces,
+41:53 Speaker 1: a todos los
+41:54 Speaker 2: clientes que entran que son de Perú, ponen el botón amarillo. A todos los clientes que son de Chile, ponen ese botón rojo. Eso es lo mismo de Bitesting. Configura las herramientas para que, según de dónde vengas, te salga alguna HTML o el otro. Y después de las pruebas definirán, ok, nos vamos todos por rojo, nos vamos todos por amarillo.
+42:15 Speaker 1: Eso funciona como Baby Testing.
+42:16 Speaker 2: Entonces, en un despliegue es algo similar. Imagínense algo como, oye, vamos a crear una versión de Spotify. Pero queremos ir poco a poco. Entonces, primero descubrimos acá lo que es Perú. Si todo va bien, escalamos a dos
+42:31 Speaker 1: o tres países más de Sudamérica y después al resto. Entonces,
+42:34 Speaker 2: el concepto de feature-plug se utiliza también para ese tipo de cosas. Ya no está en el código eso. Eso
+42:39 Speaker 1: está en herramientas, en pipelines, está
+42:42 Speaker 2: por fuera. Pero es un poco el mismo concepto.
+42:47 Speaker 1: Entonces,
+42:48 Speaker 2: esa estrategia de despliegue, justo lo que van a resolver es este riesgo técnico de, oye, bajo el docker y
+42:53 Speaker 1: ya nadie puede retirar nivel plata de su cuenta. Entonces, tenemos que mitigar de alguna manera.
+43:00 Speaker 2: Oye, pongamos dos dockers. Bajamos uno primero. Entonces, esas estrategias que les cuento de tener todos a la vez y uno se apaga, uno se aprende, se mezcla
+43:17 Speaker 1: con lo de los Future Flags y se arman diferentes estrategias. La primera estrategia
+43:35 Speaker 2: tiene varios nombres, Rolling Deployment, Multeservice Deployment, pero básicamente es lo que todos hemos hecho siempre. Ya tengo algo desplegado, simplemente lo
+43:47 Speaker 1: bajo y desplego el nuevo.
+43:48 Speaker 2: A ver, algunas funcionalidades. algunos servicios, no necesitas bajarlo y desplegarlo
+43:55 Speaker 1: automáticamente lo chancas y
+43:56 Speaker 2: sigue funcionando el nuevo, no tienes que apagarlo, depende de la tecnología.
+44:01 Speaker 1: O por ejemplo, el Lambda de ustedes.
+44:03 Speaker 2: El Lambda de ustedes, ustedes no lo estaban probando con la URL para ver si funcionaba o no, pero si ustedes lo hubieran estado monitoreando constantemente, haciéndole cada segundo
+44:13 Speaker 1: un eco, siempre
+44:16 Speaker 2: les hubiera respondido. ¿Por qué? Porque
+44:18 Speaker 1: AWS por dentro, Lo que
+44:21 Speaker 2: hace es, desplega otro lambda paralelo. Y cuando ya está operativo el nuevo lambda, el anterior lo destruye, este pasa a ser el nuevo. Eso es internamente a veces. Pero este de acá es el clásico. Como apuntaban que han hecho en los cursos anteriores, apago y prendo de nuevo. O despleo nuevo. Luego está el otro concepto que se llama Blue Green Deployment. El Blue Green Deployment lo que hace es,
+44:52 Speaker 1: tengo dos servidores,
+44:53 Speaker 2: perdón, tengo un servidor de mi aplicación funcionando ahorita,
+44:57 Speaker 1: que
+44:58 Speaker 2: le llamaremos que es el verde.
+45:00 Speaker 1: El verde es el que actualmente ya está funcionando.
+45:02 Speaker 2: Creo un nuevo servidor que es el azul y hago todas las pruebas ahí. Si está todo bien, ahora hago el switch arriba para que todos apunden a nuevo. Este pasa a ser el blue, pasa a ser el green, el activo. Y por si acaso, todavía no destruye el anterior, el que estaba como green pasa a ser blue. hasta que se todo bien y después de este día lo destruyo. O sea, habrá una regla de espera un día, espera tres horas, cuatro horas y después el otro día. ¿Cuántos servidores necesito acá arriba
+45:40 Speaker 1: para que esté funcionando la aplicación?
+45:43 Speaker 2: Solo uno, ¿verdad? Porque sobre el mismo servidor se hace el despliegue en la primera estrategia. En la segunda estrategia, ¿cuántos servidores necesito?
+45:52 Speaker 1: Dos. Es el costo en esa estrategia. va a ser más alto que en la primera.
+46:01 Speaker 2: Porque necesitas dos fierros. Que sean virtuales, o sea lo que sea, pero igual necesitas dos. Esa es una de las grandes ventajas del Blue Green.
+46:08 Speaker 1: Por eso,
+46:09 Speaker 2: muy poco lo tienen porque se demanda mucha infraestructura. Luego existe otro concepto que se llama el
+46:16 Speaker 1: Canary Deployment.
+46:18 Speaker 2: En el Canary Deployment... Ah, pero perdón, antes de saltar a este. En estos dos, ¿cuál tendrá... Menor tiempo de indisponibilidad. Si algo pasa. ¿Cuál tiene menos? El
+46:32 Speaker 1: segundo.
+46:34 Speaker 2: Porque si en el primero. Tu complicación rompió.
+46:38 Speaker 1: Ya estás
+46:39 Speaker 2: disponible. Si en el segundo rompió. Te vas a dar cuenta en las pruebas. Y ya no haces el switch. Luego vamos a otro que se llama el Canary Deployment. El Canary Deployment lo que tiene.
+46:53 Speaker 1: Como concepto es. Yo tengo
+47:00 Speaker 2: desplegados...
+47:02 Speaker 1: Digamos
+47:07 Speaker 2: que estoy haciendo el despliegue de un servicio que se llama el servicio BuscarCliente. Pero ese servicio BuscarCliente no tiene una sola copia en producción. Tengo cuatro. Hay cuatro servicios BuscarCliente, todos son la misma versión, pero son cuatro contenedores. Entonces, cuando voy a hacer un despliegue,
+47:26 Speaker 1: no hago el despliegue de los cuatro. Solo despliegue de 1.
+47:30 Speaker 2: Y monitoreo cómo va respondiendo y cómo va funcionando.
+47:33 Speaker 1: Pero este 1 ya
+47:35 Speaker 2: está atendiendo a un cierto pool de clientes. Ya le están llegando un porcentaje de transacciones. Si va bien, lo escalo. Le pongo ahora dos imágenes de esta versión. Si va bien, lo pongo tres. Y hasta que, ok, ya está todo bien, lo reemplazo completamente. Entonces, ¿por qué se llama Kennedy
+47:54 Speaker 1: Deployment?
+47:55 Speaker 2: Porque este concepto viene de... En la mina, llevaban un canario, una pulita,
+48:08 Speaker 1: y
+48:09 Speaker 2: iban entrando. Ese canario ya se desmayaba. Tenían que salir. Algo mal estaba pasando en ese túnel. Entonces, esa es un poco la idea del canario. Mientras con más bases entrando,
+48:24 Speaker 1: si es que sobrevive, es que estamos bien.
+48:41 Speaker 2: Vamos con los cuadraditos para ver si se entiende mejor. En el primer escenario, todos tienen la misma versión, la 1.0. En el segundo escenario... En el primer escenario, todos tienen la misma versión, 1.0. Yo quiero desplegar la 1.1.
+48:59 Speaker 1: Entonces, para
+49:00 Speaker 2: validar, antes de desplegarles a todos,
+49:03 Speaker 1: yo desplego, puede
+49:04 Speaker 2: ser en una cajita o en dos, la nueva versión. ¿Y esto qué quiere decir que tenga cuatro cajitas? Que según a que tengo un balanceador acá arriba, que reparte
+49:18 Speaker 1: la carga entre los cuatro.
+49:20 Speaker 2: O por algún concepto, algunos vienen acá,
+49:22 Speaker 1: otros vienen acá, otros vienen acá. Pero
+49:24 Speaker 2: la cosa es que se está compartiendo la carga entre los cuatro.
+49:27 Speaker 1: Entonces, cuando llego el despliegue, lo hago
+49:29 Speaker 2: solamente en algunas cajitas, no todas, para validar que todo está funcionando bien. Si estas cajitas me responden bien, recién ahí llevo esta misma versión a las otras cajitas. Entonces al final tengo mis cuatro cajitas originales, ahora con la nueva versión 1.1. Entonces es el canary que empieza con uno, después con otro.
+49:51 Speaker 1: Y la última es
+49:53 Speaker 2: la que les contaba de la B-testing. Yo tengo la versión 1.0 de todas, y lo que hago es desplegar una versión del 1.2, y por un tiempo, ya está, también acá incluso una 1.1, Y por un tiempo voy derivando. El tráfico de 50% del tráfico va a la 1.1. 25% del tráfico va a la 1.2. Y el resto del 25% se va a la 1.0. Voy monitoreando cómo se va comportando cada una. Y en base a eso voy pasando más carga, más carga, más carga a la
+50:33 Speaker 1: nueva versión. Este bitesting,
+50:36 Speaker 2: siguieron esos tres de acá arriba. El objetivo es disminuir la indisponibilidad. hacer el despide lo más seguro posible para que nada se caiga el último tiene eso pero tiene sobre todo esta capacidad de lo de marketing de probar varias cosas a la vez a ver cuál estaba yendo mejor también tiene otra capacidad no solo técnica sino también puede ser hasta funcional
+51:01 Speaker 1: entonces
+51:05 Speaker 2: ¿cuál les parece que les da la mayor seguridad de que no va a pasar nada? O sea, de que no haya menor indisponibilidad.
+51:17 Speaker 1: Bueno,
+51:19 Speaker 2: la segunda, Blue Ring. ¿Seguro que opinen por otra?
+51:23 Speaker 1: Blue Ring
+51:24 Speaker 2: es la que nos da mayor certeza. ¿Por qué? Porque si acá yo despleo lo que está mal,
+51:31 Speaker 1: ya un
+51:32 Speaker 2: cliente lo notó. Acá yo estoy poniendo uno paralelo que nadie está viendo. Yo lo pruebo completo. Y una que yo lo pruebo, completo, recién ahí pasa este a darle servicio a todos los clientes.
+51:46 Speaker 1: Esa es un poco la
+51:47 Speaker 2: variante con estas. ¿Cuál es el más caro de estos de
+51:52 Speaker 1: acá? ¿El Lugreen? ¿El Lugreen es Google? Lugreen también es el más caro. ¿Por
+52:07 Speaker 2: qué? Acá yo necesito exactamente la misma capacidad de cómputo del servidor de producción en ese paralelo. Exactamente lo mismo. Lo mismo que es de RAM, de CPUs, etc.
+52:16 Speaker 1: Acá, no.
+52:18 Speaker 2: Sí podría ser que yo esté acarto de crear un otro servidor, pero va a ser algo más chiquito, entonces no necesito aceptarte la misma capacidad. Y al final, cuando ya pase a todo,
+52:26 Speaker 1: al final, va a tener la misma capacidad final.
+52:30 Speaker 2: Ese es el más caro. Y a nivel de complejidad, ¿cuál les parece más complejo gestionar, manejar?
+52:49 Speaker 1: Sí señor, claro. A ver, evaluemos complejidades.
+53:00 Speaker 2: En el primero, simplemente despleo la nueva versión. Siempre tengo una sola versión de cada servicio.
+53:07 Speaker 1: Tengo más versiones. Una sola versión de cada servicio.
+53:11 Speaker 2: En el segundo, también de manera productiva, solo tengo una sola versión de cada servicio. Sí, tengo que instalar el servidor, pero es una sola vez cada cosa y ya está. Tal vez suena un poquito más complejo que el primero. Pero va más de infraestructura.
+53:32 Speaker 1: En el de Canary,
+53:34 Speaker 2: tengo que tener una capacidad de poder ir uno, desplegando poquito a poquito,
+53:39 Speaker 1: dos,
+53:41 Speaker 2: direccionar qué cosa va a cada uno. medir cómo está respondiendo cada
+53:48 Speaker 1: uno para al final hacerle
+53:50 Speaker 2: este final. Y en la última tengo algo parecido al de Canary, tengo que desplegar cada una, pero a la vez voy a tener varias versiones en paralelo por un tiempo. ¿Cuál es la más compleja de las cuatro? La
+54:10 Speaker 1: última. La última de las más complejas. ¿En el Canary hay un solo servidor? En el Canary hay un
+54:26 Speaker 2: solo servidor.
+54:32 Speaker 1: Sí, normalmente hay un solo servidor.
+54:36 Speaker 2: Veamos que mantiene la misma configuración de la base. Si tenías dos servidores, porque no se cortaba la
+54:43 Speaker 1: carga, te lo mantienes con dos servidores. Pero
+54:45 Speaker 2: mantiene lo mismo del original.
+54:50 Speaker 1: Ahí
+54:51 Speaker 2: es criterio del...
+54:53 Speaker 1: hay
+54:56 Speaker 2: un porcentaje que se va variando.
+54:59 Speaker 1: ¿Entre que quizás lo es el canario? Sí.
+55:12 Speaker 2: Algo que también se confunde bastante. Es que en el Multiservice hemos pintado varias cajitas. En realidad, cada cajita es una aplicación. No es que sea el mismo servicio con varias versiones. Es la misma aplicación. Mientras que acá, si se está hablando de la misma aplicación, cada cajita es la misma aplicación. No son
+55:29 Speaker 1: diferentes. Eso tal vez pueda confundir.
+55:32 Speaker 2: Entonces acá se presentó solamente en esta cajita del 1. 1.0 y Service A. Este y Service A hoy día tiene la versión 1 desplegada. En el multiservice, directamente ese servicio A
+55:43 Speaker 1: lo charlas con la nueva versión 1.1. Así funciona el multiservice.
+55:49 Speaker 2: Quiere decir que es Big Bang. O sea, o tienes una versión o tienes la otra. No hay ninguna que
+55:54 Speaker 1: se falla, se falló.
+55:56 Speaker 2: No tienes manera de mitigar un posible problema para el cliente, se falló.
+56:04 Speaker 1: Acá tienes cuatro...
+56:08 Speaker 2: Cajitas del mismo servicio. Son imágenes.
+56:15 Speaker 1: ¿Cuántas replicas?
+56:16 Speaker 2: Entonces acá solamente estás actualizando dos de esas replicas.
+56:21 Speaker 1: ¿Alguna otra
+56:24 Speaker 2: pregunta? Entonces, acá está un poco explicado lo que les he dicho antes, así que esto lo vamos a pasar un poco rápido, en el plazo total,
+56:45 Speaker 1: que es la primera.
+56:47 Speaker 2: Básicamente es un poco lo que les decía.
+56:54 Speaker 1: Antes estaba así,
+56:56 Speaker 2: durante no hay servicio, la instancia está detenida y ya después está la versión humana. Hay algunos componentes que permiten un reemplazo progresivo. No hay indisponibilidad,
+57:13 Speaker 1: pero igual voy actualizando durante. ¿Cómo creen que es un rollback en
+57:22 Speaker 2: esta primera versión? ¿Están formalizados con todo el rollback?
+57:29 Speaker 1: ¿Cómo creen que es un rollback? ¿Rápido?
+57:36 Speaker 2: Sí, trae la versión anterior,
+57:38 Speaker 1: pero... Sí,
+57:41 Speaker 2: claro, es como volver a hacer el pase. Como volver a hacer el pase. Si tienes esto de emplear en muchos lugares, tienes que
+57:47 Speaker 1: volver a emplearlo en varios lugares.
+58:04 Speaker 2: Ese es el Blue Green, que es los dos ambientes completos y
+58:09 Speaker 1: un conmutador, que es como un componente
+58:13 Speaker 2: encima que me dice apuntas
+58:14 Speaker 1: a un lado o al otro. Entonces, despliego
+58:19 Speaker 2: la nueva versión como un servidor. No tengo tráfico todavía de clientes ahí, solamente de nosotros que vamos a hacer las pruebas. Validamos que el status está bien. Y ahí, ahora todos los clientes los pasamos a ese nuevo. monitoreamos, si todo está bien lo dejamos así y si no tenemos que volver a retroceder apuntamos el computador
+58:40 Speaker 1: al servidor anterior y todo bien el
+58:43 Speaker 2: problema es que cuesta el doble y
+58:45 Speaker 1: acá
+58:48 Speaker 2: un punto importante también es ya un poco más detalle avanzado es ya chévere cuando estamos hablando de la API y de la aplicación pero qué pasa cuando estamos hablando de base de datos ¿Podríamos hacer estrategias con base de datos?
+59:06 Speaker 1: ¿Qué pasa con la data?
+59:07 Speaker 2: La data, yo puedo tener dos base de datos a la vez.
+59:11 Speaker 1: ¿Qué pasa con todas las constaciones que quedan a un lado? Explota, explota. Se congela. La base de datos con base de datos a la vez es un gran problema para la estrategia de despliegue.
+59:20 Speaker 2: No hay peor cosa que tengas que hacer un paso a producción que mueva una base de datos.
+59:26 Speaker 1: Mejor una vez en
+59:28 Speaker 2: la empresa seguro donde estaba. Vino el océano que están planteando un paso a producción grande del equipo de desarrollo. Y el líder de ellos vino y dijo, no
+59:37 Speaker 1: hay rol.
+59:38 Speaker 2: O sea, no hay vuelta atrás. O pasamos o pasamos. Porque tratar de volver por
+59:44 Speaker 1: los cambios que estamos haciendo en la base de datos, nos va a traer más problemas.
+59:48 Speaker 2: Será la mentalidad de, no hay vuelta atrás, hacemos el pase y corregimos como sea, donde sea. ¿Algunos encontraron que no
+59:57 Speaker 1: tienen experiencia de hacer rollbacks? ¿Alguno? ¿Va a pasar? No hay nada
+01:00:02 Speaker 2: más...
+01:00:04 Speaker 1: Una
+01:00:04 Speaker 2: de las cosas que más duele es después de hacer un gran esfuerzo por el base y trabajarlo y todo, tener que hacer rollbacks.
+01:00:12 Speaker 1: Me tocó hacer tres rollbacks de una
+01:00:18 Speaker 2: empresa que vende leche y que me da gloria. le estábamos mirando toda su infra, un servidor de data, de datos, que eran 4 teras, a
+01:00:29 Speaker 1: la nube.
+01:00:31 Speaker 2: Y no era solamente mirar la data, no eran sus procesos de API
+01:00:36 Speaker 1: subirse a la nube.
+01:00:40 Speaker 2: Y eso era un trabajo que empezaba viernes 12 de la noche y terminaba domingo 5 de la tarde. O sea, no todo el día estamos ahí viendo. Hay muchos procesos que te tirabas, te ibas a dormir y al día siempre seguías. Porque ya era tanta información y tantas cosas que hacer. Y tres veces el domingo tuvimos que hacer.
+01:00:59 Speaker 1: Me dolió horrible tener que trabajar varios fines de semana.
+01:01:03 Speaker 2: No desfixiar. Era un esquema muy complejo. Porque tenía un esquema muy obsoleto. Pero bueno, parte de la vida. Se aprende mucho. Entonces, el reto está en los datos. Esta es la exposición gradual
+01:01:26 Speaker 1: de
+01:01:27 Speaker 2: la necesidad, es la del Canary,
+01:01:30 Speaker 1: que es lo que tú preguntabas. Oye,
+01:01:32 Speaker 2: ¿de parte del 50%? No. Primero podemos ir con 5, observamos 10 minutos cómo va, de ahí subimos a 25, observamos otros 20, de ahí 50, observamos 30 minutos, y si está todo bien, vamos, 100% de tráfico a lo nuevo.
+01:01:45 Speaker 1: Si al final pudieron con el despliegue, ¿qué pasó para que tuvieran que hacer tres rollbacks? Sí,
+01:01:51 Speaker 2: o sea, el tema es más bien técnico, pero
+01:01:54 Speaker 1: el gran problema era...
+01:01:59 Speaker 2: Esto antes estaba en un premis, en unas máquinas muy potentes, y que tenías el disco, era un disco duro muy potente,
+01:02:09 Speaker 1: junto a la máquina.
+01:02:12 Speaker 2: Cuando lo miramos a máquinas virtuales en la nube, el esquema de las máquinas virtuales tiene muchos sabores y muchos tipos de máquinas virtuales. No sabíamos de esa configuración tan avanzada que tenía el disco y tan cerquita que tenía la máquina. El tromput que había de datos era muy grande, porque los procesos eran muy ineficientes. Entonces era como que siempre cada proceso volvía a pasar todo y eso hacía que se cayera.
+01:02:38 Speaker 1: Nos
+01:02:38 Speaker 2: costó un tiempo entenderlo. Nos costó un tiempo ver la mejor configuración de la nube y que no sea tan cara. Porque esos tamaños de servidores y de configuraciones serán muy altos. Entonces, en resumen, era ver cómo optimizar el throughput de los CIO, de los discos con la máquina del gol arriba, y que eso fue lo más eficiente posible.
+01:03:02 Speaker 1: ¿Saleo?
+01:03:03 Speaker 2: ¿Saleo? ¿Saleo? Entonces, bueno, el canary lo que nos ayuda es esto, ¿no? Ir llevando el tráfico poco a poco. Entonces, acá, por ejemplo, digamos que nos dimos cuenta acá que había un problema.
+01:03:23 Speaker 1: Hacer un rollback acá va
+01:03:25 Speaker 2: a ser más sencillo que hacer un rollback cuando ya había despegado todo con
+01:03:29 Speaker 1: el primer escenario. Y voy a haber impactado menos usuarios.
+01:03:37 Speaker 2: ¿Creen que eso podría lograrlo sin observabilidad? ¿Están familiarizados cuando tenemos observabilidad? Creo que en la primera sesión
+01:03:43 Speaker 1: lo pregunté y algo menos. Como
+01:03:47 Speaker 2: teoría. ¿Qué cosa...? Es tanto estructura como aplicaciones, ¿no? Es justo lo que decía, la diferencia entre monitoreo, aplicación y observabilidad. Oye, tengo monitoreo. Sí, ahí están mis dashboards.
+01:04:12 Speaker 1: Oye, pero ¿hay alertas de esos dashboards?
+01:04:15 Speaker 2: ¿Esos dashboards solamente están monitoreando CPU y RAM? ¿O sabes cuántas transacciones están ocurriendo? Y si baja la cantidad de transacciones, hay algo raro que está pasando que debería también hacer algo.
+01:04:26 Speaker 1: Ahí es un poquito la diferencia entre monitoreo
+01:04:28 Speaker 2: y observabilidad. Pero acá lo importante es, si yo no sé cómo se están comportando las sesiones de mis usuarios, el tráfico, si todas las peticiones están respondiendo todavía a 200, no puedo seguir escalando. Entonces, tener esa información no es ir y consultar logs aquí y consultar logs allá, es tener las herramientas automatizadas en un panel que me permita ver qué está la realidad. Y alertas configuradas también.
+01:05:00 Speaker 1: Y
+01:05:01 Speaker 2: lo otro también es que si se detectara un problema, ese rollback también debería poder ser automatizado. Automáticamente es la clave de la versión anterior.
+01:05:10 Speaker 1: Es tanto distraída como la web.
+01:05:13 Speaker 2: Acá vamos a ver algunas diferencias entre todos, pero acá se distraía por cada uno en mi disponibilidad. El primero es el que más disponibilidad trae. como lo veían antes. Si tengo un aspecto progresivo, poco a poco, o tengo dos ambientes, o tengo el cambio, o no tengo disponibilidad. En algunos escenarios voy a tener una convivencia de las dos versiones, de la anterior y la nueva. Entonces, ese es otro tema que tened en cuenta. El costo de la infra, en el tema de dos ambientes, el blue green es el que más nos cuesta. ¿Qué tanto me demoro en caso de tener una
+01:05:51 Speaker 1: reversión, un rollback? Más me demoro en el primer caso, ¿no? Acá es... más demora más el hacer rollo. Y en estos escenarios va a ser mucho más rápido.
+01:06:04 Speaker 2: El tema de la observabilidad, en los dos escenarios de Blue Green y de Canary, sin observabilidad, es imposible hacerlo. Y cuántos clientes voy a impactar
+01:06:16 Speaker 1: en caso falle parte
+01:06:18 Speaker 2: del proceso. En el primero, impacto a todos los clientes. Mientras que en los demás,
+01:06:26 Speaker 1: va a ser parcialmente el impacto.
+01:06:29 Speaker 2: Depende en qué momento se detecte también. Si en el blue-green me doy cuenta al final, cuando ya pasé el nuevo servidor a que sea el green, ahí sí voy a
+01:06:39 Speaker 1: impactar a todos.
+01:06:42 Speaker 2: Entonces... ¿Qué criterios usarían ustedes para elegir qué
+01:06:46 Speaker 1: estatir
+01:06:49 Speaker 2: usar? ¿Qué cosa les puede decir? Ok, no es por esta.
+01:07:01 Speaker 1: ¿Puede ser el tamaño del cambio? El tamaño del cambio. Si es un cambio que afecta, por ejemplo, a aplicaciones productivas que son core para clientes, ahí sí sería bueno irles, por ejemplo, aplicarle a este CQI poco a poco, o en el caso de que es un cambio muy pequeño, por ejemplo, se ha cambiado un poco el ICI, sí se podría hacer un poco más fácil. Claro, tú dices por riesgo el cambio. Ajá, ¿por riesgo? Sí, por riesgo, solo que...
+01:07:31 Speaker 2: Para configurar cada una de esas estrategias, va a ser muy difícil de que tengas las cuatro habilitadas y digas, ya,
+01:07:38 Speaker 1: para estos cambios vamos por esta, por esta, por esta. Normalmente haces la
+01:07:40 Speaker 2: configuración y ya todos los cambios a esa aplicación se mueven con esa estrategia. Porque es muy costoso,
+01:07:49 Speaker 1: o sea,
+01:07:50 Speaker 2: mora, sombra, plata, por esto, configurar, sobre todo, las dos últimas. Es una gente con que eran las dos últimas. Si ya la aceptaste, porque dijiste, por alguna razón la necesito,
+01:08:01 Speaker 1: ya
+01:08:03 Speaker 2: todos los cambios que tengas de esa aplicación van a ir por ahí. No podrías elegir, ah no, hoy solamente mueve el título, entonces mueve por acá, puede ser uno o otro.
+01:08:13 Speaker 1: O sea,
+01:08:14 Speaker 2: tal vez se podría, pero me refiero a como, tienes que decidir antes, qué estrategia vas a seguir, antes de ya en los días del cambio, a ver qué cambio viene. Esto
+01:08:23 Speaker 1: es implementar, esto es un proyecto aparte. La billetera. La
+01:08:33 Speaker 2: billetera es uno de los primeros. ¿Cuánto me va a costar?
+01:08:36 Speaker 1: La segunda es qué capacidades tengo. Ya tengo observabilidad. No tengo observabilidad.
+01:08:41 Speaker 2: Y la otra es más o menos lo que tengo notado. ¿Cuál es el riesgo de los cambios que voy a hacer? Estamos hablando de...
+01:08:58 Speaker 1: De
+01:08:59 Speaker 2: todo el sistema que se hace en el aeropuerto o los radares de los aviones. O
+01:09:03 Speaker 1: sea, ahí estamos hablando de vida. Entonces, ahí seguramente no
+01:09:08 Speaker 2: es cambio. No importa el costo, tenemos que ir a
+01:09:12 Speaker 1: uno o dos del último lado.
+01:09:18 Speaker 2: El esquema de datos tiene un poco lo que les contaba, los problemas con la base de datos, cómo manejamos cuando hay un cambio de base de datos. Todavía no hay una solución real para lo que es cambio de datos. No veo cómo, porque el dato está al final. Entonces, si tú modificas la estructura para usar la data, no puedes tener otro paralelo por telas.
+01:09:43 Speaker 1: Cambio es cambio.
+01:09:45 Speaker 2: Pero la idea sí es ir como poco a poco, ¿no? Es...
+01:09:48 Speaker 1: Esas
+01:09:50 Speaker 2: son estrategias que con experiencia vas ganando. Imaginen que tienes un pase muy grande, de muchos
+01:09:56 Speaker 1: componentes que pasar. Lo primero es, no pases todos juntos. Pasa un día, o
+01:10:01 Speaker 2: un tiempo antes, todos los componentes que puedes cambiar y no afectan en nada al resto. No tienen dependencia. Pásalos un día. Quítate las complejidades de cambios. ¿Se acuerdan ese pase que les decía de ese tema de la data, que era de viernes y recién el domingo? ¿Por qué se iba hasta el domingo? Porque
+01:10:26 Speaker 1: esta empresa produce
+01:10:28 Speaker 2: alimentos 24,7. O sea, la fare que estábamos operando 24,7. Y el sábado, les decían a todos, el domingo, que era lo más probable para decirle a todos fare, era fare un rato porque vamos a hacer el pase.
+01:10:43 Speaker 1: Entonces,
+01:10:44 Speaker 2: el viernes y sábado hacíamos todo lo que no impactaba con usuarios. Y el domingo, en la ventana real del pase,
+01:10:51 Speaker 1: era que
+01:10:52 Speaker 2: apagábamos el sistema y quedábamos nombrados.
+01:10:55 Speaker 1: Entonces, siempre
+01:10:58 Speaker 2: les vamos a dar un Excel de
+01:11:00 Speaker 1: cómo
+01:11:02 Speaker 2: planificamos normalmente un pase, las consideraciones, y cómo les puede ser la experiencia
+01:11:07 Speaker 1: para cuando se les toque planificar el pase del futuro. Profe, ¿qué tal si hay un fallo en producción que recientemente se dan este cuente el lunes? ¿Tienen que resolverlo? O sea, se
+01:11:21 Speaker 2: dio y era ver cómo lo solucionamos, ¿no? Y una vez tuvimos que hacer un rol, o sea, una de esas veces no hicimos rol en domingo, hicimos rol en martes, miércoles.
+01:11:30 Speaker 1: Y ellos tuvieron que reprocesar la rama. A ver, se pasa. A ver, se pasa.
+01:11:37 Speaker 2: Lo ideal es poder corregirlo.
+01:11:39 Speaker 1: Claro.
+01:11:40 Speaker 2: Pero hay cosas que se nos esperan. ¿Qué hago? ¿Paraverso? ¿O correjo?
+01:11:48 Speaker 1: ¿Espero? Bueno, no espero.
+01:11:51 Speaker 2: Entonces,
+01:11:53 Speaker 1: lo primero es,
+01:11:54 Speaker 2: imagínate el pase a producción, es una ventana de trabajo de algún tiempo. Puede ser minutos, puede ser horas, esperamos que no digas, pero tenés un tiempo.
+01:12:03 Speaker 1: Entonces,
+01:12:05 Speaker 2: hay un momento del pase que le llaman el go o no go, que es,
+01:12:10 Speaker 1: ya desplegué, ya validé,
+01:12:13 Speaker 2: y es un, ¿seguimos? o no seguimos o hacemos rollback
+01:12:25 Speaker 1: Y entonces,
+01:12:26 Speaker 2: ese momento de boom, boom, lo tienes que desviar. O sea, si estás dentro del pase y dices, ah, ok, después de esto veremos si sigamos o no. Cuando planificas el pase días antes, semanas antes, sientas a todos los responsables y dices, ok, dentro del pase, vamos hasta acá, y como está ese punto crítico, acá validamos. Si esto no funciona, rollback.
+01:12:48 Speaker 1: O...
+01:12:49 Speaker 2: Mira, si esto no funciona, tenemos una ventana de una hora para poder solucionarlo, máximo.
+01:12:54 Speaker 1: Si no, tenemos un error.
+01:12:57 Speaker 2: Pasa mucho, en banco, por ejemplo, con los procesos nocturnos.
+01:13:01 Speaker 1: Todos los días, las noches,
+01:13:04 Speaker 2: borran los procesos que calculan cuánto es el interés. que te toca por ese día del modo que tienes en tu cuenta de ahorro. De bengos de intereses. Se le da interés diario y se abona mensualmente. Pero todos los días se percuran. Esos tonales, esos procesos, corren en cierta hora.
+01:13:31 Speaker 1: Y no pueden
+01:13:32 Speaker 2: pasarse de cierto momento del día,
+01:13:35 Speaker 1: porque si no...
+01:13:36 Speaker 2: Ya pueden haber cambios en tu cuenta y no calcula exactamente lo que te corresponde. O los procesos de cierre del mes, lo mismo. Entonces, esos tipos de cosas son las que te dicen qué franja de tiempo tienes que corregir o no. Y también lo importante es, este proceso de cómo voy a reversar, tengo que ensayarlo brevemente. Porque si digo así, pongo reversión anterior y ya todo bien. Oye, ¿dónde está esa versión anterior? ¿Quién la ha tenido acapeada? ¿Dónde va a estar? ¿Quién tiene acceso?
+01:14:13 Speaker 1: ¿Quién se encarga de hacer esa acción?
+01:14:15 Speaker 2: Entonces, todo ese proceso ya tienes que tener previamente validado o probado. Más allá de que esté automatizado, es lo ideal, o no.
+01:14:31 Speaker 1: Y ahora viene el tema de las aprobaciones.
+01:14:34 Speaker 2: Ok, tengo que hacer el pase de producción. Y se dan justo estas
+01:14:39 Speaker 1: variantes.
+01:14:41 Speaker 2: Vamos a ver el previo al ejecutar el pase. ¿Qué cosas debemos revisar para poder decir que un pase puede ir? ¿Se acuerdan de los gates? ¿Se acuerdan de los gates que ustedes configuraron para validar calidad? de códigos de aplicación para tirar seguridad esos son indicadores que te paran en base a producción y están cosas en tu pipeline y están automáticos es
+01:15:08 Speaker 1: lo ideal
+01:15:11 Speaker 2: Pero no todas las empresas tienen ese puesto.
+01:15:14 Speaker 1: Normalmente es una persona que
+01:15:16 Speaker 2: revisa tu pase y te dirá va
+01:15:18 Speaker 1: o no va.
+01:15:20 Speaker 2: O te hará preguntas.
+01:15:22 Speaker 1: Oye,
+01:15:23 Speaker 2: ¿has considerado que justo este viernes hay Black Friday y tenemos un aumento de transacciones y tú tienes que ir a hacer el pase el viernes? Hay muchos riesgos, no vas. Vas
+01:15:32 Speaker 1: el sábado, vas el lunes.
+01:15:37 Speaker 2: Entonces, es una cosa que probablemente el aprobador va a revisar y va a querer
+01:15:43 Speaker 1: determinar. Lo importante
+01:15:48 Speaker 2: es que la aprobación, más que validar temas técnicos, la idea es que la aprobación sea parte del proceso por un tema de
+01:15:57 Speaker 1: auditoría.
+01:16:00 Speaker 2: Si le damos la llave a que los desarrolladores puedan hacer los pasos a la producción cuando quieran, sin una madurez suficiente, muy probablemente van a correr problemas. Y si estamos hablando que eso es una empresa auditada, controlada, el que genera cambio no puede ser el mismo juez y parte, que dice, ok, sí, pasemos. Normalmente es alguien adicional. Y lo ideal es que esta huella del aprobador quede como parte de la herramienta. Les contaba en la parte del
+01:16:32 Speaker 1: CI y el
+01:16:35 Speaker 2: CD que las auditorías, el tema de recopilar toda la información de la última parte de su producción,
+01:16:41 Speaker 1: quiénes fueron las
+01:16:42 Speaker 2: aprobaciones que se dieron, si esas son automatizadas dentro de tu pipeline, va a ser muy fácil obtenerlas y presentarlas. Entonces el objetivo de estas aprobaciones...
+01:16:57 Speaker 1: Está justamente en
+01:16:59 Speaker 2: tener la traza de quién fue el que lo aprobó y que él tenga toda la información posible para poder decidir si vamos o no.
+01:17:13 Speaker 1: ¿Alguna duda con la aprobación?
+01:17:37 Speaker 2: Hoy también seguimos de largo, ¿no? ¿Sale más antes? Este de acá estaba buscando, pero no tenía las manos. Encontré este de hace mucho tiempo. Cuando estaba en la empresa de seguro, me tocó hacer un paso a producción de un e-commerce. El e-commerce para la empresa de seguro es la venta de pólizas por internet. Todavía entras con tu placa de auto, para comprar un SOA o para comprar un seguro de auto. Entonces teníamos que hacer un nuevo despliegue.
+01:18:14 Speaker 1: Y
+01:18:15 Speaker 2: este formato es de lo que más me gusta para poder hacer los pases y sincronizarnos todos.
+01:18:20 Speaker 1: Voy a agregar zoom. Ya. Que básicamente es, durante el pase hay que hacer diferentes actividades. No siempre es simplemente por el panel que ya está.
+01:18:31 Speaker 2: En este caso, por ejemplo, por lo que veo acá, por lo que recuerdo, estamos migrando de dominio.
+01:18:38 Speaker 1: Entonces hay que generar un nuevo certificado de dominio.
+01:18:42 Speaker 2: Creo que el controlador de los dominios se va a hacer otro.
+01:18:45 Speaker 1: Entonces,
+01:18:46 Speaker 2: miren, acá hay unas actividades que son previas al inicio del pase. ¿Qué era lo que les decía? Todo lo que se puede hacer antes, mejor. Déjalo preparado. Entonces, uno es cuáles son las actividades a hacer. Dos, quién es el responsable. ¿A qué hora se va a hacer y a qué hora termina? ¿Cuánto dura y cuánto dura? Estas no tenían, porque como se dan antes, la idea es que lo hicieran durante la semana, previo el día D. Pero la cosa es que ya llegaron listos.
+01:19:14 Speaker 1: Bueno, por ahí hago una observación. Y el día D,
+01:19:17 Speaker 2: en el momento, era este pase en la medianoche.
+01:19:20 Speaker 1: Entonces, a la medianoche,
+01:19:22 Speaker 2: bajábamos la aplicación. En este caso, sí, vamos a comenzar a bajar la aplicación. Esos eran contenedores desplegados en
+01:19:30 Speaker 1: un MSS, en una web de OSS.
+01:19:33 Speaker 2: Y esto, por ejemplo, lo grababa. Y acá vamos trackeando cuánto dura.
+01:19:37 Speaker 1: ¿Por qué es importante?
+01:19:38 Speaker 2: Porque el usuario, que es el descargado de su servicio, tiene la menor cantidad de tiempo indisponible de su aplicación. Porque
+01:19:46 Speaker 1: es el tiempo que sus usuarios no van a poder comprar, reseccionar, y
+01:19:52 Speaker 2: eso baja sus
+01:19:53 Speaker 1: indicadores.
+01:19:56 Speaker 2: Acá están todas las actividades,
+01:19:58 Speaker 1: cada una.
+01:20:01 Speaker 2: Y acá está la aplicación levantada, funcionando. Y acá fueron las pruebas.
+01:20:10 Speaker 1: Acá las pruebas eran todas manuales, así que fueron dos horas de pruebas. Y recién dos de la mañana estaba todo bien. Acá en paralelo
+01:20:19 Speaker 2: íbamos validando los temas técnicos. Y acá está también contemplado el rollback. A las dos y media nos decían sí o no que
+01:20:28 Speaker 1: hicieron las pruebas.
+01:20:30 Speaker 2: Y si no estaba bien, nos vamos a tener que ejecutar ahí las actividades de rollback. Acá era el rollback que era un page del mundo.
+01:20:40 Speaker 1: En pruebas de ratificación, ¿cómo lo definieron? ¿Qué pruebas hicieron?
+01:20:45 Speaker 2: O sea, ahí principalmente es dependiendo de qué cambio estás haciendo, qué va
+01:20:49 Speaker 1: a ir. Básicamente es eso.
+01:20:51 Speaker 2: Contamos con el dueño de la aplicación, preguntamos de qué va el cambio. Acá, como era cambio de dominio,
+01:20:58 Speaker 1: si es un poco grande, pues están validando los principales flujos.
+01:21:22 Speaker 2: Este es uno sencillo. ¿Se imaginan? El formulario de pase de los tres días de pase era más bravo.
+01:21:31 Speaker 1: Era mucho más bravo.
+01:21:34 Speaker 2: Y acá también era más sencillo porque nosotros teníamos acceso a todo.
+01:21:43 Speaker 1: ¿Por qué pasaron a Ashwood?
+01:21:45 Speaker 2: Mil elementos corporativos. Ah, corporativos, claro.
+01:21:50 Speaker 1: Yo sinceramente, me da igual cualquier nuevo.
+01:21:54 Speaker 2: O sea, ahorita ya con la empresa, acá aún tienes un trozo contra. En los celebratorios que ustedes están asociando, recuerden el primero de SolarCube, a algún lugar le salía, y ahora también este, cuando querían inyectar el secreto, por defecto no te dejaba probar el público ese. También por ejemplo, no sé por antes, le salían como si, si quiero hacer todo esto, es excepción. En el laboratorio 2, también había una parte donde te preguntaba, ¿estás seguro que quieres hacer esto? Porque GitHub lo detectaba como algo que no era algo ideal, y tú encima de eso hacías así, ¿qué?
+01:22:42 Speaker 1: Entonces, esos son controles que GitHub te lo
+01:22:45 Speaker 2: está dando, pero tú también los puedes configurar. O sea, el full request, vamos
+01:22:51 Speaker 1: a agarrar un ejemplo.
+01:23:02 Speaker 2: Esta
+01:23:02 Speaker 1: funcionalidad no está disponible en los repositorios
+01:23:05 Speaker 2: privados. Así que tu versión de GitHub es la libre. Si tienes versión Teams de equipos o versión Enterprise, esta parte es estabilizada para los... Entonces, ¿qué es lo que se ocurre acá? Es lo que se
+01:23:22 Speaker 1: llaman los rulesets.
+01:23:30 Speaker 2: que básicamente acá es cómo proteges tu rama para que nadie haga cambios en tu rama de main, por ejemplo, sin que pase por una serie de controles.
+01:23:41 Speaker 1: Entonces, por ejemplo, acabo de tratar de cerrar main. Debo activar.
+01:23:47 Speaker 2: Ahora, por ejemplo, te dice qué usuarios bypasean esta regla. ¿Cuál es la regla? ¿Cuál es el rancho objetivo?
+01:23:57 Speaker 1: Le vamos a poner aquí, Wolters Main. Y acá están cuáles son las reglas que van a acotar
+01:24:06 Speaker 2: esta
+01:24:10 Speaker 1: rama.
+01:24:14 Speaker 2: Bueno, esto es creación de una rama con este nombre, que es la semántica esta. Se prohíbe borrar esta rama. Acá está, por ejemplo, otro check que te dice, oye, para poder desplegar sobre esa rama tienes que haber pasado ciertos checks del pipeline. Acá hay otra. Para poder desplegar cambios en esta rama, yo vi varios que hacían push directo main y hay otros que hacían a través de pull request. Con este control de acá, puedes bloquear que nadie pueda hacer
+01:24:53 Speaker 1: push directo main solamente a través de pull request.
+01:24:56 Speaker 2: ¿Por qué nos interesa que lo hagan a través de pull request?
+01:24:59 Speaker 1: Porque podemos poner el pipeline que
+01:25:01 Speaker 2: corra cuando creas el pull request. Se hacen las validaciones ahí.
+01:25:06 Speaker 1: Y si todas
+01:25:07 Speaker 2: las validaciones están bien, recién ahí puedes aprobar el pull-repuesto. Si no, no te deja aprobar el pull-repuesto.
+01:25:12 Speaker 1: Entonces, eso es un poco lo importante de eso.
+01:25:15 Speaker 2: Puedes también colocarle qué aprobaciones y cuántas aprobaciones de qué roles necesitas para poder aprobar ese pull-repuesto.
+01:25:23 Speaker 1: Oye, tengo dos,
+01:25:25 Speaker 2: tres, diez técnicos que tienen que aprobar mi cargo. Esas son algunas de las reglas. No voy a entrar tanto detalle de las otras.
+01:25:33 Speaker 1: Pero es
+01:25:35 Speaker 2: un poco la idea. ¿Cuál es un poco el objetivo? Es poder controlar mejor tus ramas para
+01:25:40 Speaker 1: que tu
+01:25:41 Speaker 2: proceso se cumpla. Esa es la idea. Que nadie meta cambios que no quieres y que no estén validados previamente.
+01:25:53 Speaker 1: Entonces, eso
+01:25:56 Speaker 2: significa cómo tener el ambiente protegido
+01:25:58 Speaker 1: a través de estas reglas.
+01:26:07 Speaker 2: Y acá también, por ejemplo, el
+01:26:10 Speaker 1: que
+01:26:11 Speaker 2: aprueba el pull request, ese también está probando
+01:26:13 Speaker 1: el pase de producción.
+01:26:18 Speaker 2: Es parte de las reglas que puedes configurar como parte de eso. Y lo muy importante, ¿se acuerdan que cuando creamos la imagen a desplegar todo el tema de variables de entorno, secretos, quedaban por fuera, no quedaban dentro?
+01:26:33 Speaker 1: Entonces acá también en la parte del despliegue.
+01:26:37 Speaker 2: Hay que ver esa estrategia de cómo se inyectan finalmente esas variables, dónde viven, cómo
+01:26:42 Speaker 1: van a implementarse.
+01:26:58 Speaker 2: Esa es otra que nuestro pipeline, nuestro laboratorio, no ayudó mucho con ese ejemplo, justo nos fuimos por la mala práctica. Porque es una limitación de la AWS Educate. Ustedes todos agarraron credenciales, las copiaron y las pegaron. Entonces, cualquier persona que tenga esas credenciales, en esos lapsos de cuatro horas, va a poder hacer lo que quiera en su cuenta.
+01:27:22 Speaker 1: Entonces,
+01:27:23 Speaker 2: eso no es lo ideal. ¿Qué es lo ideal? El ideal es que GitHub tenga asociado un rol dentro de AWS, que
+01:27:35 Speaker 1: se conoce como una identidad federal.
+01:27:40 Speaker 2: La primera vez creas ese link entre ambas, poniendo tu contraseña, pero tu contraseña no está acá en ningún lugar, estás simplemente autorizándolo. Entonces, tu cuenta de GitHub, con nombre y apellido, hasta incluso puedes poner qué repositorio, si quieres, puedes filtrar de solamente tales repositorios
+01:27:58 Speaker 1: pueden acceder a esa cuenta de AWS,
+01:28:01 Speaker 2: tiene permiso para generar un token de AWS asociado a ese rol, y ese rol tiene ciertos permisos limitados.
+01:28:08 Speaker 1: ¿Tú colocas qué permiso? Si le
+01:28:10 Speaker 2: pones admin, también puede ser admin. Pero esa es lo que es identidad federada. Limitar la cantidad de permisos que tiene para poder hacerlos. Y ya no hay ninguna credencial. Acá, yo tengo un conector de Github. Entonces, esto viene desde AWS. En AWS me he conectado y le he dicho, quiero crear una conexión con Github. Yo con esto lo que puedo hacer es correr
+01:28:58 Speaker 1: Terraforce desde mi máquina. Perdón, desde mi Github,
+01:29:03 Speaker 2: correr Terraforce hacia AWS directamente. Y eso, en realidad, está usando credenciales estáticos y está generando esos tokens dinámicos, como los UCs, pero que no están quedando fritos en ninguna parte del repo. Son exímenes. Entonces, esa forma es la que... Bueno, el tema no va a haber mucho
+01:29:27 Speaker 1: porque ya está implementado. Tendría que hacer por ese hombre. ¿En algún curso actualmente
+01:30:16 Speaker 2: hay algo de IA?
+01:30:29 Speaker 1: Sí, el clásico y un poquito de modelos de lenguaje, pero no llegan a HGPT, llegan a la década pasada.
+01:30:49 Speaker 2: ¿Cómo crearía?
+01:30:51 Speaker 1: ¿Eso es cómo crearía? un poquito esta
+01:31:05 Speaker 2: es mi cuenta de audio ls Por acá se pueden hacer esas configuraciones de enganchar tu cuenta de WS con GitHub, para que
+01:32:03 Speaker 1: de los dos lados tengan
+01:32:05 Speaker 2: esa autorización para que GitHub le mande cambios usando C425. Entonces esa es como la mejor
+01:32:23 Speaker 1: práctica, como lamentablemente en el doctor no lo podemos ver así. Y lo que vamos a ver acá es, ustedes
+01:32:33 Speaker 2: ahorita con las credenciales que están ejecutando, ustedes son administradores de su entorno. Pero lo ideal es que esa identidad que usa el pipeline tenga los permisos aportados para lo que va a ser el pipeline. Si el pipeline va a desplegar la aplicación
+01:32:48 Speaker 1: contra el lambda, solamente debería tener permisos para eso. No debería tener un ambiente todo. No, eso es como se ve un pipeline de este. Yo lo comienzo en el
+01:33:09 Speaker 2: red con el proyecto anterior.
+01:33:14 Speaker 1: No hay tanto tema.
+01:33:16 Speaker 2: Yo digo lo que se lo debería. Ya, en observabilidad tenemos tres
+01:33:22 Speaker 1: conceptos. Métricas, que
+01:33:27 Speaker 2: es cuánto soy de CPU, cuál es el porcentaje de consumo de CPU, cuánto es el porcentaje de consumo de RAM. Luego tengo las trazas. ¿Qué cosa es la traza? Tengo una aplicación que llama la base de datos, que llama una API de afuera, hace varias cosas. La traza, lo que te guarda es todo ese árbol, cómo se comporta y dónde puede estar el problema porque hay un problema.
+01:33:49 Speaker 1: Esas son las trazas. Y
+01:33:52 Speaker 2: los registros o locks son los locks clásicos como los que ustedes siempre han hecho para devaguear cuando su operación no
+01:33:56 Speaker 1: funciona y ven los locks a ver qué es lo que está pasando. Esos son los registros o locks.
+01:34:01 Speaker 2: Ahora, hay cosas interesantes que se pueden hacer que es construir métricas desde registros o locks.
+01:34:07 Speaker 1: Oye, yo quiero ver cada vez
+01:34:09 Speaker 2: que sale la palabra error en mi log, se ha activado una métrica. Se pueden combinar estas también. Normalmente se combinan más los logs con las métricas. Es lo más chévere que no se puede hacer. Pero esos tres conceptos son los cuales se construye
+01:34:28 Speaker 1: todo el esquema observabilidad. Y ahora la IA se conecta a estas tres frentes.
+01:34:37 Speaker 2: para poder también ayudarte con qué problemas hay. Justo
+01:34:40 Speaker 1: Edgar, uno de los JPs, que trabaja en la empresa
+01:34:43 Speaker 2: que estaba antes, junto con David, me contaba que el equipo de operaciones ha implementado un
+01:34:50 Speaker 1: chatbot
+01:34:50 Speaker 2: interno, que lo que hace es que se conecta todos los
+01:34:56 Speaker 1: puentes de información del monitoreo
+01:34:58 Speaker 2: de infraestructura, de aplicación. Y tú le puedes preguntar, oye, ¿la aplicación tiene tal problema? Y ella sabe que el servicio se usa, entonces
+01:35:09 Speaker 1: va realizando todas esas
+01:35:11 Speaker 2: métricas, trazas y logs de cada uno de los componentes y te dice, yo creo que el programa se va. Hasta incluso tiene el
+01:35:19 Speaker 1: registro de pases de producción.
+01:35:21 Speaker 2: Entonces te dice, oye, usa estos mensajes para allá después del pase, puede ser tal cosa. Entonces, eso es un poco la base para que luego encima
+01:35:29 Speaker 1: puedas construir otras cosas también.
+01:35:33 Speaker 2: ¿Cuáles son los retos en la observabilidad? Tener la correlación de lo que va pasando. Ahora que tenemos muchos componentes muy pequeños de la API, la API que crea la cuenta,
+01:35:47 Speaker 1: la API que crea el cliente, y
+01:35:51 Speaker 2: hay unas inversiones entre ellas. Y si yo no tengo esa ruta mapeada de lo que pasó, va a ser difícil poder tener esta información. Entonces, uno de los retos es la
+01:36:01 Speaker 1: programación. Y también, ¿qué
+01:36:06 Speaker 2: versión de mi aplicación es la que está generando esta
+01:36:08 Speaker 1: medida? Porque
+01:36:11 Speaker 2: no es la misma aplicación ahorita que ayer. Entonces, también se puede tenerlo como
+01:36:17 Speaker 1: dato en la observabilidad.
+01:36:26 Speaker 2: Entonces, ¿cómo entra la observabilidad en nuestro pipeline?
+01:36:30 Speaker 1: Justo después del despliegue.
+01:36:31 Speaker 2: Hasta incluso antes también. A veces, he visto que antes del despliegue, pregunto, oye, ¿está todo bien? Y después no se despliegue. Porque si mi servicio ya está caído antes del despliegue,
+01:36:43 Speaker 1: muy probablemente me encuentran un problema yo.
+01:36:48 Speaker 2: Pero normalmente está pensado sobre todo para el después, porque antes se debió identificar y hacer algo. Pero la observabilidad lo que nos permite en el despliegue es justo hacer esa validación técnica, no funcional, sino técnica, de que el despliegue está bien. Oye, ¿el servidor está arriba? Sí. ¿Las métricas de consumo, de memoria, RAM, etcétera están bien? Sí. ¿La API sigue respondiendo 200? Esas son un poco las validaciones técnicas que se hacen post despliegue y son parte de la observabilidad. Y la otra parte de la observabilidad tan importante es que nuestro pipeline alimenta la observabilidad. Justo les contaba ahorita, ¿no? Oye, ha habido un pase y después de ese pase ha empezado un problema en producción.
+01:37:57 Speaker 1: Entonces, ¿cómo
+01:37:58 Speaker 2: se entera de la observabilidad de que ha habido un pase? Porque el pipeline al final le dice, en el caso de un pase.
+01:38:04 Speaker 1: Ya las herramientas vienen así
+01:38:06 Speaker 2: como hay actions que ustedes están rehusando para hacer cosas
+01:38:09 Speaker 1: y hay herramientas que...
+01:38:11 Speaker 2: o invocas un API para registrar que fue el pase o te movieras con un action para que también tengas la salvabilidad Uno de los retos, ahora que voy a ver cómo solucionamos en el tema de observabilidad es que las herramientas de observabilidad las más conocidas
+01:38:27 Speaker 1: cuestan
+01:38:29 Speaker 2: Dynacrate por ejemplo es una de las más completas que hizo cuesta
+01:38:34 Speaker 1: como 10
+01:38:38 Speaker 2: mil dólares al año por
+01:38:43 Speaker 1: 4 GB de RAM. Así que tenías un servidor de 8 GB de RAM, tenías que pagar 20.000 dólares al año por ese servidor. Tienes que ser un monstruo de servidores. El creo que era 8 GB de RAM, por los 100 GB de RAM. 2 metros por 8000 por noche
+01:39:21 Speaker 2: Entonces, ¿cuál es la idea de incorporar la observabilidad al pipeline? Ya pasé la evaluación de calidad, ya pasé la evaluación de seguridad. Ya pasé el despliegue y le pregunto a la observabilidad, ¿está todo bien o no? Sí, está todo bien. Listo, terminó.
+01:39:35 Speaker 1: No, hay un problema.
+01:39:37 Speaker 2: Entonces el mismo pipeline ejecuta, podría ejecutar el rollback automático. Si lo configuramos así. Si no, es un oye. Déjamelo ahí como alerta para poder ejecutar el paso manualmente después, déjame corregirlo yo y después vemos si hacemos rol o no.
+01:39:52 Speaker 1: ¿Se puede comprar de esa manera? Es un poco la idea. Sí. Quiero preguntarle si es que esta plataforma de observabilidad se complementa con la plataforma de monitoreo totalmente independiente. Sí, sí, es toda parte de una suite. Es parte del ecosistema. Actualmente
+01:40:07 Speaker 2: el monitoreo es una parte de la observabilidad. La observabilidad se cobra en el monitoreo. Más grande. Entonces, lo que nos permite finalmente es validar el despliegue, ¿estuvo bien o no? Y en base a eso, ¿cómo seguimos? Por aquí nos revertimos.
+01:40:33 Speaker 1: ¿Les suenan estos conceptos? SLA. Acuerdo de nivel servicio, ¿no?
+01:40:45 Speaker 2: Acuerdo de nivel servicio, sí. Este es que normalmente vienen los contratos, vienen las cosas que nos damos al cliente, ¿no? Es el que, de la cara para afuera,
+01:40:54 Speaker 1: pone nuestra promesa con el cliente.
+01:40:56 Speaker 2: Pero internamente, como equipo, tenemos que tener un objetivo de cumplir ese SLA. Entonces, ese objetivo interno, si ustedes ponen el mismo objetivo que con el cliente, es muy probable que no lleguen y van a tener una penalización. Entonces tú internamente tienes un objetivo un poco más agresivo que el que tienes con el cliente para asegurar llegarte al cliente. No sé si lo explico. Imagínense que... Imagínense que...
+01:41:21 Speaker 1: En
+01:41:25 Speaker 2: su familia han dicho, de
+01:41:28 Speaker 1: 15 no va.
+01:41:29 Speaker 2: Vamos a sacar 15 y todo, no va. Si apuntas al 15, probablemente sea que el 14. Tienes que apuntar al 16, al 17, para poder llegar a ese SLA que había prometido de 15. Entonces, el SLO justo es eso. Es el SLO de objetivo. Y ese es interno. No es para los clientes, sino de manera interna con el equipo. cuál es el objetivo que se tiene. Entonces, por ejemplo, si acá mi promesa fue 99.5, yo
+01:42:06 Speaker 1: acá interno, mi objetivo fue
+01:42:08 Speaker 2: 99.9. Es más agresivo. Y el SLI es, ya,
+01:42:14 Speaker 1: ok,
+01:42:15 Speaker 2: chévere la promesa del cliente, chévere la promesa del equipo,
+01:42:18 Speaker 1: pero cuál es el dato real. Ese es el SLI. Es
+01:42:21 Speaker 2: el indicador real. Es el indicador. El dato real de lo que está pasando. Entonces, oye, no tuve el 99.9, ni el 99.5. El dato real ha sido el 99.7.
+01:42:32 Speaker 1: Y este viene de las herramientas de monitoreo, ¿no? Se viene de hecho el promitio, el ad hoc, etc.
+01:42:43 Speaker 2: ¿Alguna duda? Con los
+01:42:47 Speaker 1: desgracios del EOS S6. Si ustedes fueran a comprar un... o contratar un servidor en la nube,
+01:43:00 Speaker 2: ¿cuál es una que más importante? Pero imagina que ya pasa esta capa gratuita, que hay que comprar y tienes tres opciones y quieres asegurarte de que tengan el mejor performance posible. ¿Cuál de los tres indicadores te enfocaría a saber?
+01:43:46 Speaker 1: El SLI, ¿por qué? Es lo que realmente
+01:43:55 Speaker 2: está pasando. O sea, sí, igual es importante el SLA. ¿Por qué? Porque normalmente le vas a poner penalizaciones al proveedor si es que no te cumple. Y eso va con el SLA. Pero el SLI es lo que realmente está pasando. ¿Todos han sufrido alguna vez por alguna caída de alguna herramienta? ¿Qué hacen cuando se acabe su guía?
+01:44:25 Speaker 1: Espera.
+01:44:31 Speaker 2: Todas las herramientas serias tienen esta clásica página de
+01:44:36 Speaker 1: estatus. ¿La sabías visto antes? Miren. Miren el app también acá de todo. 99.4 en los últimos 90 días. Igual las herramientas mienten ahí, ¿no? O sea, nunca se meten a sus regalos. Sí, yo me he dado cuenta de eso porque yo para... donde estaba en Oracle... En los chats,
+01:45:04 Speaker 2: en las conversaciones era un... Ya, ¿avisamos a la gente que publica el status?
+01:45:10 Speaker 1: No, no, todavía no. No, no, todavía no. No, todavía no. Como que llevaba a un extremo, para
+01:45:15 Speaker 2: cuando ya no había otra,
+01:45:17 Speaker 1: ¡pua! Lo tenías ahí. ¿Por qué? Porque obviamente esto te...
+01:45:20 Speaker 2: No sé la política de cada empresa según la transparencia o no, pero sí es la imagen.
+01:45:28 Speaker 1: La imagen que genera esto.
+01:45:31 Speaker 2: Pero también es frustrante. Cuando uno prueba y dice, oye, no me impulsiona, y voy al estatus, y todo está verde, entonces tú piensas que eres tú.
+01:45:39 Speaker 1: Hay otras también que te avisan, llamas, realistas, y lo que es real.
+01:45:43 Speaker 2: Claro, pero esas no son las oficiales. No son las que tienen por ahí demonios preguntando. Hay un concepto que se llama... Hay unas que tienen esto libre. No sé si alguno de estos, o alguno de ustedes usó alguna de estas. Que tú acá, por ejemplo, le puedes poner la URL, no sé, de la página de Sonata. Pones tu correo, y él está acá de X tiempo,
+01:46:09 Speaker 1: preguntándole. ¿El Sonata está disponible o no te vas a decirle? ¿El Sonata está disponible o no te manda un correo? No, no, no.
+01:46:17 Speaker 2: Están bastante útiles, y para los temas de observabilidad que les decía, también se usó mucho.
+01:46:22 Speaker 1: A ver si tu opinión está funcionando. Gracias. Yo creo que
+01:46:48 Speaker 2: los de Club son tan buenos,
+01:46:50 Speaker 1: tanto necesitamos usarlo,
+01:46:54 Speaker 2: yo recuerdo que ellos no tienen SLA publicado ni
+01:46:57 Speaker 1: prometido. No tienen.
+01:47:03 Speaker 2: Club no tiene SLA prometido al cliente. O sea, es como, voy a hacerlo mejor que lo
+01:47:09 Speaker 1: pueda, pero no te prometo nada.
+01:47:13 Speaker 2: Porque puede, porque todavía les... O sea, cuando están los servidores más agresivos, por
+01:47:19 Speaker 1: alguna vez tendrán que comprometer una entrega.
+01:47:22 Speaker 2: Pero Amazon, por ejemplo, cada servicio de Amazon sí tiene una salida de clientes. Por ejemplo, el backend S3,
+01:47:35 Speaker 1: más esa la tiene, la que más nueve tiene.
+01:47:46 Speaker 2: ¿Qué nos permite?
+01:47:54 Speaker 1: Son básicamente indicadores de cómo
+01:47:58 Speaker 2: está comportándose.
+01:48:02 Speaker 1: Normalmente es el uptime,
+01:48:03 Speaker 2: pero pueden haber otros SLA. Por ejemplo, hay muchos de los SLA
+01:48:08 Speaker 1: de tiempo de atención, de tickets, de mesas de ayuda.
+01:48:15 Speaker 2: Dicen, oye, los tickets críticos me demoro máximo 15 minutos en la primera respuesta. La primera respuesta es, ok, lo estoy leyendo.
+01:48:27 Speaker 1: ¿Verdad? Y ok, y
+01:48:30 Speaker 2: lo otro se le da resoluciones. Una hora para los críticos, cuatro horas para los medios, tres días para los... Justo la idea de tener un SLO y un SLA es que la diferencia entre los dos, yo hablo como equipo interno,
+01:48:53 Speaker 1: yo como equipo interno ofrezco un servicio a mi
+01:48:55 Speaker 2: cliente y le prometo un SLA. Como equipo interno, que tengo que trabajar para volver a ese tema de SLO, que es más agresivo, la diferencia entre los dos es el que me da mi margen de error.
+01:49:20 Speaker 1: Y bueno, cuando cada vez que eso se vaya reduciendo,
+01:49:23 Speaker 2: mi equipo tendrá que trabajar
+01:49:25 Speaker 1: más
+01:49:26 Speaker 2: para poder evitar que eso pase algo bien.
+01:49:34 Speaker 1: Bueno, estamos ya al final de hoy, en la segunda vez corta, y quiero
+01:49:38 Speaker 2: levantar alguna información para ver a qué temas y qué exposiciones traigo
+01:49:44 Speaker 1: para
+01:49:47 Speaker 2: las partes. Antes de ir con eso,
+01:49:50 Speaker 1: vamos cerrando los puntos clave de hoy. Lo primero es la
+01:50:02 Speaker 2: parte del despliegue y la publicación hacia el cliente, hacia el usuario final. Por las diferentes estrategias que veíamos, puede diferir. Yo tengo el despliegue en un momento, pero como tengo un gana de release, al cliente le va a llegar después. Son dos momentos diferentes entre que yo despliegue
+01:50:18 Speaker 1: y publico finalmente a ese cliente.
+01:50:22 Speaker 2: Luego, en base a la estrategia que yo
+01:50:24 Speaker 1: voy a usar, si voy
+01:50:26 Speaker 2: a usar Canary, Blue Ring...
+01:50:29 Speaker 1: La otra va a depender de
+01:50:31 Speaker 2: si estoy preparado para, si el riesgo de negocio lo amerita y si tengo el presupuesto para. El tema de la problemática con la base de datos siempre es una restricción de poder hacer esas estrategias. La aprobación está de cara a la trazabilidad, no hay que detectar nuevas cosas porque la idea de la detección es
+01:50:53 Speaker 1: meterla en el pipeline.
+01:50:56 Speaker 2: Y el último punto es la desarrollabilidad. Tanto AWS como AWS tienen herramientas de usabilidad bien chéveres. En AWS toda la suite de
+01:51:33 Speaker 1: usabilidad se llama GroundWatch. Hay diferentes opciones. Y
+01:51:40 Speaker 2: acá ellos tienen estos dashboards.
+01:51:57 Speaker 1: Claro, lo que pasa es
+01:52:12 Speaker 2: que CloudWatch te cobra por
+01:52:14 Speaker 1: insumos. Ingesta.
+01:52:17 Speaker 2: Log de ingesta. Y el Kubernetes genera muchos logs
+01:52:20 Speaker 1: de diferentes postings. ¿Por qué el Kubernetes constantemente está monitoreando cómo está? Pues hay que tener cuidado
+01:52:27 Speaker 2: de que posen ingestas. Se le están siniestrando todo el tráfico, sin restringir que solamente vayan los
+01:52:32 Speaker 1: errors o los warnings. Hay todo.
+01:52:35 Speaker 2: Los info normalmente no tiene sentido que vayan. Esas cositas hay que ir viendo cómo le ponen reglas para que no hay dinero a suerte.
+01:52:43 Speaker 1: Eso va a ser. Bueno, justo las dos que tengo acá, que son las mismas.
+01:52:51 Speaker 2: El otro tema del bycoding de ahí, yo empiezo a jugar y pegar ahora eso, que lo suelen en mi casa. Pero, bueno, no tienen data ahorita. Así que no vamos a
+01:53:01 Speaker 1: poder ver los datos. Vamos con el de... Este es el de Ashu. El de Ashu se llama... Bueno, acá hay uno que viene de caja, por ejemplo, que esto de acá es un
+01:53:50 Speaker 2: esquema de monitoreo de una aplicación. Acá está monitoreando, por ejemplo, cuántas respuestas hay días tiene, cuál es el tiempo de respuesta de mi servidor, cuál es la cantidad de respuestas que le llegan a mi servidor. Con esto, voy a ir viendo, por ejemplo, esto.
+01:54:12 Speaker 1: hay una carga que tiene
+01:54:16 Speaker 2: un bajón y después vuelve otra vez
+01:54:40 Speaker 1: Yo soy muy fanático del tema del monitoreo
+01:54:42 Speaker 2: porque cuando hay un problema,
+01:54:43 Speaker 1: esto acá nos ayuda muy rápido a sacar las cosas
+01:54:46 Speaker 2: de ok, el problema está allí.
+01:54:52 Speaker 1: Esos son los mapas que tienen.
+01:54:55 Speaker 2: Dado que tiene las trazas, tiene la relación que tiene la aplicación con los diferentes componentes alrededores. Entonces, él internamente ya sabe que se conecta con esta traza. Oye, mira, en este lapso de tiempo, en
+01:55:09 Speaker 1: la última hora,
+01:55:11 Speaker 2: hemos tenido 24 invocaciones a este servicio, que en promedio se han demorado 171 milisegundos. Hemos tenido 5 primas ocasiones a la identificación. Se ha demorado un segundo. Y a la base de datos, acá abajito, hemos tenido 1.600 llamadas que el problema se ha demorado medio segundo. Entonces, la potencia que tiene esto... Ah, este Smart Detection es... Ahí usa algoritmos, no sé si diría,
+01:55:40 Speaker 1: estamos usando IAE también,
+01:55:42 Speaker 2: para en base al comportamiento, ya te dice, oye, creo estas cosas sospechosas. Hay métricas en vivo, pero no vamos a hacer mucho porque ahorita ya están por la oficina.
+01:55:55 Speaker 1: Va a estar todo muy seguro. ¿De qué herramientas? Esta se
+01:56:00 Speaker 2: llama Application Insights, de Dashwood.
+01:56:02 Speaker 1: No, sí, sí, sí, pero de qué... Este
+01:56:06 Speaker 2: de acá específicamente es el backend, no es el front, es el backend, o sea, APIs, para una empresa que
+01:56:15 Speaker 1: evalúa y otorga créditos. Es una empresa pequeña.
+01:56:22 Speaker 2: Ella no da directamente los créditos, los créditos
+01:56:23 Speaker 1: los da a través del campo, pero ella evalúa y
+01:56:27 Speaker 2: está orientado al sector DS. la tasa de fallos, qué APIs son las que están fallando, con qué tasa de error, qué código de error. Si vas entrando y te va diciendo, mira,
+01:56:44 Speaker 1: acá está la tasa.
+01:56:46 Speaker 2: Primero entra por acá, después se va a la base de datos y
+01:56:49 Speaker 1: acá ocurre el error. O sea, se mete a todo. Es muy, muy, muy chévere. pero no intentarlo más, como está el esquema de tiempo de respuesta. La otra que me gusta de acá es el dashboard que les he creado.
+01:57:17 Speaker 2: Por ejemplo, ellos hace poco
+01:57:19 Speaker 1: los... Yo
+01:57:24 Speaker 2: los migré a la nube hace como 6, 7 años. Y cuando ellos migran, fueron con su versión de NET en ese momento. Era un NET 6. Y recién acaban de migrar a un NET 10.
+01:57:37 Speaker 1: Entonces,
+01:57:38 Speaker 2: por esa migración, han tenido dos versiones del servidor en paralelo, en producción. Algunos todavía lo tenían como el NET 6 y otros ya están como el NET 10. Entonces necesitamos monitorear cómo se van comportando ambos servidores. Entonces hay un gráfico del porcentaje de consumo de RAM y CPU de
+01:57:58 Speaker 1: ambos.
+01:58:00 Speaker 2: Para ir viendo si por ahí uno tiene un pico. Ahora por ejemplo hay un pico. Este es el de nuevo salteador. El que ha pasado.
+01:58:10 Speaker 1: Ah, ya. Seguramente porque le bajé el artículo. Creo que lo vamos a ver acá.
+01:58:17 Speaker 2: Si creo que en el curso no lo vemos. El concepto de Phenops.
+01:58:20 Speaker 1: ¿Les suena lo que es Phenops? ¿Lo ven en algún curso? ¿Ustedes vengan sus problemas? ¿Estás ligado a finanzas? Sí, pero en TI, FinOps. ¿Costa de tu novena? Bueno,
+01:58:45 Speaker 2: para dar una idea, se da cuenta que esta empresa trabaja a la moral oficina, ¿no?
+01:58:51 Speaker 1: Entonces,
+01:58:51 Speaker 2: ¿de qué le sirve a esta empresa? Tener el
+01:58:53 Speaker 1: impuesto del servidor en la noche, con
+01:58:56 Speaker 2: las mismas capacidades. Entonces, hay un procesito que a las siete y media de la noche le disminuye a casi cero, no cero, porque tiene un proceso nocturno, casi cero la capacidad de cómputo. Y en la mañana, a las ocho, otra vez, le
+01:59:11 Speaker 1: vuelve a levantar las capacidades.
+01:59:15 Speaker 2: Con el soporte está el tipo ahí, con su movilidad de
+01:59:17 Speaker 1: noche, seguro algo han hecho.
+01:59:19 Speaker 2: Bueno, es un poco para que tengan, dicen un poco de
+01:59:22 Speaker 1: qué edad se puede ver.
+01:59:28 Speaker 2: Y el otro punto, pero
+01:59:30 Speaker 1: no me ha gustado cómo está mostrando la información.
+02:00:11 Speaker 2: Quiero construirlo con ustedes para que se saquen el mayor provecho posible. A ver, este es un poco lo que viene más adelante,
+02:00:17 Speaker 1: automatización de calidad.
+02:00:20 Speaker 2: La automatización de calidad tenemos dos, porque en uno viene todo lo que es pruebas unitarias, pruebas de integración, pruebas de performance y pruebas de UI. Entonces ahí le voy a meternos a ver qué herramientas hay, cómo se hace, ver unos ejemplos de automatización, cómo se ven. Y lo mismo con la seguridad. Por ejemplo, lo de meterle validación a la IAC de seguridad, lo hemos visto con encimitas.
+02:00:44 Speaker 1: Nos hemos metido muy en detalle. Y luego vamos a solucionarlo. Lo mismo con
+02:00:46 Speaker 2: librerías. Al docker también lo puedes evaluar. A ver si estaba rompiendo el tema de seguridad o no.
+02:00:52 Speaker 1: Entonces todo eso vamos a ver por acá.
+02:00:55 Speaker 2: Luego viene como la práctica de DevOps. Ok, ya es chévere ver todo esto en automatizaciones, pero ahora, ¿cómo llevo eso a la cancha en las conversaciones y cómo lo voy llevando de término más de negocio hacia término técnico? Si voy directo con,
+02:01:12 Speaker 1: ¿implementemos Blue Green? ¿Qué
+02:01:14 Speaker 2: es eso? ¿Y para qué? Entonces, vamos desde la práctica. ¿Qué problemas tenemos hoy? Y en base a eso, ¿qué prácticas podemos colocar? Y luego vamos a ver también cómo está Delsybox en las organizaciones. y al final el tema de IA en DevSecOps.
+02:01:31 Speaker 1: Y el futuro, o no futuro,
+02:01:33 Speaker 2: DevSecOps. Porque va más por no futuro,
+02:01:35 Speaker 1: va a supercer. O va a evolucionar en otra cosa más. Entonces,
+02:01:43 Speaker 2: yo tengo conocidos, he trabajado con ellos, he estudiado con ellos,
+02:01:48 Speaker 1: y
+02:01:50 Speaker 2: algunos ya me han comentado que estarían interesados en... Por ahí los conecto a un Zoom y hacemos una charla de unos 20, 30 minutos con un tema que ellos... que ellos tengan. Yo, los tres que tengo mapeados como
+02:02:02 Speaker 1: temas,
+02:02:06 Speaker 2: es una
+02:02:09 Speaker 1: chica que trabajó conmigo, que está
+02:02:16 Speaker 2: relacionada con un tema motivacional. Es como su historia de vida de no ser DTI y
+02:02:22 Speaker 1: obligar a ser DevOps. Luego,
+02:02:31 Speaker 2: bueno, ya reconocen a Edgar y David, cada uno también tiene bastante experiencia. David ve las contrataciones de los DevOps en las empresas de seguros,
+02:02:41 Speaker 1: o sea, él entrevista a los DevOps en Edgar. Yo antes lideraba el equipo donde están ellos,
+02:02:46 Speaker 2: hace años. Entonces, me parecería tan interesante que él les cuente un poco... cómo son entrevistas, qué es lo que buscan, etc. Tener una idea de qué es lo que se valida
+02:02:58 Speaker 1: en el mercado monetario.
+02:03:01 Speaker 2: Y con Edgar quería, al final, cuando llegamos a tema de guía, verme otra cosa que quería ver. Ah, bueno, voy a entender la cosa de no ser de guía. Les parecen bien esos tres temas, les gustaría ver algo más por ahí. Yo pensaba realmente, lo
+02:03:22 Speaker 1: que pasa es que igual tenemos que ver temas porque si no nos pasamos,
+02:03:24 Speaker 2: pero sí he visto que algunos temas los puedo acotar un poquito y que nos quede como una media hora,
+02:03:29 Speaker 1: y
+02:03:31 Speaker 2: en esa media hora la
+02:03:33 Speaker 1: persona pueda presentar.
+02:03:34 Speaker 2: Entonces, algunos vendrán y
+02:03:36 Speaker 1: otros será... ¿Quieren que sea la clase virtual? Tengo que checar, ¿no? No, presencial mejor, profe. Recuerden que sea nuevo acá, así que no
+02:03:46 Speaker 2: sé qué tan fácil es este tema de mover una clase virtual
+02:03:49 Speaker 1: a presencial. Presencial mejor, profe. Profe, presencial pero aquí no transmiten Zoom nada más para que se conecten. Dependiendo del expositor si quieren ir, ya quieren ir. Claro. Yo por ahora tendría la presencia de eso.
+02:04:09 Speaker 2: En las virtuales todos están mejor apagados entre juegos Sí,
+02:04:12 Speaker 1: es aburrido también Dale,
+02:04:16 Speaker 2: ¿Algún otro tema que les...? O sea, hasta ahora lo hemos visto bien por encimita, todo eso. Yo
+02:04:50 Speaker 1: creo que sería interesante ver
+02:04:53 Speaker 2: de traerles Kubernetes, porque tengo que no conocen todos Kubernetes, ¿cierto? O sea, no es que van a salir acá siendo administradores Kubernetes certificados, pero que tengan una noción de cómo funciona, qué es lo que existe. Levantar Warfare en
+02:05:08 Speaker 1: España.
+02:05:10 Speaker 2: O sea, tipo Warfare.
+02:05:12 Speaker 1: Acá hay algún simulado, o sea, que en memoria de este segundo siempre va a ver cómo va a ser calambiente. O sea,
+02:05:20 Speaker 2: a mí, yo sinceramente lo que más me... Lo que pasa es que los temas técnicos de cómo montar algo... Hay tantos videos en YouTube que ustedes mismos saben que el Wizard, siguiente, siguiente. Yo a mí lo que me interesa un poco de eso es... Sí, les traemos un poquito de eso, pero sobre todo, cómo eso... En la experiencia que tenemos, cuándo sí, cuándo no,
+02:05:38 Speaker 1: qué problemas hay,
+02:05:39 Speaker 2: qué tan fácil o no es. Por ejemplo, por redes.
+02:05:45 Speaker 1: Estoy pensando en eligiendo cuál puedo contar.
+02:05:49 Speaker 2: En el
+02:05:51 Speaker 1: estado,
+02:05:52 Speaker 2: hay muchas, aunque no lo creamos, hay muchas entidades que ya tienen un Kubernetes detrás, operando. Sin embargo...
+02:06:03 Speaker 1: no con las mejores
+02:06:06 Speaker 2: prácticas y las mejores posibilidades, pero a lo que quería llegar es como ir a Kubernetes, como una vez un consultor de Microsoft me dijo es, imagínate que tienes literalmente un trailer, gigante, no sé cuántos metros son de trailer. Eso es más o menos Kubernetes, ¿qué cosa vas a poner ahí encima para que valga la pena traer un trailer?
+02:06:29 Speaker 1: ¿Estás llevando una cajita? Están llevando un container donde
+02:06:33 Speaker 2: realmente ocupe todo ese espacio y se divide internamente en varias cajitas y esta situación.
+02:06:39 Speaker 1: Porque muchos van a Kubernetes por la moda,
+02:06:42 Speaker 2: cuando se chocan con toda la complejidad
+02:06:44 Speaker 1: de administrarlo y mantenerlo, es bueno.
+02:06:50 Speaker 2: Y tiene su próximo nombre, es
+02:06:51 Speaker 1: una chiquita. Yo con Edgar, los dos, que
+02:06:57 Speaker 2: era la vida y todavía no había llevado. montamos el primer Kubernetes en esta empresa
+02:07:02 Speaker 1: de seguros.
+02:07:05 Speaker 2: Y hay decisiones que tienen que tomar en el camino. ¿Cuántos clusters pones? Cada cluster era como 1.500 dólares mensuales, mínimo. Y inicialmente lo que teníamos que montar ahí eran tres cajitas.
+02:07:18 Speaker 1: Y era un, ok, ahorita son tres cajitas,
+02:07:19 Speaker 2: pero sabemos que en el futuro van a ser más. Entonces, ¿cuántos clusters ponemos?
+02:07:24 Speaker 1: Ahí te va más de arquitectura.
+02:07:26 Speaker 2: es cómo vas a separar tus componentes. Tienes componentes que son específicamente para un canal, una aplicación, y tienes componentes que son más transversales, más ligados al core de negocio. Normalmente ahí se separa por lo menos en dos. Pero vienen empresas como BSP, que tienen más billetera, y dicen, no, un clúster para eso, un clúster para el otro. No, un clúster por cada uno.
+02:07:55 Speaker 1: Entonces,
+02:07:56 Speaker 2: la aplicación tal es de Google Cluster, la aplicación tal es de Google Cluster, Google Cluster. Problemático y contra de eso, en el Pacífico hay Google Clusters, cada cluster como mil microservicios, y cada vez que tienen que hacer un upgrade de Kubernetes, tomará buen tiempo porque pueden crear todo para esto. Tiene sus procesos contra ahí. ¿Les ha sonado complejo lo que les he costado?
+02:08:22 Speaker 1: Más o menos. Lo
+02:08:26 Speaker 2: que quiero llegar es que es complejo levantar un Kubernetes, entonces no hay que hacerlo para algo chiquito. Yo, sinceramente ahorita, todas
+02:08:34 Speaker 1: las cosas que hago son un lambda. Me meto muy
+02:08:37 Speaker 2: poco con Kubernetes realmente cuando ya un cliente quiere. Pero yo trato de no meterlo ahí si es que no es necesario. Sí, sí. Hay un concepto, lo vamos a ver más adelante, que se llama los Golden Packs. Que es
+02:09:22 Speaker 1: como del
+02:09:25 Speaker 2: camino ideal. Y tú en tu empresa dices, ok, ahora en adelante todos los servicios van a tener esta receta, esta estructura, esta tecnología.
+02:09:35 Speaker 1: Oiga, ok, dos, tres tecnologías, pero es
+02:09:36 Speaker 2: dos de esta manera. Entonces, ¿qué hace? Que tu pipeline es exactamente el mismo para todos ellos.
+02:09:43 Speaker 1: Entonces, ya todo nace estandarizado y ahí
+02:09:46 Speaker 2: en adelante todo nace de esa manera. Entonces, si tú llegas a ese punto de coberrarlo así, esos mil servicios que les decía que salían de esta empresa de seguros, si cada uno venía a buscar su página y cada uno tiene un sabor diferente, imagínense la cantidad de horas y cantidad de tiempo que van a tener que invertir. Todos ellos tienen la misma receta base. Entonces, todos ellos ya tienen la misma cantidad de Python. cambien los nombrecitos y
+02:10:10 Speaker 1: listo, ya está.
+02:10:11 Speaker 2: Entonces viene por ahí. Definitivamente la arquitectura limita o habilita mejor y
+02:10:19 Speaker 1: explota mejor todo el tema de DevOps y de los partners. Si hay un
+02:10:25 Speaker 2: tema importante. ¿Han escuchado algo de Platform Engineering?
+02:10:32 Speaker 1: ¿Qué han escuchado de Platform Engineering? Voy a compartir
+02:11:05 Speaker 2: un paper que me han compartido de mí,
+02:11:07 Speaker 1: de Credicor.
+02:11:11 Speaker 2: O sea, nosotros estamos viendo las piecitas de DevOps que están abajo para poder utilizar nuestras aplicaciones como
+02:11:17 Speaker 1: medio puntuales. Ahora viene la IA,
+02:11:20 Speaker 2: desarrolla con Valcoding y quiere desplegar, en teoría las cosas ya están listas, o sea, porque hago una aplicación, funciona genial y ya la quiero desplegar, ¿no? Pero esa aplicación tiene que pasar por los controles que hemos visto. Hay que validar que no tenga librerías vulnerables, porque la IA puede elegir una versión antigua. Entonces, tiene que pasar por ese proceso. Entonces, el platform engineer lo que trae es la evolución de DevOps como el siguiente nivel, que es, ok, ya tengo todo automatizado a nivel de las páginas, ya eso ya está, no hay problema. Viene la guía, construye algo, le doy las reglas para que no falle siempre, que nazca lo más limpio posible, pero eso pasa por todo mi flujo de aprobación
+02:12:00 Speaker 1: y de ahí se ve automáticamente.
+02:12:03 Speaker 2: Pero eso, esa es la guía de la suma, también con IA. AWS, ahorita,
+02:12:11 Speaker 1: crea tu pipeline con IA.
+02:12:15 Speaker 2: Y no es, oye, dame
+02:12:17 Speaker 1: esto y llame. No, no, no.
+02:12:18 Speaker 2: Tú le dices en AWS, oye, mi aplicación es un Node
+02:12:23 Speaker 1: .js. Listo.
+02:12:26 Speaker 2: Llame tu aplicación y ya te ve el pipeline. Ya está. Déjame tu correo de GitHub y ya está. Y él, internamente, ya clara todos los componentes del file para que se funcione.
+02:12:37 Speaker 1: Entonces, esto de Platform
+02:12:38 Speaker 2: Ingenital, lo que da es, está así como abstracto, ¿verdad? Yo, como desarrollador, entro a un entorno, una herramienta, y digo, y está conectado con el usuario de Jira, o la herramienta que sea, de
+02:12:53 Speaker 1: lo que tengo que hacer funcionalmente,
+02:12:55 Speaker 2: lo declaro, y al acerderir lo que quiero hacer, y ahí la IA se dispara, y me hace todo el desarrollo, levanta los ambientes de infraestructura de Terraform, despliega la aplicación,
+02:13:09 Speaker 1: no hay nada de eso, solamente lo de las reglas generales,
+02:13:13 Speaker 2: y ya te la habilita para que hagas la validación. Pero todo esto lo ha seguido a través de esta plataforma que ya tiene todo montado, automatizado, conectado. Y hay un reto más importante que es dependiendo,
+02:13:25 Speaker 1: que sobre todo está orientado a empresas juntadas con una bienvenida grande.
+02:13:33 Speaker 2: El gran reto que tienen esas empresas es, oye, quiero usar la IA para acelerarlo, pero no le puedo dar tanta libertad porque si no van a meter la pata feo o la información se va a escapar.
+02:13:46 Speaker 1: Entonces...
+02:13:46 Speaker 2: Lo están limitando,
+02:13:49 Speaker 1: o la idea es que el
+02:13:52 Speaker 2: desarrollador esté desarrollando en una máquina
+02:13:56 Speaker 1: virtual aislada de todo, con la IAI metido,
+02:14:00 Speaker 2: y que haga todo ese espíritu, y monitoreado encima por la plataforma del Plasma Engineering, que gobierna todo lo que hace. ¿Desea esa comunidad?
+02:14:11 Speaker 1: ¿Desea esa comunidad? Mira, todo el proceso en general.
+02:14:27 Speaker 2: Esa es una de las otras cosas que... Bueno, le voy a mandar por el paper y te voy a ver si consigo alguien que también quiera presentar algo del platformer y en él.
+02:14:36 Speaker 1: ¿Tengo el paper de Credicor?
+02:14:38 Speaker 2: No, no es de Credicor. Me lo compartió un amigo mío de Credicor,
+02:14:40 Speaker 1: pero es de un vendor de TubeWorks. Es una empresa que ofrece soluciones de ese tipo.
+02:14:49 Speaker 2: El mío me dijo, no quiere ser eso. Él es el
+02:14:57 Speaker 1: gerente a nivel creador de
+02:15:01 Speaker 2: DevOps y desarrollo.
+02:15:11 Speaker 1: Bueno, entonces
+02:15:12 Speaker 2: me llevo las ideas un poco de ver cómo levanto los jubarejos y ver más algo de cómo afecta a las arquitecturas en DevOps para
+02:15:22 Speaker 1: verlo de ir metiendo algunos temitas durante, ¿ya? Listo. Bueno, entonces ya va a denominar
+02:15:28 Speaker 2: la siguiente semana del laboratorio porque es feriado y después es parciales, así
+02:15:34 Speaker 1: que hay un rato largo de 10 laboratorios. y vamos a cambiar la banda por
+02:15:47 Speaker 2: internet y va a hacer una nueva. Y con eso se iba a nuestra base de datos de usuarios. Entonces, ¿cómo hacías para que el cliente
+02:15:56 Speaker 1: la primera vez autenticara? Entonces,
+02:15:58 Speaker 2: hicimos un esquema de, ok, la primera vez se lo voy a crear el antiguo y te pide cambiar una reseña. Y en
+02:16:05 Speaker 1: esa vez ya está autenticada en la nueva. Y
+02:16:08 Speaker 2: ya se graba en la nueva. Entonces, cada vez que se vuelve a loguear, preguntamos, ¿es el usuario ya está en la nueva? Listo, mande el login de la antigua. No, está en la antigua. Manda el login de la antigua y que otra
+02:16:17 Speaker 1: vez haga su enrolamiento en la nueva.
+02:16:19 Speaker 2: Ese, por ejemplo, era una especie de implementación. Y luego era, ok, ¿ahora cómo se va a hacer producción de eso? Y lo que yo decía antes, ¿no? Las cosas que quieras desplegar, déjate desplegar, pero que
+02:16:37 Speaker 1: no... dependen del momento
+02:16:41 Speaker 2: más frágil o más crítico del despliegue.
+02:16:52 Speaker 1: Gracias.
+  

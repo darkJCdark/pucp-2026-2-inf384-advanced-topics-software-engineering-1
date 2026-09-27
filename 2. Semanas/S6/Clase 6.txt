@@ -1,11 +1,6 @@
-. {
-	. {
-		. 
-	}
-}
-
-. {
-	. {
-		. 
+. ¿reversar o corregir?{
+	. ¿go o no go?{
+		. esto se planifica antes
+		. si algo no funciona, rollback
 	}
 }
