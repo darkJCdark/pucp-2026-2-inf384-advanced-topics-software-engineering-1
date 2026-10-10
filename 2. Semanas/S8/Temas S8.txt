@@ -1,0 +1,1131 @@
+# GMT20261010-000230_Recording_1920x1108
+
+  Meeting started: 10/10/2026, 4:43:41 p. m.
+  Duration: 174 minutes
+  Participants: Speaker, Speaker 1, Speaker 2
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/ILT4iXhzA7mB9iQa65bk?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: Hola, hola, cómo están todos?
+00:49 Speaker: Gracias por ver el video. Gracias por ver el video.
+01:47 Speaker 2: Gracias por ver el video. esperamos un par de minutos más que
+02:05 Speaker 1: se conecten arrancamos 7 y 10
+02:26 Speaker 2: Set your intentions, dream with care y y y y y Gracias por ver el video Chau. ¡Gracias!
+05:03 Speaker: Gracias por ver el video ah ah Gracias por ver el video.
+07:15 Speaker: Gracias por ver el video. Gracias por ver el video.
+07:56 Speaker 2: A ver, ¿cómo vamos? Uy, estamos 16 nada más. ¿Cómo están? Estamos en la mitad. Bueno, esperamos que se vayan sumando.
+08:14 Speaker 1: Como les comentaba por correo, hoy vamos a ver un casito similar a lo que van a ver en el examen parcial, así que creo que les va a ser bastante recalcente. Bueno, vamos arrancando porque si no nos vamos a gastar el tiempo tampoco. Ahí me confirman si se ve mi pantalla.
+10:07 Speaker 2: Sí, chévere. Listo. Bueno.
+10:14 Speaker 1: El día de hoy vamos a continuar con lo que es automatización de calidad y terminamos con ese capítulo que viene a ser la sesión 8. Ubicarnos en el mapa.
+10:29 Speaker 2: Estamos aquí. El parcial va
+10:34 Speaker 1: a dar algunas cositas de hoy, pero más que nada está.
+10:38 Speaker 2: hasta el capítulo anterior pero
+10:39 Speaker 1: algunas cositas tendrá calidad también entonces con hoy cerramos la info para el
+10:45 Speaker 2: parcial entonces
+10:50 Speaker 1: hoy día vamos a ver lo que son pruebas end-to-end ahí vemos una mini demo con Playwright
+10:55 Speaker 2: luego haremos pruebas para entender un poco cuáles son las pruebas de humo de
+11:02 Speaker 1: rendimiento cuál es la diferencia entre
+11:04 Speaker 2: estrés performance
+11:07 Speaker 1: un poquito de entender eso qué herramientas por ahí se utilizan para ello y cómo finalmente esto todo se orquesta en un pipeline hemos visto un montón de cosas pero es un ok ahora cómo hacemos para orquestar todo
+11:19 Speaker 2: eso en el pipeline y al final la preparación del examen
+11:22 Speaker 1: entonces nuevamente para ubicarnos donde estamos en
+11:27 Speaker 2: el recorrido que hemos ido haciendo de todo el proceso estamos
+11:32 Speaker 1: en las pruebas de calidad y estas pruebas de calidad en lo que vamos a ver hoy, se desdobla en dos partes. Una parte que es acá, cuando estás en tu clásica fase de pruebas de certificar, por ejemplo, que tu funcionalidad está operando bien. Pero también vamos a algunas herramientas de validación de pruebas que se hacen post-despliegue o justo previo al despliegue,
+11:55 Speaker 2: como
+11:57 Speaker 1: pueden ser los smooth tests. Entonces, un poco para que me lo tengan en cuenta de que no solamente las pruebas se pueden... correr acá sino que también algunas sirven para probarse en el despliegue e incluso en la observabilidad hay algunas pruebas que se pueden ir
+12:11 Speaker 2: seguir
+12:13 Speaker 1: enviando cada cierto tiempo para confirmar de que el servicio está operativo entonces ya hemos visto un poco cuando cuando conviene automatizar que si automatizo primero pruebas sanitarias automatizo pruebas de end
+12:32 Speaker 2: to end
+12:34 Speaker 1: Cuando haga preguntas de esto, abran su micrófono. Me complica darle el chat. Así que si alguien tiene alguna pregunta o algo, hable el micrófono nomás y lanzar la pregunta. Y cuando
+12:47 Speaker 2: les pregunte algo, también igual. Abre el micrófono e intervengan nomás. Sí,
+13:01 Speaker 1: aprovechando eso. Como vimos en la sesión anterior, ¿qué es lo primero que automatizarían en pruebas?
+13:13 Speaker 2: End-to-end,
+13:14 Speaker 1: integración, unitarias.
+13:26 Speaker 2: Unitarias. Unitarias. ¿Por qué? Porque unitarías.
+13:49 Speaker 1: Las pruebas
+13:50 Speaker 2: interesan, creo que hasta segundos. Y si son varias, todo va a ser más rápido. Vale.
+13:59 Speaker 1: ¿Alguna otra cosa? No necesitas que la aplicación esté levantada. Puedes correr
+14:02 Speaker 2: en tu máquina, puedes correr en el pipeline, ¿no? Pero también son bastantes también directas de ejecutar.
+14:14 Speaker 1: Entonces, ¿qué es lo que viene? Lo que vamos a ver ahora es, ok, ya, chévere, pero eso
+14:18 Speaker 2: no me valida de que una funcionalidad
+14:20 Speaker 1: haya sido afectada o no por el cambio que he hecho, ¿no?
+14:24 Speaker 2: Entonces, eso es
+14:25 Speaker 1: parte de las pruebas en tu vento, cuando ya hablamos de la parte funcional. Y lo otro... ok
+14:32 Speaker 2: pero esa prueba unitaria no me valía que la base de datos está funcionando bien entonces ahí también
+14:36 Speaker 1: o que conecta contra la base de datos
+14:38 Speaker 2: ya
+14:39 Speaker 1: ahí vienen también pruebas de integración completa su base en tu venta
+14:43 Speaker 2: ok entonces
+14:50 Speaker 1: vamos a ir de frente con las pruebas en
+14:53 Speaker 2: tu venta
+14:54 Speaker 1: había preguntado un par de veces por ahí recuerdo algunas manos levantadas pero eran pocas de los que han alguna vez hecho
+15:00 Speaker 2: algunas pruebas con Playwright.
+15:03 Speaker 1: Bueno, no sé si alguno que también conoce Selenium. Los que no han hecho con Playwright, Selenium es como
+15:08 Speaker 2: un poquito más antiguo. Y antes de Selenium
+15:11 Speaker 1: seguramente había otros que ahorita no me acuerdo sus nombres. Pero si alguno ha escuchado de Selenium, también es una herramienta clásica de pruebas end to end. ¿Y qué es lo que hacen esto? Básicamente prueban el flujo, el recorrido de todo el proceso. Desde que te logea, que das clic en el botón tal entras al menú tal ingresas tal dato y eso va siguiendo el proceso uno a uno
+15:37 Speaker 2: entonces te
+15:39 Speaker 1: permite probar ese proceso de punta a punta
+15:42 Speaker 2: y
+15:45 Speaker 1: hasta yo te diría te permite probarlo hasta donde tú quieras porque incluso para ciertos casos podrías sentar ciertas estrategias de hoy sabes que esta prueba quiero hacerla cotada solamente a que haga login nada
+15:55 Speaker 2: más y
+15:58 Speaker 1: así no diferentes casos de prueba y cada uno puede abarcar más o menos. Y luego vamos a ver cómo puedes
+16:03 Speaker 2: configurar para que a
+16:05 Speaker 1: veces quiero correr todo, a veces quiero correr solamente algunos.
+16:08 Speaker 2: Eso también se puede hacer.
+16:12 Speaker 1: Y entonces en estos recorridos de pruebas no solo invocas un servicio, estás invocando varios. El de login, el de consultar usuario, el de consultar cliente, registrar cliente, etc. Entonces eso también te permite de una sola hacer
+16:25 Speaker 2: varias pruebas a la vez.
+16:29 Speaker 1: y otra cosa también interesante acá es oye ya sabemos que hay
+16:34 Speaker 2: un en hace
+16:37 Speaker 1: un par de semanas tuvimos un error de producción
+16:38 Speaker 2: donde
+16:41 Speaker 1: fallaba justo hoy un cliente tenía esa problemática es un cliente que tiene una plataforma donde con un botoncito en su aplicación puede llamar al cliente y esto acá se integra con Twilio y de acá ya se va al carrier de la
+16:56 Speaker 2: telco que
+16:58 Speaker 1: engancha la llamada.
+17:03 Speaker 2: Entonces se
+17:07 Speaker 1: dio que algunas veces falla esa comunicación con el carrer. Es raro, no siempre, pero empezó a fallar. Entonces ya sabemos que eso falla ocasionalmente. Montémoslo como un
+17:17 Speaker 2: caso de prueba aislado del
+17:19 Speaker 1: procesito solamente de levantar
+17:21 Speaker 2: un cliente y tratar de llamarlo. A ver qué es lo que pasa. Entonces...
+17:28 Speaker 1: esa bitácora de incidentes y procesos que antes han fallado nos sirve también para alimentar con casos de prueba específicos
+17:34 Speaker 2: y el último punto que es como un conjunto cotado revisado periódicamente
+17:41 Speaker 1: justo es como un
+17:43 Speaker 2: ok
+17:44 Speaker 1: esos son los flujos que no se pueden caer para nada en este caso es una empresa que otorga créditos creo que ahora lo vamos a usar la web porque justo esa es la que tiene una web bien compleja para poder implementar pruebas unitarias, entonces es el caso que recontar otro día, o unitarias no, perdón, en tu end, de que he intentado ayudarlos a implementarlas, pero
+18:03 Speaker 2: está
+18:05 Speaker 1: siendo más complejo lo que pensábamos por las modificaciones que hay que hacer. Ah, ¿qué hora que han modificado? Me quedo pensando
+18:10 Speaker 2: que justo han actualizado el frontend, por ahí que ahora va a ser más fácil. Bueno, veremos.
+18:17 Speaker 1: Pero el último punto que quiero que les quede también es que tú también puedes programar para que estas pruebas en tu end corran una vez. al día, una vez a la semana, para que vayas viendo cómo se va comportando con los cambios que se van haciendo, ¿no? Entonces, normalmente estas pruebas en to end
+18:34 Speaker 2: no
+18:37 Speaker 1: es como hemos visto en las pruebas unitarias que siempre corre el pipeline después de crear la aplicación.
+18:41 Speaker 2: ¿Por qué? Porque estas pruebas en to end
+18:44 Speaker 1: cruzan varios componentes,
+18:46 Speaker 2: ¿cierto?
+18:47 Speaker 1: Y como hemos visto en los pipelines, tus pipelines son por componente. Entonces, ¿cuándo gatillerías estas pruebas en to end? y vas a desplegar cada componente, pues no la vas a correr todas las veces por todos los cambios de todos los componentes. Sería muy ineficiente. Entonces ahí se plantean estrategias de, normalmente, este tiene un pipeline aparte,
+19:08 Speaker 2: que se
+19:10 Speaker 1: le montan ciertas reglas en base a lo que queramos.
+19:12 Speaker 2: Una es, corre una vez al día.
+19:15 Speaker 1: Solamente para valiar que no se ha roto nada en ese ambiente, por ejemplo. Otra, de todas maneras, corre a demanda.
+19:23 Speaker 2: el CUA,
+19:24 Speaker 1: que es el responsable de ejecutar las pruebas, es el que va orquestando y viendo eso, ¿no? Ok, hoy día han hecho tales cambios, entonces quiero correr tales set de pruebas. Entonces corro pylon y le configuro esas set de pruebas. Oye, ya toca pasar a producción, tenemos que hacer regresión de todo. Le pongo all y corre todas las pruebas. Entonces eso es un poco las diferentes formas, reglas y
+19:48 Speaker 2: versatilidad que te da eso. Ahora,
+19:51 Speaker 1: un reto. ¿Qué pasaba con los cubas cuando ejecutaban manualmente las pruebas en su máquina?
+19:57 Speaker 2: ¿Cuántas horas hombre tenían esa persona tomando
+20:03 Speaker 1: su máquina?
+20:05 Speaker 2: Bueno, él ejecutando manualmente.
+20:07 Speaker 1: Después esto evolucionó a chévere, lo automatizo, pero lo corro mi máquina. Que eso es ahorita, yo diría, el 80% de los que ya automatizan. O sea, ahorita
+20:16 Speaker 2: todavía muy pocos automatizan.
+20:18 Speaker 1: Yo diría menos del...
+20:21 Speaker 2: menos el 60 estamos
+20:23 Speaker 1: hablando de un 40% más o menos que automatizan de ese 40% que automatiza yo diría un 80% a 90% esa automatización la corren en su máquina o sea no hay un pipeline que la corra por ellos ellos levantan la automatización corren
+20:38 Speaker 2: la prueba ¿qué
+20:39 Speaker 1: pasa con eso? que ese proceso toma su máquina normalmente
+20:44 Speaker 2: esos procesos como
+20:45 Speaker 1: prueban muchas cosas carga
+20:47 Speaker 2: su máquina y él no puede hacer nada la deja un costado que termine la prueba. Sí.
+20:52 Speaker 1: Entonces, el pipeline lo que le permite es, oye, esto lo corro de forma remota y tú sigues chambeando, automatizando nuevas pruebas, viendo qué es lo que va a venir, planificando, lo que fuera. Pero no dejas de trabajar mientras que esas
+21:05 Speaker 2: pruebas se van ejecutando, ¿no? Y
+21:08 Speaker 1: otra cosa que también te suma a tener el pipeline es que toda la configuración que se tiene alrededor de esa prueba ya se tiene estandarizada, ¿no? O sea, no es como que, oye, hay buenos nombres para cada divano. configuró su máquina de una manera y sus pruebas se ejecutaron de una manera. Y Piero lo hizo de otra y se creó de otra. Y al Pyline lo hace todo
+21:28 Speaker 2: igual. Y una
+21:30 Speaker 1: ventaja adicional, que hoy no la vamos a ver, pero bueno, eso sí depende mucho de las herramientas que tengas conectadas, es este historial de la prueba no queda en tu máquina como un HTML sueldo, sino esto se registra en una herramienta y ya tienes todo el historial de quién, cuándo se ejecutó qué, qué falló, qué no. Hasta incluso a veces las herramientas te toman pantallas. y te los adjunta ahí mismo. Entonces,
+21:52 Speaker 2: ya es
+21:52 Speaker 1: otro nivel de automatización y gestión de los casos de prueba y el resultado que te da. Entonces, son todos los beneficios que te da subir unas pruebas en
+22:04 Speaker 2: tu end a un pipeline y no simplemente correrlas en tu máquina. Entonces,
+22:15 Speaker 1: ¿cómo funcionan un poco esas pruebas en tu end?
+22:19 Speaker 2: Estas
+22:20 Speaker 1: pruebas en tu end sobre todo están pensadas y diseñadas sobre todo últimamente para full HTML. Todos acá conocen más o menos HTML, son tags.
+22:27 Speaker 2: Básicamente es un XML con tags.
+22:31 Speaker 1: Entonces
+22:31 Speaker 2: la
+22:35 Speaker 1: idea es que la herramienta puede identificar
+22:38 Speaker 2: cuál es el tag que quieres validar y eso
+22:45 Speaker 1: lo puedes hacer por ID, por class,
+22:47 Speaker 2: etc. por nombre.
+22:50 Speaker 1: Uno de los principales retos es que sea único. ¿Qué pasa si es que tú lo automatices y dices, oye, nombre cliente que le ponga tal dato. Y cuando veo la herramienta de inspección en el HTML, encuentra tres. Todo se llama nombre cliente.
+23:04 Speaker 2: La pantalla extrañamente tiene tres
+23:06 Speaker 1: inputs con eso. Entonces,
+23:08 Speaker 2: ahí es uno de los retos. Ahora,
+23:10 Speaker 1: la buena noticia, a ver si ahora la puedo ejecutar. Ojo que tengo el plugin todavía en mi máquina. Playwright viene con un plugin que tú agarras, lo levantas y tú como usuario la primera vez simulas toda la navegación del usuario. Le dice como un grabar
+23:28 Speaker 2: la sesión,
+23:30 Speaker 1: simula todo, él va identificando en qué atributo, en qué componentes HTML vas haciendo clics y él todo eso lo graba y lo
+23:38 Speaker 2: traduce al
+23:40 Speaker 1: lenguaje que Playwright va a necesitar codificar. Entonces se ahorra mucho tiempo. y exactitud para poder hacer estas
+23:50 Speaker 2: pruebas.
+23:52 Speaker 1: Automatizar estas pruebas. Es como un RPA. Sí, más o menos es como un RPA. Solo que es como bien ad hoc. Es bien ad hoc.
+24:13 Speaker 2: Es igual que el RPA.
+24:15 Speaker 1: tú le vas declarando las tareas específicas, ¿no? ¿Qué va haciendo? Acá también es lo mismo. Tú declaras qué tareas específicas va a hacer. O sea, incluso muchas veces se usa el Playwright no solo para automatizar pruebas, sino para automatizar registro de información en ciertos lugares. No sé si yo les conté esa historia. No fue con Playwright, fue con Selenium. En ese momento tenía que ser Playwright. Pero justo el equipo de seguridad nos obligó a que...
+24:40 Speaker 2: Web Scrapping también.
+24:42 Speaker 1: Nos obligó a que... el equipo de DevOps
+24:46 Speaker 2: que
+24:47 Speaker 1: tenía cargo cada vez que ellos querían hacer un cambio del pylon de la infraestructura tenían que habilitar un permiso especial de su usuario que se llama Just-In-Time
+24:56 Speaker 2: Access o Permission el Git entonces como
+25:04 Speaker 1: eran varios clics adicionales que tenías que hacer normalmente al inicio de la mañana porque te permitían creo que el token dure creo que cuatro horas el token podía durar cuatro horas mi equipo hizo un Selenium que en vez de que ellos
+25:16 Speaker 2: entraran, agarraban, le daban play en la mañana y esto prácticamente
+25:19 Speaker 1: se metía a su sesión, logeaba, le daba clic a clic acá, le daba el permiso. Y después en cuatro horas que se vencía,
+25:26 Speaker 2: le daban otra vez play a eso y ya está.
+25:28 Speaker 1: Era una sacada de vuelta lo que seguramente quería, pero es una manera bien ejemplificada de es lo mismo que se puede hacer y no es una prueba lo que se está haciendo,
+25:37 Speaker 2: pero
+25:37 Speaker 1: el fin es lo mismo. algunos retos que se tienen acá es el tema de oye a veces en el HTML como ustedes han visto la
+25:50 Speaker 2: clásica es oye cargo por ejemplo ciudad
+25:55 Speaker 1: o país ciudad provincia distrito y vas poniendo uno después carga el otro después carga el otro y a veces hay un tiempo en cual demora en cargar el segundo
+26:06 Speaker 2: entonces esta
+26:09 Speaker 1: automatización normalmente trata de hacerlo inmediato Va a salir un error porque, oye, no encuentro Samuel en
+26:16 Speaker 2: el distrito.
+26:17 Speaker 1: Entonces, ahí se le colocan condicionales para que espere ciertas cosas o que el elemento sea visible o que tal respuesta de 200, lo que fuera, para ir al siguiente paso.
+26:30 Speaker 2: Lo peor es hacer slips.
+26:32 Speaker 1: Se puede hacer slips,
+26:34 Speaker 2: pero ahí juegas con el
+26:35 Speaker 1: destino de demore más o menos. También el tema de los datos, de dónde saca eso. datos. Muchas veces se configura un archivo que lo va leyendo,
+26:46 Speaker 2: otras a través de,
+26:48 Speaker 1: por ahí, integrarte con APIs en línea, que es más complejo, normalmente son archivos,
+26:52 Speaker 2: y
+26:54 Speaker 1: lo ideal es que este mismo proceso genere y elimina la data que pruebas. Por eso es otra de las cosas muy comunes, ese 80% que les contaba de personas que automatican las pruebas, o perdón, menos, 60-40, la gran mayoría no borra las pruebas que usó para
+27:13 Speaker 2: su prueba.
+27:14 Speaker 1: Y su ambiente de pruebas termina sobrecargado de mil cosas y muchas veces data basura que te entorpeza otras pruebas.
+27:25 Speaker 2: Luego el tema de independencia, que es que cada prueba prepare
+27:28 Speaker 1: su data, inserta su data, entonces lo ideal es que no dependa una de otra. Eso es lo ideal.
+27:37 Speaker 2: Y
+27:37 Speaker 1: así como los unit tests tenían un... acerta al final,
+27:41 Speaker 2: esas también.
+27:42 Speaker 1: Se espera que tengan un success al final de tal paso.
+27:47 Speaker 2: O una
+27:48 Speaker 1: validación de que incluso puede ser ya no solamente un 200 del último servicio que invocas, sino por ejemplo
+27:57 Speaker 2: se
+28:00 Speaker 1: hace una venta de un artículo, después se haga la verificación de que el stock se disminuyó,
+28:06 Speaker 2: de que los
+28:08 Speaker 1: números cuadren. eso también se puede hacer como parte de la automatización va
+28:13 Speaker 2: a depender un poco de lo que se quiera colocar si tiene alguna duda o pregunta me levanta la mano por favor ya
+28:21 Speaker 1: hay un ejemplo que yo les quiero mostrar el ejemplo en vivo
+28:25 Speaker 2: así
+28:27 Speaker 1: que antes este caso lo dejo para que lo puedan ver después pero ahora vamos a abrir el archivo nosotros mismos y verlo
+28:32 Speaker 2: y
+28:34 Speaker 1: es un poco el contexto antes de ir a cómo funciona en vivo
+28:39 Speaker 2: primero
+28:40 Speaker 1: tienes archivos donde especificas las pruebas
+28:42 Speaker 2: esto
+28:48 Speaker 1: vive en el código vive en el código en mi aplicación ahí reloceo un ratito a lo que les decía antes tu aplicación es parte de varios componentes o es uno solo todo si es uno solo todo es un monorepo es el repo que tiene todo por ahí que vale la pena que los test estén ahí dentro pero yo siempre sugiero que los test estén por fuera en un
+29:12 Speaker 2: repo específico de pruebas porque
+29:16 Speaker 1: tiene su propio ritmo de actualización tiene su propio permiso sobre ese repo a mantener y a la larga si tu aplicación se desacopla y se distribuye en varios componentes varios repos esto
+29:28 Speaker 2: corre por su lado por
+29:29 Speaker 1: sí solo no se amarra con otro repo entonces lo primero de eso sería eso que no lo pongan todos juntos
+29:36 Speaker 2: Una aplicación. Luego, esto
+29:40 Speaker 1: corre en el runner, en el pipeline,
+29:42 Speaker 2: en la infraestructura del pipeline.
+29:46 Speaker 1: Y esto lo que permite hacer es paralelizar. Si usted corre en su máquina,
+29:51 Speaker 2: va a depender de
+29:53 Speaker 1: la capacidad que tenga tu máquina para paralelizar o no dejarte paralelizar pruebas.
+29:57 Speaker 2: Entonces, eso es algo bueno y
+30:00 Speaker 1: justamente va a permitir. Y bueno, eso simplemente va a ser... va a lanzar los comandos al navegador porque él lo que va a hacer acá, por ejemplo, si lo corriera en un test runner, él va a levantar
+30:14 Speaker 2: un explorer,
+30:16 Speaker 1: un browser, perdón, un browser, sea Chrome o lo que fuera, ahí te lo puedes indicar. Normalmente se usa Chromium en
+30:24 Speaker 2: estos casos y desde ahí
+30:27 Speaker 1: abre la web y sigue los pasos que le estás diciendo que haga.
+30:31 Speaker 2: Es un poco la idea. Este ya lo vimos. Sí, este ya lo vimos. Ok, entonces. Voy a compartir esto. Voy a compartir toda la pantalla. Voy a compartir todo. Si salta algo. Acá está. Ya. Entonces,
+31:09 Speaker 1: este es un proyecto ejemplo donde tengo varias cosas, pero ahorita quiero que nos enfoquemos en esta carpeta de Entuent.
+31:16 Speaker 2: Acá están mis
+31:17 Speaker 1: pruebas, ¿sí? Configuradas.
+31:22 Speaker 2: Entonces... Ok, entonces...
+31:33 Speaker 1: Esta es una aplicación que
+31:35 Speaker 2: simula
+31:37 Speaker 1: un catálogo y compra de productos.
+31:39 Speaker 2: Tipo un mini compras. Entonces acá hay dos features desplegados.
+31:49 Speaker 1: Uno de catálogo y otro de compra.
+31:51 Speaker 2: En el de catálogo acá
+31:54 Speaker 1: ves la lista de
+31:55 Speaker 2: productos y
+31:57 Speaker 1: vamos a ver un ratito acá uno
+31:58 Speaker 2: a uno.
+32:00 Speaker 1: Esto primero tiene una parte que es crear producto. Y luego tiene una parte que es validar que el producto se lista. Ok.
+32:10 Speaker 2: Entonces,
+32:11 Speaker 1: si van viendo acá, acá lo primero que hace es invocar a un servicio
+32:16 Speaker 2: que
+32:19 Speaker 1: estaría por acá. Bueno, no es un servicio, perdón, al proceso. Y esto lo que va a hacer, miren, va a llenar el formulario.
+32:26 Speaker 2: Entonces, acá carga el DOM del formulario y
+32:29 Speaker 1: va yendo...
+32:32 Speaker 2: campo por campo, según la
+32:34 Speaker 1: HTML cómo funciona, y va completando la información con la data acá que se ha
+32:40 Speaker 2: configurado para la prueba.
+32:43 Speaker 1: ¿De dónde saca la data? Por
+32:45 Speaker 2: ejemplo, acá está poniendo datos
+32:46 Speaker 1: fijos. Esto podría venir de un archivito por ahí. Entonces acá ven que navega todo el
+32:52 Speaker 2: HTML y lo va completando.
+32:54 Speaker 1: Y al final, acciona el botón.
+33:02 Speaker 2: Y acá hay algunas
+33:03 Speaker 1: validaciones que él también puede ir haciendo. Que la respuesta sea producto creado con algún ID en especial,
+33:14 Speaker 2: que en este caso va a ser el SKU.
+33:19 Speaker 1: Bueno, que justo en la respuesta te detenga el nombre del producto.
+33:26 Speaker 2: Y...
+33:27 Speaker 1: ¿Qué será esto? 4, ya, me imagino... que acá en el listado de la respuesta sí, ese es el listado el último atributo sea 4 que es este 4 que está acá entonces mi idea de mostrarles esto es que me sigan con esa lógica de básicamente lo que está haciendo la automatización es lo que haría una persona un CUA visualmente en la pantalla llenar el dato acá, siguiente, siguiente, siguiente llenar el dato acá, siguiente, siguiente, siguiente y
+33:57 Speaker 2: lo mismo es el catálogo va
+33:58 Speaker 1: a una ruta en especie
+34:04 Speaker 2: captura
+34:05 Speaker 1: de ahí tal
+34:06 Speaker 2: etiqueta y
+34:09 Speaker 1: la va comparando contra ciertos datos. Entonces, esto es lo que hace la prueba internamente. Ahora,
+34:16 Speaker 2: ¿cómo funciona esto en el pipeline? Ah, ¿cómo lo puse? A ver, tiene que salir una presentación, creo. ¿Y dónde te fuiste? Chrome. Eso es. Acá está. Entonces acá yo estoy jugando con las pruebas. Ese es el repo que
+34:44 Speaker 1: yo tengo de Testing
+34:46 Speaker 2: Example.
+34:47 Speaker 1: Acá yo tengo diferentes filets implementados. Vamos a probar ahorita en específico este de
+34:52 Speaker 2: Playwright.
+34:54 Speaker 1: Entonces les decía que lo más común es que se haga demanda.
+34:58 Speaker 2: Entonces le voy a poner acá demanda, puedo elegir a qué
+35:00 Speaker 1: rama hacerlo, vamos a mantenernos en main. Acá normalmente las pruebas en to end se hacen contra un ambiente en específico, ¿no? Es bien raro que se hagan como un ambiente como mock que levanta el pipeline. Para la prueba acá lo estamos haciendo así, pero normalmente esto es contra la URL de desarrollo, de QA, de staging o
+35:22 Speaker 2: UAT, que es la prueba de producción.
+35:26 Speaker 1: Eso normalmente se prueba contra... esos ambientes previos. Y acá está, ¿se acuerdan que había una funcionalidad catálogo y otra compra? Entonces acá yo podría decir, oye, ¿sabes qué?
+35:37 Speaker 2: Necesitamos probar todo. No, vamos a probar solamente catálogo.
+35:41 Speaker 1: Entonces la vamos a correr y eso internamente, bueno, va a habilitar las pruebas,
+35:48 Speaker 2: va a
+35:51 Speaker 1: instalar las dependencias y demás.
+35:58 Speaker 2: Miren, acá está el Chromium. ¿Por qué?
+36:04 Speaker 1: Para tener una idea. ¿Por qué Chromium y no Chrome? Chromium es como la versión ligera de Google Chrome que corre en contenedores. Porque hay muchas librerías que necesita el Chrome que en un contenedor no encuentra. Entonces por eso se usa Chromium. Entonces acá incluso está desplegando el Postgres internamente. para que pueda correr,
+36:27 Speaker 2: levantar la aplicación.
+36:36 Speaker 1: Y acá recién me pasaron las pruebas. Si se dan cuenta, ven el tiempo de ejecución, ¿sí?
+36:40 Speaker 2: No es menor, ¿no?
+36:43 Speaker 1: Tiene muchas cosas que instalar y configurar antes de ejecutar las pruebas. No es menor, sobre todo lo comparo contra el unit test, ¿no? O sea, miren, acá solamente casi un minuto de configuración de ambiente antes de ejecutar. Y acá ya está la ejecución de las pruebas. Entonces acá, por ejemplo, lo mandé a ejecutar solo catálogo, ¿no? Entonces acá
+37:03 Speaker 2: ejecutó test of the product. y test de consulta catálogo.
+37:10 Speaker 1: No recuerdo acá el
+37:13 Speaker 2: resultado para dónde lo tiré. Un segundito. Acá hay
+37:24 Speaker 1: un reporte. Voy a descargar mi máquina.
+37:38 Speaker 2: Ah, es el XML. Pensé que era el HTML. Bueno, no lo exportaba en HTML, pero hay una versión bonita de hacerlo en HTML
+37:48 Speaker 1: que te da...
+37:52 Speaker 2: ¿El format? ¿Cómo era? Ahí está. Hay una versión más bonita de hacerlo que te
+38:03 Speaker 1: da un HTML bonito. con todos los casos de prueba que probó
+38:07 Speaker 2: y un drill down. O sea, puede hacer un doble
+38:11 Speaker 1: clic hacia adentro de qué fue lo que pasó. Ahorita
+38:13 Speaker 2: no lo he publicado de esa manera.
+38:19 Speaker 1: Pero bueno, acá está la información que te va a dar básicamente es la misma. ¿Cuánto tiempo se demoró cada uno? Y el resultado. Que entiendo que acá todos fueron exitosos. No hay ningún error, ningún failure. Por eso todo
+38:32 Speaker 2: bien. Vamos a forzar acá algo. Voy a cambiar esto. Voy a cambiar esto. Van a fallar los assets. Tengo que venir acá y hacer el PR, entonces sí, el merge.
+39:40 Speaker 1: Mientras queda corriendo esto, ¿alguna pregunta?
+39:59 Speaker 2: ¿Me estás en Merge? Tengo una duda. ¿El Pyline me va a correr antes o no? Eso me quedó la duda. A ver. Ah, sí, me va a correr antes. Ya, bueno. Bueno, el Pyline va a fallar antes. Eso bueno.
+40:17 Speaker 1: Voy a hacer que acá, por modo de pruebas, está configurado así, pero no debería estar necesariamente automatizado esto. Debería ser solamente el dispatch, que es como de forma manual. Igual, como ven... Voy a configurar las dos maneras. Que corra por defecto de forma automática. Cuando se cambia cierto archivo. Que la verdad eso no lo recomendaría.
+40:36 Speaker 2: Y el dispatch que esa demanda. Acá.
+40:50 Speaker 1: Ya. Entonces acá. Esperaría que va a fallar.
+40:55 Speaker 2: Uno de estos. de aquí ahí está ahí falló
+41:12 Speaker 1: entonces dice oye yo esperaba que tal dato contenga tal valor pero el dato contiene tal otro valor
+41:19 Speaker 2: entonces eso nos permite ver entender que fue lo que pasó y si yo espero que esté acá el ah
+41:33 Speaker 1: no en estos casos no está mostrando el
+41:35 Speaker 2: resultado si
+41:38 Speaker 1: entro acá el mismo archivito que veíamos antes Ah, miren, miren qué interesante esto. Como falló, tomó la pantalla de la imagen antes de que falle. Porque esa es la clásica de, oye, ¿el developer qué le doy para que valide los
+42:02 Speaker 2: errores? Entonces,
+42:04 Speaker 1: al ver la pantalla, ayuda a ver qué fue lo que pasó.
+42:07 Speaker 2: Bueno, hasta acá hay una de trazas. Vaya, esto está bien chévere.
+42:12 Speaker 1: Te da
+42:12 Speaker 2: los, en ese caso eran, eran, este es un HTML con Python. ahí mezcladas cosas de Python o HTML. Te da la traza incluso.
+42:25 Speaker 1: Es bastante como completo para poder darle al developer,
+42:29 Speaker 2: reportarle cuál fue el error.
+42:31 Speaker 1: Es un poco la idea.
+42:32 Speaker 2: Poder hacer la vida más fácil.
+42:34 Speaker 1: Y acá está lo mismo que veíamos antes. Pero ahora acá está ingrustado el error. Acá está el resumen. De las 14 pruebas, una falló. Las otras pasaron todas bien.
+42:56 Speaker 2: Es
+42:57 Speaker 1: un poco la idea de cómo funciona y para qué funciona esta parte de las pruebas. No sé si tienen alguna pregunta. Interrumpen sin problema.
+43:16 Speaker 2: ¿No? entonces esa es un poco la magia de Playwright quería mostrarles el plugin de Playwright Un segundito porque creo que ese plugin de Playwright nos
+43:44 Speaker 1: va a ayudar a entender mejor todavía cómo
+43:46 Speaker 2: funciona. Está pensando eso. Claro. Ya. Funcionó. Bien. ¿Qué he hecho? Hay
+45:55 Speaker 1: un comandito.
+45:59 Speaker 2: que lo he ejecutado por acá abajo. Es este de acá.
+46:05 Speaker 1: Básicamente se llama
+46:06 Speaker 2: CodeGen o generación de código de PlayWrite.
+46:11 Speaker 1: Y le estoy diciendo acá que el resultado de esto va a ser en Python. Python PyTest. Acá podría ser
+46:20 Speaker 2: otros lenguajes
+46:22 Speaker 1: y librerías. PyTest y esta es la URL de la aplicación que quiero probar. Ok.
+46:30 Speaker 2: Wikipedia. Entonces,
+46:32 Speaker 1: esto me ha abierto dos cosas. Por acá tengo Wikipedia y por acá tengo abierto
+46:37 Speaker 2: este no es. Espera, no sonido que lo encuentro acá en mi desorden. Acá está. Y
+46:44 Speaker 1: me ha abierto este inspector. No sé si lo llegan a ver acá a la derecha.
+46:50 Speaker 2: Entonces,
+46:51 Speaker 1: si yo empiezo acá a hacer búsquedas, por ejemplo.
+46:55 Speaker 2: Universidad. Hoy no salimos. No puede ser. Bueno, no haciamos la ecuadora. Miren. Ha simulado cada una de las acciones.
+47:11 Speaker 1: Me fui a al search box de arriba. Completó estos datos.
+47:18 Speaker 2: Le debo buscar. Acá, digamos, pero leo y le voy a ir, no sé, en segunda categoría. y de ahí me voy a ir a ver entonces todas esas acciones él
+47:32 Speaker 1: las está registrando acá entonces
+47:35 Speaker 2: este ya es el input para
+47:38 Speaker 1: poder automatizar tu prueba
+47:39 Speaker 2: ahora con
+47:47 Speaker 1: la guía que se hace se hace justo esto de acá lo haces una vez solo por acá copy ¿Veis? Salvas a la IA y la IA te hace toda la magia y te genera el código ya basado en esto. Entonces, yo les contaba de una aplicación que había sido muy compleja a automatizar.
+48:03 Speaker 2: La tengo por aquí.
+48:09 Speaker 1: Justo le estaba haciendo algo en la tarde.
+48:11 Speaker 2: Déjame ver si la tengo abierta todavía por acá. Creo que sí. Acá está. tratamos de automatizar sus pruebas. Acá está.
+48:32 Speaker 1: Pero como ellos tienen muchas de estas cajitas que aparece, desaparece, llama un servicio y la forma como está construida no es lo ideal para poder identificar cada dato,
+48:45 Speaker 2: no puedo
+48:48 Speaker 1: hacer que funcione bien. ¿Por qué? Porque salen muchos falsos positivos. por estas carreras competencias de que si se ve o no se ve tal información te lo bota como un error y el proceso no termina. Entonces, bueno,
+49:03 Speaker 2: esos son un poco los contras.
+49:07 Speaker 1: A ver si podemos ver acá alguno un poco más complejo.
+49:15 Speaker 2: Acá, por ejemplo, se configuraba toda la data. En este caso era registro de clientes, que uno fuera soltero, otro casado.
+49:24 Speaker 1: Acá está. Acá es donde hace todo el manejo del HTML para ir completando la información. Acá incorporo el correo, el celular, etc. Acá está la parte de Dios otorgan crédito. Está la
+49:43 Speaker 2: parte de información sobre el crédito que quieren. El monto que quieres pedir. Etcétera. Entonces.
+49:52 Speaker 1: Eso es básicamente lo que se. El símil. Quiero mostrarles.
+49:57 Speaker 2: En este caso esto está en. En React. Y eso está en TypeScript. Entiendo.
+50:10 Speaker 1: ¿Se entendió?
+50:11 Speaker 2: ¿Algo? Están más confundidos de lo que es, pero acentuamente. Se me van contando chat o por acá. Voy a cerrar esto. ¿Puede rotar el código o el último repositorio de ejemplo? Sí, sí, sí. El de test example lo voy a compartir. Gracias. Ok. Continuamos entonces.
+50:54 Speaker 1: Preguntaba si se entendió. No es mi idea que salgan acá entendiendo a desarrollar Playwright. Siempre mi idea es que entiendan un poco los conceptos que hay detrás, cuándo sí, cuándo no, qué proceder de problemáticas hay.
+51:07 Speaker 2: Esa es un poco la idea.
+51:08 Speaker 1: Más que con este comando o otra cosa, con este comando o otra. Y los tips, ¿no? De, oye, existen herramientas para que no tengo codeado yo todo de cero, ¿no? Sino que ya
+51:17 Speaker 2: empiezo con una base, ¿no? Con estas,
+51:20 Speaker 1: con esta generación de código que me da el, esa herramienta de code ya.
+51:27 Speaker 2: Entonces,
+51:28 Speaker 1: ¿se ha entendido cómo
+51:31 Speaker 2: funciona Playwright? ¿Necesitan que repita algo? Un breve resumen, por favor. Para los que tienen concierto de BTS ahí de fondo. Repetimos.
+51:57 Speaker 1: Ok. Playbride lo que nos permite es automatizar las pruebas en Twent. ¿Cómo hace? Lo que hace es... Primero... vamos a la parte donde tienes que codificarlas. Porque esas tienen que existir. Así como los unit tests que hay que codificarlos, eso también hay que codificarlos. Entonces, lo que tienes que codificar es las instrucciones que va a seguir en tu aplicación.
+52:21 Speaker 2: En este caso, un HTML. Entonces es
+52:24 Speaker 1: qué proceso va a seguir en tu, qué flujo va a seguir
+52:28 Speaker 2: en tu HTML de a qué le da clic, qué
+52:31 Speaker 1: datos completa en qué lugar, etcétera. Y para poder lograr eso hay dos caminos. O tú mismo inspeccionas, ves el HTML y lo vas codificando. O usas una herramienta como la que mostré de CodeGen. Que es el propio Playwright. Que básicamente es un plugin.
+52:49 Speaker 2: Que es
+52:50 Speaker 1: un inspector de
+52:54 Speaker 2: HTML.
+52:55 Speaker 1: Así como seguramente han usado este de...
+52:58 Speaker 2: No funciona.
+53:00 Speaker 1: Este de acá.
+53:01 Speaker 2: Seguramente lo han visto.
+53:05 Speaker 1: esto, va inspeccionando esto y va inspeccionando las acciones que vas haciendo en tu browser y va grabando cada acción que haces. Con eso, este plugin te genera ese código para que no lo tengas que hacer tú de cero. Y eso te da una base para poder desarrollar esas playwright.
+53:21 Speaker 2: Ahora, Playwright,
+53:23 Speaker 1: hasta donde sé, porque yo soy experto
+53:25 Speaker 2: en Playwright y la verdad no es que lo he usado un montón, está
+53:30 Speaker 1: creo que solamente enfocado en lo
+53:31 Speaker 2: que es HTML.
+53:33 Speaker 1: O sea, si Me preguntaran, oye, si tengo que probar una app mobile, ¿cómo podría ser? No estoy seguro si Playwright lo puede hacer. No sé si alguno de ustedes conoce. Yo creo que no.
+53:43 Speaker 2: Tengo que buscar otras soluciones. No conozco una de... Una, se escucha de una.
+53:48 Speaker 1: Y la otra es, oye, tengo una aplicación cliente-servidor. No sé si ustedes todavía han visto alguna cliente-servidor de las antiguitas. Esa tampoco va a ser en el Playwright. Y ahí normalmente es más pesado.
+54:02 Speaker 2: Ahí usas... Comentaban... herramientas de RPA
+54:04 Speaker 1: hay herramientas de RPA
+54:06 Speaker 2: me
+54:08 Speaker 1: parece que es UiPack si no me equivoco que es una open source pero donde tú tienes que hacer un montón de cosas
+54:14 Speaker 2: para
+54:16 Speaker 1: poder testear ¿no? ¿y qué es básicamente? recorrer flujos y validar datos de salida versus los supuestos que deberían tener de salida según lo que estás haciendo y hay otras herramientas pagas también
+54:28 Speaker 2: ¿cómo se llaman estas? En algún momento
+54:34 Speaker 1: cuando estaba en una empresa de seguros me tocó evaluar esas herramientas. Hace muchos años, antes de que existiera DevOps. Porque querían, para las herramientas legadas, querían comprar una solución para poder automatizar las pruebas. Al final no se compró porque era demasiado caro.
+54:51 Speaker 2: No tenía mucho sentido. Tosca. Ahí está.
+54:54 Speaker 1: Tosca se llamaba la herramienta esta para automatizar.
+54:57 Speaker 2: No sé si existía vigente también. Creo que sí. trisentis esta
+55:04 Speaker 1: seguramente debe haber evolucionado ya
+55:11 Speaker 2: esta otra nueva forma de prueba
+55:23 Speaker 1: y bueno y selenium que es la más reciente o sea perdón la previa Playwright Selenium pero era como Playwright se lo comió porque es mucho más
+55:40 Speaker 2: rápida y fácil pero
+55:43 Speaker 1: Selenium tuvo muy buen tiempo de implementación la gran mayoría de los automotrizadores que empezaron arrancaron con Playwright bueno esto
+55:53 Speaker 2: ya lo vimos en la anterior así que saltamos
+56:03 Speaker 1: Hoy que estamos virtual, igual vamos todo de largo, ¿no?
+56:07 Speaker 2: O sea, yo diría que sí, porque si no, tampoco nos da un sentido. Y salió un poco antes.
+56:22 Speaker 1: Vale, ahí habló el
+56:24 Speaker 2: delegado.
+56:27 Speaker 1: Ah, UI Vision. Sí, es UI Vision también. me suena Tiba no ese UAVision de que cuál
+56:41 Speaker 2: es RPA todos están familiarizados con los términos de RPA y
+56:52 Speaker 1: les cuento un par de casos de RPA que también se han
+56:55 Speaker 2: usado que he visto que se han usado con Selenium casos de
+56:57 Speaker 1: negocio Tiene que ver con DevOps, pero creo que es interesante.
+57:02 Speaker 2: Ahorita voy a ir con tu pregunta, Salvador.
+57:07 Speaker 1: Dale. O primero con tu pregunta. Los sistemas de Scraping que ejecutan acción en un site, ¿qué lo diferenciaría con una prueba unitaria? ¿Alguien que se acuerde de qué cosas son las pruebas unitarias
+57:21 Speaker 2: que le gustaría responderle a Salvador?
+57:24 Speaker 1: ¿Cuál para ustedes es la diferencia entre... ejecutar algo con web scrapping en un site
+57:31 Speaker 2: versus hacerlo en una premonitaria.
+57:38 Speaker 1: Yo creo que primero diría, la premonitaria, cuando hablas de la web, la premonitaria no se hace sobre la web desplegada, ¿no?
+57:45 Speaker 2: La premonitaria se hace sobre el código fuente puro. Entonces,
+57:51 Speaker 1: tú podrías hacer pruebas unitarias de cómo se comporta tu
+57:55 Speaker 2: frontend.
+57:57 Speaker 1: las unidades de forment también
+57:58 Speaker 2: pero
+58:01 Speaker 1: va a ser diferente a un web scrapping de cuando lo ejecutes ya desplegado esos son los dos conceptos diferentes el primero un unitario estás probando el componente específico en un momento específico si quieres un web scrapping solamente para validar
+58:16 Speaker 2: o
+58:18 Speaker 1: sea si vas a usar web scrapping para validar algo que podrías validar con unit test
+58:21 Speaker 2: estás matando
+58:24 Speaker 1: con una bazooka una hormiga deberías hacerlo solamente comprar unitaria.
+58:28 Speaker 2: No es necesario ir a web scrapping para eso.
+58:31 Speaker 1: Si lo que necesitas es un proceso, un flujo que ya interviene con base de datos, con APIs, necesitas que se desplegue a la web, ahí ya te vas probablemente a un end-to-end como
+58:41 Speaker 2: web scrapping. Dale, dale sabor.
+58:47 Speaker 1: Como les contaba, desde esta herramienta es RPA,
+58:51 Speaker 2: muchas
+58:55 Speaker 1: empresas... Empresas grandes tercerizan la operación. Olvídense un ratito de DevOps, ¿ya? Y hasta incluso un poquito de tecnología. No hablo como más de negocio de proceso porque está vinculado al RPA y es interesante para nosotros que estamos en tecnología. Estas empresas lo que hacen es, imaginemos
+59:14 Speaker 2: una
+59:16 Speaker 1: empresa que da seguros de
+59:18 Speaker 2: autos. Entonces hay
+59:20 Speaker 1: procesos operativos que hacer en esas emisiones de pólizas de autos. que verificar que
+59:26 Speaker 2: el
+59:27 Speaker 1: seguramente ahora mucho de esto que lo voy a contar ya no tiene sentido con la y otras cosas que hemos evolucionado pero igual hay ciertos procesos operativos que igual se necesitan esta operación manual entonces el RPA llegó justo para reemplazar estas horas hombre de personas que hacían mucha tarea repetitiva manual de escritorio y muchas empresas estas tareas repetitivas de manual de escritorio las tenían tercerizadas. No es que yo agarro como proveedor y te contrato a ti con tu recibo por horario como un tercero. No, no, no. Yo contrataba una empresa como, no sé, NTT Data, antes conocía como Everest, y ellos tenían un ejército de personas que
+01:00:09 Speaker 2: hacían esta operación. Inicialmente era así. Y ellos me cobraban a mí,
+01:00:14 Speaker 1: no por la cantidad de personas, sino por el volumen de transacciones que me atendían. Entonces, si atendían mil pólizas, eran mil soles. Y así, ¿no? Entonces, ¿cuál es el negocio de NFT data? Oye, tengo que hacer, en el menor costo posible,
+01:00:30 Speaker 2: poder
+01:00:31 Speaker 1: emitir más pólizas. Entonces, si con mil soles, si me pagan mil soles por mil pólizas, un sol por póliza, yo tengo que hacer que cada póliza me cueste lo más cercano a cero para ganarme ese sol completo. Entonces, ellos fueron los primeros a empezar a implementar, por lo menos en estas empresas grandes, esos temas de RPA. Entonces, era un ok, ya no ponían las personas, sino ponían esos procesos. procesos automáticos, porque además esto me quitaba el riesgo de que la persona lo hiciera mal, el retrabajo, la revisión posterior, etc. Y ahí nació el tema de RPA con las herramientas un poquito más antiguas,
+01:01:04 Speaker 2: pero RPA
+01:01:07 Speaker 1: era lo mismo que hemos visto con Playboy, ¿no? Simular un proceso uno a uno en diferentes. El reto ahí, como son procesos más
+01:01:15 Speaker 2: antiguos,
+01:01:17 Speaker 1: es saltar de una aplicación legada a otra aplicación legada. Entonces es un RPA que corre sobre tu Windows y que te va abriendo programitas.
+01:01:28 Speaker 2: No
+01:01:29 Speaker 1: sé qué programita. Es como si te abrieran el Slack por un lado. ¿Discord tiene su propio IDE o es web? No sé, yo no uso Discord. Y así, ¿no? Te abriera su Word. No sé con qué herramienta simularle a ustedes esa nueva generación de escritorio. Pero bueno, si estamos realizados todos con lo que es esta herramienta de escritorio o
+01:01:50 Speaker 2: aplicación de escritorio. cliente y servidor
+01:01:52 Speaker 1: ¿desarrollan algún curso
+01:02:02 Speaker 2: todavía de aplicaciones cliente y servidor o todo es web? todo es web dale
+01:02:11 Speaker 1: ok bueno suerte cuando les toque ver los legados cliente y servidor que existen muchos eh sí porque no tengo ni idea
+01:02:20 Speaker 2: que ustedes desean atender una clínica o
+01:02:22 Speaker 1: un hospital no sé seguro si usa CITEDS
+01:02:24 Speaker 2: una clínica hay una aplicación
+01:02:27 Speaker 1: del estado que se llama CITEDS que es un cliente servidor que consulta a todos los asegurados y
+01:02:34 Speaker 2: valía si
+01:02:34 Speaker 1: cuentas con seguro o no
+01:02:37 Speaker 2: hay
+01:02:39 Speaker 1: muchos clientes servidor todavía yo cuando los conocí los odio bastante pero
+01:02:45 Speaker 2: es cuestión de aprender a convivir con eso Ok, bueno,
+01:02:51 Speaker 1: vamos con el siguiente tema que es las pruebas de integración. La última vez vimos pruebas de integración y veíamos que en el pipeline levantaba la base de datos, hacía varias cositas para poder probar la integración, pero era una integración simulada, no era solo el ambiente real desplegado como un desarrollo y un cuba. Entonces ahora vamos a ver ya durante el pipeline qué pruebas de integración se pueden hacer.
+01:03:19 Speaker 2: Entonces, vimos
+01:03:21 Speaker 1: en la antepasada
+01:03:24 Speaker 2: clase el
+01:03:25 Speaker 1: tema del digest o del SHA,
+01:03:29 Speaker 2: de la firma.
+01:03:30 Speaker 1: ¿Aún no recuerda este tema del digest, del contenedor? ¿Para qué era?
+01:03:54 Speaker 2: Propenderá como subcódigo del contenedor. Un subcódigo. ¿Se acuerdan el tag que ponías al contenedor?
+01:04:14 Speaker 1: Recordemos esa parte que es importante. Ya sea el contenedor o ya sea una librería, ¿ya? Lo importante es como que el artefacto generado para desplegar. Ahí hay varias, se le di el nombre. Lo que te permite es identificar específicamente esa versión del componente desplegado.
+01:04:42 Speaker 2: Recordemos que
+01:04:43 Speaker 1: tu código fuente nace con commits,
+01:04:46 Speaker 2: ¿cierto?
+01:04:46 Speaker 1: Viene el pipeline, la compila y genera una imagen. Imaginemos un contenedor. Entonces, esta imagen se le asigna un tag, un identificador. Ese identificador viene a ser el digest. Y ese digest normalmente es el SHA del commit, que es el ID del commit. Normalmente es siete dígitos. No, los siete primeros dígitos.
+01:05:07 Speaker 2: Eso vendría a ser como el digest que identifica el contenedor.
+01:05:14 Speaker 1: ¿Qué permite esto? si alguien lanza un nuevo cambio se va a generar un nuevo tag porque la idea del commit es otro entonces esto me permite tener una trazabilidad realmente de que
+01:05:26 Speaker 2: cuál
+01:05:27 Speaker 1: es el que corresponde contra ese contenedor
+01:05:29 Speaker 2: porque eso
+01:05:32 Speaker 1: me permite el concepto de inmutabilidad que se vuelve inmutable mi contenedor mi
+01:05:38 Speaker 2: componente de desplegar
+01:05:39 Speaker 1: si es que no hiciéramos esto ¿qué pasaría? digamos que le ponemos tag producción entonces Hoy día se llama tagproducción. Oye, pero ¿qué commit corresponde? ¿De qué cambios tiene? Ah, no sé. ¿Por qué se llama tagproducción?
+01:05:51 Speaker 2: Más o menos por la fecha última
+01:05:52 Speaker 1: modificación debe ser de ese, pero no estoy seguro.
+01:05:56 Speaker 2: Eso nos permite el DS, tenerlo unificado. Entonces, eso
+01:05:59 Speaker 1: es lo que nos permite protegerlo para
+01:06:01 Speaker 2: ver en
+01:06:03 Speaker 1: qué momento está ese.
+01:06:09 Speaker 2: Entonces,
+01:06:10 Speaker 1: digamos que hoy día tengo mi contenedor identificado.
+01:06:14 Speaker 2: cuál es el que quiero desplegar.
+01:06:16 Speaker 1: Y a este le tengo que aplicar ciertas pruebas para poder validar si está bien o no. Y estas pruebas las hago ya cuando este artefacto esté desplegado.
+01:06:28 Speaker 2: Entonces,
+01:06:29 Speaker 1: si yo, digamos, agarro este componente de DS, lo desplego en desarrollo, le corro ciertas pruebas automatizadas, yo ya puedo confirmar y asegurar de que este contenedor sí o sí ya cumple con esas validaciones. si este componente tuviera el tag prot nada me asegura que alguien ya retagueó y le puso otra vez prot a otro no versión nueva pero ya no sé si ese ya pasó por las pruebas o no
+01:06:57 Speaker 2: entonces es un poco la idea de eso también que
+01:07:00 Speaker 1: nos permite tenerle ese candado
+01:07:01 Speaker 2: entonces Lo primero que
+01:07:14 Speaker 1: normalmente se usa son las pruebas de humo o smoke test. Estas pruebas de humo lo que hacen es básicamente, oye, ¿la aplicación está levantada o no está levantada?
+01:07:24 Speaker 2: ¿O tal
+01:07:26 Speaker 1: URL en específico te da 200 o no te da 200? Esto debe responder muy rápido. Está muy lineado lo que se llama. los conoce como los gelchecks, la salud del componente. Pero también se puede usar de muchas
+01:07:48 Speaker 2: formas.
+01:07:55 Speaker 1: O sea, se puede usar de muchas formas, me refiero a que tú lo despleas, despleas tu aplicación y automáticamente
+01:08:00 Speaker 2: corres el mocktest,
+01:08:03 Speaker 1: que valía que la SAPI se está respondiendo 200. Si es así, ya puedes estar tranquilo de que está bien la aplicación. Si no, es muy probable que tengas que hacer rollback o que tengas que corregir algo.
+01:08:19 Speaker 2: Rollback, recordemos, reversar a la versión anterior.
+01:08:23 Speaker 1: Entonces, para eso nos funcionan las pruebas de humo. Así como los unit tests me permiten probar en código fuente muy rápido, las pruebas de humo me permiten validar muy rápidamente si mi aplicación está al menos levantada.
+01:08:35 Speaker 2: No te
+01:08:36 Speaker 1: permite validar funcionalidades, pero sí al menos que esté levantada.
+01:08:44 Speaker 2: Y acá aparece el concepto que hablaba
+01:08:47 Speaker 1: la última vez de verificaciones sintéticas.
+01:08:55 Speaker 2: Las verificaciones sintéticas
+01:08:57 Speaker 1: vendría a ser
+01:08:59 Speaker 2: como la
+01:09:03 Speaker 1: prueba de una funcionalidad. Normalmente por APIs. para validar que un cierto componente está funcionando o no. Puede ser también en Twent, pero probablemente son APIs que te permiten validar que está funcionando tal funcionalidad. Y la sintética viene con el concepto de que no es real. O sea, es una operación que se va a registrar en la base de datos, ya sea de lectura, ya sea de escritura, pero son datos que van a llegar a producción, incluso al ambiente donde estás probando, pero son datos de prueba que de alguna manera ya se manejan para que esos datos de prueba no alteren producción.
+01:09:48 Speaker 2: Entonces estos,
+01:09:49 Speaker 1: imagínate que es un robotcito
+01:09:51 Speaker 2: que
+01:09:54 Speaker 1: va tirando estas verificaciones sintéticas y él te alerta si alguna falla. Entonces con eso no tienes que esperar que el cliente falle en una operación que él trata de hacer, sino tu propio robot ya está haciendo... estas variaciones sintéticas. AWS ya tiene su propia herramienta de verificaciones sintéticas con CloudWatch. Azure también tiene las propias. Ahorita no recuerdo cuál es el nombre de Azure. Y hay herramientas también
+01:10:20 Speaker 2: libres en internet que te permiten hacer estas
+01:10:23 Speaker 1: verificaciones sintéticas. Tú configuras el URL,
+01:10:25 Speaker 2: parámetros y te va... Hay
+01:10:28 Speaker 1: incluso varias que son gratuitas y te permiten un gran número de pruebas sin pagar. Y te llevan un correo de alerta hoy.
+01:10:37 Speaker 2: Por eso acaso está fallando, ¿no? Y tú le configuras umbrales. Oye,
+01:10:41 Speaker 1: quiero que estés bootes una vez cada cinco minutos. Si tienes tres errores seguidos, mándame un correo de notificación. Y ya lo más avanzado es cuando esto lo enganchas con pipelines que hacen otras cosas o con acciones en la nube que reinician
+01:10:57 Speaker 2: servidores o hacen cosas. Diferentes acciones
+01:11:03 Speaker 1: que puedes hacer. Pero esa es un poco la utilidad que te dan estas... verificaciones sintéticas. Estas verificaciones sintéticas son más largas que las pruebas de humo. Las pruebas de humo son más puntuales. Las sintéticas son más
+01:11:16 Speaker 2: complejas, más largas. Las pruebas de humo son solo lectura. Ok. Seguimos.
+01:11:35 Speaker 1: vienen las pruebas de rendimiento creo que las últimas preguntas se han hecho pruebas de estrés alguno por ahí comentó de que sí
+01:11:42 Speaker 2: y
+01:11:44 Speaker 1: había un poco bueno siempre existe la duda de y también lo mismo cuando nos
+01:11:49 Speaker 2: piden hacer un cliente nos pide hacer
+01:11:51 Speaker 1: o nosotros como parte de la empresa queremos hacer un prueba de rendimiento siempre sale la palabra de pruebas de carga pruebas de estrés pruebas de pico pruebas de resistencia ¿qué hacemos? una tiene un fin diferente. La prueba de carga es, oye, nosotros esperamos
+01:12:11 Speaker 2: soportar mil
+01:12:16 Speaker 1: clientes concurrentes. Eso es lo que esperamos.
+01:12:23 Speaker 2: Entonces
+01:12:23 Speaker 1: queremos hacer una prueba de carga de cómo se comparte el sistema con 500, 600, 800 y 1000.
+01:12:31 Speaker 2: Entonces con eso se
+01:12:33 Speaker 1: corre y se mide. en los indicadores de la plataforma para ver cómo está el tiempo de respuesta,
+01:12:38 Speaker 2: consumo de recursos,
+01:12:40 Speaker 1: para en base a eso determinar cómo nos va cuando tengamos la carga esperada. Y la idea es que esto lo corramos cuando vamos a hacer cambios relevantes. O sea, el tipo de plano se hace siempre. Se hace una sola vez la primera vez que... Perdón, no se hace una sola vez. Se hace la primera vez cuando sacas tu aplicación y luego cuando vas a hacer cambios medianos, grandes, la cual tienes que volver a hacer...
+01:13:03 Speaker 2: un cambio que puede impactar tu tiempo de respuesta y
+01:13:06 Speaker 1: tu performance de usuarios.
+01:13:09 Speaker 2: Ahora,
+01:13:10 Speaker 1: la otra es, oye, vamos a tener Cyber Days y no sabemos cuántos usuarios nuevos vamos a tener, pero quiero tener una idea de hasta cuánto soporta nuestra infra. Bueno, hoy día dijimos que SLO es 1,000, ya hicimos pruebas de carga de 1,000. Vamos a meterle pruebas de 1,500, 2,000, 2,500, 3,000, a ver hasta dónde se rompe.
+01:13:30 Speaker 2: Eso viene a ser la estrés. Lo empiezas a ser estrés. hasta que hasta
+01:13:35 Speaker 1: ver hasta dónde llega y
+01:13:38 Speaker 2: bueno esta casa se hace a demanda para
+01:13:42 Speaker 1: ver un poco
+01:13:42 Speaker 2: hasta dónde podríamos llegar luego
+01:13:47 Speaker 1: están las de pico que que
+01:13:54 Speaker 2: acá acá viene un poco una
+01:13:55 Speaker 1: complejidad mayor que es qué
+01:13:58 Speaker 2: es lo que va a pasar van
+01:13:59 Speaker 1: a venir mil usuarios más y se van a mantener en el tiempo o es por algún caso particular de que entran y después se van yo les di un caso de prueba un ejemplo la otra vez de que en Yape pusieron el link de un e-commerce de la empresa donde yo trabajaba solo antes te lo guiabas y te decía compra tu SOA de aquí y como te salía el pop up encima del login o sea después que te lo guiabas la gran mayoría le daba ver y eso te abría la página del e-commerce y tú decías yo no quiero comprar un SOA de ahorita lo cerrabas y seguías en Yape pero todos ellos hicieron este súbito de levantar la
+01:14:37 Speaker 2: aplicación, o sea fue un pico
+01:14:38 Speaker 1: obviamente no era el esperado
+01:14:40 Speaker 2: pero es un escenario como
+01:14:43 Speaker 1: estos picos que se van a dar escenarios especiales
+01:14:46 Speaker 2: de
+01:14:50 Speaker 1: campañas entonces ahí es también estos picos, cómo se va a comportar porque es diferente que tu usuario se quede haciendo transacciones durante un tiempo que en una carga, por ejemplo, que tengas un pico eventual. Seguramente para el pico necesitas menos capacidad que soportarlo permanentemente la carga. Bueno, dependiendo si el pico es mucho más alto que la
+01:15:10 Speaker 2: carga. Pero es un poco diferente.
+01:15:14 Speaker 1: Y la resistencia justo es un poco lo que comentaba antes, que es cuánto tiempo se va a
+01:15:21 Speaker 2: quedar. ¿Por qué?
+01:15:23 Speaker 1: Porque ahí viene el tema de la degradación de recursos. Uno de los retos que se tiene en esta prueba de rendimiento es qué vas a medir. O sea, ya, ok, quiero que mi aplicación no se caiga cuando el usuario está... Se metan muchos usuarios, ¿no? Pero voy a medir
+01:15:41 Speaker 2: CPU, RAM,
+01:15:44 Speaker 1: cantidad de conexiones, tiempo de respuesta. Y la respuesta es hay que medir todos.
+01:15:50 Speaker 2: Porque
+01:15:50 Speaker 1: cualquiera de ellos puede ser tu cuello de botella cuando quieras crecer. Si alguno ha hecho... cosas que se den PHP antes,
+01:16:00 Speaker 2: o
+01:16:01 Speaker 1: en apaches en general, siempre estos tienen una limitante de cantidad de conexiones concurrentes.
+01:16:07 Speaker 2: Entonces,
+01:16:08 Speaker 1: ese siempre suele ser el cuello de botella más
+01:16:11 Speaker 2: que CPU RAM. Y
+01:16:15 Speaker 1: otro dato importante,
+01:16:17 Speaker 2: que eso da pie ahora para
+01:16:19 Speaker 1: que veamos pruebas de rendimiento en DevOps,
+01:16:23 Speaker 2: cuando tú pruebas,
+01:16:24 Speaker 1: no sé si a alguno le ha tocado correr alguna de estas pruebas en su máquina,
+01:16:29 Speaker 2: esto
+01:16:29 Speaker 1: es lo que simula que son varios usuarios corriendo en paralelo, ¿cierto? Si tú lo corres de tu máquina, tu máquina también tiene un máximo de conexiones de salida que puede tener. Entonces tú no vas a poder simular de tu máquina mil clientes. Tu máquina no te va a dejar y tu prueba no va a levantar más allá de 30, 50 clientes concurrentes. Entonces por eso es que también se usan herramientas y soluciones como la nube y otras complementarias más. que te permiten tener una mayor capacidad de clientes de salida de la prueba, de simulación de
+01:17:02 Speaker 2: clientes de salida de la prueba. ¿Qué
+01:17:06 Speaker 1: se hace internamente? Montan diferentes contenedores para que cada uno simule X transacciones a la vez. Hay estrategias. No las vamos a ver, pero quiero que me queden con esa idea un poquito.
+01:17:16 Speaker 2: Esas son las problemáticas que tienes cuando corres pruebas de
+01:17:21 Speaker 1: rendimiento en tu máquina. Me pasó una vez a mí que corrí las pruebas y dije, ah, todo está perfecto, funciona genial. Y la gente de Infra que estaba monitoreando me decía, pero José, está raro porque no veo tantas, no veo que lleguemos a las transacciones esperadas. Y cuando me di cuenta, es el cuello de botella, mi máquina. Entonces ya tuvimos que cambiar la estrategia y ver cómo
+01:17:44 Speaker 2: lo probábamos.
+01:17:46 Speaker 1: Y retrocedo un poquito más allá, antes de que
+01:17:48 Speaker 2: existieran estas herramientas, recuerdo
+01:17:52 Speaker 1: algunos domingos de mi vida. Hablo hace más de 10 años corriendo pruebas de estrés o de carga manualmente. ¿Qué quiere decir? Veías a 20 personas en
+01:18:08 Speaker 2: la misma sala,
+01:18:09 Speaker 1: orquestados por el gerente. Todos, pongan la página de consultar cliente. Ya, contamos hasta 3 y todos le dan enter a la vez. Y todos le damos enter a la vez,
+01:18:21 Speaker 2: los 20 personas, para
+01:18:23 Speaker 1: ver cómo se comportaba. la carga en cada sesión. No había ni conocimiento de esto, ni herramientas. Seguramente había herramientas, pero no había conocimiento ni tiempo. No nos damos el tiempo para poder hacerlo.
+01:18:36 Speaker 2: Muy chistoso. Sobre todo porque era la
+01:18:38 Speaker 1: gerenta de inición de operación porque estando ese 1, 2, 3,
+01:18:42 Speaker 2: enter. Bueno.
+01:18:48 Speaker 1: Esperemos que eso ya no sea necesario. Otros puntos importantes, estos son más matemáticos, es todos los resultados de estas pruebas se miden en percentiles para
+01:19:01 Speaker 2: evitar las
+01:19:03 Speaker 1: colas, lo oculto en las colas. Ya les contaba, ¿no? Cuáles
+01:19:09 Speaker 2: son las métricas
+01:19:13 Speaker 1: que hay que tener en cuenta.
+01:19:18 Speaker 2: Y...
+01:19:18 Speaker 1: Ah, es súper importante. Si yo voy a probar en desarrollo... y desarrollo es la tercera cuarta quinta parte de lo que es producción no tiene sentido mi prueba tengo que homologar en lo posible mi ambiente a lo que va a ser producción y ahí corren las pruebas entonces
+01:19:34 Speaker 2: ahí
+01:19:35 Speaker 1: funciona mucho este tema de la nube que te permite subir los recursos por un rato después bajarlos y solamente te va a cobrar por ese rato entonces la factura no te va a ir tan alta pero ese punto es sin ese punto no tiene sentido hacer ese rendimiento Entonces eso es lo que es prueba de rendimiento. No sé si tienen alguna duda o pregunta.
+01:20:05 Speaker 2: No.
+01:20:08 Speaker 1: Ok.
+01:20:09 Speaker 2: Bueno. Así
+01:20:11 Speaker 1: como las
+01:20:13 Speaker 2: pruebas en to end
+01:20:14 Speaker 1: se codifican
+01:20:19 Speaker 2: también esas
+01:20:20 Speaker 1: pruebas de performance. Hay herramientas como K6 que te permiten codificarlas.
+01:20:29 Speaker 2: Y
+01:20:29 Speaker 1: bueno, hay otras herramientas que son más visuales. Fue el nombre, JMeter. Hay una.
+01:20:36 Speaker 2: Imagino que también tenía código por detrás, pero yo he trabajado bastante en el tema de simplemente por visual.
+01:20:40 Speaker 1: Tú le pones las configuras y es bueno, internamente genera esta información seguramente. K6 ahorita es de las más utilizadas para pruebas de...
+01:20:51 Speaker 2: performance y acá bueno tú le configurarás justo
+01:20:54 Speaker 1: la duración de las ráfagas hasta cuántos usuarios quieres llegar entonces te empezará mandando de 1 por 1 2, 3, 5, 10, 20 y tratará de llegar a 50 y mantenerlo por 2 minutos y acá hay varias pruebas con diferentes objetivos y acá estarán
+01:21:16 Speaker 2: las métricas que quiere medir tiempo
+01:21:20 Speaker 1: de respuesta que no tengamos tantos requests fallidos menos del 10% y así
+01:21:27 Speaker 2: ok
+01:21:32 Speaker 1: pues hasta ahí no sé si tienen alguna duda de
+01:21:40 Speaker 2: pruebas de performance ¿les
+01:21:43 Speaker 1: quedó clara esta diferencia entre carga estrés pico resistencia?
+01:21:56 Speaker 2: Gracias. Les preguntaría, ¿se viene la matrícula
+01:22:06 Speaker 1: del verano? Hemos desplegado un nuevo campus virtual de la Católica. Y queremos ver si es que vamos a poder soportar los mil usuarios promedio que tenemos concurrentes de matrícula. ¿Qué probarían para poder...? apuntar esos mil usuarios concurrentes de matrícula que esperamos.
+01:22:39 Speaker 2: Estrés. ¿Alguien más? Salvador, opina por estrés. De carga, dice Adrián. Salvador, ¿por qué estrés? Gracias. Si quieres saber tu micrófono, hay una alta carga de usuarios operando concurrentemente. Ya. Y Adrián, ¿por qué carga? Porque me siento que hay una cantidad de usuarios promedio que ya se conoce.
+01:23:37 Speaker 1: Un objetivo, ¿no? Sí.
+01:23:41 Speaker 2: Sí, va por ahí. Justo va por ahí.
+01:23:44 Speaker 1: Ya tenemos el objetivo. a cuánto queremos llegar. En estrés vendría a ser por ejemplo esta. Hemos hecho una campaña para ver cuántos estudiantes se suman a una charla que queremos hacer. No sabemos cuántos van a llegar. Queremos que en nuestra web vamos a ver hasta cuánto soporta. Entonces hay que hacer el objetivo por ahí sería llegar a o no sé, esperaremos entre 100 a 1000. Entonces hay que ver cómo se comporta en esta plaza de estrés 100, 200, hasta 1000.
+01:24:13 Speaker 2: Entonces la estrés es esa. No tienes claro cuál es el
+01:24:16 Speaker 1: objetivo o quieres probar algo más allá del objetivo para ver hasta cuánto llegarías. Algo que no comenté antes, pero algo clásico con las pruebas de carga de estrés es que va a generar mucha data, ¿cierto? Va a generar muchas transacciones y si son transacciones de insertar información, va a quedar mucha data insertada.
+01:24:41 Speaker 2: Entonces... la
+01:24:44 Speaker 1: gran mayoría de empresas que prueban performance pasa lo mismo. La data queda ahí en ese ambiente y no se borra.
+01:24:52 Speaker 2: Entonces, una buena práctica es esa, tener que
+01:24:57 Speaker 1: toda esta prueba de carga vaya con los datos identificados para luego lanzar procesos que la borren.
+01:25:04 Speaker 2: Eso es importante.
+01:25:06 Speaker 1: Si puedes borrar toda la base, mejor, pero si no, tener preparado ahí cómo vas a borrar específicamente esas.
+01:25:15 Speaker 2: con esa de carga y estrés aunque lo tengan claro ¿les queda más claro ahora? carga y estrés dale
+01:25:24 Speaker 1: si alguien más tiene duda repetimos otros ejemplos ok
+01:25:38 Speaker 2: bueno
+01:25:39 Speaker 1: nos quedan un par de láminas nada más para ir con la parte del
+01:25:41 Speaker 2: repaso por el examen Bueno, más que repaso es
+01:25:44 Speaker 1: ir al caso. Que ustedes mismos intenten
+01:25:48 Speaker 2: y luego veamos juntos. Entonces,
+01:25:53 Speaker 1: hemos visto pruebas unitarias, pruebas de integración, hay que publicar el artefacto, hay que desplegar certificación, luego corren las pruebas en tu ento. Pero ¿cómo puedo orquestar todo esto con el pipeline? ¿Qué cosa corro en paralelo? ¿Qué cosa corro secuencial? ¿Cuándo ocurre? una cosa cuando otra. Lo primero es lo que podamos correr más rápido
+01:26:17 Speaker 2: y
+01:26:20 Speaker 1: lo que normalmente más falla que correr primero.
+01:26:23 Speaker 2: Entonces ahí
+01:26:25 Speaker 1: aparecen las pruebas unitarias y las integraciones acotadas que corran lo antes posible. Lo otro es lo que es independiente puede correr paralelo. Las pruebas unitarias no dependen de integración y viceversa. Entonces pueden correr en paralelo sin problema. y luego las end to end lo ideal también es que como son las que más demoran que se puedan correr
+01:26:49 Speaker 2: estas de acá aparecen en paralelo pero
+01:26:53 Speaker 1: va a depender un poco de la estrategia que queramos hacer ahí yo les mostré en el pipeline que tú podías correr todas podías correr solo una de las dos
+01:27:02 Speaker 2: entonces pero
+01:27:06 Speaker 1: esto acá que está visualmente puesto así
+01:27:10 Speaker 2: Cuando
+01:27:11 Speaker 1: tú mandas a correr, si yo le ponía a correr todas, no quiere decir de que primero corra...
+01:27:16 Speaker 2: Bueno, depende un poco de la configuración.
+01:27:18 Speaker 1: Pero el mismo framework de las pruebas end-to-end puede paralelizar pruebas internamente. Para mejorar el tiempo de respuesta. El tiempo de respuesta de la prueba.
+01:27:36 Speaker 2: Entonces eso que también lo tengan presente.
+01:27:39 Speaker 1: dentro de la configuración, se podría
+01:27:40 Speaker 2: paralelizar.
+01:27:42 Speaker 1: Entonces, los conceptos que quiero que siguen es probémoslo antes lo que es más rápido, paralelicemos lo que no tiene dependencias.
+01:27:52 Speaker 2: Es principalmente eso. Acá hay un ejemplo de,
+01:27:59 Speaker 1: es muy ilustrativo, de, ok, por acá tengo el job que corre las unitarias, la que corre las integración,
+01:28:06 Speaker 2: voy a correr la publicación,
+01:28:08 Speaker 1: pero este... tienen como prerequisito que estas dos hayan corrido bien, si no, no debería desplegar. Entonces, publicar, perdón. Luego el desplegar depende del publicar y lo hace con el digest, ¿no? Este es el digest que toma para poder hacer el despliegue. Las pruebas end-to-end corren después de que se desplegue su certificación, aunque yo les he dicho acá que normalmente esta se corre a
+01:28:33 Speaker 2: demanda,
+01:28:33 Speaker 1: pero bueno, no sé qué hacer con una idea. acá yo puedo ir corriendo las
+01:28:39 Speaker 2: diferentes grupos de pruebas.
+01:28:43 Speaker 1: Y finalmente se despliega producción.
+01:28:48 Speaker 2: Es un poco como para
+01:28:49 Speaker 1: entender el circuito cómo quedaría conceptualmente.
+01:28:57 Speaker 2: Ahora,
+01:28:58 Speaker 1: lo más importante. Che, ya lo tengo automatizado. No sé si se acuerdan cuando hablábamos, pero si no hay nada que... no detiene,
+01:29:07 Speaker 2: no para.
+01:29:08 Speaker 1: Cuando algo falla, no tiene sentido.
+01:29:11 Speaker 2: Entonces,
+01:29:12 Speaker 1: si falla una prueba unitaria o de integración, detengo la publicación.
+01:29:19 Speaker 2: Ya no publico el artefacto.
+01:29:23 Speaker 1: Si corro mis pruebas unitarias, y esto lo paso por el análisis de calidad de SolarCube o
+01:29:29 Speaker 2: SolarCloud, y no
+01:29:31 Speaker 1: cumplo con el umbral de automatización de prueba que espero, lo detengo. tampoco publico
+01:29:37 Speaker 2: con
+01:29:39 Speaker 1: el Quality Gate que vimos en la parte de CI si fallo en end to end esto ya está desplegado en certificación entonces lo que debería parar es la ida a
+01:29:51 Speaker 2: producción vamos a verlo aquí si
+01:29:54 Speaker 1: fallo en end to end ya
+01:29:56 Speaker 2: no promovo producción si
+01:30:00 Speaker 1: fallo en unitarias ya no publico
+01:30:02 Speaker 2: si fallo en integración ya no publico acá
+01:30:09 Speaker 1: no se vieron las de performance perdón
+01:30:10 Speaker 2: pero acá normalmente acá también
+01:30:12 Speaker 1: hay una parte previa que se ven las de performance antes de promover la producción entonces
+01:30:18 Speaker 2: esa sería esta de acá de promoción acá
+01:30:21 Speaker 1: hay una en cuarentena esta no la mencioné
+01:30:24 Speaker 2: tú
+01:30:28 Speaker 1: puedes taggear pruebas con que sean solo informativas por más que falle no te pare en las de end to end
+01:30:35 Speaker 2: también esto
+01:30:37 Speaker 1: es para pruebas que son por ejemplo que tienen un ambiente dependiente que eventualmente ese ambiente falla
+01:30:44 Speaker 2: entonces como
+01:30:46 Speaker 1: es un falso positivo lo ponemos como informativo nomás y eso se revisa luego
+01:30:49 Speaker 2: eso
+01:30:52 Speaker 1: un poco también lo tengan en cuenta que es una
+01:30:54 Speaker 2: opción dentro de las pruebas de end to end y
+01:30:57 Speaker 1: listo ya probé todo paso producción corro las pruebas de humo para ver que producción está bien o no
+01:31:03 Speaker 2: si está mal es muy probable que haga el rollback o
+01:31:07 Speaker 1: si no si tengo tiempo de repararlo bueno repararemos lo
+01:31:09 Speaker 2: que hay que reparar y como
+01:31:12 Speaker 1: rollback vuelvo al digest de la versión del último display anterior
+01:31:15 Speaker 2: y
+01:31:19 Speaker 1: este dice sin aprobación porque la idea es que sea automático es
+01:31:22 Speaker 2: el ideal pero la verdad muy pocos
+01:31:26 Speaker 1: procesos todavía están en ese nivel para hacerlo
+01:31:28 Speaker 2: de esa manera automatizada entonces vamos a hacer un
+01:31:40 Speaker 1: poco lo que nos llevamos de hoy pero creo que nos vamos directo a la no sé si tienen preguntas de la sesión de hoy
+01:32:01 Speaker 2: Bueno, si no hay preguntas, van
+01:32:12 Speaker 1: a ver que en Paideia he
+01:32:14 Speaker 2: creado acá en recursos adicionales en preparación examen parcial. Si gustan, ahí les paso el indirecto por acá.
+01:32:26 Speaker 1: He colgado el caso modelo y el material de consulta. les voy a dar en el examen
+01:32:32 Speaker 2: este
+01:32:36 Speaker 1: es el material que les voy a dar impreso en el examen básicamente tiene la información de teoría de todos los puntos que hemos visto que van a entrar en el examen
+01:32:44 Speaker 2: y
+01:32:47 Speaker 1: este es el caso vamos a ver un ratito juntos y luego la idea es somos 24 los voy a chocolatear en
+01:32:58 Speaker 2: grupos aleatorios y Y la
+01:33:01 Speaker 1: idea es que se tomen media
+01:33:04 Speaker 2: hora para resolver el caso. O los casos. Vamos a ver si son medio o cuarenta minutos. Depende de cómo vamos.
+01:33:12 Speaker 1: Y luego vengan y
+01:33:14 Speaker 2: me traigan sus dudas. Igual yo voy a ir por ahí paseándome por los grupos. A ver si tienen dudas.
+01:33:24 Speaker 1: Y la idea es que luego todos volvamos y veamos la resolución juntos.
+01:33:28 Speaker 2: Esa es la idea.
+01:33:33 Speaker 1: Entonces, veamos un ratito el caso juntos y luego ya vamos a los grupos. Bueno, esta es una bodega online, que es una venta de abarrotes por una aplicación. Entonces, tienen un servicio de pedidos en contenedores, en Python, y tienen por ahí un servicio de inventario. tiene otro equipo.
+01:34:00 Speaker 2: No es este equipo que estamos hablando ahora.
+01:34:03 Speaker 1: Seis desarrolladores trabajan en ramas
+01:34:05 Speaker 2: feature, funcionalidad, que duran unas dos semanas más o menos.
+01:34:11 Speaker 1: Tienen dos personas de Cuba que validan a mano en un ambiente de certificación que es compartido. Y el área de seguridad revisa manualmente cada salida y responde en un plazo de tres días. El despliegue lo ejecuta una persona de operaciones con un proceso. procedimiento escrito. Acá nos están describiendo cuál es el proceso de desarrollo que siguen. ¿Cuáles son los tiempos que normalmente demora este proceso? El refinamiento. Recordamos que es PT. ¿Alguno se acuerda que es PT? Cuando vimos el BCM,
+01:35:01 Speaker 2: Value Stream Mapping, ¿qué cosa era el PT? Process Time.
+01:35:05 Speaker 1: Bien googleado, bien googleado.
+01:35:08 Speaker 2: El LT. ¿Qué significa LT? Lead Time. Dale.
+01:35:15 Speaker 1: ¿Cuál es la diferencia entre PT y LT? Les voy a dar un ejemplo bien práctico.
+01:35:31 Speaker 2: Digamos que
+01:35:31 Speaker 1: el proceso que tienen ustedes es
+01:35:33 Speaker 2: asistir a clase, a esta clase.
+01:35:35 Speaker 1: Y esta clase demora tres horas.
+01:35:39 Speaker 2: Pero ustedes,
+01:35:41 Speaker 1: entre salir de su casa, ir a
+01:35:43 Speaker 2: la clase y regresar a su casa,
+01:35:45 Speaker 1: en total son cinco horas.
+01:35:47 Speaker 2: Entre ir, venir y
+01:35:49 Speaker 1: tomar la clase.
+01:35:49 Speaker 2: Pero la clase demora tres horas.
+01:35:52 Speaker 1: ¿Cuál sería el process time y cuál sería el lead time? Si su objetivo es tener la clase.
+01:35:58 Speaker 2: El PD sería 3 horas y el ITAM sería 5 horas, porque se le añade tiempo de espera. Exactamente. Exactamente. Gracias, Jorge. Dale, entonces. Ah,
+01:36:15 Speaker 1: y ese indicador que
+01:36:18 Speaker 2: está por acá, el CNI.
+01:36:21 Speaker 1: ¿Se acuerdan de este indicador que es lo que nos
+01:36:25 Speaker 2: da? cumplimiento de precisión exacto la el el que tan efectivos
+01:36:40 Speaker 1: somos ¿no? pues digamos que
+01:36:41 Speaker 2: el el
+01:36:45 Speaker 1: 80% de las veces no llevo a la clase entonces
+01:36:49 Speaker 2: perdón al revés el 80% de las veces si voy a la clase ese sería mi mi CDN
+01:36:56 Speaker 1: ¿Qué pasa en ese 20%? Me encontré con una pata, no fui...
+01:37:01 Speaker 2: Se
+01:37:03 Speaker 1: chocó mi carro, ya no llegué.
+01:37:05 Speaker 2: Entonces ahí es un poco la tasa
+01:37:09 Speaker 1: de efectividad de
+01:37:09 Speaker 2: esta tarea.
+01:37:12 Speaker 1: Entonces en el refinamiento, en este caso ¿qué significa esto del refinamiento? El process time son 3 horas, el lead time son 48 y tiene una efectividad del 80%. ¿Qué quiere decir? Que el 20% de
+01:37:24 Speaker 2: las... tareas
+01:37:27 Speaker 1: tienen que volver a pasar por refinamiento. ¿Sí? Tienen que volver a pasar por ese proceso. Desarrollo, son 12 horas de process time, 40 de lead time y el 90% va bien. Quiere decir que el 10% tiene
+01:37:42 Speaker 2: bugs que
+01:37:43 Speaker 1: tienen que volver a pasar por desarrollo. Revisión de código, 2 horas, 30 horas, 85%. Cuba, 8, 96, 60 y así. ¿Sí?
+01:37:55 Speaker 2: cada una de las partes del proceso ahora nos
+01:37:59 Speaker 1: dan los datos del último mes las
+01:38:01 Speaker 2: últimas cuatro semanas se
+01:38:04 Speaker 1: hicieron seis desplegues a producción y
+01:38:06 Speaker 2: uno
+01:38:07 Speaker 1: requirió rollback y ese incidente tardó seis horas en restaurarse y tuvimos diez commits con una mediana de tiempo de once días para
+01:38:21 Speaker 2: llegar a producción
+01:38:29 Speaker 1: Si se dan estos datos es muy probable que te van a pedir las métricas ¿Se acuerdan de esas métricas cómo se llamaban?
+01:38:38 Speaker 2: Dora Las métricas Dora, exactamente Vamos adelante, vamos a ver qué
+01:38:43 Speaker 1: métrica nos piden ¿Veis? Aquí hay más datos, acá
+01:38:47 Speaker 2: nos dan cuál es el pylon actual ¿Sí? Eso
+01:38:52 Speaker 1: ya lo dejo para que analicen luego pero
+01:38:53 Speaker 2: acá nos dan el penline actual nos dan el docker file actual y un dato adicional te
+01:39:01 Speaker 1: dicen oye en 5 semanas va a llegar el cyberwow y esperan tener un pico de 5 veces el tráfico normal entonces
+01:39:10 Speaker 2: para esa fecha necesitan reemplazar en su sistema la
+01:39:14 Speaker 1: columna dirección de la base de datos por las datos separados calle,
+01:39:21 Speaker 2: número, distrito
+01:39:23 Speaker 1: para asignar repartidores por zona para poder distribuirlos mejor entonces el equipo propone una migración que elimina dirección y agrega las tres columnas nuevas y la va a desplegar con un reemplazo progresivo ¿se acuerdan? el rolling update a las 9 de la mañana el primer día es el
+01:39:42 Speaker 2: plan ok en el examen vamos a tener un caso Obligatorio.
+01:39:52 Speaker 1: De unos 8 puntos. Que se simula esto.
+01:39:56 Speaker 2: Y otros casos más que son opcionales. Que en total sumarán entre ellos
+01:40:01 Speaker 1: 12 puntos restantes.
+01:40:03 Speaker 2: Entonces acá
+01:40:04 Speaker 1: les traigo este ejemplo del principal caso.
+01:40:08 Speaker 2: Con preguntas. Y acá abajo hay otro
+01:40:11 Speaker 1: caso. Que en este caso les he traído uno solo. No les he dado otras opciones. Pero este es un caso más chiquito. Que es el que tiene 4 puntos de puntaje. Para que tengan una idea. Por
+01:40:21 Speaker 2: eso van a haber acá separado. Entonces,
+01:40:23 Speaker 1: este primero,
+01:40:24 Speaker 2: lo
+01:40:27 Speaker 1: primero que nos piden es diagramar el VarioSphere Mapping. Calcula cuál es la eficiencia total
+01:40:33 Speaker 2: del flujo y
+01:40:35 Speaker 1: dónde intervendrían primero. En base a los datos de la tabla. ¿Cuál es el que debería intervenir primero como principal problemática? Hay que medir las métricas DORA, clasificar. ¿Se acuerdan que habían como...? ahí en el material de consulta lo van a poder encontrar, pero había como una Dora, es un estudio de Google, en el cual categorizan las empresas por ciertos niveles. Entonces, ¿qué nivel es el que corresponde para esta empresa?
+01:41:05 Speaker 2: En base a eso y
+01:41:06 Speaker 1: a las métricas que han medido. ¿Y cuál es la métrica más crítica
+01:41:11 Speaker 2: de
+01:41:15 Speaker 1: cara al CyberWall? ¿Y cómo se relaciona esto con el Value Seed Mapping? en el punto anterior. Luego, en la parte más técnica, que es del pipeline, identifiquen dos defectos. ¿Cuál es el problema y cuál
+01:41:29 Speaker 2: podría ser la forma de solucionarlo?
+01:41:32 Speaker 1: Esto es descriptivo. No es necesario que la sintaxis del pipeline la coloquen, pero es describir cuál es el problema y cómo deberían solucionarlo. Y lo mismo con el Dockerfile. ¿Cuáles son los defectos? ¿Cuál es el impacto y cómo corregirlo? Lo mismo, no tiene que ser la sintaxis técnica de cómo ponerlo en el Dockerfile, sino cómo se debería solucionarse.
+01:41:59 Speaker 2: Y
+01:42:00 Speaker 1: por último,
+01:42:01 Speaker 2: de cara al cambio que tienen que hacer y al despliegue en CyberWalk,
+01:42:07 Speaker 1: con esa forma que están planteando, ¿qué cosa puede fallar? ¿Y cómo deberían hacer el
+01:42:16 Speaker 2: cambio en vez de hacerlo de esa manera?
+01:42:18 Speaker 1: qué cosas propondrían y
+01:42:23 Speaker 2: qué métrica revisarían
+01:42:28 Speaker 1: durante el CyberWall para poder determinar si vuelven a la versión anterior del despliegue o no esto apunta hay un punto acá que si quiero alineamos para que no no, no hacemos el paso el día del CyberWall lo hacemos un día antes están poniendo que llegan el día del CyberWall porque no llegan al pase antes. Entonces, por eso están apuntando, esa fecha del pase igual se mantiene. El tema es mantener esa condición, ¿qué hacemos para poder
+01:42:58 Speaker 2: sortearlo de la mejor manera?
+01:43:01 Speaker 1: Digo para que no vayan a decir, ah, no, el pase antes. Ya. ¿Hasta acá alguna pregunta del primer caso? me va a pasar por cada
+01:43:17 Speaker 2: grupo y
+01:43:20 Speaker 1: la otra es
+01:43:26 Speaker 2: es un caso más chiquitito bueno
+01:43:36 Speaker 1: sobre el mismo punto anterior se quiere revisar la perdón se quiere reemplazar la revisión manual de seguridad,
+01:43:47 Speaker 2: ¿sí?
+01:43:52 Speaker 1: Y en la primera ejecución salen todos estos hallazgos. Para cada una hay que determinar qué hacemos.
+01:44:02 Speaker 2: Si
+01:44:02 Speaker 1: detenemos el pipeline, si registramos,
+01:44:05 Speaker 2: si requieren excepción,
+01:44:07 Speaker 1: ¿qué hacer? Y lo otro es, oye, ya la persona de seguridad ya no
+01:44:12 Speaker 2: va a hacer estas pruebas. Ahora lo hace el pipeline.
+01:44:14 Speaker 1: Entonces, ahora, ¿qué cosa debería ser? ¿Cuál debería ser el nuevo papel del área de seguridad en vez de
+01:44:21 Speaker 2: esta ejecución que está haciendo?
+01:44:25 Speaker 1: Y un punto adicional, que es estos controles que están acá definidos con el NIST.
+01:44:31 Speaker 2: Ahí les he juntado el NIST a
+01:44:33 Speaker 1: una parte.
+01:44:34 Speaker 2: ¿Con cuál se relacionan? Vamos a ver acá al final. Van a encontrar.
+01:44:41 Speaker 1: Acá está lo que es el NIST.
+01:44:44 Speaker 2: con sus descripciones entonces la
+01:44:47 Speaker 1: idea es que puedan hacer el match de qué práctica del
+01:44:51 Speaker 2: NIST
+01:44:51 Speaker 1: se relaciona con estos controles que están acá configurados
+01:44:55 Speaker 2: recordemos
+01:45:03 Speaker 1: que el NIST es el
+01:45:05 Speaker 2: como
+01:45:09 Speaker 1: que la lista de buenas prácticas de seguridad que el Departamento de Defensa de Estados Unidos hizo y que es el estándar que utilizan todos los equipos de desarrollo del mundo y de seguridad para poder evaluar los procesos de desarrollo.
+01:45:23 Speaker 2: Eso es el NIST.
+01:45:25 Speaker 1: Recuerden un poquito ahí. Lo mencionamos ligero, pero la idea
+01:45:29 Speaker 2: es cómo aplicarlo. ¿Nuestra State tiene alguna pregunta? ¿Por ahora? ¿O no? Entonces...
+01:45:44 Speaker 1: Tienen ambos documentos
+01:45:45 Speaker 2: en el
+01:45:46 Speaker 1: Paideia.
+01:45:51 Speaker 2: La idea es que los descargue y se van a trabajar en ellos.
+01:45:57 Speaker 1: Sí, yo justo he tratado de hacer que el material de consulta sea lo más pequeño posible en hojas para poder entregarlos ese día. Sí, el examen va a ser a mano.
+01:46:18 Speaker 2: Ya. Estamos entonces.
+01:46:20 Speaker 1: Mando una vez a grupos para que puedan organizarse y que les dé tiempo. Aprovechen, porque la idea es que hagan este ejercicio. Sé que lo más fácil es copy-paste, copy-paste y resuélvemelo y lo traigo resuelto.
+01:46:33 Speaker 2: Pero no van a tener ahí el examen, así que les
+01:46:36 Speaker 1: sugiero que no hagan eso. Traten de hacerlo
+01:46:39 Speaker 2: por ustedes mismos.
+01:46:41 Speaker 1: Y que luego ya este...
+01:46:43 Speaker 2: Luego vamos a resolucionarlo juntos.
+01:46:52 Speaker: Ya. Entonces... Ya.
+01:47:05 Speaker 1: Estoy chocolateándolos en cinco grupos.
+01:47:11 Speaker 2: Así que a
+01:47:12 Speaker 1: las personas que les toque es el destino.
+01:47:14 Speaker 2: Aprovechalos. Están saliendo algunos. Bueno. Ahí van. Nos vemos. Perdón, antes de mandarlos. Nos vemos de
+01:47:29 Speaker 1: vuelta 9
+01:47:31 Speaker 2: y
+01:47:34 Speaker 1: 20. Tengo media hora clavada.
+01:47:37 Speaker 2: ¿Ya? Para ver el solucionario al final.
+01:47:41 Speaker 1: ¿Listo? Suerte.
+01:47:52 Speaker 2: Un segundito, perdón.
+01:48:00 Speaker 1: Ya está. Está configurado. Ahora sí, ahí va.
+01:48:04 Speaker 2: Ah, ¿se resuelve el caso? Sí, ambos.
+01:48:07 Speaker 1: Empiecen por el A, que es... el
+01:48:09 Speaker 2: que más carne tiene y
+01:48:10 Speaker 1: le vuelve
+01:48:11 Speaker 2: es la sugerencia
+01:48:13 Speaker 1: dale, ahora sí
+01:49:49 Speaker: Gracias por ver el video. Gracias por ver el video. Gracias por ver el video.
+01:51:17 Speaker: Gracias por ver el video. Gracias por ver el video. Gracias por ver el video. Gracias por ver el video.
+02:23:53 Speaker 2: ¿Qué tal? ¿Cómo lo fue? Sí, Jorge, dale. Una pregunta. ¿Es necesario que le vamos a ver los controles o las prácticas de NIST para el examen?
+02:24:09 Speaker 1: ¿Está en el material?
+02:24:11 Speaker 2: ¿En la última parte?
+02:24:12 Speaker 1: ¿Está en la lista de los controles NIST? lo bueno también es que esta sesión ha sido que se familiaricen con el material para que les sea más fácil y el día de que
+02:24:30 Speaker 2: lleguen
+02:24:30 Speaker 1: no les tomen su presencia de dónde encuentran qué en el material es absolutamente la idea ¿qué tal les pareció? ¿difícil? para hacerlo sencillo mi
+02:24:51 Speaker 2: idea es que ustedes no hayan de material yo les voy a dar las hojas junto con el examen
+02:25:01 Speaker 1: Y sí, es el nuevo material que se puede usar durante el examen,
+02:25:04 Speaker 2: que les voy a compartir. ¿Usted lo va a imprimir, profe, en material? Sí, eso lo comparto. La parte del código, profe, está un poco, o sea, acordarse de las buenas prácticas de Python. ni del Dockerfile. Ahí se me complicó un poco acordarlo.
+02:25:38 Speaker 1: Por eso están los comentarios en
+02:25:40 Speaker 2: el...
+02:25:42 Speaker 1: Mi idea es más que
+02:25:46 Speaker 2: confundirnos y
+02:25:48 Speaker 1: caer en el tema de la parte técnica,
+02:25:54 Speaker 2: es como tener
+02:25:55 Speaker 1: claro ahí la parte... el porqué de lo que está detrás no quiero decir como la teoría o la justificación entonces voy a mostrarles el
+02:26:07 Speaker 2: solucionario para verlos juntos y cualquier cosa ¿me ve mi pantalla? improper ya Ok. Uy, ¿por qué no salió acá? Ya no salió el graficito. Dame un segundito, perdón. Tenía otra versión que había hecho que me gustaba más con el... ¿Qué? No salió. Bueno, ya lo voy a copiar de acá de otro que tenía. Un segundito. Y ahora sí. Ya sé el Word, ¿cierto?
+02:27:51 Speaker: Sí. Perdón,
+02:27:53 Speaker 1: otra vez salió el anterior. Lo que pasa es que acá le va a salir otro número de otras cosas y no van a confundir todos más. Porque tenía dos versiones de esto.
+02:28:03 Speaker 2: Tengo que jalarlo del otro lado. Un segundito. Gracias. Ahora sí.
+02:29:09 Speaker 1: Vamos por el proceso. Se interesa mucho que puedan aprender a diagramar el proceso del BCM. Este es uno de los... parte del corazón del curso.
+02:29:28 Speaker 2: Entonces, uno de los puntos importantes es que puedan graficar esto. Sí, cada una de las actividades, cada uno con su... Hay
+02:29:34 Speaker 1: diferentes formatos, lo que fuera. No interesa lo bonito que esté, pero interesa que entiendan la
+02:29:42 Speaker 2: idea
+02:29:45 Speaker 1: que es simbolizar cada actividad, simbolizar las esperas entre cada uno. Y si le pueden agregar esta línea de tiempo, les voy a ayudar muchísimo también a entender qué es lo que va pasando durante el proceso. Entonces, espero que lo tengan ahí también. un mapeado.
+02:30:06 Speaker 2: Entonces acá están marcadas cada una de las esperas
+02:30:09 Speaker 1: que se va dando de cada uno de los cuadraditos. Se puede poner arriba o al costado, donde fuera. Pero la idea es que esté ahí identificado. He recomendado los triángulos, no es obligatorio. Si tienen un campito más que dice tiempo
+02:30:25 Speaker 2: de espera, ya está. No pasa nada.
+02:30:29 Speaker 1: momento les toca hacer un assessment de DevOps para una empresa,
+02:30:32 Speaker 2: seguro que tengan que hacer un diagrama más así.
+02:30:39 Speaker 1: Para llegar al examen, con tal de que lo pongan,
+02:30:41 Speaker 2: que identifiquen cuál es la espera, todo bien. Entonces, bueno, la eficiencia de flujo,
+02:30:51 Speaker 1: con esto, teníamos un tiempo total de process time de 30 y un lead time de 300. 12
+02:30:59 Speaker 2: entonces lo que nos daba una
+02:31:03 Speaker 1: eficiencia de flujo de 9.6 es bajísimo hay demasiadas esperas en este proceso eso ya lo vimos
+02:31:14 Speaker 2: el que se miraba el más largo es el Cuba si
+02:31:22 Speaker 1: alguno tiene alguna duda algo
+02:31:23 Speaker 2: que le salió diferente y
+02:31:26 Speaker 1: que se da cuenta que cree
+02:31:28 Speaker 2: que Hay algo que no le queda claro, avisa. Entonces acá el de Cuba era el
+02:31:35 Speaker 1: que mayor espera tenía y además su porcentaje de eficiencia es 60%, ¿no?
+02:31:44 Speaker 2: Entonces hay
+02:31:46 Speaker 1: muchas que vuelven a la etapa anterior o
+02:31:48 Speaker 2: se tienen que reprocesar nuevamente
+02:31:52 Speaker 1: en ese punto, ¿no? Entonces hay muchas cosas que están cayendo ahí.
+02:31:57 Speaker 2: se podrían hacer automatizar pruebas.
+02:32:00 Speaker 1: Sobre todo, ¿con cuáles empezamos a automatizar?
+02:32:04 Speaker 2: ¿Cuál sugerirían? ¿Cuál es la primera prueba que se automatiza siempre? Las unidades. Las unidades. Bueno, acá ponen algo de ambiente efímero, pero eso no lo hemos visto en muchas clases.
+02:32:20 Speaker 1: Vimos algo de pasar
+02:32:21 Speaker 2: las pruebas al pipeline y que el pipeline simule un ambiente, ¿no?
+02:32:24 Speaker 1: Pero no sé si alguien se ha familiarizado. con este ambiente efímero, ¿qué significa?
+02:32:30 Speaker 2: ¿Eso era? ¿Un sandbox?
+02:32:36 Speaker 1: Un sandbox es más como que existe un punto, pero un ambiente efímero es como lo levantas al vuelo, ejecutas lo que necesites y luego lo destruyes.
+02:32:44 Speaker 2: Es un poco el ambiente efímero y tu mismo pipeline lo hace.
+02:32:52 Speaker 1: Pero básicamente será la automatización de
+02:32:54 Speaker 2: pruebas. Ese es el punto importante.
+02:33:03 Speaker 1: luego está
+02:33:04 Speaker 2: segunda prioridad válida ok y
+02:33:09 Speaker 1: luego de la parte de Cuba vendría la parte de
+02:33:13 Speaker 2: seguridad el
+02:33:17 Speaker 1: segundo punto que también le agrega bastante y en los comentarios dicen que todas las pruebas son manuales y se demoran X días
+02:33:25 Speaker 2: en hacer ciertas cosas si
+02:33:31 Speaker 1: vamos a las métricas Dora la
+02:33:33 Speaker 2: frecuencia de despliegue
+02:33:34 Speaker 1: teníamos
+02:33:35 Speaker 2: esto acá es lo que no se actualizó bien porque
+02:33:42 Speaker 1: quedó en 6 es que antes el caso salió por trimestre y no por mes y yo lo cambié que sea por mes
+02:33:49 Speaker 2: correctamente la frecuencia de despliegue eran 6 por cuatro semanas, ¿cierto? Sí, profe. Sí, profe. Chévere. Ok.
+02:34:06 Speaker 1: Entonces será uno punto algo al
+02:34:10 Speaker 2: mes, ¿no?
+02:34:13 Speaker 1: ¿En qué nivel se sitúa esto?
+02:34:15 Speaker 2: Debe ser... MediVol, ¿no? No creo que sea alto. Profe, ¿usted cómo define MediVol? Según los cuadrantes de Dora que están... Por aquí. Acá San. Ese es el mapa. Gracias. Entonces. Ese sería.
+02:34:51 Speaker 1: Una vez por semana o el mes. Medio.
+02:34:54 Speaker 2: Entonces cae acá. Igual cae acá. Cae en medio.
+02:35:00 Speaker 1: El lead time, 11 días. También queda ahí en medio. Claro, porque es entre una semana y un mes. Tiempo de restauración. Tiempo de restauración, 6 horas. Entonces este sí es alto, porque es menos de un día.
+02:35:29 Speaker 2: Este es tiempo de resolución alto.
+02:35:31 Speaker 1: Tasa de falla 25%.
+02:35:34 Speaker 2: Esta
+02:35:36 Speaker 1: sí está mal, perdón. Acá... José, me parece la idea de esta simulación.
+02:35:41 Speaker 2: De una vez les voy a colocar acá los porcentajes. Lo actualizo. Si no, pues tres... Profe, usted le colocó un cuarto y en mi equipo le colocamos un... sexto. Es un sexto. Ajá.
+02:36:04 Speaker 1: Sí, sí, es por el cambio que hice antes que no se
+02:36:06 Speaker 2: visualizó en esta versión. Sí, es un sexto. Como trece algo, ¿no? Catorce algo. Ya. Quince. Quince algo.
+02:36:32 Speaker 1: Ya. Es un poco las métricas y es un poco la idea de lo que alzamos con esta matriz de Dora, ¿sí? Es como lo catalogamos.
+02:36:43 Speaker 2: Ya, ahora. ¿Cuáles son las métricas críticas
+02:36:53 Speaker 1: para el CyberWall? La clase de fallo de cambio, ¿no? O sea... Si yo fallo mucho. En mis cambios. Le agrego riesgo al saber wow.
+02:37:06 Speaker 2: Ese es.
+02:37:11 Speaker 1: Esa es un poco la idea. Y el otro punto es la restauración.
+02:37:20 Speaker 2: Si algo.
+02:37:23 Speaker 1: Si falla el pase. 6 horas en recuperarse. Recordemos que tenemos que hacer un paso a producción para el saber wow. Entonces, ¿qué probabilidad hay de que falle mi pase?
+02:37:36 Speaker 2: Es esta, la probabilidad de que falle mi pase. Bueno, perdón, este es... Sí, esta es la probabilidad de que falle mi pase. Entonces, este... Y en caso falle, ese es el tiempo que yo voy a morar
+02:37:50 Speaker 1: en recuperarme de ese fallo.
+02:37:54 Speaker 2: Entonces, esas son las dos métricas. de Galsabow
+02:37:56 Speaker 1: de Dora que nos importan. Y ahora, ¿cómo se relaciona con el BCM?
+02:38:02 Speaker 2: Principalmente es con el lead time.
+02:38:05 Speaker 1: Bueno, acá uno está en horas, el otro está en días, pero más o menos aproximadamente
+02:38:09 Speaker 2: sumando las horas del lead
+02:38:14 Speaker 1: time del proceso te
+02:38:16 Speaker 2: iba a dar
+02:38:17 Speaker 1: igual los 11 días. Por ahí estaba la relación. Pero sobre todo el tema conceptual es
+02:38:22 Speaker 2: ese.
+02:38:23 Speaker 1: El proceso. lo que nos da ese lead time, que acá se iguala con ese lead time.
+02:38:29 Speaker 2: Justo uno de los grupos me
+02:38:31 Speaker 1: preguntó, me dijo, y el lead time yo lo he configurado de acá,
+02:38:36 Speaker 2: sacando todos estos. Entonces,
+02:38:40 Speaker 1: ¿para qué uso esta otra métrica que me daba de los commits?
+02:38:45 Speaker 2: Entonces, justo
+02:38:48 Speaker 1: ahí está el link de
+02:38:49 Speaker 2: las dos.
+02:38:50 Speaker 1: Se puede sacar las dos maneras, pero ¿cuál la diferencia? no tanto por el examen, pero sí para que
+02:38:55 Speaker 2: lo recuerden que como que lo tengan presente.
+02:38:59 Speaker 1: Recordemos que poder medir todo el proceso en el día a día del trabajo es complejo y demora. Es entrevistar personas, revisar datos y anotar, anotar, anotar, anotar, anotar. Eso es, así se levanta el Valencia Mapping. Entrevistas y sacar información uno a uno y herramientas. Toma tiempo
+02:39:21 Speaker 2: y muchas horas.
+02:39:23 Speaker 1: Esto toma tiempo calendario y también horas de esfuerzo de obra. Mientras que las métricas Dora
+02:39:29 Speaker 2: es
+02:39:30 Speaker 1: ya tienes tu proceso funcionando, ya se ha automatizado o no, pero ya tienes las herramientas que soportan tu proceso.
+02:39:39 Speaker 2: Entonces,
+02:39:40 Speaker 1: de esas herramientas que soportan tu proceso es sacar los datos directamente. Y la idea es que eso sea automatizado. Entonces, con eso puedes tener ese termómetro en las métricas Dora constante. Lo ideal sería que sea mensual. O sea, mensual sabes cómo te están comportando las métricas DORA. En cambio, lo hace un mapping lo haces una vez cada X tiempo cuando quieres hacer un cambio importante en tu proceso.
+02:40:05 Speaker 2: Entonces,
+02:40:06 Speaker 1: de cara a eso, es
+02:40:07 Speaker 2: un
+02:40:09 Speaker 1: poco la diferencia. ¿Cuál es el que me está marcando realmente el dato fresco? Es la DORA.
+02:40:15 Speaker 2: Esa es la métrica que
+02:40:16 Speaker 1: debería ser el dato más fresco. Ahora, defectos del pipeline. Habían varios despedidos por cada uno. Básicamente uno era lo de las versiones fijas.
+02:40:32 Speaker 2: La verdad, voy a quitar este y voy a agregar. Este es el... Sí.
+02:40:40 Speaker 1: Ya. Algunos me comentaban hoy era... Es difícil
+02:40:42 Speaker 2: este... Entender
+02:40:45 Speaker 1: técnicamente, recordarnos técnicamente. Para eso justo le puse los comentarios. Los comentarios... pista así bien cercana de por
+02:40:54 Speaker 2: dónde va el tema pero
+02:40:56 Speaker 1: el tema es que le den la vuelta de ok ¿qué significa si me fijas?
+02:40:59 Speaker 2: ¿cómo lo trabusco?
+02:41:03 Speaker 1: ah bueno al docker no no le puse podría ver si le pongo un docker file podría ponerlo en los comentarios pero bueno hay unos que son evidentes como el password Voy a checar ahí que tantas pistas le pongo o no. Porque también dicen el material. El material también nos va a ayudar con eso. Ya. Entonces, bueno. Hay varios defectos.
+02:41:32 Speaker 2: Uno es lo de las librerías.
+02:41:35 Speaker 1: Se vuelve a construir cada
+02:41:36 Speaker 2: vez que vas a esperar producción.
+02:41:38 Speaker 1: El tag no lo tenías con el chat del commit, ¿no? Si no estaba con
+02:41:43 Speaker 2: el...
+02:41:44 Speaker 1: Bueno, ahí sí era un poco más técnico que era como con el ID de la ejecución del GitHub. como el GitHub number de
+02:41:50 Speaker 2: ejecución del pipeline.
+02:41:53 Speaker 1: Eso en el pipeline. Y en el Docker,
+02:41:56 Speaker 2: el
+02:42:00 Speaker 1: tema de la...
+02:42:02 Speaker 2: No, están acá. Están todos metidos acá.
+02:42:04 Speaker 1: El tema del imagen base que utiliza, como el latest,
+02:42:10 Speaker 2: se
+02:42:12 Speaker 1: están instalando herramientas en la propia imagen
+02:42:13 Speaker 2: y nos está declarando el user, por ejemplo.
+02:42:18 Speaker 1: escuché uno que también puso lo del push en todas las ramas y ese también es un defecto debería ser push solamente en main por ejemplo si va a ser cada producción que sea un poco más acotado ¿qué hacemos ahora con el paso a producción del cyber? recordemos que el rolling updates lo que hace es imaginemos que esta solución tiene varias copias de los servicios entonces voy desplegando una por una y el tiempo que se demora en desplegar esa una por una van a convivir por ese momento las dos versiones
+02:42:49 Speaker 2: entonces si
+02:42:53 Speaker 1: la migración elimina la dirección y pone el otro si es que llega una transacción a ese API que todavía no se ha ido actualizada por ese rolling update se
+02:43:04 Speaker 2: va a caer, va a fallar entonces porque
+02:43:09 Speaker 1: la columna ya no existe
+02:43:10 Speaker 2: entonces ese es el problema
+02:43:14 Speaker 1: entonces bueno la idea sería explicarlo antes
+02:43:17 Speaker 2: pero bueno como les comentaba tenemos
+02:43:19 Speaker 1: desigual esa restricción entonces ¿cuál sería la idea? primero es que los campos esta parte ya es como
+02:43:26 Speaker 2: sugerida pero no es como tan no
+02:43:28 Speaker 1: es que se solicite así lo que me interesa acá es el concepto de feature flag ¿alguno identificó el concepto de feature flag?
+02:43:37 Speaker 2: ¿se acuerdan lo que era feature flag? era Algo así que simplemente es una nueva funcionalidad. O sea, tenía que ver con un retorno que se activaba la nueva funcionalidad si es que funcionaba y si no funcionaba se quedaba la otra grana.
+02:43:58 Speaker 1: Sí, así eres con cuál habilitas. Las dos funcionalidades están presentes en el código.
+02:44:06 Speaker 2: Entonces, si el
+02:44:09 Speaker 1: flag está prendido, te vas por aquí y si está apagado, te vas por la anterior. de desprenderlo y si funciona todo bien lo dejas prendido y si falla simplemente cambias el flag y con eso sigue funcionando la aplicación en la versión anterior otra posible solución acá no sé si se acuerdan de los otros tipos de despliegue que teníamos además de rolling updates se acuerdan que teníamos el
+02:44:39 Speaker 2: canary release se
+02:44:41 Speaker 1: acuerdan que teníamos el Blue-green deployment.
+02:44:50 Speaker 2: Entonces, por ahí también puedo hacer un canary release para
+02:44:53 Speaker 1: este caso, mezclado tal vez con el feature flag, ¿no? Y el indicador que me dirían, por ahí escuché uno que me dijo este mismo dato, que es la
+02:45:05 Speaker 2: tasa de errores, ¿no? La tasa de error de la API,
+02:45:08 Speaker 1: ese sería el dato que tendría que estar viendo para
+02:45:10 Speaker 2: ver qué
+02:45:13 Speaker 1: tan bien está. yendo mi despliegue o no. Acá hay otro más que es
+02:45:16 Speaker 2: ya revisar la data que es
+02:45:17 Speaker 1: si los datos nuevos que estoy registrando están vacíos o no. Ese sería el caso uno.
+02:45:27 Speaker 2: El dos que
+02:45:28 Speaker 1: es más puntual
+02:45:29 Speaker 2: primero
+02:45:34 Speaker 1: la parte de secretos la decisión es detenerlo no podemos llevar secretos en el repo. segunda era voy a poner acá al costadito el
+02:45:45 Speaker 2: otro para tener exactamente porque
+02:45:55 Speaker 1: eran casos específicos entonces
+02:45:58 Speaker 2: por
+02:46:00 Speaker 1: un lado teníamos
+02:46:00 Speaker 2: secreto teniendo
+02:46:06 Speaker 1: la contraseña ahí
+02:46:08 Speaker 2: en un
+02:46:12 Speaker 1: En un cómic, entonces es un oye, esto no puede pasar, hay que borrarlo. Luego tenemos un CV crítico y ya tenemos, ay, perdón, un incidente crítico en una librería y ya se tiene la solución. Entonces, oye, te detengo y te obligo a que subas la versión de tu librería, si no, no te dejo pasar. Luego tenemos en el análisis estático 80 hallazgos preexistentes. En este pull request no hay ninguno nuevo. En este cambio que están dando no hay ninguno nuevo.
+02:46:45 Speaker 2: Entonces ahí
+02:46:46 Speaker 1: solamente registro y
+02:46:48 Speaker 2: lo dejo pasar.
+02:46:50 Speaker 1: No lo detengo. Y el último es en el análisis de infraestructura como código. Veo que tienes un incidente de que tu bucket es público. Entonces acá también lo detengo porque es un
+02:47:06 Speaker 2: hallazgo...
+02:47:10 Speaker 1: Un crítico de seguridad, entonces no te debo dejar pasar.
+02:47:16 Speaker 2: Entonces es un poquito cómo
+02:47:17 Speaker 1: se ha tardado cada uno.
+02:47:19 Speaker 2: Ahora,
+02:47:21 Speaker 1: las otras preguntas que eran para cada hallazgo decide, ay, ok, eso ya decimos, ¿qué
+02:47:26 Speaker 2: papel conserva el área de seguridad?
+02:47:31 Speaker 1: ¿Qué le suena? Si ya tenemos automatizado todo,
+02:47:34 Speaker 2: ¿para qué tenemos los analistas de seguridad? ¿Alguna opinión? ¿Para resolver incidentes? Sí, para resolver incidentes. Van a salir excepciones,
+02:47:53 Speaker 1: ¿no? Hay que evaluar esas excepciones que vayan a salir.
+02:47:58 Speaker 2: Hay que definir justo
+02:48:00 Speaker 1: este tema de cuándo detengo, cuándo no detengo. Lo hacemos con la lista de seguridad, ¿no? Él es el que nos aprueba esas configuraciones de qué cosa... cómo colocamos el pipeline según las reglas que él coloque de seguridad. Entonces él se vuelve más que un ejecutor y validador directamente, se vuelve más un definidor de cómo vamos a manejar las cosas. Entonces ahí lo quitamos como dependencia estas 72 horas de espera que él pruebe y él va a estar en la parte prueba de validación, configuración de todas, perdón, configuración de estas reglas previamente. Y para el último punto,
+02:48:38 Speaker 2: Tenemos una serie de... A ver, me preguntaron de esto. Acá les decía que en la parte final...
+02:48:56 Speaker 1: Esta es la otra versión de Google Play. La primera versión de la documentación que hice eran 30 páginas. Así que venía a hablarle por 30 páginas.
+02:49:04 Speaker 2: Espérame, ¿cuál es? Ya se ha perdido la otra.
+02:49:09 Speaker 1: Bueno, al final, espero que le haya puesto también el
+02:49:12 Speaker 2: NIST. Creo que acá no tenía la versión del NIST todavía. No, tengo la otra. La versión reducida.
+02:49:28 Speaker 1: Entonces, acá al final están los controles del NIST. El NIST agrupa los controles por lo previo, pero para la organización.
+02:49:36 Speaker 2: proteger el software, producir software protegido. O sea, acá es como la...
+02:49:45 Speaker 1: Esto viene igual que el proceso que hemos visto, ¿no? Es como la previa, como organización, luego la previa antes de construir el software,
+02:49:53 Speaker 2: durante la construcción de software,
+02:49:55 Speaker 1: y ya una vez que está en producción, ¿cómo respondemos ante posibles vulnerabilidades? Es un poco el circuito. Entonces...
+02:50:07 Speaker 2: La idea acá es, ok, si estamos haciendo un
+02:50:09 Speaker 1: análisis de composición de librerías,
+02:50:11 Speaker 2: ¿contra cuál va? Entonces acá hay
+02:50:17 Speaker 1: uno que dice,
+02:50:18 Speaker 2: si reutilizas router,
+02:50:20 Speaker 1: software preexistente,
+02:50:23 Speaker 2: verifica
+02:50:26 Speaker 1: los componentes de terceros. Esta palabra de componentes de terceros acá es la parte
+02:50:31 Speaker 2: clave, porque es justo lo que estamos utilizando
+02:50:33 Speaker 1: cuando tenemos librerías. y estamos inspeccionando librerías justo ese es el punto luego acá tenemos uno que es análisis estático y de secretos y acá en la 17 dice analice el código para encontrar posibles
+02:50:50 Speaker 2: vulnerabilidades entonces este
+02:50:54 Speaker 1: de acá hace el análisis
+02:50:55 Speaker 2: estático y secretos análisis de IAC viene
+02:51:04 Speaker 1: a ser
+02:51:04 Speaker 2: el de el pw7
+02:51:07 Speaker 1: deben ser el mismo pero eso es lo que tiene que ver con infraestructura y lo que tiene que ver con la aplicación
+02:51:13 Speaker 2: ok y
+02:51:30 Speaker 1: el último punto que es identificación continua de vulnerabilidades
+02:51:44 Speaker 2: Ah, no. Perdón.
+02:51:46 Speaker 1: Acá lo está declarando como una sola toda. No me ha ido a esta. Ok. Ya, no. Este acá no lo tenemos como práctica, ¿no? En el caso no nos dijeron esto.
+02:52:03 Speaker 2: ¿De dónde salió este? Sí, no, ese punto no. Perdón. Ese último punto no va. Ya. Entonces, lo
+02:52:30 Speaker 1: que quiero que se lleven acá, de esa parte del NIST, ¿qué hacen los analistas de seguridad? Los analistas de seguridad, su biblia es el NIST y agarra y empieza. Te doy un ejemplo ya. Todo el equipo de... todas las laptops que utilizan son laptops propias de BCP. Tienen una serie de candados y cosas que tienen ahí. Entonces, toda la parte de preparación previa, asignar roles, responsabilidades dentro del ciclo de desarrollo,
+02:52:57 Speaker 2: herramientas
+02:52:58 Speaker 1: que soportan y utilizan las prácticas de seguridad, todo eso ya está configurado previamente. Ya no es parte del proceso de desarrollo en sí, sino es toda la parte previa que ya está. Y ya todos estos controles van luego ya durante el proceso de desarrollo. O hay que analizar... código para
+02:53:14 Speaker 2: asegurarnos que no están inyectando vulnerabilidades y ya están estos controles que están acá abajo ya voy a chequear sí este
+02:53:24 Speaker 1: igual está en una de las opcionales
+02:53:25 Speaker 2: y otras cosas más entonces en
+02:53:28 Speaker 1: esas opcionales habrá de todo un poquito y ya ustedes verán cuál utilizan cuál eligen sí o sea hay dos finalmente que no se respondan Eso es. No sé si tienen dudas, preguntas.
+02:54:01 Speaker 2: Ok. Bueno. ¿Compartir la oración? Sí, sí, sí lo puedo compartir.
+02:54:11 Speaker 1: No lo dejé grabar cuando... Bueno, sí. Van a tener esos 30 minutos huecos ahí cuando ustedes se van a grupo, pero lo puedo compartir. Ahí veo cuál es la mejor manera.
+02:54:26 Speaker 2: Ahí te escribo Jorge para ver cuál es la mejor manera de compartirlas. ¿Algunas otras clases les comparten grabaciones? Lo va a parar una vez. Sí, profe.
+  
