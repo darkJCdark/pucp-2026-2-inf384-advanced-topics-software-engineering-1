@@ -1,0 +1,923 @@
+# TA S10
+
+  Meeting started: 23/10/2026, 9:42:07 p. m.
+  Duration: 129 minutes
+  Participants: Speaker 1, Speaker 2
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/6YTKhhUqrIYVYTC4LAbw?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: Hoy día ya pasamos por una sesión de ver calidad. Hoy vamos a ver seguridad.
+00:07 Speaker 2: Hemos visto algunas cositas de seguridad, pero ahora vamos a ver si sumergir completamente
+00:11 Speaker 1: en dos sesiones. Esta es la primera. Y ver cómo se hizo controles, revisiones, qué hacer cuando salen los hallazgos. No sé si has escuchado ahorita, pero ahorita, aunque está en los últimos días, está bien movido todo el tema de seguridad. Interban.
+00:26 Speaker 2: Interban dicen que... No, Interseguro, creo que lo hackearon, ¿no? Claro, porque hay cosas más grandes que esto,
+00:31 Speaker 1: no solo los temas locales, sino globales. Allá,
+00:34 Speaker 2: lo de PHP, ¿no? Lo de PHP. Bueno,
+00:41 Speaker 1: estamos en la sesión 9. Para la sesión 11 ya tenemos confirmada una... no sé, no sé, esa va a ser el tema, creo que es la 11, sí, la 11. Pero hemos confirmado ahí una invitada que nos va a acompañar. Sí, pues eso es.
+01:08 Speaker 2: Y,
+01:09 Speaker 1: bueno, no sé si han visto una publicación, un feriado, un feriado por la visita de papa. No sé si nos va a mover algo, ¿no? Sabremos. Este... Y bueno, creo que el 20, el 20 de noviembre, viene un... Ok, entonces hoy día vamos a ver análisis de código estático, el
+01:39 Speaker 2: SAST,
+01:40 Speaker 1: que por ahí ya usamos algo de CENGRE, hoy día vamos a ver más a detalle, no tan prácticamente con CENGRE, qué herramientas usamos, luego análisis de librerías, componentes, análisis de contenedores, también usamos los perfiles,
+01:53 Speaker 2: también usamos cómo aseguramos y con vulnerabilidades. Muy fácil de hacer y ¡un boom! Los principales
+02:56 Speaker 1: CMS, subiendo en el concepto CMS, los gestores de contenido, Content Management, Wordpress, Joomla, todos esos están basados en PHP. Bueno, Joomla se llama empresa, pero Wordpress, Drupal, solo PHP. Entonces, todos esos estaban golpeados. Y empresas, por ejemplo, como Toyota, Perú, su páginas, muchas de ellas, se han hecho por eso. Entonces, muchas de ellas, no digo que esas han sido hackeadas necesariamente, ni pactadas por alguna. que han salido, pero tienes el riesgo de potencial, ¿no? Claro, ustedes, cuidado con PHP, ya nadie
+03:30 Speaker 2: usa el solo nuevo, pero en todo lo anterior, muchas de las cosas están con PHP.
+03:36 Speaker 1: Entonces, ¿qué
+03:39 Speaker 2: pasó con PHP?
+03:42 Speaker 1: ¿Cómo pasa con todas las tecnologías? En un momento. La idea de TikTok es una vulnerabilidad, con cierto victor de ataque, podrías ejecutar shares, si no equivoco, a través de Facebook.
+03:53 Speaker 2: Esto no es lo que va a pasar, no
+03:55 Speaker 1: es lo que va a pasar, no es lo que va a pasar, no es lo que va a pasar, no es lo que va a pasar. Esta pantallita, no sé si alguna vez la han visto, esta pantallita es la que normalmente te sale cuando, o en un ransomware, entra a tu máquina, te cripta y te dice, ya, págame tantos bitcoins para poder liberarte la información.
+04:18 Speaker 2: Pero PHP no es un
+04:20 Speaker 1: tema aislado, o sea, ha venido pasando con varias componentes esta semana. Incluso... Github, si no me equivoco.
+04:36 Speaker 2: También, si
+04:38 Speaker 1: no me hubo un mes, hacer una noticia que Github, cierto... ciertas cuentas de GIF que recién vulneradas se habían podido acceder a repositorios que no eran públicos, que eran privados. Entonces, todas
+04:52 Speaker 2: estas cosas saltan porque hay vulnerabilidades
+04:54 Speaker 1: nuevas que se van distribuyendo. Hemos visto cómo detectar vulnerabilidades con diferentes formas,
+05:00 Speaker 2: pero ahora vamos a ver de estas.
+05:02 Speaker 1: que van saliendo, cómo nos ayudaría
+05:04 Speaker 2: estas cosas que vamos aprendiendo a
+05:05 Speaker 1: poder controlar algunas de estas, cuáles sí, cuáles no, cuáles es, al final, no vamos a desarrollar el que no te la haya. Lo importante siempre es
+05:13 Speaker 2: reaccionar rápido cuando algo pase.
+05:18 Speaker 1: Ahora hay otro concepto que es el de supply change.
+05:22 Speaker 2: ¿Supply change como concepto de suena? No de tecnología, en general. La cadena de suministro, ¿no?
+05:33 Speaker 1: Armar autos y vender autos, eso, y todo comprar las
+05:36 Speaker 2: yastas, almacenarlas,
+05:37 Speaker 1: ensamblarlas con el resto de casillas, etc. al auto, y luego integrarlo, ¿no? Entonces, esa es mi cadena de cómo hacerlo. Todo el proceso. En tecnología, nosotros tenemos nuestro propio supply change de cadena, que es nuestro software. Cuando
+05:55 Speaker 2: tú estás construyendo el software,
+05:56 Speaker 1: tienes un supply change de desarrolladores, capacidad de código,
+06:00 Speaker 2: tienes tus proveedores, que son todas
+06:02 Speaker 1: las librerías que tú utilizas, deben ser tus proveedores.
+06:06 Speaker 2: Entonces,
+06:07 Speaker 1: ataques de supply chains tienen que ver con que vulneran a uno de nuestros proveedores, nuevamente las librerías de estas reservas, y nosotros no nos enteramos, la usamos
+06:18 Speaker 2: y nos impactamos por esta reserva.
+06:22 Speaker 1: Entonces, esos son los conceptos de
+06:24 Speaker 2: aplicación del supply chain que
+06:26 Speaker 1: también se ha estado dando bastante menos. Viene con lo mismo, ¿no?
+06:32 Speaker 2: Si la idea de que uno no le vendría a una librería tal, alguno lo pudiese escudar.
+06:39 Speaker 1: Entonces, esa es una realidad que
+06:40 Speaker 2: va a seguir pasando.
+06:43 Speaker 1: Y es ver qué hacemos,
+06:45 Speaker 2: cómo nos
+06:46 Speaker 1: preparamos para... Para resonar antes, no. Les contaron una herida, también la de... Hace tiempo falló... Casi han desarrollado un yao.
+06:58 Speaker 2: Love4j.
+06:59 Speaker 1: ¿Conocen? Es la herida para tirarnos un laudo. Log4j. Es una típica librería en Java para poder retirar logs. Son figuras en su output, un formatito bonito
+07:12 Speaker 2: del output, del log, etc.
+07:14 Speaker 1: Esa librería se...
+07:17 Speaker 2: Imagínense que de noche a la mañana sale una noticia, Log4j tiene una vulnerabilidad eficiente. La mitad de nuestra empresa estaba
+07:27 Speaker 1: hecha con Java.
+07:28 Speaker 2: Todo ESP está con Java. Entonces,
+07:32 Speaker 1: tanto como lo opos de, necesitamos parchar. Y lo primero que sale es, oye, hay que hacer un apret a la última versión de la librería que ya está parchada. Eso significa que hay que pasar la producción de todas las aplicaciones con
+07:44 Speaker 2: ese parche.
+07:45 Speaker 1: No pasa 200 aplicaciones de una noche y
+07:47 Speaker 2: empregamos todos los que tienen entre ellas.
+07:51 Speaker 1: y ahora todo el mundo en microservicios y todas las cosas, esto
+07:53 Speaker 2: me llega por miles, no sé si quieres 200
+07:55 Speaker 1: aplicaciones, te voy a hacer un monstruo. Y ahí bueno, ya voy entrando a los temas, entran algo que se me conoce como controles compensatorios o por capas. Cuando pasan estas cosas... No es solamente...
+08:09 Speaker 2: O sea, es pensar más allá de...
+08:12 Speaker 1: Ok, tengo que solucionar esto, pero esto es por todas las aplicaciones que están en mi parque de aplicaciones. Es una locura. ¿Qué hago para controlarlo por escalones, por capas?
+08:24 Speaker 2: Ya, ok.
+08:25 Speaker 1: Todas esas aplicaciones están en un premio. Están atrás del Fargo. ¿Cómo hacemos para que el Fargo no permita ese tipo de tráfico? ¿Se puede hacer algo o no se puede hacer algo? Ah, sí, ah, mira, hay que bloquear tal tropepolo, tal cosí.
+08:38 Speaker 2: Entonces, se
+08:40 Speaker 1: va configurando lo que se llama seguridad por capas.
+08:43 Speaker 2: ¿Hay un chorro de seguridad por capas? ¿Hay un chorro de seguridad por capas?
+08:51 Speaker 1: ¿Qué propiedes?
+08:52 Speaker 2: Tupia. Tupia, tupia. La mejor forma de entender esto es,
+08:59 Speaker 1: imagínense, no son cruzadas para velar. La cruzada, la ropa, tiene el sensor. Hay cámaras. Están los detectores del sensor cuando tú sales. Están los de seguridad afuera que te revisan o que están chequeando. Están los de seguridad adentro que no están chequeando. Entonces, no tienen un solo control. Tienen varios. Todos son representarios. Entonces, lo mismo es el software. No tenemos un solo control de, ah ya, el file es valida, que todo está bien y listo, no tenemos que hacer nada más. Por eso está el Powerwall, por eso están los monitoreos del SOX.
+09:35 Speaker 2: SOX es el tipo de equipo
+09:37 Speaker 1: que trabaja 24-7 y está viendo todas las cosas de seguridad posible de la empresa para que si algo falla, se meten al toque a ver qué pueden hacer para solucionar. Entonces, Yo me confieso que no he sido una
+09:52 Speaker 2: persona tan de
+09:54 Speaker 1: seguridad. Me costó mucho tiempo entender y aceptar que tenía que... No puede ser tan liberarse las cosas en
+10:09 Speaker 2: tecnología.
+10:10 Speaker 1: Me costó el tener que usar MFA, por ejemplo.
+10:14 Speaker 2: Pero vamos a coger pasos adicionales.
+10:17 Speaker 1: Pero bueno, tengo un par de personas que me acompañaron con mucha paciencia a costado de reforzarme. Bueno, algunas que ya da usted, otras que no están todavía. Pero cuando salen este tipo de cosas, sí es como, ok, ¿qué hacemos? ¿Qué hacemos al pensar en qué hacemos para evitarlas? Porque ¿qué hacemos luego para reaccionar? Es perderte, como empezó también, perderte la parrilla con sus patas, tener que acelerar el acto y poder funcionarlo, porque no hay problema. Y, vinculando un poco lo que veíamos en las primeras clases de cultura, ¿no? ¿Se acuerdan cuando veíamos el tema de que más adelante lo vamos a volver a tocar con temas de prácticas? ¿Se acuerdan del análisis post-mortem? Ok, ocurrió un problema, ¿qué hacemos ahora? Una persona es, una persona de México, que era un DevOps. para una tarea que tenía que hacer, abrió
+11:17 Speaker 2: un puerto en el firewall y
+11:19 Speaker 1: hizo que el puerto SSH fuera público, por
+11:22 Speaker 2: un rato.
+11:23 Speaker 1: Entonces se terminó, se cerró, y se olvidó, pero no fue arrojado. Al día siguiente, de seguridad,
+11:28 Speaker 2: detectaron, me llamaron, me llamaron, me llamaron,
+11:32 Speaker 1: ya, ok, yo chequeé mi equipo, ya pasó esto, no
+11:34 Speaker 2: pasó mayores, ya estaba subiendo nada, no sé qué. No
+11:37 Speaker 1: pasó esto, tienes que botar. O lo botas, o S.
+11:42 Speaker 2: ¿Qué vas a hacer?
+11:43 Speaker 1: ¿Cómo hacemos para hacer algo correcto? Yo creo que lo vamos a hacer. Nuestro día, tercero. Conoce esto, esto, esto. Es muy bueno en esto, esto, esto. A mí toda la pata, a mí toda la pata, porque no lo vamos a votar.
+11:55 Speaker 2: Y tenéis el mensaje que le damos al resto.
+11:58 Speaker 1: Y bueno, cuando seguimos votando, sigue trabajando ahí después. Es parte del equipo de David.
+12:04 Speaker 2: David, que es el funcionario.
+12:07 Speaker 1: Felipe se llama esta persona que metió la pata en ese momento.
+12:12 Speaker 2: Pero ahí sí
+12:13 Speaker 1: se puede ver de dos maneras. ¿Cómo salgamos un precedente para que nadie más vuelva a meter la pata? Porque sí, después fue abierto el puerto y cualquiera pudo haber atacado. Intenten atacar. Pudieron, pero no. Es más, eso generó, no me acordé, eso generó de que pudieran consultar una URL... Y esta URL les daba todo el archivo de config de la aplicación. Y estaba usuario de contraseña para la base de datos, la piki de no sé qué, todo eso. Entonces, ¿qué pasó? El día no sentó, toda una noche, noche y madrugada, cambiamos todas las contraseñas que están ahí.
+13:00 Speaker 2: Gracias. Y cambiarla, reiniciar, no lo hacen más o menos nada.
+13:07 Speaker 1: Hay cosas que no eran nuestras, eran de proveedores. Y hay más proveedores para que cambie de cosas. Bueno, terminamos.
+13:14 Speaker 2: Se hizo.
+13:14 Speaker 1: Pero el impacto fue grande. ¿Cómo
+13:17 Speaker 2: hacemos para que eso no vuelva a ocurrir realmente? A
+13:20 Speaker 1: veces buscar a alguien es necesario
+13:22 Speaker 2: desde algún punto de vista de una persona para
+13:25 Speaker 1: que suete el presidente y que nadie más me traba a su trabajo. Y en otras, bueno,
+13:28 Speaker 2: sensibilizar. En este momento,
+13:30 Speaker 1: me imagino que funcionó sensibilizar. ¿Pasa algo así o no? Pero también ha habido otras historias. Esta conoce de forma tan... de más de rumores que en realidad. Pero la billetera más usada por todos. Esperada de una forma muy
+13:48 Speaker 2: ágil y dinámica.
+13:50 Speaker 1: Los desarrolladores con los devos, con la gente de Infra, están sentados uno costado al otro y la cosa fluía muy rápido y por eso
+13:56 Speaker 2: compran el producto de un mercado impotente.
+13:59 Speaker 1: Pero ¿qué pasó? Por ahí, algunas personas malintencionadas empezaron a poner código malicioso para beneficiarse de ellos económicamente. Y no se dio cuenta, pasamos a función, y por ahí la plata.
+14:13 Speaker 2: Algunos equipos por ahí se desviaban, se desviaban, se desviaban, se desviaban,
+14:15 Speaker 1: se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban, se desviaban y dijeron no, esto no puede seguir funcionando así. Obviamente que esas personas que no fueron honestas,
+14:25 Speaker 2: las sacaron.
+14:26 Speaker 1: Pero eso generó que, ok, ustedes ahí están juntos, desarrolladores DevOps, Infra, no más.
+14:33 Speaker 2: Infra, te sientas en ese salón
+14:36 Speaker 1: de allá, cerrado con candado, solamente te mandan tickets y mensajes por abajo de la puerta, no lo puedes ver. DevOps se va por allá, desarrollo se va por allá. Entonces montan un proceso mucho más riguroso, porque estamos hablando de temas mayores de plan y de riesgo también de la reputación de la empresa, etc.
+14:57 Speaker 2: Pero bueno,
+14:58 Speaker 1: son las realidades y las cosas que van pasando en la vida de las empresas, las cosas que van tomando por todas las cosas que van pasando, ya sean de hackers de fuera o ya sean de personas medicinas de antes. Siempre. y ahí retrocedo a la parte
+15:13 Speaker 2: que ya buscamos
+15:20 Speaker 1: ...controlado, en el cual van revisando las cosas antes de que pase de uno a otro y ya realmente empata, que oye, esto es lo mismo, no veo, no reviso, ya te confío en ti, y paso y no me di cuenta que está
+15:31 Speaker 2: haciendo algo y yo creo.
+15:33 Speaker 1: Entonces, bueno, ese fue el preámbulo de lo que vamos a ver ahora de por qué es importante tener
+15:41 Speaker 2: ojo en seguridad.
+15:47 Speaker 1: Entonces, ese es el panel que hemos ido recorriendo, ¿no? De comité, haz el servicio de la aplicación, corre las pruebas, validación de calidad, validación de seguridad,
+15:55 Speaker 2: haz el publish, te da el artefacto, lo
+15:57 Speaker 1: despliegas y tienes todo el tema de observabilidad, monitoreo, que todo está funcionando bien. Hemos recorrido el camino, lo estamos dando la vuelta otra vez, ya pasamos por calidad. Ahora volvemos a hacer doble clic en seguridad. ¿Qué cosas todavía no hemos visto ahí? ¿O lo hemos visto muy por encima todavía? Oye, ya, corre un analizador de código. El SAST. ¿Me acuerdas de un momento? ¿Lecciones ya terminó? ¿Lecciones? ¿Qué porcentaje creen de empresas en el Perú que usan esto? Ahora, también hay que ver cómo la usan. Hay algunos que la usan al final, y otros que la usan durante el proceso de desarrollo. Si vamos a la segunda línea, financieras, bancas, más otro tipo de bancas, todavía no tienen esto implementado
+17:56 Speaker 2: ahí.
+18:03 Speaker 1: Uno de los grandes retos con
+18:05 Speaker 2: el SAS es que son...
+18:07 Speaker 1: Las herramientas libres o gratuitas que vienen no ofrecen muchas facilidades. Y
+18:12 Speaker 2: siempre tienen que tener una paga. Y las paga son caras y ventas.
+18:19 Speaker 1: Entonces, esa es una barrera de entrada.
+18:23 Speaker 2: En algunas
+18:25 Speaker 1: paga que he usado en el momento
+18:26 Speaker 2: está la ciudad de Cuba. Sí, Fortify.
+18:37 Speaker 1: PSP empezó con Fortify, por ejemplo, le fue... O sea, usted supró contra, ahora vamos a ver lo que es un par exclusivo, cómo es el video para eso.
+18:44 Speaker 2: No es verdad que lo que tengo en eso. Por eso
+18:46 Speaker 1: no vamos a las ramitas pagas que hay.
+18:49 Speaker 2: Pero en alguno de los problemas técnicos es eso, ¿no? Es tan caro ese trabajo. ¿Qué me permite? Esto es,
+18:57 Speaker 1: analiza mi código, revisa qué patrones está siguiendo mi código, y en base a eso te alerta, oye, el código tiene tal vulnerabilidad. Y según el tipo de vulnerabilidad que tienes, te la cataloga, ¿no? Es una vulnerabilidad de impacto alto, de impacto medio o bajo.
+19:17 Speaker 2: Básicamente ese es el
+19:18 Speaker 1: objetivo de estas herramientas. Y la idea de meterla en el pipeline es que tengamos ese feedback lo antes posible, ¿no? En el día de hoy. Y acá vienen las problemáticas.
+19:32 Speaker 2: Hay
+19:32 Speaker 1: herramientas que le cobran por análisis,
+19:34 Speaker 2: por líneas analizadas. Entonces, si esto, imaginemos,
+19:38 Speaker 1: nuestro clásico proceso de desarrollo,
+19:41 Speaker 2: donde tenemos al
+19:47 Speaker 1: divelo para acá, tirando
+19:52 Speaker 2: cambios a su rama feature.
+19:58 Speaker 1: que luego esto se va a amarillar en divelo. que en algún momento eso se va a marear
+20:06 Speaker 2: en una rama y esto
+20:13 Speaker 1: finalmente llega a main de
+20:17 Speaker 2: próximo.
+20:20 Speaker 1: ¿Cuál es la métrica normalmente? Por cada pase de producción yo
+20:26 Speaker 2: hago más o menos de
+20:28 Speaker 1: 3 a 5 pases a cuba.
+20:34 Speaker 2: y acá hago más o menos de 15 a
+20:38 Speaker 1: 25 pases a dividirlo y
+20:41 Speaker 2: luego de atrás acá puede ir
+20:45 Speaker 1: 30, 50 o menos.
+20:49 Speaker 2: Hablando acá de
+20:50 Speaker 1: promedios y de cosas complejas, no pensemos en un cambio en específico, sino juntemos un cambio grande en varios repositorios, más o menos va a pasar esto en el tiempo, digamos en un requerimiento que tiene, no sé, una duración de un mes, tres meses. Va a pasar más o menos esto. Entonces, ese es el proceso natural.
+21:25 Speaker 2: Digamos que acá él está cambiando
+21:27 Speaker 1: 20 minutos de código. Si él hace 30 veces este cambio, quiere decir que acá se están impresionando 600 líneas de código que hay que impresionar
+21:39 Speaker 2: cada vez que sube acá.
+21:43 Speaker 1: Sería 20 por 15 acá 300, 20 por 30 acá 60, 20 por 1 acá 20 líneas de código, que hay que infeccionar. Entonces, vamos derecha a izquierda. Acá, de todas maneras, hay que infeccionar antes de pegar, ¿no? No vamos a llevar a algún vulnerable a
+21:58 Speaker 2: la producción. Acá el análisis empieza de cajón. Cuba Release.
+22:04 Speaker 1: Bueno, antes de ir a la producción, por lo menos deberíamos mencionar acá. En nivelo. Digamos, ahí voy a hacer otra parte breve. Esto normalmente demora un día.
+22:17 Speaker 2: Esto normalmente demora una semana. Llevarlo a diólogo y
+22:24 Speaker 1: a llevarlo hasta RIS puede
+22:26 Speaker 2: demorar de dos semanas a
+22:29 Speaker 1: un mes. Y llegar a PROD puede ser de un mes
+22:32 Speaker 2: a tres meses.
+22:37 Speaker 1: Recordemos que esto es rebota. Oye, te encontraron un VAX, te puse, te dije, va y así. Entonces... Les contaba que estas herramientas te cobran por cantería de líneas analizadas. Entonces, lo ideal sería, oye, córrelo siempre, ¿no? Córrelo acá. Pero como él está constante, mandando cambios, se va consumiendo esa bolsa que
+23:02 Speaker 2: te cobra el proveedor de Cuba con una capita pagada y
+23:05 Speaker 1: no lo hace viable. Entonces, ¿qué terminaban haciendo las empresas? Oye, ya fue. Sacrificamos de. Solamente vamos a controlar Cuba. Y tampoco development, es demasiado.
+23:16 Speaker 2: solo vamos a controlar Cuba porque
+23:17 Speaker 1: no nos da el presupuesto para pagar tanto Entonces es un poco lo que termina pasando con el SAS cuando tienes ese tipo de cosas. Nosotros vamos a probar el Sengren, que para una prueba de concepto todo bien, todo bonito, pero cuando
+23:29 Speaker 2: ya sobrescalas, normalmente necesitas una herramienta apagada.
+23:32 Speaker 1: Es raro ir a
+23:34 Speaker 2: un enterprise grande, es raro el concepto.
+23:38 Speaker 1: Pero es un poco el flujo y circuito que las cosas que van pasando con las herramientas. Lo que quiero referir un poco con eso es, nuevamente lo que hemos visto en anteriores, es en las diferentes etapas
+23:58 Speaker 2: donde vamos haciendo el control para
+24:00 Speaker 1: poder detectar y alertar lo antes posible.
+24:04 Speaker 2: Pero con
+24:05 Speaker 1: el dedo de cuánto
+24:06 Speaker 2: me va a costar.
+24:09 Speaker 1: No siempre se puede.
+24:13 Speaker 2: Entonces, me preguntaba, ¿cómo funciona este análisis?
+24:20 Speaker 1: Nosotros tenemos una aplicación con arquitectura chiquita. Digamos, tenemos, vamos
+24:33 Speaker 2: a ver si hay un
+24:35 Speaker 1: celular que quiere usar. YAPE normalmente es una aplicación móvil,
+24:42 Speaker 2: tiene una capa que trabaja acá. Esto
+24:45 Speaker 1: hace indicadores HDDPS,
+24:50 Speaker 2: algún puerto, solamente el 443.
+24:54 Speaker 1: Y esto debe pasar por algo que se llama el WAF. que es el web application firewall como el firewall, pero con aplicaciones firewall clásico de network que permito, pero de aplicaciones luego esto seguramente debe ir a un gateway que redireccione y te dice para donde lanzo la transacción y esto ya debe ir a las APIs propias de
+25:20 Speaker 2: de Yapp.
+25:23 Speaker 1: Oye, pero Yapp al final transacciona plata. Entonces, ok, Yapp puede tener su propia base de datos, pero eso tiene que ir finalmente a los ports, porque eso tiene que limitar la cuenta en la tarjeta,
+25:37 Speaker 2: en la cuenta de ahorro. Entonces, por acá, por acá
+25:45 Speaker 1: tengo misa. Mis APIs del
+25:48 Speaker 2: core.
+25:51 Speaker 1: Y finalmente está la base de datos de Porto. Acá por ejemplo van a estar las cuentas de ahorro. Donde finalmente va a estar tu plata.
+26:07 Speaker 2: La plata.
+26:08 Speaker 1: Y acá está toda la información de yape, de tus límites, de cuánto puedes yapear por día, tu historial, de cuánto has yapeado, todo eso está acá.
+26:18 Speaker 2: Es la base de datos.
+26:21 Speaker 1: Pero si lo yape,
+26:23 Speaker 2: ya está en el fondo.
+26:25 Speaker 1: Y acá en medio seguramente habrá
+26:26 Speaker 2: otro firewall y
+26:30 Speaker 1: algunos otros puntos intermedios de control.
+26:33 Speaker 2: Pero se dan cuenta que acá hay
+26:34 Speaker 1: varios saltos. para llegar a donde está la información. Entonces, ¿qué es lo que busca...? El SAS, igual en todas las herramientas de seguridad, es en todo este flujo poder determinar dónde está la vulnerabilidad para
+26:54 Speaker 2: poder mitigarla.
+26:56 Speaker 1: Hay herramientas que me van a poder ver todo y hay herramientas localizadas que verán una partecita. El SAS, ¿qué cosa analiza? Código de operación. Analiza el código. ¿Dónde vive acá? Este componente de infraestructura,
+27:11 Speaker 2: este componente de infraestructura.
+27:13 Speaker 1: Acá realmente había una aplicación. Entonces, él va a analizar eso. Si yo abro una aplicación, acá estará la parte del servicio que recibe la petición. Luego, ahora vamos a ver un ejemplo, por ejemplo, por ahí, pero recibe la petición, la pasa al control, el control la pasa al repositor y el repositor
+27:33 Speaker 2: la pasa a la parte de base de datos.
+27:36 Speaker 1: ¿Alguien ha escuchado algo de saneamiento de información, saneamiento de datos, antes de llevarlo a la base de datos?
+27:43 Speaker 2: SQL Injection.
+27:47 Speaker 1: ¿Han visto cómo mitigar o evitar el SQL Injection? Ahí viene la parte de seguridad por capas, por ejemplo. El WAF puede tener un feature de, oye, analizo los mensajes de entrada y veo que si alguien quiere... ¿Sabemos lo que es un mensaje por directo? Es el agarro y en una cadena de texto le meto caracteres para como cortarla. Por ejemplo, imaginemos que va a ser un select del nombre. Yo le completo ciertos caracteres para que cuando tú... Eso es lo que ya tienes. Si lo metes en un query, tu query se corte y ejecute un script que tú
+28:32 Speaker 2: le estás inyectando internamente.
+28:33 Speaker 1: Eso es, sobre todo, que hemos generado diversiones políticas. Entonces, esos son datos de entrada. Y se puede detectar esos datos maliciosos leyendo el input con ciertos patrones. Entonces, el WAF tiene esa capacidad de poder revisarlo, pero tú también en tu código, por una buena práctica, deberías también hacer esa revisión. Normalmente esa revisión la haces usando librerías que ya lo hacen por ti. Hay librerías que hacen esa revisión de SQL Injection y parsean la información para ponerle caracteres de escape. Si tu pones en tu nombre los caracteres para forzar el SQL Injection, te va a terminar poniendo de nombre esos caracteres que tu le estas poniendo. Porque esta minería lo que hace es
+29:25 Speaker 2: partearlo para
+29:27 Speaker 1: que eso vaya con un texto y no lo interprete como un comando. Yo de nombre me pongo. Normalmente el query, ¿cómo sería? Un insert.
+29:44 Speaker 2: Un insert. El
+29:48 Speaker 1: campo nombre. Igual.
+29:52 Speaker 2: Y acaba el comodín.
+29:54 Speaker 1: El comodín que viene desde el input del frontend con
+30:00 Speaker 2: el campo nombre.
+30:02 Speaker 1: Entre comillas simples. Y yo simplemente la aplicación lo concateno y todo bien.
+30:08 Speaker 2: Viene un hacker y
+30:10 Speaker 1: lo que me pone como valor de nombre.
+30:14 Speaker 2: No, perdón. Me pone...
+30:17 Speaker 1: Me pone comilla, comilla. Si no, yo voy a decir comilla, comilla. Punto y coma. Con eso como corta el insert.
+30:27 Speaker 2: Y acá le pone drop database. Punto y coma. Entonces, cuando esto se trata de ejecutar,
+30:36 Speaker 1: el insert se va a ejecutar hasta acá. Va a ser el insert con datos, digamos que no
+30:41 Speaker 2: estamos controlando el decimal injection, inserta un nombre hasta acá, y después te da el database y te borra la base. O,
+30:49 Speaker 1: algunos que usan la estación para robar información. Entonces, ¿qué hacen las
+30:54 Speaker 2: librerías?
+30:56 Speaker 1: Parcean esto, encuentran que tiene estos patrones, y
+30:59 Speaker 2: por ahí le pone el capisclash,
+31:01 Speaker 1: para que esto lo ponga como texto. Entonces, finalmente, tu nombre va a ser algo como Drop
+31:08 Speaker 2: The Face.
+31:10 Speaker 1: va a ser tu nombre en
+31:12 Speaker 2: la base de datos.
+31:15 Speaker 1: Si te tratas de hacer esto, tengo una aplicación que realmente está cuidando esto. Entonces, ese es un poco como la... Si sí lo tengo, ¿cuántas las
+31:23 Speaker 2: librerías de manejo
+31:27 Speaker 1: del S-Point Injection?
+31:30 Speaker 2: Lo parsean para
+31:32 Speaker 1: que esto lo toque como texto y no lo interprete como un comando que
+31:35 Speaker 2: lo escribe.
+31:38 Speaker 1: Ok, entonces ya recordé esto, ya puse esta resolución. Entonces, de origen son justo eso, los datos que vienen en la cabecera, en el input, cualquier dato que pueda ser manipulado como dato de entrada. Eso viene desde afuera. Luego esto viene por las diferentes capas,
+31:56 Speaker 2: se van propagando los datos.
+32:00 Speaker 1: Pasa por una capa de saneamiento, que es lo que comentaba que deberíamos tener. Esa capa de saneamiento puede ser distribuida, puede ser una parte aquí, como comentaba, puede ser una parte acá.
+32:08 Speaker 2: Se puede distribuir
+32:10 Speaker 1: y la idea también que sea distribuida para
+32:13 Speaker 2: tener diferentes controles en diferentes lugares.
+32:16 Speaker 1: Y generalmente llega al punto donde está la posible vulnerabilidad. La consulta de SQL, un comando de ejecutar el sistema, una ruta de un archivo que pueda generar problemas. Entonces, en este circuito, es
+32:41 Speaker 2: que se van...
+32:41 Speaker 1: Es el mismo circuito que puede suceder aquí, que se puede explotar cualquier tipo de vulnerabilidad. Hemos visto el código, lo mismo puede pasar con las de librería. Pero básicamente es un poco lo mismo. Ahora... Acá podemos tener dos caminos. El camino donde hacemos la validación, como les comentaba, de patrones. O sea, existen herramientas como la del SAS que va a tener ciertas reglas para validar ciertos patrones de código.
+33:12 Speaker 2: Y esas realizaciones
+33:15 Speaker 1: de las validaciones se validarán en segundos. Pero existen otros que son más complejos y hay que analizar todo un flujo de información a través de diferentes capas. Y esos sí pueden demorar minutos. Porque es un poco más complejo hacer. Pueden hablar de los dos.
+33:40 Speaker 2: Y lo importante acá es ver,
+33:43 Speaker 1: uno, de dónde ingresa el dato, y dos, dónde sucede la vulnerabilidad, dónde se genera la vulnerabilidad. Para en base a eso ver dónde podemos poner los controles. Hay una práctica, creo que no la vamos a ver en el curso, pero creo que me parece bastante buena en DevOps, en DevSecOps, que se llama, ¿cómo dicen?
+34:11 Speaker 2: Bueno, pero
+34:13 Speaker 1: lo podemos definir como seguridad por diseño. Así como diseñas qué es lo que vas a hacer funcionalmente, también diseñas tu aplicación pensando en seguridad desde el inicio. Creo que les daba el ejemplo el otro día de la clave del teclado numérico que tiene esta aplicación de Banbo. Este teclado que tú ves ahí, si tú inspeccionas y ves cuáles son los datos que están viajando en el HTTP, no vas a ver los valores del teclado,
+34:41 Speaker 2: no vas a ver 1, 2, 3, 4.
+34:46 Speaker 1: Son hash que representan la posición del teclado y ya en el servidor se decodifican y normalmente ven cuál es. Eso, por ejemplo, es un diseño pensado en seguridad de la vida. Lo mismo, todo el tema de la opción MFA, PTP, es una certificación que están abusando con la MFA. Para cualquier cosa te piden MFA. Dele a ti que tu master me parece muy chulo para loguear o
+35:17 Speaker 2: para comprar.
+35:18 Speaker 1: No sé, me parece muy loco. Si no tengo mi tarjeta guardada, ¿por qué alguien que compre una entrada por mí? Sería rarísimo. Pero ni siquiera se usa mi tarjeta. Muy raro, pero bueno.
+35:37 Speaker 2: es otro de los puntos en
+35:39 Speaker 1: este diseño de seguridad también es ver en esos puntos críticos ahí activo el MFA no te lo pido en cualquier punto de la aspiración sino en los puntos que son más
+35:51 Speaker 2: críticos
+35:54 Speaker 1: Es el equilibrio entre seguridad y
+35:56 Speaker 2: experiencia virtual.
+36:01 Speaker 1: Eso que les contaba, un poco el flujo, acá está ubicado en código, es básicamente lo mismo. Viene el dato como fuente de información, se va pasando de una capa a otra, o dentro del código de una función a otra,
+36:18 Speaker 2: de una variable a otra, y finalmente acá
+36:22 Speaker 1: no hay ensañamiento, y se inyecta, se entira directo el cuadrino, y ahí puede ocurrir esta problemática. Un posible saneamiento, por ejemplo acá, es uno básico, que es, oye, si el dato que me están mandando es
+36:40 Speaker 2: un dato
+36:42 Speaker 1: numérico, oye, lo parseo como un número para evitar cualquier cosa. Y por ahí, bueno, tendrá algún control de si no es entero, no lo dejo pasar. Este es como lo básico, bien entendible de esa manera. Pero normalmente no se usa de esa manera. Entonces son divididas que ya traen ese saneamiento.
+37:00 Speaker 2: Hay muchos
+37:02 Speaker 1: frenguos, normalmente los frenguos que usan de base de datos. Ya casi todos los frenguos ya vienen activos con el control de S4 Injection. Todo lo que parece, vulnerabilidad, no es vulnerabilidad. Este es el concepto de falsos positivos, falsos negativos y que vamos haciendo un laburo. Cuando yo recorro el SAS, el SAS no tiene la inteligencia suficiente para determinar que ese campo ya está saneado por esa función, algo que yo hice. Porque el SAS lo que hace es analizar cosas que él ya conoce de mercado, como el framework y tales cosas, para poder determinar si está o no está saneado. Entonces acá tendría que tener esa vulnerabilidad, pero en realidad no la tienes. Entonces, bueno, acá hay algunas herramientas que te permiten configurar esas reglas de tu herramienta para que hoy esta función de saneamiento considere como válida. Un segundo caso. Tenemos código de prueba o de ejemplo analizado junto al productivo.
+38:30 Speaker 2: Ya vimos los unit tests.
+38:32 Speaker 1: Los unit tests tienen una carpeta paralela dentro del mismo código. Normalmente el unit test tiene cierto comportamiento con código a propósito. que no es que eso va
+38:44 Speaker 2: a jugar su producción, entonces eso
+38:46 Speaker 1: debe estar exceptuado desde la análisis de seguridad del código CAMI. Luego hay temas de cosas que no son compatibles con el riesgo que estamos probando, todo eso no hay riesgo real,
+39:01 Speaker 2: pero me está alertando de algo.
+39:04 Speaker 1: ¿Y qué sucede cuando tenemos muchas de estas? Dejamos de creer y de verlo. Es la clásica que te sale, no sé, la alerta que siempre te sale, las notificaciones. No sé cuántos ustedes tienen activadas notificaciones del celular que no leen y simplemente las descartan, pero le siguen saliendo. Lo mismo pasa con las alertas de seguridad. Si no las tuneamos bien, las personas no las van a ver. ¡Gracias por ver el video! Tuneándolo, depurándolo para que realmente funcione y sirva. Y otra vez importante, ¿qué pasa con lo de PHP? La vulnerabilidad de PHP.
+39:51 Speaker 2: Las aplicaciones que se crean PHP.
+39:52 Speaker 1: ¿Algunos de ellas? Sí, seguramente pasan por
+39:54 Speaker 2: este análisis.
+39:56 Speaker 1: Y pasan por la SSA, de que vamos a ver después, y otros análisis más. Pero nadie nunca detecta esa vulnerabilidad. ¿Por qué? ¿En qué se basan las herramientas para decirte hecho una vulnerabilidad?
+40:23 Speaker 2: ¿Tienes experiencias previas de averiguar alguna vulnerabilidad?
+40:28 Speaker 1: En base de conocimiento. En base de conocimiento de historiales de que alguien más ya dijo que esta versión de librería tiene la vulnerabilidad, que este patrón de código tiene la vulnerabilidad. No sabíamos que esa forma de hacer ese código tenía esa vulnerabilidad. Entonces, por eso, nada me ha hecho creer. Entonces, eso te va a suceder con todas las vulnerabilidades que todavía no han sido identificadas. Es un poco lo que es. Las situaciones y situaciones, bueno, hay algunas que es un ok, no puedo hacer nada, tengo que aceptarlo. Y lo importante a estas, si es reaccionar rápido, luego se
+41:05 Speaker 2: identifiquen, ver qué hacemos.
+41:21 Speaker 1: Estas que salen, que ya sabemos que salen, pero que no son un riesgo real, lo que se hace es que se configuran para que sea como silenciar esas alarmas. Pero es importante, cuando se las silencian, ponerles comentarios de por qué les están silenciando. Si no, se las silencian y ahí quedan, cuando la persona siguiente venga,
+41:42 Speaker 2: y eso por qué no se les sea. O
+41:44 Speaker 1: activalo, hay que revisar qué es. La idea siempre es poner...
+41:50 Speaker 2: en esas excepciones o
+41:52 Speaker 1: silenciadas excepciones,
+41:55 Speaker 2: el motivo.
+42:00 Speaker 1: El SaaS nos ayudó con lo que es código fuente de la aplicación. Pero veíamos que teníamos los log files con las librerías, teníamos el npm, con el package json, el
+42:13 Speaker 2: package
+42:14 Speaker 1: log, también con las librerías.
+42:18 Speaker 2: Esas
+42:18 Speaker 1: también nos pueden traer vulnerabilidades y también hay herramientas que nos permiten analizar
+42:23 Speaker 2: esas
+42:25 Speaker 1: librerías. Entonces, eso lo vimos otra vez, ¿no? Oye, mi aplicación
+42:30 Speaker 2: tiene 8000 líneas de código. y
+42:33 Speaker 1: estoy declarando 12 librerías adicionales.
+42:37 Speaker 2: Pero,
+42:37 Speaker 1: en esas 12 librerías adicionales, esas librerías internamente invocan otras librerías open source de la comunidad. Entonces, eso se llama transitivas,
+42:47 Speaker 2: que son las librerías no directas, indirectas.
+42:51 Speaker 1: Y en estas pueden nacer vulnerabilidades como
+42:54 Speaker 2: la que pasó con PHP.
+42:58 Speaker 1: Entonces, ¿cómo se determina esto? ¿En qué puedo hacer? Bueno, las bases de conocimiento ya tienen la información de qué librerías, en qué versiones tienen qué vulnerabilidades. Esos diccionarios ya están, hay públicos, hay muchas bases de conocimiento de esas.
+43:17 Speaker 2: Entonces, yo cuando declaro qué librería va a usar mi aplicación,
+43:21 Speaker 1: es importante determinar exactamente qué versión de librería va a usar, o nombre, apellido, por eso que están los log files. para que cuando la sostenga, si es que hay vulnerabilidad, me ayude y lo vamos a ver por si uno lo detecta, lo detecte y yo pueda repararlo. Y bueno, el proceso lo que hace es agarra y revisa librería por librería la base de conocimientos y te dice, tienes vulnerabilidad, no tienes vulnerabilidad. Es así sencillo, es en realidad. Gracias, cuento un poco este proceso. Es una solución que me gusta como la implementamos. Era chévere, pero traes un reto sobre esto. Ahorita está súper de moda contenedores.
+44:32 Speaker 2: Todos usan contenedores, todos usan cubermetons. Esto es lo que voy a contar a David.
+44:37 Speaker 1: ¿Cuántos contenedores hay que tener en Pacífico? Ya
+44:40 Speaker 2: tiene más de mil.
+44:42 Speaker 1: Más de mil contenedores de diferentes microservicios.
+44:44 Speaker 2: Yo los microservicios diferentes.
+44:46 Speaker 1: El buscar polis, el listar polis, el buscar clientes, el de autos, el de viajes, etc.
+44:53 Speaker 2: Entonces,
+44:54 Speaker 1: ¿se acuerdan del Docker Image que
+44:56 Speaker 2: partía una imagen base, cierto? Esta
+45:01 Speaker 1: viene de la comunidad, ¿cierto?
+45:19 Speaker 2: Esta viene de Internet.
+45:29 Speaker 1: Pero yo como empresa no
+45:31 Speaker 2: uso la imagen base de
+45:33 Speaker 1: mi contenedor. Yo
+45:37 Speaker 2: no uso esto puro. Coloco
+45:39 Speaker 1: ciertas configuraciones propias, no tanto de mi aplicación,
+45:44 Speaker 2: sino de mi...
+45:47 Speaker 1: Del paquete como nosotros queremos personalizar el Ginex para nuestra empresa. Y quiero que esto mismo esté en todos los contenedores que tenemos en la empresa. En el servicio A, en el B, en el C. Todos estos contenedores deben
+46:02 Speaker 2: tener esta misma imagen base.
+46:05 Speaker 1: customizada, ojo, porque se basa en esta, pero le agrego
+46:08 Speaker 2: ciertas instrucciones dentro del Dockerfile. ¿Qué hacemos?
+46:12 Speaker 1: Creamos nuestra propia versión
+46:14 Speaker 2: corporativa de EngineX. Entonces, esta imagen, en este Dockerfile,
+46:26 Speaker 1: se genera Y estas, en su propio
+46:31 Speaker 2: Dockerfile, ya no van a tener la
+46:33 Speaker 1: NGINX de la nube.
+46:36 Speaker 2: Van a tener un NGINX.
+46:38 Speaker 1: Esto es muy chiquito, ¿no?
+46:49 Speaker 2: Estas van a agarrar el NGINX Ford.
+46:55 Speaker 1: Entonces ya no están agarrando el de la nube. Están agarrando este de acá. ¿Qué me permite eso? Si yo mañana, primero me permite controlar qué versión van a tener todos. Todos nacen de la misma base. Lo otro es, si yo quiero agregar o quitar líneas acá, lo controlo también, todo centralizado, acá. Seguramente esa también tendrá su versión. Esta tendrá la
+47:17 Speaker 2: versión 1, después la 2, la 3, no importa.
+47:20 Speaker 1: Pero acá yo voy controlando quién usa qué con mi imagen base centralizada. Estoy chévere. Listo. Ya tengo mi aplicación A, mi aplicación B, mi aplicación C, C y B.
+47:30 Speaker 2: Todas están estimadas.
+47:33 Speaker 1: Seguimos a trabajar. Cada equipo,
+47:36 Speaker 2: cada squad, un equipo
+47:38 Speaker 1: ágil trabajando con su aplicación. Y viene por este proceso de acá arriba.
+47:43 Speaker 2: Y acá tenemos nuestro SSA.
+47:51 Speaker 1: Así como tenemos el SAS, tenemos el SCA.
+47:59 Speaker 2: Es el que revisa el árbol de librerías. Ahí hay dos. Son muy parecidos.
+49:28 Speaker 1: Pero bueno, vamos con esto primero. Software Configure Analysis. El analizador de imágenes, y eso lo que va a hacer es,
+49:48 Speaker 2: va a abrir la imagen.
+49:51 Speaker 1: Y va a revisar cuáles son las vulnerabilidades que puede tener.
+49:56 Speaker 2: Pero él lo
+49:59 Speaker 1: aplica sobre las aplicaciones que nosotros estamos desarrollando. Viene el primer equipo, pasa el análisis y le salen vulnerabilidades vinculadas a esto. Entonces el equipo de desarrollo... Imaginemos una empresa donde hay equipos de desarrollo, pero esos equipos de desarrollo
+50:21 Speaker 2: siguen el
+50:23 Speaker 1: lineamiento corporativo, que es todos usan esta imagen base. Ellos no tienen la responsabilidad sobre esta imagen base, porque hay el tipo de B o de arquitectura que
+50:34 Speaker 2: les dice usen esta imagen base.
+50:36 Speaker 1: Pero no los dejo pasar a Divellum ni a Cuba, porque su imagen tiene una vulnerabilidad que viene de acá. Entonces empezábamos a salir esas problemáticas cuando tratamos
+50:48 Speaker 2: de hacer este arbolito
+50:50 Speaker 1: levantado, ¿verdad? Y lo que empezamos a hacer es,
+50:56 Speaker 2: ok,
+50:57 Speaker 1: tenemos que empezar a monitorear qué vulnerabilidades van saliendo de esta, que sería esta,
+51:04 Speaker 2: día por día. Entonces, ¿qué sucede?
+51:08 Speaker 1: Hoy día habrían identificado una nueva vulnerabilidad para la versión 3.4.5, que justo era la versión 1.2.1 que teníamos nosotros. La 1.2.1 nosotros usa la 3.4.5 y hay una vulnerabilidad en el engine 3.4.5. ¿Qué hacemos? Normalmente en estos casos es, vamos a la 3, 4, 6. Todavía no existe. Está la vulnerabilidad, pero la comunidad todavía no lo resoluciona. Y esto normalmente pasa unos días, un par de semanas para que lo resolucionen. Entonces, ya están más de 10 días. Entonces, ¿qué hacemos?
+51:41 Speaker 2: Pongámosle acá una
+51:42 Speaker 1: excepción.
+51:47 Speaker 2: Pongamos una excepción de
+51:48 Speaker 1: que por nombre y apellido, la vulnerabilidad, eso es lo que ya lo habíamos visto antes, los CBEs son los códigos de vulnerabilidades. Una excepción por el CBE, digamos que acá fue el 456, que me deja pasar. Este tipo de esquemas me permiten ir monitoreando el análisis de las librerías que tengo, para luego, si es necesario, colocar las excepciones. Pero lo importante de esto es que me estoy anticipando a que venga el equipo y cuando
+52:24 Speaker 2: él quiera hacer un cambio, le sale la vulnerabilidad.
+52:27 Speaker 1: Lo que hago es crear un pipeline para que todos los días de la noche analice mi imagen base de la última versión que tenga,
+52:34 Speaker 2: para
+52:35 Speaker 1: que todos estén como alertados.
+52:37 Speaker 2: Es una de las cosas que hicimos
+52:41 Speaker 1: hace tiempo. Es un poco de los retos que van saliendo cuando uno trata de hacer esas análisis. Entonces acá puede haber sido una vulnerabilidad por este punto, pero también puede haber sido una vulnerabilidad por una acción que nosotros estábamos haciendo acá. Que antes no generó un problema, pero ahora sí. No sé, instalar una librería o algo por el estilo que necesitamos con imagen base. Te doy un ejemplo de que cosas se ponen acá. Queremos tener la dependencia de una herramienta de monitoreo o una herramienta de análisis de seguridad
+53:24 Speaker 2: en ejecución.
+53:27 Speaker 1: Todo eso se puede configurar acá como parte de la instalación base para que la aplicación luego se monte encima. Entonces, esta de acá sería una vulnerabilidad transitiva. Porque no es lo que yo quiero directamente, sino es de un tercero. Y si se diera de alguna de las acciones que yo estoy haciendo directamente, ahí sí ya serían de las dependencias directas que estoy yo
+53:53 Speaker 2: colocando.
+53:55 Speaker 1: O también se podría haber dado, porque cuando sale una vulnerabilidad de este
+53:59 Speaker 2: Nginx de acá, este Nginx también
+54:02 Speaker 1: tiene su propio Dockerfile de la comunidad.
+54:04 Speaker 2: Y acá este Dockerfile puede
+54:06 Speaker 1: tener acá líneas adicionales donde acá se encuentran las vulnerabilidades. Eso es lo que normalmente pasa. Y ahí se aplica bien. La comunidad aplica el fix sobre esas. No fui bien lejos, pero quería traerles como
+54:25 Speaker 2: ejemplo de cómo es lo que se hace esto en la
+54:28 Speaker 1: cancha. Entonces me sonaba antes de que este es el árbol de teorías, pues este es el inventario conocido como el S-Bone, que es el que te agarra y te lista todo el árbol de componentes que están utilizando. Y en base a eso, este es el input para que la herramienta
+54:44 Speaker 2: compare versiones, vulnerabilidades y te diga, oye, es
+54:48 Speaker 1: la lista inversa.
+54:53 Speaker 2: Lo que pasó con PHP.
+54:54 Speaker 1: Queremos saber todas las aplicaciones que usan la versión PHP. Voy a inventar cuánto inmediato y versiones móviles. 7, 4, 5. Entonces, ¿qué haces? Mando llamas a todos los developers para que todos chequen su código fuente para ver qué es lo que tienen. O si tienes esto implementado con un pipeline que ya analizas todas las aplicaciones, entras en la herramienta, buscas esa librería, como ya la herramienta te muestra esa vista de quienes todos usan esto, porque el desbombro te ha sacado esa correlación, y desde ahí ves que todos estos son los importantes. Es como la potencia del esboque. Por eso lo pueden ver de dos maneras. Una es, ¿cuáles son todas las dependencias de mi aplicación? Y una vez que tú ya metiste ese inventario por aplicación, si le da la vuelta, lo puedes ver a esta librería, ¿cuáles son todas las aplicaciones que usan esta librería? Es una de las potenciales que permite ver esto.
+56:05 Speaker 2: Ok, ahora vamos con el tema de severidad.
+56:09 Speaker 1: Eso lo vimos un poco al otra vez. Lo traje otra vez para
+56:13 Speaker 2: reflejarlo, reforzarlo.
+56:20 Speaker 1: Imaginemos esto.
+56:27 Speaker 2: Acá está Internet. Internet.
+56:40 Speaker 1: Salvo en la realidad de GlockJ que si alguien tiene acceso a este componente podría ejecutar un comando por SSH.
+56:56 Speaker 2: Entonces,
+56:58 Speaker 1: miren dónde está esto ubicado respecto a internet. Alguien que esté fuera de la red
+57:05 Speaker 2: podría explotar esta vulnerabilidad. teniendo internet acá los que están fuera de las redes están acá y los que están dentro de las redes están acá y más y
+57:24 Speaker 1: dos redes acá esta
+57:26 Speaker 2: es la red internet esta es la red cloud
+57:29 Speaker 1: activada pero cloud pública privada y esta es la red con premisa
+57:42 Speaker 2: Acá, por separación de redes,
+57:44 Speaker 1: él no podría llegar a separar. Esta vulnerabilidad es una vulnerabilidad,
+57:48 Speaker 2: pero no es expuesta en la mano.
+57:50 Speaker 1: Entonces, no tiene mayor alcance. Porque tiene que haber vulnerado y conectarte adentro de la red para poder vulnerar.
+58:03 Speaker 2: ¿Qué tan fácil es llegar a...?
+58:18 Speaker 1: un repartidor de a donde mando las transacciones porque por ejemplo acá pondrá las APIs de I.O las APIs de plantas por internet si usted reparte a quien le quiere mandar las transacciones Perdón, es esta, esta expuesta. Exposición era lo que mencionaba ahí.
+58:44 Speaker 2: Lo de alcance
+58:50 Speaker 1: viene por esa modalidad que... Si alguien llega a vulnerarla, ¿qué es lo que podría hacer?
+59:02 Speaker 2: ¿Qué tanto más
+59:05 Speaker 1: podría alcanzarla? ¿Hasta dónde podría llegarla? Como que al rebote. Bueno, la seguridad es justo esa acción, ¿qué es lo que te permite hacerlo? ¿Te baja la aplicación? ¿Te roba información? ¿Qué es lo que hace?
+59:21 Speaker 2: ¿Se
+59:21 Speaker 1: está explotando? ¿Alguien ya la está vulnerando? y lo más importante ya existe la colección o no. Entonces, todas son variables. Lo importante es tenerlas, evaluarlas. Y hay herramientas que ya se las dan. Hay herramientas que directamente te dicen, oye, hay una herramienta que se llama Prisma Cloud,
+59:41 Speaker 2: es carísima, que
+59:46 Speaker 1: te permite ver, ok, tienes, tenemos un cliente que tenía Prisma Cloud,
+59:51 Speaker 2: y
+59:52 Speaker 1: tenía... Tenemos como 3.000 vulnerabilidades Entonces el carente te decía, oye,
+01:00:01 Speaker 2: ya sé,
+01:00:01 Speaker 1: tenemos un legado muy antiguo Tenemos miles de aplicaciones en muchas aplicaciones Reparar esas 3.000 nos va a llevar todas las mil ¿Cómo nos enfocamos?
+01:00:11 Speaker 2: Esta herramienta tenía
+01:00:13 Speaker 1: como un funnel De
+01:00:15 Speaker 2: las
+01:00:16 Speaker 1: 3.000,
+01:00:17 Speaker 2: 2
+01:00:19 Speaker 1: .000 son habilidades críticas altas De las 2000, que son críticas altas, solo 80, después de un par de litros más, ya me voy a ir directo, solo 80 están expuestas a Internet. Y son este alcanzable, son las más críticas porque estás ahí de afuera, ahorita te podrías ir atacando. Entonces, te permitía, ok, enfócate en estas 80, que sea lo más crítico y mande a tu equipo a solucionarlo de una vez. A veces no tienes la herramienta y tienes que meter cabeza y otras herramientas free para ver qué haces. ¿Han escuchado lo que son los sniffers? Antes usaba más que ahora. Pero los sniffer es, así viéndolo como bien, como que metes acá una piquita para que todo lo que pase ahí como damos, por esa línea de conexión, lo puedas ver. Antiguamente, hace muchos años, era como una necesidad en el mundo on-premise tener que meter esos sniffer porque no sabías por dónde se habían metido ni dónde estaban llegando. Entonces, esos sniffer en el mundo on-premise que permitían ver qué es lo que se había acomodado totalmente para ver si algo raro estaba pasando por ahí.
+01:01:57 Speaker 2: Y ahora, en
+01:01:59 Speaker 1: la nube, muchas herramientas que usan funcionalidades mucho más eficientes y rápidas.
+01:02:14 Speaker 2: Ahora, ¿qué situaciones
+01:02:17 Speaker 1: podemos tener? Bueno, hay componentes maliciosos. Les contaba que el supply
+01:02:26 Speaker 2: change lo
+01:02:27 Speaker 1: que hacen es eso, suplantan una librería, ellos, los hackers, vulneran a tu proveedor de la librería, la vulneran, y generan una nueva versión, que para ti es un coño chumbo de la nueva versión. Empresa una versión y han inyectado propósito de una vulnerabilidad. Porque ellos como empresa han sido vulnerados en su proceso y han logrado generar una nueva versión. Tú como cliente no sabes, vas a la nueva y ¡pua! Te revientas con su vulnerabilidad. Ese por ejemplo es un
+01:03:03 Speaker 2: componente
+01:03:07 Speaker 1: malicioso que alguien coloca ahí y
+01:03:08 Speaker 2: no
+01:03:10 Speaker 1: lo... A veces puede ser que no está la vulnerabilidad todavía reconocida y reventaste. Hubo otra
+01:03:19 Speaker 2: vulnerabilidad que fue publicada y bueno, tu padre la cogió
+01:03:23 Speaker 1: a tiempo y te salvaste. No pasó nada.
+01:03:25 Speaker 2: Pueden pasar por eso. Hay otras que son...
+01:03:29 Speaker 1: Mira, no quiero decir tontas, pero bueno, ahora con el tema de la guía puede ser que más personas caigan en esto, pero no sé. Así como pasa con los sites que
+01:03:38 Speaker 2: clonean
+01:03:40 Speaker 1: el site de BSPE y le ponen BSPE, él no se da cuenta y entró a BSPE.com y era un clon fake. lo mismo puede pasar con librerías con nombres
+01:03:52 Speaker 2: parecidos y lo
+01:03:58 Speaker 1: digo con la IA, porque generamos un código y la IA se puede equivocar a la librería que nada es y no
+01:04:03 Speaker 2: se puede marcar nada sinceramente eso se ha visto poco, no se puede ver las diferentes
+01:04:15 Speaker 1: casuísticas que pueden haber Entonces, el SSA está
+01:04:23 Speaker 2: pensado en librerías
+01:04:30 Speaker 1: de tu aplicación. Y hay otro que es el análisis de las imágenes de los contenedores, que
+01:04:41 Speaker 2: este analiza todas las
+01:04:46 Speaker 1: capas de lo que hay dentro del contenedor. Analiza la imagen base del contenedor, analiza las dependencias propias expuestas en la aplicación, analiza todo. Y lo bueno es que también te permite identificar dónde está esa vulnerabilidad para ver dónde tienes que ir a solucionar el problema. ¿Es en mi código? ¿Es en la imagen base de la que viene? ¿Dónde está la problemática?
+01:05:23 Speaker 2: Entonces,
+01:05:23 Speaker 1: solo para ir ordenándonos respecto a qué cosas hay adónde, ahí me corrijan un par de cosas que les voy a contar
+01:05:30 Speaker 2: la pantalla.
+01:05:32 Speaker 1: Lo que es análisis de código es
+01:05:34 Speaker 2: SAST.
+01:05:35 Speaker 1: Veíamos la otra vez también detección de secretos, ¿no? Si yetas de casualidad un toque en un huevo por ahí, está detección de secretos, esto no se puede revisar. Las dependencias de aplicación, el esgón,
+01:05:48 Speaker 2: las librerías,
+01:05:49 Speaker 1: eso es análisis de composición.
+01:05:53 Speaker 2: Ahora, luego tengo el runtime del lenguaje, que
+01:05:57 Speaker 1: es,
+01:05:57 Speaker 2: ok,
+01:05:58 Speaker 1: está mi código de aplicación,
+01:06:00 Speaker 2: están las librerías, y
+01:06:02 Speaker 1: ahora yo le monto el entorno, el runtime, donde va a correr mi aplicación.
+01:06:06 Speaker 2: Esa es la imagen del contenedor. Ahí
+01:06:08 Speaker 1: es donde entra el análisis de la imagen del contenedor.
+01:06:13 Speaker 2: Ahora,
+01:06:15 Speaker 1: este contenedor tiene una imagen base que tiene el runtime por ejemplo NPM, pero ese NPM corre en un Linux o en un Windows. con imagen base también. Y
+01:06:28 Speaker 2: esa imagen base también
+01:06:30 Speaker 1: es realizada por ese análisis de imagen de contenedor.
+01:06:34 Speaker 2: Las dos
+01:06:35 Speaker 1: capas son cubiertas por esa imagen de contenedor.
+01:06:41 Speaker 2: Y bueno, en base a eso es importante lo que les llega a
+01:06:45 Speaker 1: seleccionar bien qué imagen base voy a tener. Gracias.
+01:07:16 Speaker 2: ¿Qué es eso? ¿Qué es eso? ¿Qué es eso? ¿Qué es eso?
+01:08:00 Speaker 1: A
+01:08:00 Speaker 2: ver, por favor, mira su trabajatería.
+01:08:09 Speaker 1: Este último es container, con el nombre SAS,
+01:08:12 Speaker 2: SSA, que es el Software Composition Analysis, y este de acá es Container Scanning. Con
+01:08:24 Speaker 1: esto, tenemos recontrasegurada la aplicación, de que como aplicación no estoy inyectando nada nuevo de vulnerabilidad.
+01:08:36 Speaker 2: Falta uno más, que
+01:08:37 Speaker 1: lo vamos a ver más adelante, que es el DAST. Es mucho más complejo, más caro de
+01:08:41 Speaker 2: implementar.
+01:08:42 Speaker 1: Pero bueno, ese ya es en distribución.
+01:08:53 Speaker 2: Entonces,
+01:08:54 Speaker 1: ¿se acuerdan de la diferencia de poner el Nginx 3.4.5 versus ponerle el Nginx...
+01:09:03 Speaker 2: ¿Cuál era el alpine o el slime?
+01:09:10 Speaker 1: Era la versión ligera. ¿Se acuerdan de algo de eso? No es lo mismo usar, digamos, imagínate que tienes que desplegar un server, un servicio en Java, en una imagen de
+01:09:26 Speaker 2: Dockerfile. A través de Dockerfile, un contenedor.
+01:09:32 Speaker 1: La imagen base que tú utilizas para correr tu servicio. ¿Tu servicio qué necesita para correr un Java?
+01:09:37 Speaker 2: Necesitas un Tomcat, algo
+01:09:40 Speaker 1: que soporte el Java.
+01:09:43 Speaker 2: Y
+01:09:43 Speaker 1: el Tomcat para correr, ¿qué necesita?
+01:09:45 Speaker 2: Un link, abajo, un sistema operativo para soporte. Entonces, tu sistema operativo que
+01:09:51 Speaker 1: soporte ese Tomcat, por si fuera para correr el Java, la idea es que sea lo más ligero posible, lo más aportado posible. por el tema de la
+01:10:02 Speaker 2: superficie de ataque. Mientras más grande es el INUX,
+01:10:06 Speaker 1: más probabilidades hay de que traigas más vulnerabilidades con las otras cosas de librerías que trae el INUX.
+01:10:12 Speaker 2: Mientras más agotado sea, menos probabilidades
+01:10:15 Speaker 1: de que tengas más superficie de ataque.
+01:10:23 Speaker 2: Gracias.
+01:10:35 Speaker 1: Entonces acá por ejemplo hay ejemplos, si usara la distribución completa de mi Nginx, por ahí tendría de 300 a 500 paquetes. Pero si uso la versión reducida, que es la Slim, tiene de 80 a 120 paquetes. Es otra nueva.
+01:11:03 Speaker 2: Esta tiene de 10 a 20 paquetes. Yo me imagino que esta de acá, claro.
+01:11:09 Speaker 1: Esta te ofrece el runtime para que cobre tu aplicación y las librerías mínimas van a cobrar tu aplicación. Pero, tú tienes una problemática en ese contenedor y quieres devaguearlo, que normalmente este
+01:11:19 Speaker 2: pone por Shell y devagueas,
+01:11:21 Speaker 1: vamos a poder hacerlo porque este no viene por eso. Ahí tenés sus pros y contras, pero con eso haces una derivaría más chida. Una imagen con base más chiquita. Y bueno, acá la
+01:11:39 Speaker 2: otra de serverless es...
+01:11:41 Speaker 1: En esta no nos preocupamos nosotros porque nosotros no la manejamos. Nosotros tiramos nuestro código y ya el que disponibiliza nuestro código es el que se encarga de esa imagen base. Entonces acá el consejo que quiero que se lleven es... El tema de la superficie de ataque.
+01:12:04 Speaker 2: Mientras menos grande sea nuestra imagen base,
+01:12:08 Speaker 1: mejor, porque tiene menos multiplicidad.
+01:12:19 Speaker 2: ¿Los números?
+01:12:21 Speaker 1: Cantidad de paquetes. Entonces, ¿se acuerdan del digest del Docker? Es como el apellido para fijar la versión que estoy obteniendo. Lo que es importante es eso, no usar solamente la versión, sino exactamente el digest para evitar
+01:12:43 Speaker 2: usar
+01:12:47 Speaker 1: una console 9 que no quieran.
+01:12:56 Speaker 2: Y acá también otra foto muy
+01:12:58 Speaker 1: interesante. Que este casi... No he visto que nadie lo haga, la verdad. Imaginen lo siguiente. Ya esta aplicación A se habló de producción.
+01:13:11 Speaker 2: Esta
+01:13:12 Speaker 1: persona va a pasar en producción hace un año, y la verdad, va funcionando bien, ya el usuario no ha pedido ningún cambio, no han habido bugs, sigue la misma versión de la aplicación. Pero, ¿qué pasó en ese año? Oye, ya salieron 20 vulnerables de esta versión del Nginx, tenemos que actualizarlo. Entonces, se modifica el Dockerfile, se modifica la
+01:13:33 Speaker 2: imagen base, se reconstruye esta, y tiene que pasar igual.
+01:13:38 Speaker 1: para asfixiar o para solucionar esos bugs de solubilidad que puede tener la imagen.
+01:13:43 Speaker 2: Entonces, pueden haber cambios de que
+01:13:48 Speaker 1: tu aplicación no tiene cambio como aplicación, pero la configuración del Docker que la contiene, sí necesita cambios para actualizar la imagen base del contenedor. Entonces, es otra... Yo digo que no lo he visto porque es... a nivel de procesos, de tecnología, es complicado. Porque normalmente son equipos diferentes los que se preocupan por
+01:14:12 Speaker 2: las versiones de las imágenes y
+01:14:14 Speaker 1: lo que mantienen las aplicaciones. Porque esto es, oye, equipo de aplicaciones, prueba tu aplicación otra vez, de que funciona bien, pones una imagen, porque la tenemos que actualizar. El equipo de aplicación me hizo, oye, yo no lo he modificado, ¿por qué no lo he probado? Y están enfocados viendo otras aplicaciones, otras cosas. Es un reto realmente hacer el blog, pero es una buena práctica a instaurar.
+01:14:42 Speaker 2: Ok, ahora,
+01:14:44 Speaker 1: ¿en qué momento debemos revisar o analizar estas imágenes de los contenedores? Recuerden acá que les contaba esto en el tiempo, ¿no? El desarrollador se demora un día en llevarse
+01:15:01 Speaker 2: los cambios a Feature,
+01:15:02 Speaker 1: una semana a Develop, dos,
+01:15:04 Speaker 2: un mes a Cuba y
+01:15:06 Speaker 1: a producción uno o tres meses.
+01:15:08 Speaker 2: Entonces, imaginemos que nosotros corremos solo análisis de imágenes acá. Ya listo, ya terminó en Feature.
+01:15:17 Speaker 1: Pero recién dos semanas después de que él terminó su rama Feature, esto recién llegó a Cuba. Por todos los procesos de espera y todo lo que vemos en Value Stream Mapping. Recién ahí llegó a Cuba. En ese lapso de un mes, puede haber salido vulnerabilidad esa imagen contenedor. Entonces es importante acá volver a correr esa imagen, ese análisis de calidad. No solamente al inicio. Estos análisis de seguridad que dependen de las vulnerabilidades que se van descubriendo en la comunidad, es importante correrlos en todas las fases para poder pescarlos cuando ocurra. Entonces, por eso acá menciona de analizarlo antes
+01:16:01 Speaker 2: de publicarla,
+01:16:02 Speaker 1: de forma continua, con lo que les contaba acá de la imagen base, por ejemplo. Porque imaginemos que ya pasamos a producción, pero igual esa imagen podría tener vulnerabilidad
+01:16:12 Speaker 2: a su futuro. Entonces,
+01:16:14 Speaker 1: hasta cierto tiempo, una persona humana, ir escaneándola para ver si tiene alguna nueva vulnerabilidad o no. eso es un poco lo que dice esta lámina no solo analizarla al inicio sino también durante todo el proceso
+01:16:34 Speaker 2: Este es un... Vamos a verlo en el... En
+01:16:40 Speaker 1: el ejemplo que vamos a ver ahora, pero igual siempre les dejo acá una plantilla más o menos del arquetipo de lo que sería un pipeline con este análisis. Primero acá hay un análisis de código estático,
+01:16:55 Speaker 2: por acá luego otro análisis de incendencias,
+01:16:58 Speaker 1: otro análisis de imagen del... del contenedor. Cada uno con sus políticas de cuándo para,
+01:17:07 Speaker 2: cuándo no para.
+01:17:13 Speaker 1: Es importante y también lo mismo,
+01:17:15 Speaker 2: ¿no? De declarar
+01:17:27 Speaker 1: los umbrales de que febrilidad esta que me va a parar o no el pipeline. El paso siguiente es ejecutar solamente si el de arriba no falla. Y que antes de desplegar la imagen final, lo
+01:17:45 Speaker 2: mismo, ¿no?
+01:17:46 Speaker 1: Si no tiene alguna vulnerabilidad de esa imagen, no lo despierta. Es sencillo a lo público. Es sencillo a lo público. Depende de las reglas que le colocan.
+01:18:02 Speaker 2: Ok, antes de
+01:18:04 Speaker 1: hacer preguntas, disculpen que no paramos toda la gente sin preguntas. Voy a ir abriendo acá un poquito el
+01:18:15 Speaker 2: ejemplo
+01:18:18 Speaker 1: que les quería traer. Este repositorio lo que tiene es una demo justo de los tres análisis de seguridad, SAS, SCA y imagen de continuador.
+01:20:12 Speaker 2: Tenemos un pipeline ahí para cada uno.
+01:20:42 Speaker 1: Análisis de SAS
+01:20:44 Speaker 2: con Templer.
+01:20:59 Speaker 1: Hay ciertas reglas que hemos configurado en un YAML para indicar por ahí qué cosas podrían estar obviadas o como reglas customizadas de análisis de SAS, que
+01:21:08 Speaker 2: proyectan en un YAML.
+01:21:12 Speaker 1: Y luego tenemos un file en que lo que hace es, bueno, ejecuta los mandos de clima para generar el Sbomb y pasárselo para que nos dé cuáles
+01:21:20 Speaker 2: son las
+01:21:21 Speaker 1: vulnerabilidades de las diferencias. y luego tenemos la construcción del
+01:21:27 Speaker 2: contenedor y
+01:21:30 Speaker 1: el análisis de esos
+01:21:33 Speaker 2: contenedores de
+01:21:35 Speaker 1: versiones de contenedores para que vean un poco las referencias entre el que pasa
+01:21:39 Speaker 2: por la completa, el BID, el distroless o
+01:21:43 Speaker 1: por ejemplo la recensión de las
+01:21:44 Speaker 2: aplicaciones acá
+01:21:56 Speaker 1: lo hemos simulado un poquito este con un archivo
+01:22:21 Speaker 2: Llegada a la URL de base de datos, un poco de fin.
+01:22:43 Speaker 1: ...con vulnerabilidades, ¿ok?
+01:22:46 Speaker 2: Vamos primero el SAS.
+01:22:51 Speaker 1: lo que está haciendo es corriendo y analizando
+01:22:53 Speaker 2: la aplicación,
+01:22:56 Speaker 1: el código de la aplicación. Me parece que en las redes de grasa se ha configurado que solo la analizó este
+01:23:01 Speaker 2: archivo, y que el nombre está saliendo este, y
+01:23:03 Speaker 1: este me está diciendo que es bloqueo. Hay un dato que no se está saneando. Acá se ha personalizado el mensaje de salida, pero normalmente
+01:23:13 Speaker 2: lo vemos como lo encuentra.
+01:23:20 Speaker 1: y por ende sale el rojito
+01:23:22 Speaker 2: y
+01:23:25 Speaker 1: no te deja continuar y donde se ve ese detalle se ve acá en el summary del pipeline acá
+01:23:44 Speaker 2: está cuál
+01:23:46 Speaker 1: fue la regla, qué falló, cuál es el archivo, en qué línea
+01:23:51 Speaker 2: Y
+01:23:52 Speaker 1: bueno, de ahí los datos que te arroja la herramienta, que es cuál es el código de la vulnerabilidad y cuál es el mensaje de qué
+01:24:01 Speaker 2: hacer.
+01:24:02 Speaker 1: Acá como ves, está customizado, personalizado, todo cualquier cosa, pero en realidad acá saldría un CBE que luego tú lo puedes googlear y te dice específicamente de qué tipo es y qué te recomendarían hacer para solucionarte.
+01:24:21 Speaker 2: entonces por ejemplo vamos a abrir acá en esta línea 6
+01:24:34 Speaker 1: es que está la inyección de la vulnerabilidad, porque no lo está saneando. ¿Cómo se vería uno saneado? A pesar de un poco el ejemplo que veíamos en la presentación, ¿no? Este está customizado, no sé si eso no lo debería, pero básicamente es para que entiendan bien el dato y antes de utilizarlo, en mi query, lo parseo a Intair para estar seguro de que no me están inyectando algo ahí que no le corresponde. ¿Hay alguna duda con el SAS? Estos proyectos ya analizados.
+01:25:29 Speaker 2: Y
+01:25:29 Speaker 1: me dice, oye, en este proyecto de acá, tienes 13 vulnerabilidades
+01:25:33 Speaker 2: a nivel de código.
+01:25:40 Speaker 1: Por ejemplo, Entonces acá es cómo realmente se ve la herramienta de ya vulnerabilidades reales. Acá vamos a ver el archivo porque el récord no está vinculado, pero acá te muestra específicamente en qué línea está. Y acá te da ejemplos de cómo...
+01:26:56 Speaker 2: en corrección bueno,
+01:27:00 Speaker 1: te da acá también incluso
+01:27:01 Speaker 2: el link de
+01:27:06 Speaker 1: cómo te recomienda sanearlo o sea, si hace un regre te recomienda de diferentes maneras según acoge la opción de cómo hacer esos regreos para evitar el proceso entonces,
+01:27:27 Speaker 2: eso es sangre ahora vemos dependencias
+01:27:36 Speaker 1: Independencias. Acá
+01:27:37 Speaker 2: lo primero es agarra el lock file, corre
+01:27:43 Speaker 1: el escaneo de vulnerabilidades y he encontrado 15 vulnerabilidades. Acá está todo el árbol de vulnerabilidades. Se han
+01:27:54 Speaker 2: encontrado seis que son
+01:27:57 Speaker 1: de seguridad baja,
+01:28:02 Speaker 2: tres de media,
+01:28:03 Speaker 1: seis de alta y cero críticas.
+01:28:06 Speaker 2: Acá está el árbol de qué
+01:28:09 Speaker 1: librería, cuál es el CBE, por cada una de esas vulnerabilidades que han encontrado. Entonces, bueno, como encontró, ¿cuál es tu regla? Acá hay una regla que dice, oye, si tienes vulnerabilidad de seguridad
+01:28:27 Speaker 2: alta o crítica, para el pipeline. Entonces,
+01:28:31 Speaker 1: como tienes 6 de crítica, prese, te para el pipeline y dice, oye, no puedes seguirlo. Y de acá es que puedas revisar en su marista. Acá están las vulnerabilidades. Y acá puedes ver el detalle de SCBE de
+01:28:52 Speaker 2: vulnerabilidad.
+01:28:57 Speaker 1: Miren acá algo particular. Yo voy acá
+01:29:00 Speaker 2: con el pipeline,
+01:29:01 Speaker 1: ya se está identificando cuál es la versión que tiene la actual vulnerabilidad y qué versión ya tendría esta vulnerabilidad corregida.
+01:29:12 Speaker 2: Normalmente, todo
+01:29:13 Speaker 1: es simplemente cambiar de versión y todo bien.
+01:29:16 Speaker 2: 3 veces, aunque no.
+01:29:18 Speaker 1: La nueva versión tiene algo que no es compatible con tu código y tienes que modificar tu código y hacerlo más doloroso.
+01:29:28 Speaker 2: Normalmente cuando son...
+01:29:30 Speaker 1: minor upgrades osea no es el ultimo numerito se acuerdan de major upgrades si no son minors o fixes
+01:29:36 Speaker 2: normalmente
+01:29:37 Speaker 1: no pasa nada cuando es un major ya es
+01:29:41 Speaker 2: mas combinado por ejemplo este de aca path
+01:29:45 Speaker 1: to rate brackets esta usando una version 0.1.7 la version que se quiere ir es
+01:29:51 Speaker 2: por ejemplo la 1.9.0 esa
+01:29:53 Speaker 1: si probablemente tiene eso El equipo de seguridad normalmente se fija en esto para ver qué tanto te presiona o no respecto a esa vulnerabilidad. ¿Alguna duda del SSA? Recordemos que son las
+01:30:28 Speaker 2: librerías que están declaradas en la aplicación.
+01:30:37 Speaker 1: Y la última es el análisis de las imágenes.
+01:30:42 Speaker 2: Ilustrativo,
+01:30:43 Speaker 1: se están corriendo 3, 4 análisis de imagen. ¿Se acuerdan que podemos usar de imagen completa? Que hay muchos paquetes. La DistroLED, que solamente trae el Rampine. Viene con el mínimo en librerías. Y la versión Steam, que es la
+01:30:59 Speaker 2: completa,
+01:31:00 Speaker 1: pero con un sistema operativo más reducido. O sea, si vemos en orden de tamaños, debería ser completa la más grande, Steam la segunda, DistroLED la tercera. Bueno, Lambda es... caso aparte porque es como la imagen base que te exige lambda
+01:31:16 Speaker 2: poder correr.
+01:31:19 Speaker 1: Lo que quiero que se lleven acá es, miren la cantidad de vulnerabilidades que tiene la grande. Esta tiene dos partes de vulnerabilidades. Una parte de vulnerabilidades en la propia imagen base del sistema operativo tiene 49 críticas. Y además el runtime tiene una crítica, que es el note. Esa es la completa. Le damos ahora al sleep,
+01:31:57 Speaker 2: que es un poco menos.
+01:32:01 Speaker 1: De 49 bajó solo 5. Ahora está el ejemplo, tal cual, del tema de superficie de ataque. Si uso la imagen, va a ser el contenedor de este operativo filante, por completo, me va a ganar 45 vulnerabilidades, que están de más, porque no necesito esos paquetes. Entonces, generalmente, oye, ok, tengo que solucionar 5 vulnerabilidades, 5 a 49 es
+01:32:27 Speaker 2: bastante la diferencia de superficie
+01:32:30 Speaker 1: de ataque.
+01:32:38 Speaker 2: Y veamos la del Mr. 3. ¿Cuántas tiene? Esta tiene
+01:32:47 Speaker 1: solamente una. No necesariamente esta no va a funcionar siempre. Por ahí que esta no satisface. Y bueno, acá está por ejemplo también, ¿no? ¿Qué versión ya está asfixiada? ¿A qué versión podría ir para poder solucionar?
+01:33:16 Speaker 2: lo
+01:33:16 Speaker 1: vimos antes a detalle las vulnerabilidades
+01:33:21 Speaker 2: de cada una de las imágenes la
+01:33:24 Speaker 1: completa,
+01:33:26 Speaker 2: la screen Gracias.
+01:33:35 Speaker 1: Gracias.
+01:33:45 Speaker 2: Gracias. Gracias. Gracias. ¿Qué dijeron, perdón?
+01:34:05 Speaker 1: No sé, está bien. No sé, está bien. No sé, está bien.
+01:34:08 Speaker 2: Sí, está bien. Sí, está bien.
+01:34:13 Speaker 1: Este... Exactamente, ese es para... Ahora, tienen una... Quieren analizar si su código tiene un potencial vulnerabilidad.
+01:34:22 Speaker 2: SAS. SAS. SAS.
+01:34:43 Speaker 1: Ahora, ¿cuál es el gran reto de esto? Hay una clave cantidad de vulnerabilidades que hay por cada uno de los posibles componentes. Empieza a tener fuentes de información de vulnerabilidades que vienen del SAST, vulnerabilidades que vienen del SCA, vulnerabilidades que vienen del esceno de imágenes. Imagínense el tipo de seguridad que se vuelve loco. Esto por 200 aspiraciones.
+01:35:14 Speaker 2: Es una
+01:35:15 Speaker 1: sábana de cosas de ver qué hago. Entonces ahí vienen las herramientas que te permiten consolidar la información para poder ir
+01:35:26 Speaker 2: viendo en
+01:35:28 Speaker 1: qué te enfocas. cuáles son las aplicaciones que tienen más vulnerabilidades, cuáles son las aplicaciones que tienen vulnerabilidades más críticas. Porque eso que les he mostrado yo es un pipeline de una aplicación por ahí. Pero seguramente no están entrando a las 200 aplicaciones a ver qué tienes tú, qué tienes tú, qué tienes tú, qué tienes tú. Uno de los retos es cómo hacemos para descentralizar esto en algún lugar para
+01:35:49 Speaker 2: que
+01:35:50 Speaker 1: seguridad es informado todo.
+01:35:57 Speaker 2: 6 aplicaciones que tenemos en habilidades críticas y por lo tanto va a haber una cola de efectividad de aplicaciones y son un montón como muchas aplicaciones que están...
+01:36:18 Speaker 1: Ahí lo que pido son las políticas de seguridad. ¿Qué
+01:36:20 Speaker 2: es lo que nos va a hacer que suceda?
+01:36:22 Speaker 1: Seguridad lo que te dice es crítica y
+01:36:24 Speaker 2: alta, no pasa la solución.
+01:36:26 Speaker 1: Fíjese, no pasa si la solución no puede ser. No puede ser porque esta vulnerabilidad no tiene solución.
+01:36:33 Speaker 2: Y ahí dirán,
+01:36:34 Speaker 1: él agarra para agarrar y le va a decir, oye, no pasa. Si quiere pasar, tiene una carta riesgo, la creencia quiere pasar esto, asume ese riesgo. Y ya. Esa es alta significancia, no pases. Medias y bajas, normalmente la seguridad te plantea
+01:36:49 Speaker 2: un tiempo
+01:36:51 Speaker 1: de espera. Que es, ok, puedes pasar a producción, pero tenés que corregir las medias en máximo 15 días. Y las bajas, el máximo un mes. ¿Firmas de compromiso? Siga, dale, es opuesto. Normalmente hacemos esto.
+01:37:05 Speaker 2: Los grupos de seguridad hacemos.
+01:37:07 Speaker 1: La problemática es este seguimiento de, oye, él pasó y tiene tantas, y él pasó y tiene tantas, y está persiguiendo a los demás. Oye, corrija, corrija, corrija. Escalar, escalar con los jefes.
+01:37:17 Speaker 2: Siempre hay un juego que tiene el equipo de seguridad.
+01:37:20 Speaker 1: Ahí vienen las automatizaciones y las herramientas para que eso no pase.
+01:37:26 Speaker 2: Este es el ejemplo de cosas. Hoy
+01:37:30 Speaker 1: tenemos tiempo un poquito de hipotallarnos en estas cositas. Me encanta contar cómo hacemos organizar las empresas porque finalmente todo el tema técnico y esto finalmente termina siendo anecdótico para las cosas que van a suceder.
+01:37:45 Speaker 2: Pero...
+01:37:49 Speaker 1: Creo que es interesante esta parte. No todas las empresas funcionan así actualmente, pero es una forma chévere que yo he visto cómo han
+01:38:01 Speaker 2: ido evolucionando,
+01:38:02 Speaker 1: por lo menos la empresa seguro donde yo estaba, que me tocó vivir diferentes escenarios. Cuando yo entré hace... 10 años, en el escenario 1, tenías la clásica división de equipo de negocio por acá, equipo de tecnología por acá, donde el negocio le hace un pedido, él le dice, te va a costar tanto,
+01:38:35 Speaker 2: se va a depurar tanto tiempo, y al final no va a depurar más, pero te digo que va a depurar tanto tiempo.
+01:38:42 Speaker 1: Él le dice, ya, ok, no me queda otra, dale.
+01:38:45 Speaker 2: Y él empieza a trabajar y hasta que le devuelve algo.
+01:38:49 Speaker 1: Cuando ya está listo, se lo devuelve y le entrega. Que recién ahí ya está llegando el cliente después de algunos meses o veces años. Eso era hace 10 años. Después,
+01:38:59 Speaker 2: ya me voy a ir a la actual. Fue evolucionando poco a poco, pero ¿qué
+01:39:04 Speaker 1: es lo que ha pasado ahorita? Y este escenario está en... continental,
+01:39:10 Speaker 2: SP...
+01:39:12 Speaker 1: Algunos con detalles más, detalles menos, pero me gusta mucho este esquema, que es...
+01:39:21 Speaker 2: Ok, ya
+01:39:26 Speaker 1: no existen tanto estas separaciones, sino lo que existen
+01:39:31 Speaker 2: son algo que se llaman tribus. ¿Alguien ha escuchado algo de las tribus?
+01:39:37 Speaker 1: Muy cerca de tribus. ¿Cómo manejan las tribus ahí, más o menos?
+01:39:43 Speaker 2: Por ejemplo,
+01:39:52 Speaker 1: en Pacífico, la han hecho en Morita, que son tribus de música. La tribu cumbia, la tribu rock, la
+01:39:57 Speaker 2: tribu... Así.
+01:40:00 Speaker 1: Cada uno es un género de música.
+01:40:03 Speaker 2: Y hay squads. está el squad, grupo 5, por
+01:40:12 Speaker 1: ejemplo, para los que es este cumbia, la tribu cumbia, tiene su grupo 5,
+01:40:19 Speaker 2: y así ya, varios nombres.
+01:40:26 Speaker 1: Y acá existe un patita que
+01:40:28 Speaker 2: cumple el rol de Product
+01:40:30 Speaker 1: Owner. Si es seguro que le suena muy conocido ese nombre, pues es el típico del Marco Scrum.
+01:40:37 Speaker 2: Entonces, él es
+01:40:38 Speaker 1: un pata súper empoderado.
+01:40:41 Speaker 2: Y él es,
+01:40:42 Speaker 1: digamos, estos de grupo 5 son los que se encargan de ver todo el proceso, proceso o no aplicación, el proceso de...
+01:40:54 Speaker 2: El proceso de la
+01:40:59 Speaker 1: experiencia del cliente. ¿Y esa experiencia del cliente en cosa se lleva? La aplicación que
+01:41:05 Speaker 2: usa el cliente en su celular. Entonces,
+01:41:09 Speaker 1: ellos son de esa herramienta
+01:41:11 Speaker 2: de MiSeguro. MiSeguro, ¿no es como MiBanca por Internet?
+01:41:18 Speaker 1: Estas son de MiSeguro. Oye, yo para poder mantener esa aplicación necesito dos frontends, un backend, uno de no sé qué. Ok, te los doy.
+01:41:28 Speaker 2: Entonces acá tengo el
+01:41:30 Speaker 1: developer 1, el developer 2.
+01:41:33 Speaker 2: al cuba, todos ellos se los doy ok,
+01:41:38 Speaker 1: oye, ojo a Rodrigo Donner estas patitas cuestan 5k, 5k, 5k, 3k, 4k entonces yo necesito un presupuesto de 10k
+01:41:52 Speaker 2: 10k por mes para
+01:41:55 Speaker 1: poder pagarle a mi equipo Ok, yo como Product Owner me comprometo a que voy a mejorar la experiencia del cliente y por eso el cliente se va a fidelizar y eso simboliza en plata 50k. Ese 50k yo te lo voy a traer como negocio,
+01:42:11 Speaker 2: yo Product Owner te lo voy a traer al negocio en
+01:42:14 Speaker 1: 3 meses, pero necesito este equipo por 3 meses. Entonces ya, ok, si me vas a traer 50k y te vas a gastar 30k, 20k de ganancia, check, vamos. Oye, pero para poder funcionar y desplegar y todo esto,
+01:42:29 Speaker 2: necesito los DevOps.
+01:42:32 Speaker 1: Pero los DevOps, tener un DevOps dedicado a esta aplicación, no necesito tanto porque ya tengo todo automatizado. Entonces,
+01:42:38 Speaker 2: acá
+01:42:38 Speaker 1: nace algo que se llaman equipos transversales. Por ejemplo, están los DevOps. Por ahí estarán también los de seguridad. Estarán los de infra. Infra de operaciones. Todos estos son transversales. ¿Qué son? Estos tienen varias personitas.
+01:43:06 Speaker 2: David, por ejemplo, el quien a cargo,
+01:43:12 Speaker 1: todo el chapter de todos los deos de
+01:43:16 Speaker 2: templos de Seguro. Más de treinta.
+01:43:18 Speaker 1: Todos ellos son terceros,
+01:43:20 Speaker 2: la gran mayoría.
+01:43:21 Speaker 1: Esos son un poco de caja a través del probador. Entonces, le hice hoy a David. Este trimestre voy a trabajar en la aplicación, voy a tener 50 servicios nuevos de los que estamos desplegando. Entonces dime por favor cuánta
+01:43:36 Speaker 2: gente necesito para
+01:43:38 Speaker 1: esto. Entonces él dirá, oye, con 30% de un debo se basta. Entonces este
+01:43:43 Speaker 2: patita acá atiende a este, a este y a este cuarto. Entonces se distribuye en ese cuarto. Entonces,
+01:43:57 Speaker 1: a lo que quería llegar acá... Y acá, no solo para cerrar este punto de seguridad, así como el de DevOps le va a habilitar los pipeline, darle soporte a la nube, lo que fuera, el de seguridad le marcará justo esas pautas de lo que veíamos antes. Él estará revisando, oye, ¿cuántas posibilidades han salido en el plugin? Ah, tanto. Ya, ok. Yo te tengo que dar el ok para cuando tú pases la producción. Tú no vas a pasar la producción sin mi ok.
+01:44:28 Speaker 2: Entonces, de esta forma,
+01:44:31 Speaker 1: Miren esta forma de trabajar de manera conjunta. Donde negocio,
+01:44:36 Speaker 2: que está acá.
+01:44:37 Speaker 1: Porque él no está solito. Él tiene acá un analista de negocio que le permite ir viendo las
+01:44:41 Speaker 2: métricas, cómo va. Está mezclada
+01:44:44 Speaker 1: con tecnología. El responsable de que este proyecto funcione es él. Ya no está ahí.
+01:44:55 Speaker 2: Claro,
+01:44:55 Speaker 1: si acá hay una patita que coge a Dendeux, él se quejará y le irá a Dendeux, y Dendeux tiene un jefe, y este otro jefe, y al final está el gerente de TI por acá, atrás de todo, y eso va a pasar. Pero hay una sinergia mucho más cercana con un objetivo en común de sacarlo, de sacar adelante el proyecto. Ya no es acá, de que negocio te tira la pelota. y negocios de después. Esto es chévere, la gran mayoría de empresas ya se han transformado, no la mayoría, perdón, las grandes, sí, la mayoría no, las grandes son chiquitas, se han llevado a este esquema. No ha sido nada fácil de ir a esto, han tenido muchas idas y
+01:45:40 Speaker 2: vueltas, caídas.
+01:45:45 Speaker 1: lo que normalmente sucede acá a los que les interesa más como que el tema de hoy. O sea, por ahí hay un lado técnico acá de cómo hacerlo y hay otro más de organización y cómo... ¿Cómo hacemos que esto realmente funcione como negocio? ¿Cómo hacemos que funcione esto como negocio? Es trimestralmente, él va a un comité donde están los gerentes y
+01:46:06 Speaker 2: presenta, miren,
+01:46:07 Speaker 1: yo esto que es lo que quiero hacer con la aplicación para poder traer más clientes, fidelizarlos a este tipo. Les prometo que voy a traer esto, esto. Obviamente esto es una promesa al aire, va con sustentos. que son demosables, porque si no lo chotean en el comité y le dicen, oye, no te creo a tu propuesta y no te doy por mi puesto, ya te doy casi con tus apoyadores y ahí se los pasan en tres cuates. Pero de esta manera como van tratando de asegurar. que esto funcione ha tomado plata mucha plata mucho tiempo de espera
+01:46:50 Speaker 2: Venga.
+01:46:53 Speaker 1: Vamos a ver más adelante, explayar un poco de cómo funcionan, porque es lo que van a ver mucho en la realidad de las empresas. Hay políticas que se tienen. A veces el pipeline está creado ya con la veña de seguridad. Entonces, si el pipeline ya tiene las validaciones y te corta y no te deja pasar, seguramente no tiene que hacer nada más porque ya está el pipeline. Seguridad ahí es lo que va a trabajar más, es lo que comentaba un poco antes, que es el diseño. Esa parte del diseño de seguridad es bien difícil de que un desarrollador no tenga en cuenta por sí solo. Necesitas ciertos conocimientos más de seguridad y una mentalidad un poco diferente para
+01:47:42 Speaker 2: incorporarlo. Bueno, esa es
+01:47:49 Speaker 1: un poco la idea y el espíritu. Quería mostrarles eso. Entonces, una vista, está esta vista de acá, ¿se acuerdan? Entonces, una vista interesante es,
+01:48:08 Speaker 2: él, como productor, tiene un dashboard donde
+01:48:16 Speaker 1: le dice, ok, tu aplicación es miseguro.com, esa es tu aplicación,
+01:48:23 Speaker 2: miseguro.com,
+01:48:30 Speaker 1: Y como tenemos todo automatizado con los pipelines, y esto acá luego se va a una herramienta y te da toda la información,
+01:48:36 Speaker 2: yo te digo, ok, esta tiene 30
+01:48:41 Speaker 1: vulnerabilidades críticas, esta tiene 20 Halt, tiene 10 Medium y 0 Low.
+01:48:54 Speaker 2: Esta vista... Es como tan directa de
+01:49:01 Speaker 1: presentarla y que el Product Owner es dueño de esto, ayuda a que él priorice, oye no, tenemos que atacar esto, ayuda a sensibilizar a las personas con seguridad. Cuando ya le pones nombre, apellido y lo amarras a las personas dueñas, responsables de cada una de las cosas, ve negocio, ya no es el DTI, el developer que puso la vulnerabilidad. Este patito se va mañana y...
+01:49:28 Speaker 2: No, no, no, no. No
+01:49:30 Speaker 1: es dueño realmente de la aplicación.
+01:49:31 Speaker 2: Es el que es dueño. Ahí es donde ayudas
+01:49:34 Speaker 1: a que realmente...
+01:49:36 Speaker 2: ¿Alguna pregunta?
+01:49:52 Speaker 1: ¿Alguno ya ha tratado de trabajar en algo de esas estructuras ágiles?
+01:50:08 Speaker 2: ¿Sabes qué?
+01:50:09 Speaker 1: Mi grupo de DP2, cuando yo llevé a DP2, era hacer un... A lo mejor nos tocó dos horarios, uno compite con el otro. Y en mi horario éramos diez grupos.
+01:50:20 Speaker 2: O sea,
+01:50:21 Speaker 1: yo me enlace como fue mi proyecto, y eran diez grupos que yo tenía que protestar. El que veía VI, el que veía... Era un serrano. La cosa es que, justo en ese año, hay uno que es el fundador de Ágiles Perú,
+01:50:40 Speaker 2: se nos fue el nombre, Cortex.
+01:50:43 Speaker 1: Bueno, él conocía a César, a Hilebra, que era el profe, y nos hizo una charla de lo que era agilidad. Estaba de moda, recién salía toda la onda. Teníamos que hacer escanto a vos, teníamos que hacer escanto a vos. Una desgracia por aquí. Sinceramente, si yo me ponía otra vez a hacerlo, no explica. Nosotros no trabajamos acá en el día a día juntos para
+01:51:07 Speaker 2: hacer una DEI todos los días.
+01:51:10 Speaker 1: No podemos hacer una DEI, estamos trabajando allá, allá, llevando el curso A, B, C, no se puede hacer DEI. Entonces, realmente después, lo veo y digo, no hemos debido hacer cuidado. Lo que pasa es que en esa época era más como, vas a ser agilidad, vas a hacer waterfall. Y ahora ya hay mezclas. Puedes gestionar como waterfall en esa escuela, pero lo disfrutas es así.
+01:51:56 Speaker 2: Ok,
+01:51:57 Speaker 1: esta de acá, solo para cerrar. están vinculadas a qué hacemos con cada hallazgo. Tenemos que decidir por cada una qué hacemos. ¿Detenemos el pipeline?
+01:52:13 Speaker 2: ¿Solamente informamos? ¿O es
+01:52:16 Speaker 1: un tema que tenemos que habilitarnos una excepción?
+01:52:20 Speaker 2: ¿Qué hacemos con cada una?
+01:52:24 Speaker 1: Pero veamos la primera. En el análisis de código estático, se está concatenando un parámetro HTTP en la consulta SQL. Esto está ocurriendo en el flujo completo, no hay saneamiento, y
+01:52:46 Speaker 2: esto es un API público.
+01:52:48 Speaker 1: ¿Qué deberíamos hacer con esta vulnerabilidad?
+01:52:52 Speaker 2: Detener, informar,
+01:52:54 Speaker 1: montar una asistencia. Lo primero, esta descripción que nos dan acá del hallazgo, ¿le suena a algo que hemos visto hoy? Dado que tenemos una inyección de SQL sin saneamiento, ¿qué deberíamos hacer con este hallazgo?
+01:53:18 Speaker 2: ¿Dentener el pipeline? ¿Solo informar?
+01:53:21 Speaker 1: ¿O poner una excepción que esto pase nomás?
+01:53:25 Speaker 2: Es
+01:53:26 Speaker 1: súper crítica. Pueden atacar acá de una manera bien significativa.
+01:53:34 Speaker 2: Es bastante crítico porque es súper inyechero y sí puede atacar, pero es porque también la viz pública.
+01:53:43 Speaker 1: Exacto. Uso de función de hash, o sea, es una librería
+01:53:53 Speaker 2: que está retirada,
+01:53:58 Speaker 1: o sea, ya no está vigente, está obsoleta, y se utiliza para nombre de archivos temporarios. Es detectada por el patrón que ya tiene configurado el análisis.
+01:54:16 Speaker 2: Y
+01:54:17 Speaker 1: esto no tiene consumo externo.
+01:54:20 Speaker 2: O sea, no es explotable
+01:54:23 Speaker 1: desde afuera. ¿Qué deberíamos hacer? Informar, detener o colocar excepción.
+01:54:33 Speaker 2: No sé si se debe entender el
+01:54:36 Speaker 1: tipo de un punto de hallazgo que está. Es una función que está deprecada y se utiliza para poder colocar nombres a los archivos temporales.
+01:54:55 Speaker 2: Detiene, informa o excepción. Si le pones excepción,
+01:55:04 Speaker 1: es que lo exceptúas de manera temporal hasta que algo pase para solucionarlo.
+01:55:09 Speaker 2: Les pongo la idea de la excepción.
+01:55:12 Speaker 1: ¿Se va a poder solucionar esto con un upgrade?
+01:55:19 Speaker 2: No, no, porque se ha retirado. Va
+01:55:23 Speaker 1: a tener que cambiar la lógica.
+01:55:25 Speaker 2: Cambiar la idea. Entonces...
+01:55:33 Speaker 1: O sea, informar significa que el paya no lo detiene, pero estamos avisando por su caso que no se pase de vista. Justo uno de los datos que dicen acá es que no lo pueden
+01:55:51 Speaker 2: explotar desde fuera. Ahora,
+01:55:59 Speaker 1: luego dice, crítica es un hallazgo crítico en un componente de compresión de archivos, viene heredado de una librería. No es alcanzable desde afuera. La función ya no se utiliza. O sea, es una librería que está, pero ya no la necesitamos. Y tenemos un parche disponible. ¿Qué deberíamos hacer? ¿Pretener?
+01:56:31 Speaker 2: ¿Informar? ¿O ese modo?
+01:56:35 Speaker 1: ¿Por qué críticas? ¿Cuál es la diferencia? Hoy día nos traje ese ejemplo, pero en la siguiente sesión sí lo vamos a poner. Cuando te revista los hallazgos, hay una parte que te los impone como son hallazgos ya aceptados, con un mensaje. Y otro es, no es aceptado y te lo informa siempre. No te para, pero te lo informa como si tienes este... en una informa, sería más como que lo catalogas como
+01:57:14 Speaker 2: si fuera un logro.
+01:57:18 Speaker 1: Pero no lo estás colocando con excepción para que lo salga.
+01:57:22 Speaker 2: Sé que no se debe entender. Ya, lo digo así. Si no es un crítico,
+01:57:30 Speaker 1: digamos que tu regla del pipeline es,
+01:57:33 Speaker 2: si
+01:57:35 Speaker 1: es crítico o alto, no pasas. Esa es tu regla. Pero sale uno crítico que todavía no tiene parte. ¿Qué haces? Te pones una excepción para que el palo no se detenga y despliegue. No puede ser nada con una excepción.
+01:57:50 Speaker 2: No puede ser la primordialidad.
+01:57:51 Speaker 1: No me te pasa eso
+01:57:53 Speaker 2: cuando tú no tienes parche.
+01:57:55 Speaker 1: Bueno, a veces, según la análisis de la seguridad y lo que acuerden,
+01:58:01 Speaker 2: se puede determinar eso.
+01:58:02 Speaker 1: Entonces ahí sería una excepción a la regla para que pase el video. Y en el logo y el video sería más como informas. Si no te lo pintas, el que está, pero no te va a tener parte.
+01:58:17 Speaker 2: Esa es un poco la diferencia.
+01:58:18 Speaker 1: Se podría decir que la excepción más está
+01:58:20 Speaker 2: para cuando no cumpla esa regla,
+01:58:22 Speaker 1: para que el falen te deje pasar.
+01:58:24 Speaker 2: Es un poco la diferencia.
+01:58:32 Speaker 1: Entonces, este acá, dado el tema que como es crítico...
+01:58:38 Speaker 2: y tienes ya el parche disponible,
+01:58:40 Speaker 1: yo sí diría que es el PNAP.
+01:58:44 Speaker 2: O sea, porque es crítico.
+01:58:45 Speaker 1: Y ya tienes el parche. Eso es lo único que lo hace de la pandemia. Y es más, hay un dato adicional que es importante. La función vulnerable no se usa. Quiere decir que este upgrade es muy probable que no te pegue. Porque como la usas, la heredas, pero no la usas. Entonces, no te va a pegar el código. Es muy probable que ese upgrade no te afecte nada al código.
+01:59:11 Speaker 2: A nivel funcional.
+01:59:14 Speaker 1: Acá tengo otro hallazgo, que es medio, es por un framework
+01:59:17 Speaker 2: de
+01:59:20 Speaker 1: HTTP en el manejo de cabeceras. Hay un hallazgo que no es importante.
+01:59:25 Speaker 2: Si es alcanzable, si es después de internet...
+01:59:31 Speaker 1: Está en el... Está catalogado como es explotación. Es un nivel alto de posición y alcance. Y tienes un archivo, un parche disponible.
+01:59:43 Speaker 2: Lo dejas pasar.
+01:59:45 Speaker 1: Lo efectúas. Dado que es un hallazgo medio.
+01:59:53 Speaker 2: Vos solo lo informas.
+02:00:03 Speaker 1: Dado que es medio, eso me suena informal. Porque si bien tiene la disposición, al ser medio, no compromete. Y acá podría ser lo que les comentaba antes, ¿no? Le damos un plazo de 30 días para que lo corrija. Eso podría ser ese. Vamos a ver otro, el 5. Tenemos 14 grados altos en paquetes de sistema operativo de la imagen base del contenedor. Eso salió con el escaneo de imagen. Hace tres meses que esa imagen base no se reconstruye y ya tenemos los parches disponibles. ¿Qué deberíamos hacer?
+02:00:46 Speaker 2: Detener, informar o aceptar.
+02:00:49 Speaker 1: 14 viajos altos.
+02:01:00 Speaker 2: ¿Por qué? Acá hay la palabra como altos.
+02:01:04 Speaker 1: Hay dos cosas acá. Uno, altos. Y dos, los parches ya están disponibles. Oblígalos a repararlos de una vez. Esa es un poco la clave de ver qué cosa se hace. Si es alto, si ya está el parche disponible, dale, que lo corten de una vez. Y el último punto, está
+02:01:26 Speaker 2: en
+02:01:29 Speaker 1: la cadena de suministro, en el supply chain. Hay una librería de un tercero que está limitada. Tres acciones del workflow referenciadas por el tag mayor,
+02:01:46 Speaker 2: el
+02:01:46 Speaker 1: XYZ,
+02:01:48 Speaker 2: el X.
+02:01:53 Speaker 1: Y una de estas acciones... Ah, porque ya entendí lo de acciones de Workflow. La acción de Workflow se refiere al Pyland de GitHub. ¿Se acuerdan que en el Pyland de GitHub están los Workflow? Entonces,
+02:02:07 Speaker 2: esas
+02:02:09 Speaker 1: acciones, que son una acción de un traseo, la estás utilizando, y una de estas tiene escures que tiene acceso a los secretos del pie.
+02:02:25 Speaker 2: Esta es como la más crítica, porque te va a robar
+02:02:30 Speaker 1: credenciales y ahí te va a
+02:02:32 Speaker 2: reventar todo lo que se acerca. Esta va a ser difícil que te enteres por
+02:02:45 Speaker 1: tu pipeline propio que lo tiene. Esta yo me la llevo para ver, porque yo ahorita lo pienso. Hemos visto un sistema de seguridad de la imagen, de la aplicación, del contenedor.
+02:03:02 Speaker 2: Pero, ¿qué pasa con
+02:03:04 Speaker 1: las vulnerabilidades que tiene mi propio pipeline? ¿Qué pasa si tu llave, tu pipeline tiene vulnerabilidades?
+02:03:09 Speaker 2: Que justo es el caso que nos están planteando.
+02:03:11 Speaker 1: Mi pipeline tiene vulnerabilidades.
+02:03:13 Speaker 2: ¿Qué hago? Pues ahí, el... El
+02:03:20 Speaker 1: sangre, por ejemplo, también te analiza esta...
+02:03:29 Speaker 2: Te
+02:03:29 Speaker 1: analiza también tu propio pipeline. Entonces el sangre mismo te está diciendo, oye, ojo, estás usando una action acá que está como una vulnerabilidad. Ese también debería de
+02:03:42 Speaker 2: tener algo.
+02:03:43 Speaker 1: Entonces el propio pipeline se detiene así. El propio YAML del pipeline se detiene así.
+02:03:50 Speaker 2: Bueno, acá he traído algunas de diferentes
+02:03:52 Speaker 1: complejidades y características para entender un poco lo que nos
+02:03:58 Speaker 2: gusta.
+02:03:59 Speaker 1: No hay lejos, los dos puntos clave en la
+02:04:02 Speaker 2: lámina,
+02:04:03 Speaker 1: es un poco lo que hemos conversado. No sé si tienen alguna pregunta.
+02:04:12 Speaker 2: Y voy
+02:04:13 Speaker 1: a contarles para el siguiente laboratorio,
+02:04:15 Speaker 2: que después que viene,
+02:04:17 Speaker 1: les voy a mandar un caso antes. Dada la experiencia del último laboratorio, un poco también tomando el feedback de, oye, ya, si no se pailan, pero la hierba es con nosotros más o menos y mucho no aprendimos.
+02:04:31 Speaker 2: Vamos a
+02:04:32 Speaker 1: enfocarnos a este más en un poco parecido a lo del examen. Este es el caso, esta es la solución que estamos planteando y a lo técnico es más anecdótico. Vamos a enfocarnos más en... ¿Por qué estamos haciendo lo que estamos haciendo? Es un poco la idea. Lo voy a pasar el caso antes para que lo tengan ya más leído y en el laboratorio sea más importante. No lo voy a pasar el producto antes, pero por lo menos el caso lo van a poder entender antes. Eso, eso de cada vez fue. Ahí apenas tengo las indicaciones de la universidad respecto a lo que va a pasar con la visita al Papa.
+02:05:10 Speaker 2: Ahí vemos lo que va a pasar con las
+02:05:12 Speaker 1: sesiones de acá dos o tres años.
+02:05:18 Speaker 2: ¿Tienes preguntas?
+02:05:23 Speaker 1: No, no, no, reforma en la pregunta. Pero es que han decretado, hoy de hacer noticias, que están decretando, está raro, pero es como feriados parciales. Hay dos días que de una de la tarde en adelante es feriado.
+02:05:39 Speaker 2: Una pregunta, ¿qué pasa si decís que la vulnerabilidad es ética, súper ética, pero no existe espacio, se detiene?
+02:05:47 Speaker 1: Esa es una muy buena pregunta y lo que va a suceder ahí es... Lo primero es la persona de seguridad, el arquitecto normalmente
+02:05:58 Speaker 2: se junta para entender qué
+02:06:02 Speaker 1: es lo que podría pasar si se explota. Ante eso, lo que va a suceder son dos cosas. Normalmente el de seguridad se pone bien fuerte y dice, no, eso no puede pasar a producción.
+02:06:15 Speaker 2: Y ahí imagínate que hay dos situaciones.
+02:06:17 Speaker 1: Imagínate que eso se detectó, no con un cambio que viene de la aplicación, sino con la aplicación ya está productiva y tiene ese problema. Hay veces en las que seguridad dice, baja la aplicación. Está productiva, no importa, la bájala, porque es peor el impacto. Y ahí, el todo goberner no basta, el todo goberner ahí es más sugerente, y ahí, que se comente
+02:06:37 Speaker 2: el, ¿cómo
+02:06:40 Speaker 1: le llaman?, el líder de la tribu, y se juntan para analizar el riesgo, y el líder de la tribu decidirá, no, si está bien, bájala, prefiero mandar un comunicado a los clientes de hoy en Sori, no tenemos aplicación por unos días. a tener ese problema. Y ahí nuevamente lo que pasa es que ya se ven técnicamente, ven el arquitecto, y luego cambiamos cosas, cosas, cosas, cosas, ponen creativos, y siempre hay una solución diferente para esa. Pero cuando la comunidad todavía no te da el chip, te tenés que poner creativo a ver qué haces,
+02:07:08 Speaker 2: puedo bajar la operación. O el
+02:07:12 Speaker 1: equipo que va a realizar riesgos para ver
+02:07:14 Speaker 2: qué haces.
+02:07:39 Speaker 1: En cada uno de estos hay un pipeline que corre diferentes validaciones. Están las validaciones del BILT, las de paradas unitarias, la de calidad. Normalmente se coloca como una sección de seguridad, donde corren todas las pruebas de seguridad que puedan correr lo que se defina. Y normalmente recuerdas el tema paralelo. Entonces sí, lo ideal es hacerlo lo antes posible, pero por ejemplo, primero que haga BILT. Si no hace BILT, ¿para qué haces análisis de desastre? Entonces hay ciertas validaciones que sí conviene hacerlas previas antes
+02:08:14 Speaker 2: de hacerlas de SAST.
+02:08:15 Speaker 1: Pero claro, tienes que hacer la prueba de SAST antes de hacer el diploid. No lo vas a hacer después del diploid.
+02:08:23 Speaker 2: Entonces, sí,
+02:08:25 Speaker 1: la idea es traerlo lo más antes posible en el pipeline, pero luego ciertas validaciones. En la siguiente clase vamos a ver un poquito de eso. Igual se maneja con el mismo concepto de lo que habíamos, no se acuerdan, cuando vimos el tema de cuánto
+02:08:47 Speaker 2: demora el proceso, un paso, porque si
+02:08:56 Speaker 1: demora mucho tiempo y lo pones
+02:08:59 Speaker 2: como en todos los pool requires,
+02:09:02 Speaker 1: el equipo de desarrollo no va a ser la atapura.
+02:09:04 Speaker 2: Va a depender un poco de ese tiempo de funciones por dos. Depende del herramienta.
+  

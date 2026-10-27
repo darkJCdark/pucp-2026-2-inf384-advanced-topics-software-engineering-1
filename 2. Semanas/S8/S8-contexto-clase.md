@@ -3,6 +3,7 @@
 Curso: INF384 Temas Avanzados en Ingeniería de Software 1 (PUCP, 2026-2) · Prof. José Felipe del Castillo Salazar
 Capítulo 5 (2 de 2) · 3 horas · RA2 · RA4.
 Clase dictada el 9/10/2026 en la noche, hora de Lima (el archivo de grabación figura como 10/10/2026 por la zona horaria; duración 174 min, con un hueco de ~30 min mientras los grupos trabajaban sin grabación).
+Nota: el `INF384_Material_consulta_Examen v2.pdf` (posterior a la clase) solo cambia la tabla DORA de tasa de fallas: Élite 0–5 %, Alto 5–15 %, Medio 15–45 %, Bajo más de 45 %.
 Fuentes: transcripción (`Temas S8.txt`, con ruido de transcripción automática), diapositivas (`INF384_S8_Automatizacion_calidad_II.pdf`), `INF384_Material_consulta_Examen1.pdf`, el caso modelo `INF384 · Caso modelo para el Examen 1 (Bodega Online).pdf` y capturas de pantalla de la guía de resolución que el profesor proyectó (carpeta S8).
 
 Nota de fidelidad: la numeración de las diapositivas salta de la 3 a la 8; las láminas de **pruebas de contrato** que anuncian el título y el punto clave 1 no están en el PDF ni se dictaron en clase. Todo lo de contratos de este documento viene solo de esa mención en la diapositiva final.
@@ -184,7 +185,7 @@ Pipeline del caso (YAML): `on: push` en todas las ramas; build con `pip install 
 |---|---|---|
 | Frecuencia de despliegue | 6 en 4 semanas | Medio |
 | Lead time para cambios | Mediana de 11 días | Medio (entre una semana y un mes) |
-| Tasa de fallas en cambios | 1/6 | Media (el profesor dijo "como 15%") |
+| Tasa de fallas en cambios | 1/6 ≈ 16,7 % | Media (el profesor dijo "como 15%"; el material v2 fija Medio en 15–45 %) |
 | Tiempo de restauración | 6 h | Alto (menos de un día) |
 
 - **Métrica más crítica antes del Cyber Wow**: la **tasa de fallas en cambios** (con 5 veces el tráfico, cada despliegue fallido afecta a muchos más clientes) junto con el **tiempo de restauración** (6 h es el tiempo que tardaría en recuperarse; la restauración depende de una persona).
