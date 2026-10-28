@@ -1,17 +1,19 @@
 # INF384 · Semana 10 — Automatización de seguridad I: SAST, SCA, escaneo de imágenes de contenedor y qué hacer con cada hallazgo
 
 Curso: INF384 Temas Avanzados en Ingeniería de Software 1 (PUCP, 2026-2) · Prof. José Felipe del Castillo Salazar
-Capítulo 6 (1 de 2): Automatización de seguridad. El profesor la llama "sesión 9" al inicio de la clase y dice que es la primera de dos sesiones de seguridad; la hoja de ruta del curso (diapositiva 1 de la S8) la ubica como "Automatización de seguridad I" (sesión 9), y la de la próxima semana como "Automatización de seguridad II" (sesión 10). La carpeta del curso la rotula S10.
+**Sesión 09 del curso: "Automatización de seguridad: código, dependencias y contenedores"** · Capítulo 6 (1 de 2) · 3 horas · RA3. Es la primera de dos sesiones de seguridad; la siguiente es la sesión 10 (Automatización de seguridad II). La carpeta del curso la rotula S10 (semana 10).
 Clase del 23/10/2026 (grabación iniciada a las 9:42 p. m.), duración 129 min.
 
-Fuentes: transcripción automática (`TA S10.txt`, con mucho ruido: "Sengre/CENGRE" = Semgrep, "SAS" = SAST, "SSA" = SCA, "S-Bone/esboque" = SBOM, "Cuba" = QA, "Divelo/diólogo" = develop, etc.). **No hay diapositivas de esta sesión en la carpeta**: el PDF que está en la carpeta S10 (`INF384_S8_Automatizacion_calidad_II.pdf`) es el de la sesión 8 (calidad II), no el de seguridad. El profesor proyectó láminas y un repositorio demo que solo conozco por lo que dijo; donde aparece "lámina" es lo que se puede inferir del audio.
+Fuentes: (1) transcripción automática `TA S10.txt`, con mucho ruido ("Sengre/CENGRE" = Semgrep, "SAS" = SAST, "SSA" = SCA, "S-Bone/esboque" = SBOM, "Cuba" = QA, "Divelo/diólogo" = develop, etc.); (2) las diapositivas `INF384_S9_Automatizacion_seguridad_I.pdf` (19 láminas numeradas). El demo en vivo (repositorio con tres pipelines) solo se conoce por lo que dijo el profesor.
 
-Marca de fidelidad: lo que está entre `[inferido]` es mi lectura de una transcripción ambigua o una decisión que el profesor dejó implícita, no una afirmación textual suya.
+Cómo leer este documento: lo marcado "(diap. N)" viene de las láminas; lo demás es lo dicho en clase. `[inferido]` = mi lectura de algo ambiguo o implícito, no una afirmación textual. Donde la clase y las láminas difieren, lo señalo.
 
 ## 0. Avisos de la clase
 
 - Es la **primera de dos sesiones de seguridad**: controles, revisiones y qué hacer cuando salen hallazgos. Esta sesión: SAST (ya usaron algo de Semgrep, ahora "más a detalle, no tan práctico con Semgrep"), análisis de librerías/componentes (SCA), análisis de contenedores y la política sobre los hallazgos.
-- **Próximo laboratorio**: el profesor enviará **el caso antes** de la sesión de laboratorio (no la solución ni el producto) para que se lea con tiempo. Cambia el enfoque por el feedback del laboratorio anterior ("si no pailan, pero la hierba es con nosotros... no aprendimos mucho"): será parecido al examen, se da el caso y la solución planteada, y **lo técnico es anecdótico; lo importante es el porqué de lo que se hace**. `[inferido]` Corresponde al Lab 4 de la hoja de ruta.
+- **Próximo laboratorio (Lab 4, 29/10 según la hoja de ruta de la diap. 1; Lab 5 el 12/11 y Lab 6 el 26/11)**: el profesor enviará **el caso antes** de la sesión de laboratorio (no la solución ni el producto) para que se lea con tiempo. Cambia el enfoque por el feedback del laboratorio anterior ("si no pailan, pero la hierba es con nosotros... no aprendimos mucho"): será parecido al examen, se da el caso y la solución planteada, y **lo técnico es anecdótico; lo importante es el porqué de lo que se hace**.
+- **Objetivos de la sesión (diap. 2)**: análisis estático de seguridad del código; análisis de librerías y componentes; análisis de contenedores; la secuencia de controles sobre el artefacto; actividad de triage de hallazgos por caso. Resultado de aprendizaje: **RA3** (seguridad integrada en las etapas del ciclo de vida con análisis estático, de dependencias y de contenedores).
+- **Preguntas abiertas con que arranca la sesión (diap. 3)**, partiendo de lo resuelto en la S4 (control en CI si es rápido, determinista, acotable y sin ambiente; el gate detiene lo nuevo e inventaría lo heredado; excepción con cuatro datos; una credencial se rota, nunca se exceptúa): ¿cómo decide un analizador que una línea es explotable?, ¿por qué una crítica puede esperar y una media detener el pipeline?, ¿qué viaja en la imagen además del código?, ¿qué hace el pipeline con un hallazgo que la herramienta marcó y nadie confirmó? Frase de la lámina: "hoy la etapa de seguridad se abre por dentro: cada control se trata como una pregunta sobre el artefacto, con su alcance y sus puntos ciegos".
 - **Sesión 11**: ya hay una **invitada confirmada** que acompañará la clase.
 - **Feriado por la visita del Papa**: se anunció un feriado parcial de dos días (desde la una de la tarde en adelante). El profesor aún espera las indicaciones de la universidad sobre cómo afecta a las sesiones.
 - Mención de una fecha el 20 de noviembre que la transcripción no permite reconstruir.
@@ -75,7 +77,34 @@ Ejemplo de arquitectura (el profesor usó Yape como ejemplo): app móvil → HTT
 - Se dan dos tipos de análisis: reglas de **patrones** (segundos) y **análisis de flujo de datos** a través de capas (minutos).
 - **Seguridad por diseño**: no se arregla solo con herramientas. Ejemplos: el teclado numérico de una app bancaria que viaja por HTTP como **hashes de la posición** y no los dígitos reales, y la **MFA aplicada solo en los puntos críticos** (equilibrio entre seguridad y experiencia de usuario; el profesor criticó que algunos servicios piden MFA para todo).
 
+### Fuente, propagación, saneamiento y sumidero (diap. 5–6)
+
+La lámina formaliza el recorrido en cuatro tramos: **fuente** (dato que entra desde fuera: parámetro HTTP, cabecera, cuerpo, archivo, mensaje de cola) → **propagación** (asignaciones y llamadas; el dato cambia de variable o de función) → **saneamiento, si existe** (validación o escape: lista de valores permitidos, consulta parametrizada, codificación de salida) → **sumidero** (operación peligrosa: consulta SQL, comando del sistema, ruta de archivo, HTML renderizado).
+
+Dos tipos de validación:
+
+1. **Patrón** (segundos): la línea coincide con una regla (una llamada a `eval`, una contraseña por defecto, un algoritmo de cifrado retirado). Rápido, pero con muchos avisos que no llevan a nada, y **pierde el rastro** cuando el dato cambia de nombre.
+2. **Flujo de datos** (minutos): existe un camino de la fuente al sumidero sin pasar por saneamiento. El analizador sigue el dato entre funciones y archivos; es más lento y **el hallazgo trae el camino completo**.
+
+"El hallazgo útil es el camino: dónde entró el dato, por dónde pasó y dónde se usó". Con eso el autor corrige en el punto exacto en lugar de buscar.
+
+Código de la lámina (`src/pedidos.js`): la versión vulnerable toma `req.query.id` (fuente), lo mete en `filtro = "id = '${id}'"` (propagación: cambia de nombre), arma `SELECT * FROM pedidos WHERE ${filtro}` y llama `db.query(sql)` (sumidero); con `id = 1' OR '1'='1` devuelve toda la tabla. La corrección: `Number(req.query.id)` + `Number.isInteger` (si no, responde 400; "un entero no lleva comillas ni operadores") y una **consulta parametrizada** (`WHERE id = $1`, `[id]`), donde el motor recibe la consulta y el valor por canales distintos y por eso "no hay camino".
+
 ### Falsos positivos, ruido y excepciones
+
+Tabla de la lámina (diap. 7):
+
+| Situación | Causa habitual | Acción |
+|---|---|---|
+| Aviso sin riesgo real | El saneamiento es una función propia que el analizador no conoce | Declarar la función como saneadora en la configuración de reglas |
+| Aviso sin riesgo real | Código de prueba o ejemplo analizado junto al productivo | Excluir rutas de prueba; mantener el alcance en `src` |
+| Aviso sin riesgo real | Regla genérica que no aplica al framework usado | Desactivar la regla con razón escrita y versionada |
+| Riesgo sin aviso | Framework o librería sin modelo de fuentes y sumideros | Agregar reglas propias para las llamadas del framework |
+| Riesgo sin aviso | Defecto de lógica (autorización, flujo de negocio) | Pruebas y revisión de código; **el analizador no lo cubre** |
+
+Dos ideas de cierre de la lámina: (1) **un hallazgo silenciado sin razón escrita vale lo mismo que uno no detectado**; la exclusión vive en el repositorio con los cuatro datos de la S4. (2) El indicador del analizador es **el porcentaje de avisos que terminaron en una acción**; por debajo del **30 %** el equipo deja de leer el reporte y la calibración de reglas vuelve a empezar.
+
+Lo que dijo el profesor en clase sobre el mismo tema:
 
 - **Falso positivo**: el SAST marca como vulnerable un dato que en realidad ya fue saneado por una función propia que la herramienta no reconoce. Solución: **configurar la regla** para considerar esa función de saneamiento como válida.
 - **Código de prueba junto al productivo**: los unit tests (carpeta paralela) contienen código con comportamiento a propósito que no va a producción; debe **exceptuarse** del análisis.
@@ -89,6 +118,33 @@ Ejemplo de arquitectura (el profesor usó Yape como ejemplo): app móvil → HTT
 - Existen **bases de conocimiento públicas** que dicen qué versión de qué librería tiene qué vulnerabilidad (CVE). El proceso: la herramienta revisa librería por librería contra esa base. Por eso importa declarar **la versión exacta** ("nombre y apellido"): el **lock file** fija el árbol completo y permite que el análisis sea reproducible.
 - **SBOM** (inventario del árbol de componentes de cada aplicación): es el insumo del análisis y además permite la **búsqueda inversa**: "¿qué aplicaciones usan la versión X de esta librería?". En un incidente como el de PHP, en lugar de llamar a todos los developers a revisar su código, se consulta la herramienta que ya correlacionó los SBOM de todas las aplicaciones. El profesor lo llama "la potencia del SBOM".
 - Ataques posibles a este eslabón: **componente malicioso** (el proveedor fue vulnerado y publicó una versión nueva con código inyectado; a veces el equipo se salva si la vulnerabilidad se publica antes de que la adopte) y **typosquatting** (librerías con nombre casi igual a una conocida). Mencionó que la **IA** puede inventar o equivocar el nombre de una librería y llevar a instalar una falsa, aunque dice que se ha visto poco.
+
+### Lo que agregan las láminas (diap. 9–12)
+
+- **Árbol de dependencias (diap. 9)**: cifras ilustrativas de un servicio web mediano en Node: ~8 000 líneas propias, **12 directas** declaradas y **~380 componentes** en el lock file (el resto son transitivas). El análisis **lee el lock file** (árbol resuelto y fijado, con versiones exactas), compara cada componente y versión contra bases de vulnerabilidades conocidas y **reporta el camino**: qué dependencia directa trajo el componente afectado. Dos reglas: (1) la corrección **sube la dependencia directa** que trae el componente; editar el lock file a mano se pierde en la siguiente instalación, y si la directa no tiene versión corregida se declara una **sustitución con razón y vencimiento**; (2) sin lock file el análisis responde sobre un árbol que puede cambiar mañana (es el requisito de reproducibilidad del Laboratorio 2, ahora como condición del control).
+- **SBOM (diap. 10)**: lista de todos los componentes que viajan dentro del artefacto (nombre, versión, proveedor, relación entre ellos), en formato estándar legible por máquina, generada en el pipeline a partir del lock file y de la imagen. Cuando se publica una vulnerabilidad nueva, la pregunta es **qué artefactos en producción la contienen**; con el inventario guardado junto a cada digest la respuesta sale de una consulta en minutos. Tres puntos: se **genera después del build y se guarda con el digest de la imagen** (el inventario de la versión 2.3 describe exactamente la imagen 2.3); sin inventario cada vulnerabilidad nueva obliga a volver a escanear todo lo desplegado (con decenas de servicios toma días; en 2021 una librería de registro de Java lo demostró: con inventario la respuesta tomó horas); es un entregable del pipeline y un **requisito contractual creciente** (el SSDF/NIST lo ubica en **PW.4**).
+- **Severidad y prioridad son dos números distintos (diap. 11)**:
+
+| Pregunta | Qué mira | Efecto sobre la prioridad |
+|---|---|---|
+| Severidad | Puntaje publicado con la vulnerabilidad, calculado sin conocer el sistema | Punto de partida; por sí sola ordena mal |
+| ¿Es alcanzable? | Si el código propio llama a la función vulnerable | Una crítica no alcanzable baja; una media alcanzable sube |
+| ¿Está expuesta? | Si el componente procesa entrada de internet o corre en red interna | La misma falla pesa distinto en un servicio público y en un job nocturno |
+| ¿Se está explotando? | Catálogos públicos de vulnerabilidades con explotación activa confirmada | Si figura ahí, se corrige en la semana aunque la severidad sea media |
+| ¿Hay corrección? | Versión parchada disponible o solo mitigación | Sin parche, mitigar y registrar; con parche, subir la versión |
+
+  Ejemplos de la lámina: un hallazgo **crítico** en un componente que el código nunca invoca, en un job interno y sin explotación conocida **se registra y se planifica**; uno **medio**, alcanzable, en la API pública y con explotación activa, **detiene el pipeline**.
+- **Cadena de suministro: lo que ninguna base de CVE lista (diap. 12)**:
+
+| Vector | Cómo ocurre | Control en el pipeline |
+|---|---|---|
+| Nombre parecido | Paquete con una letra cambiada respecto del popular, publicado en el registro público | Lock file con hash de integridad; registro privado que replica solo lo aprobado |
+| Confusión de dependencia | Paquete interno sin publicar y otro público con el mismo nombre y versión mayor | Alcance de nombres reservado; registro interno con prioridad |
+| Mantenedor comprometido | Una versión nueva de un paquete legítimo incluye código malicioso | Versiones fijadas; actualizaciones por revisión, no automáticas |
+| Script de instalación | El paquete ejecuta código al instalarse, antes de que nada lo use | Instalación sin scripts por defecto en el runner |
+| Acción de pipeline alterada | La acción referenciada por tag cambia de contenido y el workflow la ejecuta con los secretos | Referenciar acciones **por digest de commit**, igual que una imagen |
+
+  Idea de cierre: el pipeline ejecuta con credenciales código que el equipo no escribió (paquetes y acciones); **fijar la versión exacta y verificar su integridad es el mismo principio del digest** aplicado a lo que entra al runner.
 
 ## 5. Imágenes de contenedor
 
@@ -120,10 +176,17 @@ Orden de tamaño: completa > slim > distroless. El mensaje: pasar de 49 a 5 elim
 - Fijar la imagen base por **digest** (el "apellido" inmutable), no solo por etiqueta de versión, para que no cambie sin aviso (visto en S5/S6).
 - Las vulnerabilidades dependen de lo que se descubre en la comunidad, así que **el escaneo no puede ser solo al inicio**: entre que el dev termina la rama feature y el cambio llega a QA pasan semanas, y en ese lapso pueden aparecer vulnerabilidades nuevas. Hay que correr estos análisis **antes de publicar, de forma continua y periódicamente aun en producción** ("hasta cierto tiempo una persona o un proceso va escaneando para ver si tiene alguna nueva vulnerabilidad"). Es la misma lógica de la S4 y del RV.1 del NIST.
 
+### Lo que agregan las láminas (diap. 14–16)
+
+- **Anatomía de la imagen y quién revisa cada capa (diap. 14)**: código y configuración propios (SAST, detección de secretos, revisión) → dependencias de la aplicación (análisis de composición sobre el lock file) → runtime del lenguaje (análisis de imagen: versión del runtime y sus CVE) → paquetes del sistema operativo (análisis de imagen: base de datos de paquetes de la distribución) → imagen base (elección de base, política de actualización y reconstrucción). El análisis de imagen cubre las **tres capas inferiores**; "sin él, el pipeline revisa el **2 %** del artefacto que escribió el equipo y deja sin mirar el resto".
+- **Reducción de superficie (diap. 15)**: distribución completa 300–500 paquetes (shell, compiladores y utilidades que la aplicación no usa; "decenas de hallazgos cada mes"); **slim** 80–120 (lo necesario para ejecutar; sigue habiendo shell y gestor de paquetes); **distroless** 10–20 (solo runtime y librerías mínimas; sin shell, depurar exige otra imagen); base del proveedor serverless (trae el cliente de runtime obligatorio; la elección se reduce a la versión). Dos reglas: **la imagen se reconstruye aunque el código no cambie** (la base recibe correcciones cada semana; una imagen de hace dos meses tiene los hallazgos de hace dos meses; un build programado la pone al día) y **la base se fija por digest y se actualiza por revisión** (como una dependencia: versión exacta, cambio visible en el repositorio, análisis antes de adoptarla).
+- **Tres momentos para revisar la imagen (diap. 16)**: (1) **antes de publicar**: analiza la imagen recién construida contra el umbral del gate; si falla, no hay imagen en el registro; genera el inventario (SBOM) y lo guarda junto al digest; (2) **en el registro, de forma continua**: una imagen aprobada ayer recibe hallazgos nuevos hoy; el registro vuelve a evaluar lo publicado, avisa qué imágenes desplegadas están afectadas y dispara la reconstrucción programada; (3) **al desplegar**: el entorno verifica la **firma** antes de aceptar la imagen y solo despliega lo que produjo el pipeline y pasó el análisis (una imagen construida a mano queda fuera). "La **firma** une los tres momentos: certifica que este digest salió de este pipeline después de pasar estas compuertas. Sin firma, el registro acepta cualquier imagen con el nombre correcto".
+
 ## 6. Arquetipo de pipeline y orden de los controles
 
 - El profesor mostró una plantilla: análisis estático → análisis de dependencias → análisis de imagen, **cada uno con su política de cuándo para y cuándo no**, con umbrales declarados (qué severidad detiene). El paso siguiente corre solo si el anterior no falla, y antes de desplegar la imagen final se vuelve a verificar que no tenga vulnerabilidades.
 - Normalmente se coloca una **sección de seguridad** con las pruebas de seguridad que se definan, **en paralelo** cuando se puede. Orden sensato: primero el **build** ("si no hace build, ¿para qué hago el análisis?"); el **SAST va antes del despliegue**, nunca después.
+- **Secuencia de la diap. 17 (GitHub Actions)**: jobs `secretos` (detiene), `estatico` (analizador estático con reglas de alta confianza y alcance `src/`), `dependencias` (severidad mínima alta, **solo con parche**; genera el SBOM) e `imagen` con `needs: [secretos, estatico, dependencias]`: construye la imagen con `docker build -t app:${{ github.sha }}`, la analiza (severidad mínima alta, ignorar sin parche) **antes del push**, la **firma**, y recién ahí hace `docker push` y guarda el SBOM con el digest. Cinco notas de la lámina: las acciones van **fijadas por digest de commit** (`@<sha>`, el workflow ejecuta solo el contenido revisado); el umbral declara qué detiene (severidad mínima y existencia de parche, versionados); la imagen se construye solo si CI aprobó ("una falla arriba no deja imagen que analizar"); el análisis corre antes del push (nada con hallazgo sobre el umbral llega al registro); firma e inventario viajan con el digest. Los tres análisis arriba corren en paralelo y `imagen` espera a los tres.
 - Principio de la S1/S8: si el paso demora mucho y se pone en todos los pull requests, **el equipo de desarrollo evita subir cambios**. El tiempo depende de la herramienta; se profundiza en la próxima clase.
 
 ## 7. Demo: repositorio con tres análisis
@@ -159,18 +222,24 @@ El profesor dijo que lo técnico "termina siendo anecdótico" frente a esto:
 
 ## 10. Ejercicio: ¿detener, informar o excepción?
 
-El profesor proyectó seis hallazgos y los fue discutiendo. Las decisiones marcadas `[inferido]` las dejó implícitas.
+Actividad de la diap. 18: "un pipeline corrió y dejó seis hallazgos. Para cada uno decidan: **detiene, informa o excepción**; la **acción concreta**; y **quién la autoriza**". La tabla de respuesta tiene cuatro columnas: decisión (detiene · informa · excepción), acción (corregir · subir versión · reconstruir · fijar), quién autoriza (la política · el equipo · el equipo con quien responde por el riesgo) y **dato que pesó** (alcance · exposición · explotación · parche). Entregable verbal: un grupo por hallazgo explica su decisión en un minuto. En esta clase el profesor la resolvió en conjunto (sin dividir por grupos). Las columnas "Datos" son las de la lámina; la decisión es la que dijo el profesor o, si la dejó implícita, `[inferido]`.
 
-| # | Hallazgo | Dato clave | Decisión |
-|---|---|---|---|
-| 1 | SAST: parámetro HTTP concatenado en consulta SQL, sin saneamiento en el flujo completo | API pública, explotable | **Detener** (crítica) |
-| 2 | SAST: uso de una función hash obsoleta para nombres de archivos temporales | No tiene consumo externo, no es explotable desde fuera; no se resuelve con un upgrade (hay que cambiar la lógica) | **Informar**, no detener `[inferido]` |
-| 3 | SCA: hallazgo **crítico** heredado de una librería de compresión | No alcanzable desde afuera, la función vulnerable no se usa, **hay parche** | **Detener** y exigir el upgrade: es crítico y hay parche; como no se usa la función, el upgrade probablemente no afecte el código |
-| 4 | SCA: hallazgo **medio** en un framework HTTP (manejo de cabeceras) | Alcanzable desde internet, exposición alta, hay parche | **Informar** con plazo de corrección (15–30 días) |
-| 5 | Imagen: **14 vulnerabilidades altas** en paquetes del sistema operativo de la imagen base | La imagen base lleva 3 meses sin reconstruirse, los parches ya existen | **Detener** y obligar a corregir: alta + parche disponible |
-| 6 | Cadena de suministro: 3 *actions* de terceros del workflow referenciadas por tag mayor; una está comprometida y accede a los secretos del pipeline | Roba credenciales; es difícil de detectar desde el propio pipeline | **Detener**; el profesor la considera la más crítica `[inferido]`. Semgrep también analiza el YAML del pipeline |
+| # | Control | Hallazgo y datos (lámina) | Decisión | Acción y dato que pesó |
+|---|---|---|---|---|
+| 1 | Estático | Concatenación de parámetro HTTP en consulta SQL (módulo de consulta de saldos). Flujo completo; sin saneamiento; **API pública** | **Detiene** (dicho en clase: "súper crítica") | Corregir con consulta parametrizada/saneamiento. Pesó: exposición y flujo completo fuente→sumidero |
+| 2 | Estático | Uso de función de hash retirada para nombres de archivos temporales. Patrón; **sin dato de entrada externo** | **Informa** `[inferido]` | No es explotable desde fuera y no se arregla con un upgrade (hay que cambiar la lógica). Pesó: no hay fuente externa |
+| 3 | Composición | **Crítica** en componente de compresión, transitiva de la librería de PDF. **No alcanzable** (la función vulnerable no se usa); **parche disponible** | **Detiene**: "yo sí diría que es detener, porque es crítico y ya tienes el parche" | Subir la versión de la directa (PDF). Dato adicional del profesor: como la función no se usa, el upgrade probablemente no rompe nada. Pesó: parche disponible |
+| 4 | Composición | **Media** en el framework HTTP (manejo de cabeceras). **Alcanzable; expuesta; en catálogo de explotación activa; parche disponible** | En clase el profesor se inclinó por **informar** con plazo (15 o 30 días) | Ver nota de discrepancia abajo |
+| 5 | Imagen | **14 hallazgos altos** en paquetes del SO de la base. Base con **tres meses sin reconstruir**; parches disponibles en la base actual | **Detiene**: "alto y con parche disponible, obligarlos a repararlo de una vez" | Reconstruir la imagen sobre la base actual. Pesó: parche disponible + política de reconstrucción |
+| 6 | Cadena | **Tres acciones del workflow referenciadas por tag mayor**; una con acceso a los secretos de despliegue | **Detiene**; el profesor la llamó "la más crítica" (roba credenciales y es difícil de enterarse desde el propio pipeline) | **Fijar las acciones por digest de commit** (diap. 12 y 17). El analizador también revisa el YAML del pipeline |
 
-Reglas que se desprenden: (a) crítico/alto + corrección disponible → detener; (b) severidad media o baja con corrección → informar con plazo; (c) si el hallazgo es alto o crítico pero **no existe parche**, no queda más que una **excepción** acordada con seguridad (o carta de riesgo); (d) los hallazgos no alcanzables y sin uso no deben bloquear, pero tampoco se ocultan.
+**Discrepancia que conviene tener presente (hallazgo 4)**: la lámina de priorización (diap. 11) dice textualmente que "uno **medio**, alcanzable, en la API pública y **con explotación activa**, **detiene el pipeline**", y los datos del hallazgo 4 coinciden con esa descripción (alcanzable, expuesta, en catálogo de explotación activa, con parche). En clase, en cambio, el profesor respondió "dado que es medio, eso me suena informar" con plazo. Con el material de la lámina como referencia, la decisión coherente con la teoría es **detiene** (la explotación activa sube la prioridad por encima de la severidad media); la respuesta de clase se explica por haber mirado primero la severidad. Si esto cae en un examen, justificar la decisión con los datos (alcance, exposición, explotación, parche) pesa más que la etiqueta.
+
+**Tensión en el hallazgo 3**: el ejemplo de la diap. 11 ("crítico en un componente que el código nunca invoca, job interno, sin explotación conocida, se registra y se planifica") apunta a no detener. El hallazgo 3 difiere en que **sí hay parche** y la regla de la lámina es "con parche, subir la versión"; el profesor decidió detener por crítico + parche. Es el tipo de caso donde la política escrita (umbral "severidad mínima alta, solo con parche", diap. 17) decide: con ese umbral, detiene.
+
+**Quién autoriza** (columna de la lámina, sin respuesta dictada en clase) `[inferido por el orden de las opciones]`: *detiene* lo decide la política (automático, sin autorización); *informa* lo gestiona el equipo; *excepción* la autoriza el equipo junto con quien responde por el riesgo (en clase: seguridad / dueño de negocio, con carta de riesgo).
+
+Reglas que se desprenden: (a) crítico/alto + corrección disponible → detener; (b) severidad media o baja → informar con plazo, **salvo explotación activa y exposición**, que la suben; (c) si el hallazgo es alto o crítico pero **no existe parche**, no queda más que una **excepción** acordada con seguridad (o carta de riesgo) o mitigar y registrar; (d) los hallazgos no alcanzables y sin uso no deben bloquear, pero tampoco se ocultan.
 
 ### Pregunta de un alumno: "¿qué pasa si es crítica, pero no existe parche y se detiene?"
 
@@ -178,25 +247,36 @@ Respuesta del profesor: seguridad y el arquitecto se reúnen para entender **qu�
 
 ## 11. Qué llevarse
 
-1. **El análisis de seguridad no es solo uno**: SAST (código), SCA (librerías, con lock file y SBOM) y escaneo de imagen (SO + runtime + dependencias) cubren capas distintas; la secuencia importa (build primero, SAST antes de desplegar).
-2. **La base de conocimiento es el límite**: las herramientas solo detectan lo ya conocido, por eso el escaneo debe **repetirse en el tiempo** (antes de publicar, periódicamente y en producción) y hay que reaccionar rápido ante lo nuevo.
-3. **El costo por línea analizada empuja a escanear tarde**; hay que balancear costo, etapa y velocidad del pipeline.
-4. **Menor superficie de ataque**: imagen base pequeña (slim/distroless), fijada por digest, centralizada y escaneada de forma programada.
-5. **Cada hallazgo se decide con contexto, no solo con la severidad**: exposición, alcance, explotabilidad, existencia de parche; resultado posible: detener, informar con plazo o excepción con motivo.
-6. **Silenciar o exceptuar siempre con comentario y responsable**; ruido sin tunear = alertas ignoradas.
-7. **Seguridad por capas** (WAF + saneamiento en código + controles compensatorios mientras se parcha).
-8. **Responsabilidad con dueño**: el Product Owner ve el dashboard de vulnerabilidades de su aplicación; seguridad da el visto bueno a producción; el seguimiento se automatiza.
-9. **Después de un incidente, post mortem sin culpables** (el caso del puerto SSH): se corrige el proceso, no solo se castiga a la persona (coincide con lo dicho en la S4: "siempre es culpa del proceso").
+Puntos clave de cierre de la lámina (diap. 19):
+
+1. **El analizador estático sigue el dato de la fuente al sumidero**: lo que el equipo declara como saneamiento define qué tan útil es el reporte.
+2. **La mayor parte del artefacto la escribió otro**: el análisis de composición lee el lock file y reporta el camino hasta la dependencia directa.
+3. **La prioridad combina alcanzabilidad, exposición, explotación y parche**: la severidad publicada es el punto de partida; las otras cuatro preguntas ordenan la cola.
+4. **La imagen se analiza antes de publicar, en el registro y al desplegar**: la firma une los tres momentos al digest; el inventario (SBOM) responde qué contiene.
+5. **Lo que entra al runner con credenciales se fija por digest**: paquetes, acciones e imagen base, la misma regla para los tres.
+
+Ideas que agregó el profesor en clase:
+
+6. **Cada análisis cubre una capa distinta** (SAST: código; SCA: librerías; imagen: SO + runtime + dependencias) y la secuencia importa: build primero, SAST antes de desplegar.
+7. **La base de conocimiento es el límite**: las herramientas solo detectan lo ya conocido, por eso el escaneo se repite en el tiempo (antes de publicar, en el registro, en producción) y hay que reaccionar rápido ante lo nuevo.
+8. **El costo por línea analizada empuja a escanear tarde**: hay que balancear costo, etapa y velocidad del pipeline.
+9. **Menor superficie de ataque**: imagen base pequeña (slim/distroless), centralizada, fijada por digest y reconstruida de forma programada aunque el código no cambie.
+10. **Silenciar o exceptuar siempre con razón escrita y responsable**; ruido sin tunear = alertas ignoradas (por debajo de 30 % de avisos accionados el equipo deja de leer el reporte).
+11. **Seguridad por capas** (WAF + saneamiento en código + controles compensatorios mientras se parcha) y **seguridad por diseño**.
+12. **Responsabilidad con dueño**: el Product Owner ve el dashboard de vulnerabilidades de su aplicación; seguridad da el visto bueno a producción; el seguimiento se automatiza.
+13. **Después de un incidente, post mortem sin culpables** (el caso del puerto SSH): se corrige el proceso, no solo se castiga a la persona (coincide con la S4: "siempre es culpa del proceso").
 
 ## 12. Conexión con sesiones anteriores (relaciones mías, no dictadas)
 
-- **S4 (integración continua II)**: criterios para que un control viva en CI (rápido, determinista, acotable al cambio, sin ambiente desplegado), "detiene lo nuevo, inventaría lo heredado", severidad ≠ prioridad, excepción con identificador, razón, responsable y vencimiento, y la ubicación en NIST SP 800-218 (SCA → PW.4, SAST/secretos → PW.7, identificación continua de vulnerabilidades → RV.1). Esta sesión profundiza esos mismos controles con herramientas y ejemplos.
-- **S5/S6 (despliegue continuo)**: digest inmutable y rollback; aquí se usa para fijar imágenes y para el pipeline que reconstruye la base.
-- **S8 (calidad II)**: política de compuertas ("qué detiene, qué informa, qué revierte") y orquestación (rápido primero, paralelo); aquí aparece la versión de seguridad de esa política.
-- Hallazgo 6 (acciones de terceros con acceso a secretos) relaciona con la detección de secretos y con el principio de que el pipeline también es código a analizar.
+- **S4 (integración continua II)**: criterios para que un control viva en CI (rápido, determinista, acotable al cambio, sin ambiente desplegado), "detiene lo nuevo, inventaría lo heredado", severidad ≠ prioridad (aquí ampliada con "¿se está explotando?"), excepción con identificador, razón, responsable y vencimiento, y la ubicación en NIST SP 800-218 (SCA → PW.4, SAST/secretos → PW.7, identificación continua de vulnerabilidades → RV.1). La diap. 10 agrega que el SBOM también cae en **PW.4**.
+- **Laboratorio 2**: la reproducibilidad (lock file) pasa a ser condición del análisis de composición.
+- **S5/S6 (despliegue continuo)**: digest inmutable y rollback; aquí se usa para fijar imágenes, acciones y la base, y para la firma de la imagen.
+- **S8 (calidad II)**: política de compuertas ("qué detiene, qué informa, qué revierte") y orquestación (rápido primero, paralelo, `needs`); aquí aparece la versión de seguridad de esa política.
+- Hallazgo 6 (acciones de terceros con acceso a secretos): relaciona con la detección de secretos y con el principio de que el pipeline también es código que se ejecuta con credenciales.
 
 ## 13. Pendientes e incertidumbres
 
-- No tengo las láminas de la sesión (el PDF de la carpeta es el de S8); si quieres, súbelas y verifico cifras (tiempos por etapa, paquetes por imagen, resultados del demo) y las decisiones del ejercicio.
-- La transcripción no permite confirmar: nombres exactos de algunas herramientas y librerías, la fecha del 20 de noviembre, y cuál etapa corresponde a cada tiempo de la tabla de la sección 3.
-- Falta la **sesión 10** (seguridad II): ahí se verá la gestión de hallazgos aceptados/informados y, según el profesor, un adelanto del DAST.
+- La transcripción no permite confirmar: nombres exactos de algunas herramientas y librerías del demo, la fecha del 20 de noviembre, las cifras del demo de imágenes (49/5/1 críticas) y qué etapa corresponde a cada tiempo de la tabla de la sección 3 (esas cifras no están en las láminas).
+- **No sé** si el profesor mantendrá en la evaluación su respuesta de clase al hallazgo 4 (informar) o la de la lámina (detiene); ver la discrepancia en la sección 10.
+- El DAST quedó anunciado ("se verá más adelante"); no es seguro que sea en la sesión 10.
+- Lo dicho sobre noticias (PHP, GitHub, Interseguro) y las dos anécdotas de empresas son comentarios del profesor, no verificados.
