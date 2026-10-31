@@ -1,0 +1,379 @@
+# Temas S11
+
+  Meeting started: 30/10/2026, 11:30:57 p. m.
+  Duration: 100 minutes
+  Participants: Speaker, Speaker 1, Speaker 2
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/V0WsFHvO3k6sSRgmbMNr?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: ...completo. Acá ahora le metí mucho
+00:03 Speaker 2: el tema de guía. Es interesante porque ya se encuesta a todas las organizaciones del mundo. Yo, por ejemplo, trabajaba en la administración y como estaba vinculado al... Así levanta la info de todo el mundo.
+00:34 Speaker 1: y qué
+00:34 Speaker 2: recomendaciones da para cada uno de los hallazgos. Como les comentaba, ahorita está mucho enfocado en el tema día. Acá, bueno, este análisis es anual. No sé si ahora vamos a ver todo el
+00:46 Speaker 1: mundo, porque hace un año, o sea,
+00:49 Speaker 2: en los últimos seis meses el uso de la día ha sido muy,
+00:52 Speaker 1: muy bien.
+00:53 Speaker 2: Acelerado y cambiante. Podría ser inciente de lo que puedo hacer hoy. Es totalmente diferente. Pero bueno, en ese sentido va a ser un poquito de pasada la foto, pero también es muy interesante el enfoque que le dan, que es un poco el que yo le digo, porque si se han dado cuenta, no ha sido como solamente técnico de implementar las páginas, sino siempre vinculado a qué problemática queremos mover, qué métricas queremos mover, y simplemente enfocar negocios. Entonces, todo el estudio de Dora, no sé lo que le dio para acá, van a encontrar estos esquemas que son
+01:30 Speaker 1: solicitados.
+01:31 Speaker 2: Por ejemplo por acá, Yen Kee, que es uno de los padres de
+01:35 Speaker 1: Bebo del mundo.
+01:38 Speaker 2: Ahora es el clip-off y todo el mundo.
+01:42 Speaker 1: Este...
+01:42 Speaker 2: Es uno de los que también hace este análisis al clip. Eso, ¿qué más hay acá? Bueno, este ya lo comentó otra vez, que la conversación se ha apreciado, el proceso de grabación y el proceso de movimiento. Este otro link es como un drive que yo he ido haciendo en el tiempo de mi vida con los equipos de DevOps que he ido teniendo para ayudarlos a que tengan más recursos para estudiar por los exámenes de certificación de DevOps o a otras personas que por ellos necesitan mentorías para que tengan más recursos para aprenderlos. Una cosa chévere que saqué de esto fue el último de estos equipos de DevOps Days.
+02:42 Speaker 1: Hay de
+02:45 Speaker 2: todo,
+02:46 Speaker 1: de gente
+02:48 Speaker 2: bien capa. Bueno, gracias a Diana Faro. Diana es arquitecta en Yape y en Io. Hace poco es una de las Golden Jackets. Bueno, ahí es venezolana. Uy, claro, ¿qué es Golden Jacket? ¿De Adolesce? No. Es una persona que saqué todas las certificaciones de Adolesce. Diana tiene esa Golden Jacket.
+03:18 Speaker 1: Hace poco.
+03:19 Speaker 2: Bueno, ahí hay una certificación
+03:21 Speaker 1: ahí. Yo trabajo con ella en un momento.
+03:27 Speaker 2: Hay diferentes personas. Acá está Edson Chávez, no sé si hemos escuchado de él, es ex católica también. Bueno, todos están en PowerPoint, así que cuando los cargan acá en el Mac, va a ser complicado la cosa. Hay PowerPoint, hay PDFs, hay muchos que están teniendo en
+03:44 Speaker 1: él. O, ¿cómo se ponen los dedos? Los dedos, los dedos,
+03:47 Speaker 2: los dedos. Pero bueno, ahí se las arreglan para ver en tu formato de la red. Pero hay un montón.
+04:33 Speaker 1: ¿Qué otra
+04:34 Speaker 2: cosa encuentran acá? ¿Qué más se encuentran acá? Bueno, ahí hay sartos de libros
+04:48 Speaker 1: de DevOps.
+04:51 Speaker 2: Y este material que seguramente está desfasado porque nos prepararemos en 2019 para este examen. Luego es un examen de DevOps Arquitecto.
+05:02 Speaker 1: Por ahí, bueno, están los... Algunas preguntas de práctica.
+05:08 Speaker 2: En un momento de ver si querés hacer un programa, si querés verlo. Les pueda servir. Y mi idea, bueno, es seguir cumpliendo esto de más información.
+05:16 Speaker 1: Por si no.
+05:21 Speaker 2: Esto acá me voy a preguntar. Esta es la segunda parte de seguridad. Hay lo que se llama Policies Code, que es como un código de reforma.
+06:04 Speaker 1: ¿Qué
+06:04 Speaker 2: podría hacer yo para validar que a nivel de seguridad, ese código que estoy haciendo, sea seguro? La clásica cual era, normalmente era, hacer la infra, o sea, manual, la paga en la producción, o la paga en la cuba, viene el equipo de seguridad, lo llaman, parquean su tipo de hacking, le pagan, le dan sus dos o tres semanas, parquean sus pruebas, y te empiezan a decir. Oye, tu repo está público. Oye, no has aplicado el TTS 1, el último, el 1-2. Estamos en el 1-1. Y así, todos los años. ¿Qué te permite esto? El Polizas Code. Ya no esperes a eso. Simplemente así como corrías un sonar, un código, corre alguna herramienta de Polizas Code, como por ejemplo Checo. La corres y automáticamente te da ahí la lista de posibles vulnerabilidades que tienen tu código definitivo. O sea, ni siquiera se ha desplegado. y ya sabes que bonitas tiene seguramente hay algunas que dirás oye este de acá no lo puedo activar porque me cobra mucho plata la nube y lo puedo con una excepción asumimos eso porque hay otro control que hace que
+07:08 Speaker 1: me manejar
+07:08 Speaker 2: entonces eso es bastante interesante por ejemplo y lo usan empresas como Nubis, por ejemplo. Yo usé toda el futuro en la nube.
+07:23 Speaker 1: Yo usé Amazon, que está con
+07:27 Speaker 2: Terraform, y usan Checo para poder levantar todas las posibles vulnerabilidades que tienen.
+07:35 Speaker 1: Previo a The Art.
+07:39 Speaker 2: Y lo otro que vamos a ver es DAST. Ya vimos que es ZAST. Ahora vamos a ver DAST. DAST es un concepto que ahora último se está... Ejecutando más. Porque el concepto viene hace mucho tiempo. Pero siempre ha sido un poco complejo
+07:55 Speaker 1: ejecutarlo. Y caro.
+07:57 Speaker 2: Ahora hay más facilidades para hacerlo. Igual, yo todavía no tengo la oportunidad de una empresa realmente a trato. No es lo que me está contando ayer. Pero bueno, ahí vamos a ver un poco de eso. Entonces bueno, eso es un poco lo que vamos a ver hoy. Para esto es importante que todos nos acordemos cuáles serán los pasos
+08:35 Speaker 1: de infraestructura como
+08:37 Speaker 2: código en el Terraform. Una vez que yo codeaba mi Terraform ¿Se acuerdan? ¿Cuál era el primer comando que necesitaba hacer? ¿Se acuerdan? ¿Cuál era el proceso para que esto finalmente llegue a ser desplegado a nivel de la nube? Sí, el primero era el micro
+08:58 Speaker 1: Linets ¿Qué
+09:01 Speaker 2: me permite hacer Linets? Todas las
+09:07 Speaker 1: librerías.
+09:09 Speaker 2: Descargar las librerías. Por acá tenemos los Wider.
+09:15 Speaker 1: Están las librerías. Están las librerías.
+09:28 Speaker 2: Vale, es la primera pista de Inglini.
+09:31 Speaker 1: Después, ¿qué seguía?
+09:48 Speaker 2: Start Start no es un comando de Validate ¿Validate? ¿Sí? El Validate igual es opcional, no es obligatorio El Validate lo que nos va a... ¿Qué cosas te ayudan con el Validate?
+10:06 Speaker 1: Valida que... Valida que no haya vulnerabilidades en las librerías izquierdas. No. No, porque ese es el directorio como código.
+10:16 Speaker 2: Valida sintaxis nada más. Que tu territorio no tenga algo ahí mal declarado. Sinamente, sintaxis. Existe otro más. Ahí no sé si lo han visto o no. Sí, le he comentado algunos laboratorios en un material que es el Format. con FMT, es simplemente poner bonito con indentación. Este es más decorativo, no me gusta mucho. Ahí está. Es interesante porque es antes de que hagas nada y te responde así. Normalmente las pruebas que hemos hecho son terfons chiquitos, pero cuando los terfons son bien grandes, un terfons plan se puede demorar minutos en ejecutarse. Entonces el Validate se ejecuta muy rápido. Luego, ¿qué viene? No faltan dos más o menos. Listemos los comandos posibles de teléfono que había. Eran el INIT,
+11:10 Speaker 1: el FORMAT,
+11:12 Speaker 2: el VALIDATE. Nos faltan tres, pero hay dos que son... El PLAN. ¿Qué vamos a hacer PLAN? ¿Se acuerdan de algo que se llama el State? Lo diría por acá, un archivito. ¿Se acuerdan del STATE? ¿Para qué funciona el STATE?
+11:51 Speaker 1: El estado de... ¿Cuál
+11:56 Speaker 2: es el estado listorial de lo que ya está ejecutado desde el proyecto de Carrafón? O sea, acá estoy declarando tres máquinas virtuales. ¿Qué de esto ya se ejecutó? Eso es lo que está acá.
+12:09 Speaker 1: Registrado.
+12:10 Speaker 2: Entonces digamos que eso se ejecutó una vez y acá ya están las 3 PMs. Y digamos que yo agarro, modifico eso y agrego una más. Ahora son cuatro.
+12:21 Speaker 1: Cuando
+12:22 Speaker 2: yo corra el plan, eso lo va a comparar, el código que viene, lo va a comparar con tres, y va a decir, oye, estás agregando
+12:29 Speaker 1: una VM nueva,
+12:30 Speaker 2: que tiene tales características. Ese es el plan, que permite ver cuál es el tema, qué es lo que va a hacer. Y así como agrega, también, si dijiste ahora son dos, este te va a decir, oye, por si acaso quieres borrar esta máquina virtual. O si estás cambiando capacidades de una máquina en la que ya pegaste, lo mismo. Este es el plan. Entonces, el plan es el plan de lo que Terraform va a ejecutar sobre la nube. Y acá nace ese archivito importante,
+12:58 Speaker 1: que es el output del
+13:05 Speaker 2: plan. Esto es lo que usa esta herramienta de Polyscope. Para revisar y decir, oye, ¿esto que quieres hacer está bien o está mal? ¿Qué observas sobre esto? Por ejemplo, acá quieres agregar
+13:30 Speaker 1: un bucket S3.
+13:36 Speaker 2: S3, él te revisa todas las configuraciones para ver si están bien o no. Y estás poniendo que el debate S3 sea público
+13:45 Speaker 1: y él te va a decir no.
+13:48 Speaker 2: Incumples pues la política. Entonces, acá lo que quiero seguir en esto es el public school necesita... Para poder ver qué es lo que voy a hacer. Normalmente corres a partir de este plan. A veces también puedes ir directo al código. Pero una buena práctica por ahí es siempre agarrarlo desde acá. Y aquí el último paso ya para ejecutar. ¿Cómo era tu paquera?
+14:22 Speaker 1: Apply. Apply, ¿no? Sí, apply. Apply. Apply. Apply.
+14:29 Speaker 2: El apply es el que me sirve ya para ejecutar
+14:32 Speaker 1: los cambios.
+14:33 Speaker 2: Tomo este plan y ejecuto los cambios.
+14:38 Speaker 1: El
+14:39 Speaker 2: equivalente a esto hay otro más, que es el destroy, que ese normalmente no se utiliza, pero bueno, además la se puede mandar para ejecutar todo lo que hay. Entonces, como contexto de venir acá a analizar lo que es Policia Scope, ¿En el INIT? ¿Cuántos se lo correrían en el INIT? ¿Quiénes correrían el análisis de Policies Code en el INIT? ¿Quiénes lo correrían después del INIT y antes del plan? ¿Quiénes lo correrían después del plan? ¿Y quiénes lo correrían después de la playa? ¿Alguien tiene una opinión de en qué momento lo digan? ¿Por qué lo correrías en el playa?
+16:10 Speaker 1: ¿Por
+16:11 Speaker 2: qué no lo podríamos hacer antes del INIS?
+16:14 Speaker 1: Porque no hay nada que revisar.
+16:18 Speaker 2: No tiene todavía todas las librerías configuradas para poder entender de qué va. Se necesita todas las definiciones de los recursos que necesita crear. Entonces, normalmente ejecutamos el checo después del plan. pero el plan te dice qué es lo que vas a cambiar y el checo, como le pones a code, perdón, para no ponerle el nombre solamente de la herramienta, pero puede ser otras herramientas. Después el code lo que te dice es, ok, de eso que quieres cambiar, estas son las vulnerabilidades que encuentres. Por eso es un momento usado después del plan. ¿Y por qué no hacerlo después del apply? Podrías hacerlo después del apply, pero ahí si tenías vulnerabilidades, ya las inyectaste. Es muy tarde. Es como hacer tu análisis de vulnerabilidades de código con tu SonarCube, después hacer tu paso por examen. Tiene mucho sentido. Hacer tu análisis de calidad después que ya pasas por examen.
+17:16 Speaker 1: Entonces, ¿qué
+17:17 Speaker 2: tipo de cosas se encuentra el policía?
+17:21 Speaker 1: ¿Se ve ahí, perdón? ¿O monturran luces? Gracias. ¿Puedo cerrar la puerta?
+17:47 Speaker 2: ¿Qué tipo de vulnerabilidades puede encontrar? El más popular, como siempre, es lo del almacenamiento de objetos, lo que les decía el baquete C3. Cuando tú lo configuras, un grave error es poner esto público. Entonces esto podría estar acá.
+18:13 Speaker 1: Por
+18:13 Speaker 2: ejemplo, esto acá, normalmente se usa. En AWS es Backlit S3, en Azure es el Storage Account. Se utiliza para poner archivos. Pueden ser archivos de tu frontend, pero también pueden ser archivos de tus clientes. La póliza del PDF de seguros, una cotización, etc. Es importante que eso no sea público, porque si son públicos, cualquiera con la URL podría sacar de su archivo. Por ejemplo, como es una regla de firewall, el rol de ejecución con el cual están creando cierto componente, lo ponen como muy abierto. ¿Estos términos les suenan conocidos o les son como totalmente ajenos porque no han visto cloud? Eso sí me gustaría saber.
+19:10 Speaker 1: No me suena a nada.
+19:13 Speaker 2: ¿En qué curso ven Nube más a fondo?
+19:17 Speaker 1: En ninguno. En las redes. Pero en la inicial. Adso también. Administración de sistemas operativos. Pero que con Solari y con ellos...
+19:46 Speaker 2: ¿Y qué cosa me amenazas a hacer?
+19:48 Speaker 1: Quién sabe. Ah, verdad. Ah,
+19:52 Speaker 2: de nomás. ¿El de N3D y de Azure?
+19:54 Speaker 1: De AWS. Microsoft.
+19:59 Speaker 2: O Cognito. ¿Ya tiene unas ganas de hacer un taller de Nube?
+20:05 Speaker 1: Normal, no sé si sea
+20:06 Speaker 2: Podríamos hacer un taller, ¿ah?
+20:11 Speaker 1: Ah,
+20:19 Speaker 2: el director activo es una máquina virtual Es
+20:21 Speaker 1: de dominio, control de dominio Ya, pero es instalar el
+20:27 Speaker 2: Active Directory en una máquina virtual Eso, por ejemplo, se está dejando usar. O sea, eso se usa cuando las empresas ya lo tienen, están forzadas a usarlo, y ya, pues te migras a nube y tienes que instalar tu multitud anti-directo ahí arriba. Pero normalmente lo que se espera es, oye, chao, eso. ¿Qué es lo que se espera cuando te migras a nube? Que dejes de usar todo lo que te obligue a administrar servidores. ¿Te obligue a administrar servidores? Lo estás haciendo porque no hay otra manera de hacerlo. Ya. O a veces costa eficiencia. Normalmente es Paz a un servicio Paz. En Azure, es el FID, en AWS, el otro ritmo.
+21:14 Speaker 1: Son los nombres.
+21:17 Speaker 2: Creo que da para hacer un tallercito de 90.
+21:20 Speaker 1: Ah, un nuevo curso, profe. Tema avanzado, si quería ser guardado, profe. La venganza. Y yo
+21:37 Speaker 2: una pregunta, en la... ¿Ustedes hacen acceso a una plataforma de productos online?
+21:42 Speaker 1: No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no,
+21:47 Speaker 2: no, Yo he visto que se limitan bastante en la cantidad de cursos que puedes hacer. Sí,
+21:58 Speaker 1: los cursos buenos son de favor. Sí, los cursos buenos son de favor. Ah, no, todos son de favor. Dice sí, dice sí. Pero la católica son como buenos. Hidroctorios. UML, UML. ¿Cómo son de? UML.
+22:11 Speaker 2: Pero la dirección, un profesor de la universidad también estudia algunos cursos, y por será, y bueno, pueden ayudarlos.
+22:31 Speaker 1: Bueno,
+22:32 Speaker 2: entonces, cada uno de sus ejemplos y su dato son que podría traducir en configuraciones de recursos de la nube que finalmente tienen alguna configuración que tiene una vulnerabilidad. Podemos traducir finalmente en eso
+22:46 Speaker 1: de manera muy genérica.
+22:50 Speaker 2: Este 0000 de acá es lo que se hizo seguramente en redes, en el firewall, que es qué regla colocan, ¿no? La idea es poner la regla lo más específica posible y no tan abierta para la regla. Les contaba acá de una anécdota, aprovechando la anécdota de Halloween, justo me tocó recordando ver una parrillada de Halloween de una persona de mi equipo, de DevOps, por un soporte que está haciendo de equipo, de desarrollo.
+23:18 Speaker 1: abrió el firewall para
+23:19 Speaker 2: acceder a los puertos de cualquier puerto de cualquier orientación para hacer una prueba de necesidad o sea, eso es lo más fácil de poner suite pública La alerta le saltó al equipo de seguridad que monitoreaba. No se le contó otra vez que querían detener. Esa fue la parte humana de ese momento. Pero eso detonó en... Eso se detectó como al mediodía. Hubo una reunión de urgencias durante todo el día. No sé si era de Halloween, al día siguiente, pero esa noche de una parrilla, me acuerdo, con mi esposa y familia y amigos. ¿Cuál es el problema? La traza o lo que hubo ahí, para que entiendan un poco el impacto, es qué posibles cosas pudo haber hecho un atacante en ese tiempo. Oye, cargar ciertas URLs. ¿Qué había con esas URLs? Esta era una aplicación PHP. En la aplicación PHP, similar, que se guía en una forma, según los otros productos de PHP que hacen en el user, entonces son un montón de nodes en la NPM. Acá, el tuarchivo .env, donde están todos los reglamentos de Rural Frontend, ya, PHP tiene lo mismo, es un .config.php. Y ahí, el PHP puede ser front-end y back-end a la vez. Es un mix. Entonces ahí estaba el usuario de contraseña de base de datos, y todo eso. Entonces imagínate que tu .ex cualquiera lo puede cargar en el URL y verlo. Entonces lo mismo con el coffee PHP se podía ver. El usuario de contraseña para conectarse con algunos sistemas externos, para envío de mails, SMS, en
+24:57 Speaker 1: ese momento. Entonces
+25:05 Speaker 2: el directivo de seguridad fue... Todos los datos que están ahí, los rotos, todas las credenciales, las cambian. Entonces, había que ir por todas las herramientas, caminar las credenciales. Y el problema ahí era de, oye, ¿qué pasa si se usó el conseño de esa aplicación? ¿Qué pasa? La otra aplicación no puede entrar. Entonces, una noche larga, estaba ahí con todo el equipo, mitigando sus cosas. y para que les den una idea me meto un ratito, me voy a saltar en la parte de organización para que entiendan yo les hablaba el otro día de los equipos de
+25:47 Speaker 1: las
+25:49 Speaker 2: tribus ¿cómo están organizadas las tribus? ahorita me quiero meter, voy a hacer un paréntesis ¿cómo está organizado un área de tecnología? normalmente la tecnología, bueno, normalmente hay una cabeza
+26:06 Speaker 1: y hay
+26:08 Speaker 2: empresas que varían lo clásico es una cajita de arquitectura tienes una cajita de infra y operaciones se han escuchado del CTO normalmente el CTO está aquí es diferente de infra y operaciones Está la cajita de desarrollo, que es la más común. Está la cajita de finanzas. y gobierno, se dan cuenta, miren, que está dentro de TI. TI como gasto para la empresa, normalmente es entre el segundo y el primero, gasto más fuerte por la empresa. O sea, dentro de todo el presupuesto de toda la empresa. TI está entre el primero y el segundo, gasto más fuerte por la empresa. Por eso ellos tienen su propia área interna de finanzas. Porque dentro del área, subiendo acá toda la empresa, que por acá estarán operaciones,
+27:27 Speaker 1: recursos humanos.
+27:29 Speaker 2: Operaciones me refiero a, por ejemplo, si esto es un banco, acá está todo el tema de personal de las agencias y todo eso. Recursos humanos, bueno, reclutamiento, bienestar, etc. Estará marketing por acá, legal por acá,
+27:45 Speaker 1: y así.
+27:48 Speaker 2: Entonces, acá también hay otra área que se llama finanzas. Pero es finanzas de toda la empresa. Acá TI tiene su propio sub-área de finanzas, que trabajan muy, muy de la mano con ellos. Y gobierno. Acá normalmente, por ejemplo, este término seguramente no ha escuchado mucho, PMO. La PMO normalmente está por acá. ¿Cuánto falta? ¿Cuánto falta?
+28:27 Speaker 1: ¿Cuánto falta? ¿Cuánto falta?
+28:29 Speaker 2: ¿Cuánto falta? ¿Cuánto falta? ¿Cuánto falta? ¿Cuánto falta? ¿Cuánto falta? ¿Cuánto falta? ¿Cuánto falta? ¿Cuánto falta? ¿Cuánto falta? acá adentro normalmente es DevOps está o aquí o acá algunos empresas lo tienen acá acá están
+29:07 Speaker 1: todos
+29:08 Speaker 2: los desarrolladores los tech leads Los Cuba, todos están ahí, acá. Acá están más los de fierro duro, los especialistas en redes, los especialistas en Linux, Windows, Java, los de Cloud también, pero más enfocados en la operación. ¿Qué quería? Seguridad, por ejemplo. Seguridad, ese era el punto que quería mostrarles esto. Seguridad ha tenido una evolución en el tiempo. En todas las empresas, normalmente seguridad, como concepto completo, estaba metido acá en TI. Y seguridad era incluso una cajita adicional acá. Que a veces nacía dentro de arquitectura, por ahí. Pero estaba acá. ¿Y qué pasó con seguridad? Seguridad se partió en dos. Y nació algo que se llama seguridad de información. Es todo lo que ve en Tupia. Seguridad de información se fue al BTI y se fue a riesgos. Y nació algo que se llamaba seguridad informática. Acá, principalmente era él. Él se dedica a poner lineamientos, todo mucho más alto nivel, pero a nivel ya de políticas más técnicas del día a día, de trabajando técnico, etc., está con seguridad informática. Y seguridad informática normalmente está metido dentro de infra y operaciones. Entonces, porque él lo traía acá un poco,
+31:00 Speaker 1: y
+31:02 Speaker 2: también dentro de la seguridad informática es donde están los analistas de seguridad, o arquitectos de seguridad. que van a hacer todos estos alineamientos de acá de decirte, oye, tu bucket no puede ser público, oye,
+31:20 Speaker 1: estos no, todos
+31:21 Speaker 2: ellos están acá, en sobreinformática documental. El pacífico, ABCP, RIMA, todos separados de información por allá y sobreinformática documental.
+31:36 Speaker 1: Iso, Iso. Ah, ¿qué es eso?
+31:39 Speaker 2: Los isos son Zani. Me grabaré. Los objetos de biología que se han ido por allá. Y acá estamos haciendo ahora más áreas de CyberSQ y Minus Rimac, pero están ahí más en tema de auditoría, alineamientos, más, digamos, lejos de la
+31:58 Speaker 1: acción real que está pasando ahora.
+31:59 Speaker 2: El reto ahí es cómo pegarse la mano. Normalmente están peleados por eso. Es difícil. Triangular entre estos dos. Bueno, les cuento unas historias, pero no es sólo de una. Como son historias de vida al mil conocidos más o menos. Cuando tienes la oportunidad de ascender. La clásica de ascender que es más lenta es cuando vas haciendo logros y tú levantas la mano y dices, oye, ya me toca. Y hay otra, que a veces es cuando se crea la oportunidad por la vida. Entonces, ahí la que me tocó a vivir a mí, una fue mi jefe se fue. y quedó la función disponible. Y otro día era... era Junior, digamos, no era
+33:18 Speaker 1: ganas. Semi, diría. Entonces, esa
+33:24 Speaker 2: era el Banco Maravilloso.
+33:30 Speaker 1: Entonces,
+33:30 Speaker 2: bueno, se abre la posición, me preguntan si yo quería postular, y dije, ya, sí, vamos. Yo tenía unos cuatro años en el banco. Y empezamos el proceso, y por error, la secretaria del gerente me copia en el correo donde están los tres postulantes a la posición. Un chiveo era,
+33:57 Speaker 1: uno tenía 10
+34:01 Speaker 2: años de experiencia, otro tenía 7 años de experiencia y el otro tenía 4 años. Y dije, entiendo, o sea, ¿por qué tanta diferencia? Bueno, pasé todo el proceso, me entrevistaron de Chile, acá, pa, pa, pa, y eligieron al de 10. Un dato curioso, en mi proceso este, mientras, yo me querí ir de esa empresa porque lo estaba pasando, fue el primer año de, mi hijo tenía un año en esa época,
+34:24 Speaker 1: y charmeaba.
+34:29 Speaker 2: Fines de semana, feriados, domingos, sábados. Estábamos en un proyecto bien, bien pesado. Muy retador. A mí me encantaba esa chamba. Era súper retador. Era un proyecto corporativo. Tenemos cuatro proyectos corporativos triangulando con Chile, Colombia. Bien chévere. Pero me mataba demasiado.
+34:46 Speaker 1: Y yo
+34:48 Speaker 2: me crié. Estaba postulando yo a Pacífico. Y bueno, me crié hasta en Pacífico. Y leo el nombre de la persona que me voy a entrevistar, porque estoy nunca visto antes. Busco mi correo. y era uno de los que estaba postulando a la chapa donde estaba totalmente para ser mi jefe. Eso fue muy curioso. Él no la agarró. Fue bueno. Lo más chistoso es que esa entrevista, él me preguntaba más a mí del otro lado para saber cómo era. Se centraba en la propia entrevista. La cosa es que no me eligen a mí, eligen al de mayor experiencia. Eso realmente me pegó, ya no me eligieron. Pero bueno, ahí me sentonaron. Ese proceso en pacífico duró muchos meses. y le agarro el pacífico del momento que me estaba oyendo Paréntesis, yo tres veces entré a la oficina de ese gerente a renunciar sin tener nada porque ya me estaba muriendo en relación familiar conmigo. Y nada, arrugué y no renuncié a ninguno de las tres porque no tenía otro champo. Hasta que ya me salió a renunciar y le pregunté en la rego de salida con el FTT y le dije, mira, a él pasó esto, yo me enteré quiénes eran los tres, quiero entender por qué era tanta diferencia. Y me dijo, lo que pasa es que necesitaba... No sabíamos
+36:01 Speaker 1: qué
+36:03 Speaker 2: línea seguir. O sea, no sabíamos bien si contactar a alguien que venía de abajo y conocía, o caer a alguien de afuera, que se llamaba a alguien de afuera. Tres posibilidades diferentes para con Chile decidir juntos. Me lo he encontrado varias veces como cliente, luego como posible, contratado, pero no me fui como él. Pero lo que quería llegar de ahí era qué son las posibilidades, que es como cuando tu jefe se va y tú puedes seguir o no.
+36:34 Speaker 1: Y
+36:34 Speaker 2: si no te eligen, te va a oler y vas a ver ahí si te quedas o no te quedas. Y otra, que justo venía por esta, es cuando se fusionan empresas. Cuando tú perteneces a una empresa que es parte de varias empresas, Pacífico pasó, que estaba en Pacífico, generales. Seguros generales son seguros de autos, SOA, y otros seguros de vida. Entonces estas dos empresas y otras dos pacíficos están SPS,
+37:04 Speaker 1: Hacemos Luz Arroyo. Son
+37:05 Speaker 2: tres empresas diferentes. Buenas empresas. Entonces Vida y Generales se funcionaron. Y en cada una de esas había un gerente de ahí. En cada una de esas había gente de infraoperaciones, gente de... Algunos, hay diferentes que se habían trabajado diferentes, una no tenía arquitectura, por ejemplo. Entonces, ahí es, oye, ¿qué gerente se va a quedar? ¿Qué vamos a hacer? Y los que están con un gerente dirán, bueno, si se queda mi gerente, estoy tranquilo, pero si se queda el otro, pues ya no lo sigo. Y lo mismo pasó con los de seguridad. Eso fue muy chistoso. Pasó con los de seguridad, que eran dos personas. Era uno, más o menos de mi edad, en ese momento, y otro, mucho más experimentado. Entonces, luego de pasar las entrevistas a los filtros, se quedó el más junior. El experimentado no lo eligieron. Pero, ahí hicieron esta separación. Al más junior, el más joven, lo pasaron acá arriba, y al otro lo dejaron acá abajo. Y esto creó un gran problema, porque como compitieron siendo niveles diferentes, y los dos se quedaron en la empresa, pero en los roles diferentes nos tenían que colaborar
+38:17 Speaker 1: con una batalla.
+38:19 Speaker 2: De ahora, de ahora. Que en un buen tiempo hasta que él se creó. Él sigue ahí, todavía, trabajando. Bueno, es una experiencia de ver cosas que van pasando y de... Según el momento que le cuesta al espectador no ver cada cosa, reaccionará de una forma u otra. No hay una forma correcta de lo que sientan y lo que pasen en ese momento suyo. Bueno, me fui bastante del tema. Me emociono cuando me acuerdo de historias de vida, que creo que le van a sumar también. Entonces, ¿qué les traía todo esto? Todo esto acá, finalmente lo van a definir los analistas de seguridad. ¿Qué lineamientos sí deberíamos seguir, el cual no, etcétera? Eso solamente va a estar con ellos. y el equipo que lo está implementando, que está acá en Ingeniería de Transforma, o en Mix por acá, son los que van chocándose un poco con eso hasta que se alineen y sigan con el proyecto. Entonces, lo chévere de esto es, oye, antes como era, trabajaba con todo el proyecto, terminaba el proyecto, le tocaba la puerta sobre informática y le decía ya, revisa que todo está bien. Uy, no, te falta esto, esto, esto, esto. Uy, tengo que retrabajar. corregir, esto puede afectar a mi aplicación, tengo que volver a probar mi aplicación y retroceder a un proceso donde ya estaba a punto de pasar por eso. Entonces, esa es un poco la ventaja del Policest Road, es revisemos la infra antes de desplegar siquiera en desarrollo. Antes de desplegar tu infra en desarrollo, tú ya puedes validar esto. De medida de la política que ponga, ¿qué ponga? En el plan es donde se hace la validación y
+40:18 Speaker 1: se
+40:20 Speaker 2: puede detectar todo lo que está declarado ahí en el código. ¿Habrán cosas que no se puedan detectar acá?
+40:29 Speaker 1: que sí, y
+40:32 Speaker 2: justo lo que, digamos, tú configuraste algo en el código de una manera, y luego sale esa producción, y por lo que hizo un amigo, el equipo, por alguna razón, abre el puerto en producción. Porque ya el policía todo lo había validado, que todo estuviera cerrado, todo bonito, todo bien, viene una persona y cuando abre. Entonces, eso que sucede ya en producción, escapa a lo que estos están monitoreando. Bueno, puede ocurrir. Normalmente es que ocurra en cada pull request. Eso es lo que normalmente se sugiere. Y con eso podemos validar que va bien. Y así como teníamos un gate de calidad, acá sí es un gate también de revisión de este policy stop. No bloquea acá el cambio.
+41:18 Speaker 1: Y no nos deja pasar.
+41:30 Speaker 2: ilustrativa, no sé la cita cual, en un rato más mostramos un récord de Terraform con cómo se ven las revisiones, las realizaciones. Pero nos ayudó a entender. Tú declaras tus recursos, que vas a usar en Terraform,
+41:47 Speaker 1: y
+41:50 Speaker 2: en base a esto él revisa, así como las librerías, lo revisaba contra una librería de posibles vulnerabilidades, acá es exactamente lo mismo. Acá se agarra y revisa la configuración que has puesto, lo revisa contra una serie de librerías de posibles vulnerabilidades de esa configuración, y te alerta, ¿no? Oye, o sea, acá puedes tener esa vulnerabilidad. Y en base a eso, esas vulnerabilidades también te las catalogas en crítico, medio, alto o bajo. Y tú puedes poner las reglas para que pare o no pare en base a eso. Y lo más importante, lo interesante de esto es que dentro del mismo código, tú puedes instruir y decir, oye, yo ya sé que está la vulnerabilidad por un ID 113, exceptúala.
+42:34 Speaker 1: y le pongo un mensajito
+42:35 Speaker 2: de por qué le estoy citando, una justificación con eso la herramienta cuando pase lo va a considerar como un skip al azateo, paso pero lo importante es que queda registrada y cuando ves el reporte sale la vulnerabilidad de por qué ha sido exceptuado por ejemplo
+42:52 Speaker 1: corro
+42:56 Speaker 2: el análisis y me sale que el bucket S3 es público Entonces, oye, ¿sabes qué? Esto lo hemos hecho a propósito público porque ahí estamos grabando. imágenes de memes que queremos que todo el mundo utilice
+43:09 Speaker 1: entonces,
+43:12 Speaker 2: como queremos que todo el mundo utilice vamos a hacerlo público a propósito solo lectura, pero público entonces pondré este debate que se interesa a propósito de cortando tiempo y con eso, cuando pase el escenario de Checo otra vez no me va a parar y me va a saltar ese susto y lo chévere es que quede en el mismo código fuente
+43:29 Speaker 1: eso me gusta saber cómo
+43:32 Speaker 2: funciona eso En el caso de la mecánica hubo el carisma que ya conocemos de todos los otros procesos que hemos visto. Pasa falta y evalúa la condición de qué tipo de vulnerabilidad es, según lo que hemos puesto en el gate, si te para o no te para, según el nivel de vulnerabilidad.
+43:52 Speaker 1: Y sigue todo eso.
+44:11 Speaker 2: Pensemos, ya sabemos para qué funciona, pero como todo... Toda empresa, todo equipo, puede que ya esté operando, normalmente ya están operando sin eso. O sea, ya generan código que posiblemente ya tiene vulnerabilidades. Entonces tienen como una línea base. Como los ejemplos que les puse en los exámenes de, oye, corrió el SAST y le salieron 40 vulnerabilidades antiguas y dos nuevas. ¿Cómo manejamos eso? Entonces acá más o menos es un poco lo mismo y acá en este caso es por criticidad y nivel que vamos haciendo. ¿Por qué en estos casos? Porque acá estamos hablando de la infraestructura. La infraestructura yo diría que incluso es más crítica a nivel de vulnerabilidades que la aplicación. Porque la aplicación está dentro de la infraestructura y como que la infraestructura protege un poquito a la aplicación, pero en la infraestructura ya tengo que dar la cara, según la capa. Entonces, lo primero es dar la exposición. ¿Está público o no está público? Luego es la identidad. ¿Quién tiene acceso a esto? Luego es el tema de datos. Los datos están cifrados, etc. Y finalmente es la parte de trazabilidad. Esto es lo que menos riesgo tiene. Normalmente esto acá no se detiene. Es más como se informa.
+45:49 Speaker 1: Como warning.
+45:57 Speaker 2: Entonces, bueno, en base a eso un poco la idea es que se declaren también las políticas de ver qué voy a ir deteniendo y qué no. Y eso normalmente queda a cargo de la analista de seguridad, evaluarlo y definir cómo
+46:10 Speaker 1: configuramos
+46:11 Speaker 2: la herramienta para ver qué paramos y qué no. Entonces, hasta ahí comentábamos de chévere hasta que sea el código, después lo desplegamos, pero una vez que lo desplegamos pueden hacer cambios al otro lado y ya no nos enteramos. Entonces, ahí es donde necesitamos algo que nos esté escaneando la seguridad de la infraestructura ya desplegada. Y ahí es donde nacen conceptos como este tema del test. No sé si tienen alguna pregunta de
+47:08 Speaker 1: lo que es Policies.
+47:13 Speaker 2: Vamos a ver lo del vivo. Quería plantear de hacerlo virtual, saculando espacios. ¿Qué les parece?
+47:36 Speaker 1: No sé, está bien. ¿Está de acuerdo?
+47:41 Speaker 2: Quiero ver la dinámica de este laboratorio, a ver cómo lo hacemos.
+47:45 Speaker 1: De
+47:45 Speaker 2: aprendizaje, sobre todo aprendizaje. Creo que va a ser un laboratorio un poquito diferente. A mano. Estaba grupal probablemente.
+47:55 Speaker 1: ¿Grupal? Sí.
+47:56 Speaker 2: O sea, estén en salitas. Pero va
+48:02 Speaker 1: a ser virtual o va a ser virtual? Ah, por salas de Zoom. Sí, sí. Pero da forma de inglés. ¿Qué lo gastaste? ¿Qué? ¿Qué lo gastaste?
+51:18 Speaker 2: Es como un panel de avión. Tienes mil controles y cositas que configurarle. Una de las cosas que puedes configurarle es el acceso público o no.
+51:30 Speaker 1: Entonces, acá
+51:32 Speaker 2: está la política,
+51:36 Speaker 1: los
+51:40 Speaker 2: ACLs. restringir que el repo sea público o no
+51:47 Speaker 1: versionamiento,
+51:51 Speaker 2: este versionamiento es cuando tu subes nuevos archivos con el mismo nombre y
+51:55 Speaker 1: te va hablando diferentes versiones del
+51:57 Speaker 2: mismo archivo si quieres que tenga o no quieres que tenga como quieres que estén quitados los archivos del Mac X3 Tú le puedes dar una llave propia o le dices, oye, hazlo tú mismo con tu propio algoritmo. Ahora le estamos diciendo tú mismo con ese algoritmo. Y acá están creando un archivito de texto como ejemplo.
+52:33 Speaker 1: Entonces, vamos a ver.
+53:04 Speaker 2: ¿Quién me está diciendo? Como resumo, me está diciendo, oye, voy a agregar 5 recursos, no voy a cambiar ninguno, no voy a hacer ninguno. Y acá está la especificación de los 5 recursos. El Pacto en sí, acá es el nombre de Labor Hogar, y el FG34 con su nombre.
+53:24 Speaker 1: Y
+53:25 Speaker 2: las características según lo que explico, la chúa está representada. Y acá están las políticas de...
+53:58 Speaker 1: de acceso y de aplicación. Esto no existe. Está mal.
+54:04 Speaker 2: O digamos acá una variable que tampoco existe. Se corre el validate y dice lo mismo. Oye, estás usando una variable local que no existe. Parece funcionar el validate. Y el format, como decía, es simplemente...
+54:26 Speaker 1: Acá
+54:29 Speaker 2: le borra el tab, le borra todos los tabs.
+54:41 Speaker 1: y me lo
+54:47 Speaker 2: puso bonito Ahora vamos con Checo. Checo, una
+54:56 Speaker 1: de las
+54:58 Speaker 2: herramientas más chéveres para esto. Checo es una herramienta libre,
+55:01 Speaker 1: que
+55:03 Speaker 2: era parte de la empresa. La cosa es que Checo fue comprado por Prisma por... Palo Alto. ¿Han escuchado de Palo Alto? Palo Alto es una de las empresas de software en general más grande del mundo.
+55:26 Speaker 1: Y en los últimos años se ha
+55:28 Speaker 2: dedicado a comprar software que ven con buen potencial. A crear el propio, pero también a comprar mucho y hacer lo que sea. Y uno de los que compro fue Checo. Entonces, es decir, Checo Viver lo tengo instalado acá. Se instala bien fácil. y lo que te permite Entonces les decía que Chaco tiene dos formas de funcionar. Puede escanear el código directamente. Yo puedo correr así. Y esto me va a escanear todo el código. O podemos hacer que escanee un plan en específico. ¿Ok? Cualquiera de las dos. Puede funcionar dependiendo de lo que queramos. Pues acá ya lo corrí. Veamos qué me dice. Dice, oye, he revisado si según los recursos que tú estás creando y mi base de conocimiento, yo tengo que pasarte a ti seis checks. De los seis checks que te tengo que pasar, cinco han fallido y uno está bien.
+56:52 Speaker 1: Perdón, sí, al revés, al revés.
+56:55 Speaker 2: Cinco han pasado bien y uno ha fallado. Entonces acá te dice cuáles son los que han pasado bien. Venga, acá hay un ID. Este es el ID del
+57:08 Speaker 1: base
+57:11 Speaker 2: de conocimiento de ese check. Y el que ha fallado es este.
+57:22 Speaker 1: Entonces,
+57:23 Speaker 2: si vemos aquí, hay un check, hay uno que dice true específico, que
+57:28 Speaker 1: es este. Ah, sí, este. Ah.
+57:45 Speaker 2: Lo más fácil acá, cuando no la tiene tan clara como me pasa a mí ahorita que me confundo entre los cuatro, es decir, la documentación.
+57:51 Speaker 1: Entonces acá te
+57:54 Speaker 2: ofrece una documentación que es pública que te habla sobre ese hijo, sobre ese hallazgo. Acá te dice el mismo título que vimos del hallazgo. Y te preguntan cómo arreglarlo y te dice, oye, bloquea tal costo. En este caso,
+58:17 Speaker 1: es de los Patrick Caceres.
+58:23 Speaker 2: Los Patrick Caceres. Los Patrick Caceres.
+58:31 Speaker 1: Los Patrick Caceres. Y
+58:38 Speaker 2: una respuesta. ¿Quiénes acá usan slot pagado?
+59:43 Speaker 1: ¿Algunos de slot pagado? Todos, Rofe, todos. ¿Quién no usa?
+59:47 Speaker 2: ¿El de 20?
+59:48 Speaker 1: El de 20, Rofe. Sobre y basta.
+01:00:03 Speaker 2: Puse el de 100, quise bajar el de 20, y en un día me lo que voy a traer, si ya te voy a hacer. Cuando se lo ponemos el día, vale la pena, si no hay algo. Pero lo preguntaba, porque hace poco vi uno, el de Chai GPT, el Pagado, justo me salió una oferta para tener un mes de ahorrito, el Pagado. Ubican la parte de Artifacts, ¿qué creo? De genera. Chai GPT lo tiene, pero no ha parecido más bacán como el manejo. Ahí se llaman sites. Ahí nos salieron a una web para... ¿Qué hacen? ¿Vengan a hacer una web para alertar a los sitios con posibilidad de YouTube,
+01:00:47 Speaker 1: de animaciones? Entonces, empiezas a jugar a crear algo ahí visual.
+01:00:54 Speaker 2: Todavía no terminamos de hacer bonito de un evento, pero está interesante hacerlo.
+01:01:02 Speaker 1: Ah, ya me han olvidado eso. Erróneo, ¿sí?
+01:01:09 Speaker 2: ¿Qué ha pasado ahorita? Ya tienen un plan acá. Un plan, perdón. Un Jason acá. Lo voy a borrar. Están ensuciando la prueba. Voy a volver a
+01:01:22 Speaker 1: correr. Voy a volver a correr el chico.
+01:01:36 Speaker 2: Me está diciendo, oye, ¿tienes
+01:01:38 Speaker 1: el
+01:01:41 Speaker 2: plan de restricción en el bucket? Lo tienes abierto. O sea, tu repo está público. Yo te recomiendo este. La de la buena manera de expresar. La diferencia es cuando creas un repo público y un repo privado. No tengo la URL del archivo. Y si le dan clic y la pueden ver, cuando no lo comparten, si te dicen no, la pueden ver. Es el equivalente a estos fobios que estamos haciendo ahora. Creo que hay algunos que son más específicos para tener una idea. Hay uno que es, la puedo compartir con todo internet. Hay otro que es, la puedo compartir con otras cuentas de AWS. con esa configuración también puede ser más específico y decir, ok, nos puedo compartir con tal usuario de tal cuenta de AWS. Esa es un poquito la idea de esas políticas. Ahorita acá sale acceso negado.
+01:04:35 Speaker 1: Entonces voy a volver a esto en Foros. Y esperaría que con eso ya me he pegado.
+01:05:36 Speaker 2: Para que tengamos una idea de la potencia, la importancia de esto, como te lo
+01:05:38 Speaker 1: conocen, en la empresa
+01:05:40 Speaker 2: que estaba antes, la constructora, una
+01:05:48 Speaker 1: de las marcas de autos, una
+01:05:54 Speaker 2: de las historias más autos en el mundo, y ellos eran sobre AWS. Y mi jefa, con una forma como
+01:06:06 Speaker 1: venderles el
+01:06:08 Speaker 2: servicio que les daban, agarró y tiró scripts para ver cómo estaban
+01:06:13 Speaker 1: los
+01:06:15 Speaker 2: backings públicos de esta empresa. Y encontró un montón que estaban abiertos y no sabían ellos que estaban abiertos.
+01:06:22 Speaker 1: Entonces, igual
+01:06:23 Speaker 2: no les puedo demostrar cómo voy. Mira, si yo quisiera, te
+01:06:26 Speaker 1: lo voy a ir. O lo voy a atacar. Y
+01:06:28 Speaker 2: eso lo podría hacer el resto. Por otro. Chévere, bueno. Pues miren, ahorita ya abrí el bucket y ya puedo ver el archivo. El archivo Hola.txt tiene este contenido. Te lo configuras de forma correcta, cerrada. No sé si tienen alguna pregunta sobre cómo funciona esto. Son las vulnerabilidades que están introducidas como código. Y no solo eso, sino que da las sugerencias de cómo podría corregirlo. Es un poco la idea y de cada una... ...sintaxis,
+01:07:53 Speaker: y voy a
+01:08:06 Speaker 2: declarar dentro de esto... vulnerabilidad quiero saltar. Entonces le pongo dentro del lugar donde está hallando el problema, le pongo un esquí, le pongo el ID de la vulnerabilidad y le digo por qué no. En realidad el texto acá es libre, pero la idea es... Esto acá, normalmente en la empresa, tiene dos finalidades. Una que todos sepan de qué es, y lo otro es poner una fecha de cuándo esto ya no debería darse, si es que corresponde. Así que, muy bien, en tal fecha de esto ya no debería darse, por lo tanto. Entonces, pero, tenemos
+01:08:58 Speaker 1: que ir directamente desarrollando una de ellas.
+01:09:04 Speaker 2: Bien, están saliendo, este
+01:09:06 Speaker 1: resumen,
+01:09:07 Speaker 2: están saliendo tres que están fallando,
+01:09:11 Speaker 1: y he saltado ahorita a las 54. Entonces si yo vuelvo a correr el check-up,
+01:09:23 Speaker 2: vamos a ver el resumen, me dice 5 falla,
+01:09:27 Speaker 1: 5 pasaron,
+01:09:29 Speaker 2: 5 pasaron, 5 pasaron, perdón, pensando en una empresa grande. ¿Qué te rafón? En mi máquina. Entonces cada uno va a tener su reporte de Chekhov en su máquina o en su patria. Imagínense a ese análisis de seguridad de análisis de Chekhov de todos ustedes. Va a ser complicado. Herramientas como Prisma Cloud, que es la que les comentaba antes, cuesta mucho trata, te permite tener desde un solo lugar la visibilidad de todo. Porque Chekhov le va reportando a él todas las vulnerabilidades que ha tenido cada día. Otra posibilidad es
+01:10:58 Speaker 1: tirar
+01:10:59 Speaker 2: tu código Python
+01:11:00 Speaker 1: en
+01:11:02 Speaker 2: el pipeline y esto llevarlo a un lugar para centralizarlo y también darle la misma vista sin tener que pagar una herramienta. Los pros y contras. Y lo chévere de esto es que acá se categoriza entre los tres tipos de checks. Los checks que funcionaron bien, los checks que fallaron, o los checks que tienen excepción o que tienen el skip. Cuando el Python lea esto, me lo puede resumir. para que eso sea de una manera más eficiente al momento de mostrarse. Profe,
+01:12:30 Speaker 1: aquí está buscando una vulnerabilidad en particular o una vulnerabilidad cualquiera en un archivo? No, entonces,
+01:12:37 Speaker 2: busco cualquier vulnerabilidad en el recurso.
+01:12:42 Speaker 1: Claro, y si hay varias, o sea, aquí te parece un IEX, entonces.
+01:12:47 Speaker 2: Acá están. Pero eso es el nivel de infraestructura, o sea, en la capa de... Policias code eso es...
+01:12:59 Speaker 1: Eso
+01:13:07 Speaker 2: es policias code. Ahora vamos a aceptar lo que es el DAST, el análisis dinámico. Para esto, unas herramientas, entre todo gratuita, que he encontrado de poder probar. Es esta herramienta que se llama Aikido.
+01:13:41 Speaker 1: Tiene parte... Algo que no es el Policies
+01:13:43 Speaker 2: Code, que se llama Cloud, pero en realidad te analiza lo que ya está desplegado en la estructura. O sea, si ya tienes un bloque público, él va a ir a la estructura y te va a decir, oye, tienes este problema. Y tiene el ATAC. El ATAC vendría a ser algo como el DAS. El riesgo de esto es
+01:14:00 Speaker 1: que ese
+01:14:02 Speaker 2: ambiente donde lo estás corriendo
+01:14:04 Speaker 1: tiene
+01:14:06 Speaker 2: que ser un ambiente de que si algo pasa no afecte a tu cliente o al usuario que está usando ese ambiente. Entonces, no se puede correr un pulso, porque él va a tratar de bajar.
+01:14:18 Speaker 1: Entonces, se puede bajar alguna
+01:14:21 Speaker 2: aplicación. Entonces, normalmente lo que se hace es montar un ambiente paralelo, un ambiente clímero, para correr esta prueba. O, la corres, puede hablar de oficina. o le ponen las reglas para que no baje nada, pero lo malo es cuando le ponen las reglas para que no baje nada, su scope de ataque baja. Yo con un cliente quise hacerlo,
+01:14:51 Speaker 1: pero me pasó eso, me
+01:14:52 Speaker 2: salió la alerta esta de, oye, ¿está seguro? ¿por qué esto
+01:14:55 Speaker 1: fue? Me dio miedo, me dio el cliente
+01:14:57 Speaker 2: y dijimos, no, ahí ya fue, ahí no va. sobre todo porque sé que es un cliente que le manda de 1000 cosas que igual no creo que lo quieran elegir no es un cliente tan... tan entretrado pero
+01:15:11 Speaker 1: bueno,
+01:15:17 Speaker 2: lo importante realmente es eso el que me gusta es que tiene muchas capacidades free y
+01:15:23 Speaker 1: tiene diferentes tipos de soluciones
+01:16:09 Speaker 2: El código fuente, pero también el estático, que es el que vimos la última vez, el SAS, que vimos con Semper, por ahí con Trimium, también lo que vimos en el
+01:16:19 Speaker 1: laboratorio,
+01:16:20 Speaker 2: analiza el código fuente. El dinámico necesita que la solución ya esté desplegada. Es una URL contra la cual pegarla en la aplicación. Esto lo que evalúa es el código fuente. ¿Qué caminos hay acá? Él lo que va a revisar es cuáles son las respuestas HTTP de cada respuesta que le estoy haciendo. Acá, por ejemplo, va a analizar las cabeceras de respuesta. Acá lo que revisa es el código fuente, los temas como dicen, secretos, algún patrón que tenga alguna vulnerabilidad. Acá revisa la cual se le comentaba, las configuraciones del servidor, de los componentes. Acá él no ve infra y él lo que no ve acá es el sistema de código que pasa de atrás. Él ve acá la vulnerabilidad de lo que ves en la punta, digamos, pero no de dónde viene. En lo que son falsos positivos, acá suelen haber más que en el DAS, porque el DAS es más
+01:17:31 Speaker 1: blanco
+01:17:34 Speaker 2: -negro. Tiene las reglas más directas porque ya es la ejecución. O meter la cabecera con vulnerabilidad o no meter la cabecera con vulnerabilidad. Por ejemplo, una clásica de las cabeceras con vulnerabilidad es cuando tú tienes un... Esos normalmente, cuando te responden, tienen un header que te dice cuál es la versión y el nombre de ese cerdo. O sea, te dice, soy un Apache Tomcat, versión 4.2. Esa información es sensible, no se debe dar en un browser porque el atacante ya sabe qué versión es, googlea vulnerabilidades comunes de la pacha de 3.4.1.2 y van a tratar de atacar.
+01:18:16 Speaker 1: Entonces esas
+01:18:18 Speaker 2: cabeceras, la idea es controlar qué cabeceras está respondiendo hacia el cliente final para ocultarlas. Ahí hay capas que puedes poner intermedias para poder ocultar eso, y eso es lo que te valida el
+01:18:32 Speaker 1: DASC.
+01:18:36 Speaker 2: Si, ¿han escuchado que es muy común el término ethical hacking? El Ethical Hacking, como les comentaba antes, era el clásico que terminas tu proyecto, le pagabas al pata de seguridad, venía, te hacía tu Ethical Hacking, te da tu lista de vulnerabilidades y colegías. El DAST cubre mucho de ese Ethical Hacking.
+01:18:59 Speaker 1: El
+01:18:59 Speaker 2: Ethical Hacking valida por curro cabeceras. Este acá, ya te valía. ¿Qué cosas no valida el DAST que sí viene en el Ethical Hacking? Las que ya vienen como... más de lógica de negocio de lo que el que está analizando te dice. Te doy un ejemplo. El ejemplo que les da la última vez es el teclado numérico para tu acceso a tu banca por internet. Hablábamos de que ese teclado numérico, tú marcas los numeritos, pero esos numeritos no están buscando hacia el server. Están buscando un hash, una producción numérica del teclado, y recién el server se traduce en tu clave real para validar si es más. Entonces, digamos que tú pusiste los números. Y los números... al cual, como número, pero encriptado, para ir a un segundo plano, están viajando. Pero está viajando el número, no la
+01:19:57 Speaker 1: posición del teclado, sino el número.
+01:20:00 Speaker 2: Eso, un DAS no lo va a encontrar como una vulnerabilidad, porque para el DAS es eso, y es decir, los datos están viajando de forma inquietada en el canal, o bien. A nivel lógica de seguridad decimos, oye, no, la definición no ha sido que mandes los números reales de la contraseña, es que mandes la posición del teclado numérico para que en el server se haga la traducción.
+01:20:21 Speaker 1: Ese tipo de posibles, por ejemplo, no va a estar en DAS.
+01:20:24 Speaker 2: las tienen que ver con la lógica de la definición de seguridad de lo que se está pidiendo. Normalmente esto, como les decía, corre un ambiente de certificación
+01:20:35 Speaker 1: y
+01:20:37 Speaker 2: se demora algunos minutos o
+01:20:39 Speaker 1: horas.
+01:20:41 Speaker 2: Les decía el tema de pasivo-activo. Pasivo es como que solo select, no llego a insertar nada, no llego a tratar de malograr nada. Y el activo sí es, trato de hacer SQL Injection, trato de hacer todo. No solamente hago consultas, sino ya trato de...
+01:20:57 Speaker 1: de romper tu
+01:20:59 Speaker 2: aplicación. Entonces ahí es donde hay que tener cuidado de ver en qué ambiente corres cómo y tener forma de regresar si es que algo pasa con esto. Si te lo mandes el activo, si no vas al ambiente, ¿cómo haces para regresar?
+01:21:14 Speaker 1: Entonces, por
+01:21:16 Speaker 2: eso, esta práctica, por ejemplo, se hace en ambientes efímeros. ¿Qué es un ambiente efímero? Solo para probarlo. Justo Edgar me comentaba que ya lo están usando. Yo cuando me fui, no he usado todavía. No es sencillo, es complejo. Acá está el desarrollador, codeando,
+01:21:54 Speaker 1: en
+01:21:55 Speaker 2: su rama feature, y él lanza el PR. Y acá se gatilla el pipeline de CI. que valida todos los temas que hemos visto en las diferentes clases. Y hasta que llega al DAS. Oye, pero el DAS me dice que tiene que estar
+01:22:17 Speaker 1: desplegado. Sí, y
+01:22:20 Speaker 2: no. Porque acá podríamos... Este acá es como el súper avanzado, ¿ya? Pero se
+01:22:28 Speaker 1: puede hacer.
+01:22:31 Speaker 2: ¿Qué necesita el DAS para correr? Que tu aplicación esté desplegada, ¿cierto? Entonces, si necesitas que tu aplicación esté desplegada, necesitas una infra o desplegarte. Oye, pero mi aplicación ya tiene IAC. Entonces, lo primero que esto va a hacer, como pasos intermedios, todavía no estoy probando el NAS en sí. Son como la previa para poder probar el NAS. Corro IAC, que me va a montar acá mi plataforma. corro el CD que me va a desplegar la aplicación. Ya tengo plataforma, ya tengo aplicación desplegada. Y ahora sí, TAS, ya estamos listos. Si quieren acá le corremos un smoke para validar que la aplicación esté bien. Y ahora sí, das. Valida acá la seguridad. Y esto de acá es infra creada en Azure, por ejemplo, o en AWS, o en lo que fuera, pero es temporal. Viene él, corre, ejecuta, recorta, y hay un paso final que es destruir. Un destroy de todo esto. Y listo, no pasa nada. Este es un ambiente filero. Es un ambiente que nace como parte del propio pipeline para poder ejecutar cosas y después se destruye. Llegar a esto es una madurez de equipo y de proceso importante. No es tan sencillo.
+01:24:06 Speaker 1: Por eso ahora ahí se hacen pruebas en tu ETA o pruebas de integración. Depende
+01:24:10 Speaker 2: para qué busques tu ambiente efímero. Se puede hacer todo. Acá lo importante de esto es por el tema de las pruebas controladas del DAST. Si yo hiciera el DAST con el ambiente de Cuba, donde estaba mi equipo de calidad probando, no puede impactar y el DAST es un ambiente de DAST. Por eso hay que tener cuidado de donde corremos el DAST. El DAST con el ambiente efímero es como la mejor receta para poder probar todo sin impactar. Yo les decía que hay dos maneras, la de aceptar, perdón, la de ejecutarlo solamente como en modo pasivo o lectura, que es recorriendo, haciendo peticiones y escaneando simplemente lo que me va devolviendo. Y en otras, activo, que es donde ya provoco fallas, inyecto, tanto en el circle injection, ese tipo de cosas, para ver cómo responde y en base a eso... ir reportando todos los hallazgos que va teniendo. Ejemplos de cosas que pueden salir. Oye, tienes una API sin autenticación. Por ahí puedo pegar una API desde cualquier lugar y
+01:25:25 Speaker 1: no...
+01:25:26 Speaker 2: La autenticación es la misma. Los datos no se están encriptando. Una buena es una clásica de esta.
+01:25:38 Speaker 1: Es la
+01:25:40 Speaker 2: clásica de... Imagínense el campus de la CUP. Imagínense un campus, notas, y esto reside como parámetro
+01:25:53 Speaker 1: código
+01:25:55 Speaker 2: alumno. Entonces acá está tu código. Yo entro y esta es la URL que me sale a mí. Ah, yo veo que está ahí esto y digo, oye, a ver, de chismoso. Y si pruebo con la de mi amigo, a ver, 2,5, 0,4.
+01:26:19 Speaker 1: Ya.
+01:26:22 Speaker 2: A ver, ¿qué pasa si yo pongo esto?
+01:26:27 Speaker 1: Este...
+01:26:29 Speaker 2: Entonces, esto, por ejemplo, sería un hallazgo de seguridad. Ojo, puede que haya una validación interna que agarra, que normalmente pasa, validación y sesión. No solo se activa, sino que mi sesión tiene una metadata. Entonces, mi sesión, ¿tú quién eres? ¿Esa sesión de quién es? Ah, mira, es del mismo código, coincide, déjalo pasar. No, no es del mismo código, no lo hago. Esta es justamente la validación que se hace cuando ponen. Pero, ¿cuál es la mejor práctica de seguridad? Oye, no mandes estos IDs acá. Si tienes que mandar algún parámetro, mándale el resultado. De esa carga saldrá un hexadecimal. Que en el lado del servidor se convierta. Y lo mismo para todo, no solamente para esos datos, también los datos que son los clásicos correlativos de ID del cliente. Esto acá, digamos que no es un número de documento, sino es mi ID en la base de datos de la CUC. Que será, no sé, digamos que mi ID en la base de datos de la CUC puede ser el 3, 1, 0, 0, 1, 0, 1. Así estoy como ID en la tabla de alumnos. Tampoco se matará.
+01:27:40 Speaker 1: La
+01:27:41 Speaker 2: idea es que ningún dato de eso se puedan tantear.
+01:27:46 Speaker 1: Eh... ¿Qué más? Este...
+01:28:04 Speaker 2: El software es el que tiene todos los métodos, inputs, outputs de tu API. Es la definición de la API. Entonces, pueden haber casos en los cuales tu aplicas. Tu API puede ser consumible desde internet, desde donde corre la herramienta. Entonces, lo que haces es, le das a la herramienta el contrato de tu API. Para que, en base a eso, pueda evaluar qué posibles vulnerabilidades pueda tener tu API.
+01:28:31 Speaker 1: Es otra posibilidad.
+01:28:40 Speaker 2: ¿En qué parte del pipeline corre el análisis dinámico? ¿Corre en certificación? O, como les comentaba antes, alguna puede correr horas, entonces que lo programen, que corren algunas noches. Una vez a la semana de la noche corre el análisis dinámico para ver si algo encuentra. ¿Cómo funciona? Recibe la URL de donde está la versión de la aplicación, desplegaba. A veces es necesario darle una especificación funcional.
+01:29:20 Speaker 1: para
+01:29:20 Speaker 2: que entienda cómo recorrer la aplicación por ahí también a veces tienes que darle un usuario con privilegios y un usuario sin privilegios entonces cuando se evalúa los diferentes caminos
+01:29:30 Speaker 1: y
+01:29:32 Speaker 2: lo de los superágenos clásicos que es vulnerabilidades medias críticas altas cuando te deja pasar y cuando no Entonces, hasta acá, hemos visto un montón de análisis de tipos de cosas, controles que podemos hacer en el pipeline. Con esta clase estamos llegando como al último, ya de los controles. Ya la siguiente es...
+01:30:06 Speaker 1: IA, IA.
+01:30:07 Speaker 2: La IA viene, bueno, al final. Las siguientes vienen, que es la parte que más me gusta a mí de DevOps, la parte más humana. O sea, las prácticas. O sea, es un ya, ok, todo esto son herramientas. Pero, ¿cómo hacemos que esto funcione? Entonces, con un resumen de todos los controles de seguridad que tenemos Empezamos con la detección de secretos Casi todos o todos respondieron bien a esta pregunta del examen. Luego viene el análisis de SAST, que le da también que corre en cada commit. Este cada commit es un decir, ¿sí? O sea, es como para que tengan una idea de que puede correr en cualquier momento, pero va a depender si lo ponen en el pull request, que también es válido, ¿no? O sea, antes de que suba la siguiente rama, que corre el análisis. el análisis de composición que es lo de las librerías
+01:31:17 Speaker 1: acá
+01:31:19 Speaker 2: hay el suministro que también tiene que ver con las librerías
+01:31:25 Speaker 1: y
+01:31:27 Speaker 2: se basa en las versiones que tengas implementadas El análisis de la imagen del contenedor, que es lo que vimos una vez en pasada. El análisis de la política, Policies Post, que es lo que vemos hoy. Y esto viene en el paquete, son las dos, porque es como el... Es ver qué política vas a considerar para el cual le dejas pasar el polignón. Y luego el Dust, qué modo historia. En modo pasivo, en modo activo. Y la otra es... El análisis, todo esto de acá, es análisis de los códigos de cambio que estoy haciendo. Y el último es el análisis de lo que, no del código, de lo que viene, sino es de lo que está en producción ahorita, o de lo que está en el ambiente que yo defina ahorita. Entonces él va y, por ejemplo, corre un plan de Terraform cada cierto tiempo para poder validar y diferenciar qué es lo que tengo acá, en el código, versus lo que ya está desplegado. ¿Hay algún drift? o hay alguna política que esté ahora delegada de lo que antes estaba todo bien. Todo esto es un poco la idea de postura sobre lo que está en vivo. Entonces son los diferentes sabores, controles que tenemos en todo el Frente SI, hemos ido viendo clase a clase, lo que es Frente Seguridad. No sé si tienen alguna pregunta de alguna vez.
+01:33:25 Speaker 1: Que nos llevamos, por favor. Y el
+01:33:35 Speaker 2: tema es así. ¿Cuáles son los retos que tenemos en el Frente de Devo con todos esos temas de seguridad? Lo primero es, dependiendo de la empresa, van a tener herramientas pagas y herramientas libres. La gran mayoría, las libres son que pagas. Entonces, ¿y cuál es el problema de eso? Que no tienes un lugar centralizado con el informe de todas las vulnerabilidades. Entonces, tú tienes que elaborar. No quiere decir que tú le agarras a teclear todo, no. Tienes que codificar la automatización para que esos reportes salgan automatizados. ¿No se acuerdan cuando veíamos el pipeline y salía bonito el resumen al final de estas son las vulnerabilidades, salía una tabla chévere? Ya, eso se codifica. Tú puedes meterle código Python a tu pipeline, como librerías juntas, y te va construyendo todo eso. Entonces, la idea es eso. Cuando sale un hallazgo, hay que construir esos reportes y en base a las políticas que se tengan, ver cuando sigo qué dejo pasar, qué no dejo pasar. Este es un pipeline de
+01:35:38 Speaker 1: pruebas unitarias,
+01:35:40 Speaker 2: corre zona club, corre centre, que es el SAS. corre Chekhov, porque este acá tiene una imagen de contenedor, y la imagen de contenedor está nuevo con Chekhov. Chekhov realmente sirve para la imagen de contenedores. Gitlix para secretos, y dependency tracker para las librerías. Esto es para las librerías. Entonces, se han desarrollado un montón de herramientas. Ellos no pagan por ninguna, todas son libres. Y al final, nos deja esto, este resumen. De sangre. Tienes
+01:36:19 Speaker 1: una enfermedad de error.
+01:36:29 Speaker 2: Y tres que solamente son alertas. Miren, ha hecho 487 escaneos. Esto es lo chévere cuando vas a vender estas soluciones. Zenbe ha corrido en 35 segundos. En 35 segundos le ha cambiado 487 cosas. Imagínate una persona que tenga escaneos son 487 cosas. Y esto lo voy a hacer en cada cambio.
+01:36:58 Speaker 1: Entonces, es
+01:37:00 Speaker 2: mejor tener esto acá, que después te salten salvos y culebras de publicación y producción por problemas o errores. Y bueno, acá está el resumen de los hallazgos, cuál es la estabilidad, cuál es la regla que está incumpliendo, en qué línea, en qué archivo lo puedo corregir, qué me recomiendas hacer. Entonces, este es un input super valioso para el equipo de desarrollo, para decir, ah, esto acá tengo que corregirlo de esta manera. Voy, codifico, vuelvo a hacer el cambio. Acá está la de Checo, las imágenes del contenedor, tienen todas estas vulnerabilidades. En el caso de secretos, no hay ninguna, ningún secreto, puesto, todo bien. En el caso de dependencias, estas son todas las vulnerabilidades que tiene. Ellos, por ejemplo, tienen un sistema y existe hace tiempo, y recién el balance lo hemos implementado este año. Entonces, para ellos es un wow, me estás inundando de cosas que tengo que hacer, pero no puedo hacerlo todavía. Entonces, ¿qué hacemos? Lo dejamos pasar. Pero ya saben que tienen un problema. Incluso ahora, esto lo he dejado activo, parece que lo han desactivado.
+01:38:14 Speaker 1: Entonces, esto es lo bonito y lo muy chévere.
+01:38:17 Speaker 2: Esta es la vista a nivel del pipeline, pero acá hay una inventa del putrequest, que es muy chévere. A nivel del putrequest, ellos también tienen ese resumen de valor. Oye, corrieron tales controles y estos han sido los hallazgos. Acá ya te abre la aplicación Y acá está el resumo de...
+01:38:46 Speaker 1: Entonces eso
+01:38:48 Speaker 2: es un poco loco. No solo se queda en agarrar herramientas implementadas para conectarlas al pipeline y hacer que falle, sino cómo hacemos para traducir esto al equipo de desarrollo para que sea lo más efectivo posible para corregirlo. Eso es un poco la idea también del pipeline. con todas las cremas
+01:39:21 Speaker 1: motoras,
+01:39:22 Speaker 2: el control de los sistemas. Eso traduce un poco esto. Esa lámina acá. Bueno, acá hay relaciones con el control de los sistemas.
+01:39:48 Speaker 1: No vale la pena mucho porque es más detalle.
+01:39:52 Speaker 2: Voy a comentarles, el NIST, porque he visto ya entrando al examen, los que he respondido la pregunta del NIST, si empiezan a comparar unos con otros, se van a dar cuenta, yo evalúo más el razonamiento que hay detrás, más que la respuesta específica de lo que has puesto correcto o no. Depende, algunas sí es necesaria de una respuesta correcta. Lo digo sobre todo con los controles NIST. El NIST
+01:40:17 Speaker 1: evalúa
+01:40:19 Speaker 2: todo tu proceso de tecnología. Todo. Desde cómo le das de alta a nuevos usuarios en tecnología, cómo desarrollas, cómo controlas tu proceso de desarrollo. Todo, todo, todo. No solamente te evalúa el proceso de desarrollo. Entonces, cuando veas las inclusiones de algunos... de algunos controles que pide el DISC van a ver que está dentro lo esquematiza así hay controles de operación controles del proceso de desarrollo de software controles post
+01:40:52 Speaker 1: tienen
+01:40:54 Speaker 2: todo su tipo de conversaciones entonces, las cosas que han dado han combinado de todo la idea era que se formaran el proceso de desarrollo software pero bueno, puede ser considerado válidas si es que tenían que ver con el tema hay unas que si no tenían nada que ver y que siempre se puse un comentario bien esto es otra cosa uno en lo específico que quiero que se lo lleven para que se... se confundía bastante con ese punto el de integridad hay uno que se llama integridad de la aplicación ¿se acuerdan del digest o el hash del commit? que cuando yo generaba mi imagen de contenedor tenía eso y eso lo desplegaba entonces Seguramente ustedes se han visto cada vez que descargan algo, descargan con un hash y ese hash te permite validar otro server si es que algo en el camino no ha suplantado el archivo y te descarga otra cosa. Eso es cuidar la integridad de la operación. No tiene que ver con vulnerabilidades. Es control de que tu componente esté íntegro fiel a lo que tú generaste. Igual se lo puse con mi comentario. Eso sería la clase de hoy. Solo para repasar los puntos. No importa la infraestructura como código, que te permite validar esa configuración insegura dentro del propio código. La configuración insegura me vuelve a leer sin código, porque no tiene código fuente de aplicación, pero sí infraestructura. esas políticas de excepciones se pueden escribir y versionar dentro del propio código fuente o también de pipeline el análisis dinámico corre contra un ambiente no productivo para controlar el que no va a afectarlo Y todos los controles se pueden colocar dentro del mismo pipeline, como les mostraba, dependiendo de la madurez del equipo. Y la idea es generar resúmenes para poder ofrecerles la información de la manera más didáctica posible y efectiva, para que la puedan utilizar para lo correcto. Gracias.
+  
