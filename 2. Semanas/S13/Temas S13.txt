@@ -1,0 +1,1035 @@
+Jose del Castillo
+00:00:57
+Hola. Hola, ¿cómo están? Vamos a esperar un par de minutitos para arrancar?
+Ya vamos?
+Vamos arrancando cómo están lo han hecho con todos en
+Bueno, a Anita, lamentablemente que nos ha acompañado la semana pasada en la
+la charla, todavía no he podido
+mi día a día es el tema que tiene, Entonces, No, no, no, no, no, No estoy voy a comer todavía igual. Estoy insistiendo a ver si, para poder y en el peor de los casos, que no se dé. Bueno, ya coordino luego, con
+o sea, me me gustaría mucho que tengas la experiencia de ir en algunas charlas, ya sea durante este curso o si no, ya luego coordinar con
+con alguien de la doble A le I para que se le pueda hacer a a todos. Y sería un che, pues sería un incluso un
+espectro. Universo más grande de alumnos. No solamente es el curso, sino que también sería Chévere. Pero bueno, ahí espero poder cuadrar con ella.
+Y
+pero bueno, si igual para el las siguientes clases, si es que ya no puede estar igual, vamos a tener un par de par de personas que nos cuenten un par de cosas Jesús, que estoy terminando de
+coordinar, des que nos cuenten sus experiencias. Sí que
+hoy día toca la segunda parte de de prácticas de de Vox y
+primero me gustaría su su feeling, o sea, los vi la última clase, ese que
+los estiré bastante en respecto a lo que les toca, a los que normalmente hacen, no o sea ingenieros estudiando y actuando, mientras que estudian es raro, pero es necesario. Así que quería ir un poco su su feeling, que que tan cómo lo sintieron?
+La última clase
+ya no cree ni se chévere
+la última clase, La última clase de cuando vamos a hacer el ap
+significado? No, sí, sí, sí, poco lees esa no que
+no sé si se han escuchado esta analogía de ponerte el espejo delante. No.
+Mis hijos están en un cole.
+un Cole, no, Cole, cuál alternativo.
+Y una de las prácticas que tienen las guías en ese cole porque no son profesoras. Son guías un poco diferente es
+tratar de hacer cosas para ponerles el espejo delante. ¿no? Entonces es como
+más caliente, diga, oye, estás haciendo eso mal.
+Es como de alguna manera te hacen a través de preguntas
+que tú mismo te des cuenta cómo estás actuando frente a alguna situación. ¿no? Entonces, un poco. También.
+La idea era eso un poco la semana pasada
+y que se va a identificar y es normal pasa en la vida. Y va a seguir pasando.
+¿
+Y tal vez al inicio, no nos damos cuenta. Y bueno, después, con el tiempo nos dimos cuenta, y
+y eso nos ayuda a ir mejorando. No, este. Bueno.
+mi intención es que pueda traerle cada vez más de esas cositas para poder
+acompaña a los jueces de crecimiento. Yo creo que
+que hay una parte ahí no técnica.
+que que ayuda a crecer bastante, sí,
+entonces déjame compartirles la presentación de hoy y arrancamos.
+Pensé que haría variar el orden de las diapositivas antes de arrancar.
+Sí, puedes dejar la dinámica al final
+ya no importa.
+Sale tal cual en la en la agenda. Pero
+ya todo esto?
+Street a
+ya yo de México, confirmamos mi pantalla. Por favor.
+Avatar del perfil de RODRIGO ALONSO SANCHEZ PASTOR
+RODRIGO ALONSO SANCHEZ PASTOR
+00:16:06
+Ti se ve, profesor.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:16:08
+Ya Chévere.
+Y si se llama proyección no
+saymor proyection
+se ve pantalla completa de la presentación.
+Avatar del perfil de ANGEL CERDAN CIGÜEÑAS
+ANGEL CERDAN CIGÜEÑAS
+00:16:23
+Sí Profe.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:16:25
+Chévere listo. Entonces les decía, hoy día viene la segunda parte
+de cómo las prácticas depóx nos nos ayudan y vimos una parte humana la otra vez. Ahora vamos a ver.
+todavía, comeremos una parte humana, siempre Y ya viendo esto, cómo
+cómo se va llevando a la cancha
+este y vamos a una dinámica bien interesante. Yo lo hice en un curso de oops, y
+no no lo quiero Spoilear, pero con si se la cuento para que para que se queden hasta esa parte del final
+igual. Hoy, la sesión, por ejemplo, hacemos corrida cierto hasta la una y media, o quieren hacer Break: No.
+Cuando tengo Adiva, No, el check de dio, no me imagino que todo es Check. Hacemos Correa.
+Y les decía en 1 de los cursos que que llevé
+de devots, que el el que el profe de ese momento de ese de ese curso. Es ángel núñez, que es ex católica. También. O sea, creo que 1 o 2 códigos más que yo. Ahorita. Él es.
+digamos, el líder de Platformering en B, C, P. O sea, es el líder de todos los de box, el líder de todos los desarrolladores en B, C, p.
+Y Y esa pata es súper súper capo. Angel.
+nosotros con el presente estado de seguros.
+fuimos con diferentes actores de de de tecnología, ¿sí? O sea, imagínense, recuerden esa esa área, gran esas áreas grandes que les contaba el otro día de que existen en en tecnología seguridad. Por un lado, la gente de infraestructura de operaciones, por otro, todo el el el universo de desarrollo que es grandote con diferentes jefes.
+Y
+entonces fuimos 1, fuimos 6 personas de la empresa y fuimos salpicados. Fue mi jefe que era 1 de los 10 desarrollo. Fuimos como un techlit. Fui buena para mío que era una project manager y de ahí fue
+de seguridad 1 de los que van controlan todo el tema de control de cambios, comité de cambios de operaciones, otro, el de infraestructura también fue.
+y creo que ahí es el de seguridad. También fue el de seguridad, y por ahí 1 más que se me va.
+La cosa es que en esa dinámica dinámica que van a ver. Luego de The Box de Lego de Lego chocolate. Es como viven el proceso de desarrollo de forma acelerada en un unos cuantos minutos.
+y ven las experiencias que sufre cada 1 en su rol en el día a día en la realidad.
+Y eso ayudó mucho a que
+nosotros, como equipo de desarrollo en el papel de seguridad. Entendiéramos cuál era la problemática que que él tenía Ahí afrontaba el de seguridad, entendió cuál es la problemática que afrontaron los desarrollos. ¿no?
+Entonces es una dinámica bien interesante. Se me habla ahorita. El nombre de la
+la chica que creó esta dinámica es una chica, un apellido complicado. Él lo busco y se los comparto
+o haciendo en paralelo.
+Y
+es una chica que tiene un libro que lo hizo, y acá. Está Play. Teba algo así.
+Dana pilalleva. Dana pi la lleva ella como que lo no se lo creo. Tiene un librito en una guía de cómo hacerlo.
+Este.
+Bueno, ella la diseñó. Mhm.
+Ese es bastante interesante. Bueno, normalmente eso se hace presencial. Pero dada alguna historia de lo que pasó, lo es la primera vez que lo hago virtual, Así que vamos a ver qué tal va.
+Y
+pero lo lo Chévere. E: Interesante. Es eso. No que es como Inc, van a vivir ahí en carne propia, un poco lo que se vive en proyectos de desarrollo software en minutos, no 2,
+simulado.
+Entonces, bueno, eso hay unas cuantas cositas más. Bueno, con conceptos de Chicleft, Chi Wright.
+Pues, bueno, como universo, ya nos quedan poquitas clases.
+Estamos en el antepenúltimo quedan 3 contando esta y un laboratorio en
+vamos a empezar hoy día, viendo Chiffs Left Right, que
+ya había había habiendo pasado por todos los controles que hemos visto de calidad, seguridad y demás. Es como Okay, cuáles vale la pena traer antes? Cuál la pena después? ¿qué criterios se usan
+era luego el tema observabilidad también.
+Y bueno, finalmente, los bueno, plantillas de biy blance y al final, el la dinámica.
+Entonces de lo que vimos
+recordando un poquito blame less. Lo importante era enfocarnos en el proceso, roles, herramientas, ¿no? Y no en personas.
+Y luego era la diferencia entre víctima ordonista, ¿sí?
+Y no sé si ahí en el chat.
+cuál es la diferencia para ustedes entre un víctima y un protagonista.
+Se lo ponen a escribir ahí en el chat.
+Salvador Sánchez Suarez
+00:22:05
+El protagonista, este se decide a resolver.
+o sea, busca una una solución. La víctima solo pide.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:22:16
+Vale. Gracias. Salvador.
+además que quieras comentar algo, ya sea por chat o con Vos
+Constantino Osorio, tan
+en las previas del partido de Perú o en el partido de Perú. Y estuve hasta en el
+Me están viendo la cosa del papá o tengo otra. Bueno.
+si hay, como bien decía salvador, pues veces un poco la
+la idea, no el protagonista, ve posibilidades de
+no quiere decir que el protagonista nunca es víctima, ¿no? O sea, todos hemos visto en un momento. La idea es reaccionar. Ya Ya lloré un poquito, ya me quejé ahora. Okay, ¿qué puedo hacer?
+Es importante un poco ahí el cómo lo doy vuelta y y darle vuelta rápido. Y luego, qué hago con eso?
+Y se acuerdan del triángulo de víctima, victimario y superhéroe
+el triángulo de
+del drama.
+Y el otro triángulo que vimos te acuerdas. ¿cómo se llamaba
+cuando le dabas a la vuelta a cada 1 de esos personajes
+en medio, y
+te llamo empoderamiento donde la víctima era el protagonista.
+Tú tenías un Coach.
+Y tenías luego un recuerda cuál es el nombre del otro.
+Y un Challenger, no un retador.
+Ese es eso para que lo tengan ahí
+presente y cuando salga a la vista, puedan identificarse un poquito de lo que que en que estoy.
+en qué estoy estoy en el triángulo de drama? Estoy entrenando de empoderamiento. Y si estoy entrenando de Ram de drama en el drama. ¿qué error estoy cumpliendo? Ahorita
+Entonces bueno, eso veíamos un poco como el mundo, protagonista
+y todo eso. Finalmente, lo que nos permite son crear conversaciones que habilitan posibilidades, no y
+justo. Hoy estoy leyendo un libro que se llama conversaciones difíciles.
+que es como el parte de la información que que nos da en el cole de mi hijo.
+Y Y bueno, eso te sirve para todo, no no solo para criar higos hijas, sino también para
+para el trabajo, para ser profe, para interactuar con para ser un humano que interactúa con personas. ¿no?
+Entonces es como como escuchas desde donde escuchas y
+y estas conversaciones son las que justo habilitan esas posibilidades, ¿no? Hoy, en la mañana yo les conté un par de anécdotas de mías por por curioso por querer hacer mejoras por metiche por ahí. Me Me gané algunos gerentes en contra en el momento
+o reclamos de de gerentes o de mi jefe.
+Y justo cuando estaba con una amiga en la mañana con la que trabajamos juntos en esta empresa, y a también le pasó un poco lo mismo me contaba, ¿no? Sí. Y a mitad de gerente también me dejó hablar por tal cosa, tal o tal.
+Y claro, en ese momento
+me lo vivía desde el víctima, no de puch a mí. No sé qué él es malo. Ella es mala si no es que quieren mejorar. Entonces para que me pillen y la vea y no como víctima.
+Y viéndolo ahorita viendo justo, no, qué conversaciones son las que no me animé a tener, y
+o no tuve la madurez ahí en ese momento para darle vuelta y plantearlo una manera diferente, ¿no?
+Y así que eso eso eso me quedé con
+con eso. Por eso, por eso ponen esa parte de conversaciones que habilitan posibilidades Por realmente.
+Si nos atrevemos a dar la vuelta al triángulo, vamos a poder a través de conversaciones, habilitar diferentes caminos.
+entonces todo esto de la previa de la clase pasada
+y justo por un tema. De ahí del laboratorio de ayer.
+Ahí les preguntaría a ustedes vi
+cuando me tocó entrar un par de
+de grupos para hacer las preguntas al medio del del laboratorio.
+vi textos largos, y dije, ya están usando día. Está bien, Es parte del oratorio, pero
+me quedé con esa pregunta: ¿no? ¿en qué creen que los ayudó la I a ayer en el laboratorio.
+Y qué qué sienten que aprendieron, si es que sienten que aprendieron algo? No
+Eso me sirve mucho de input para mejorarlo próximo
+alguna. Coment ¿Quiere comentar algo.
+Te quitamos la I A por el último laboratorio.
+Si no lo sé, yo, de nada.
+Vamos a pasear un poquito por quienes están conectados por ahí preguntando 1 a 1, a ver qué
+qué opinan
+cristian en tu caso, ¿para qué crees que te yo leía?
+Y qué crees que que aprendiste ahí? En el laboratorio?
+No lo va a bajar nota nada es lo que es lo que es.
+pero me gustaría su su feedback, su feedback. Dado que el fee virtual
+esa conversa que a veces teníamos después. Nadie no se pudo dar.
+Avatar del perfil de CRISTIAN SMITH CALDERON BARRIAL
+CRISTIAN SMITH CALDERON BARRIAL
+00:30:02
+La playa ayuda a poder resumir más el caso y poder compararlo. Desde ese punto no.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:30:14
+Entenderlo, dices tú y a desarrollarlo también.
+Avatar del perfil de CRISTIAN SMITH CALDERON BARRIAL
+CRISTIAN SMITH CALDERON BARRIAL
+00:30:21
+Para desarrollar en más que nada en las bueno en el código, no en.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:30:27
+Vale
+pregunto para para el texto de las
+preguntas de toda la parte inicial: usar un I a F
+nuevamente ya no es que estuviera prohibido ni que ni que lo vaya a bajar. Por eso, pero sí me gustaría saber.
+Okay, Levanten la mano quienes sí usaron ella
+para la parte de las preguntas inicial como para tener una idea
+o otra vez en mi percepción que vi tanto texto y de la de lo que proyectaba en pantalla de las decisiones. Y por ahí
+sí, ah, no, sí conoce que Sí, los hacías ya para las preguntas.
+32 2 2 gelins que ya se animaron a decir: sí, yo sé, ya está bien.
+Sí, te está ganando más.
+Dalí. Qué siente que aprendieron que es la parte más. Me me interesa.
+Sientes que aprendieron algo del laboratorio de ayer.
+Galeno. Sí.
+Avatar del perfil de Giano
+Giano
+00:31:52
+Profe. Personalmente, pienso que sí se puede aprender con la I A, siempre y cuando no tengas la disposición de hacerlo, es decir, preguntarle qué hizo, por qué lo hizo, por qué se tomó esta decisión o que te delegue la decisión explicándote cuáles son las consideraciones
+que que pue en que puede repercutir, porque nada cuesta también decirle ya Okay, esto resuelvelo como puedas y y ya nada más quedarse con eso? ¿no? Y creo que ahí sí ayuda. La parte de que
+iba a venir un evaluador a preguntarnos a cualquiera. No es así como que nos ofrecen un poco a tratar de entender qué hizo. Y sí, porque si no hubiera eso, pues ya asumiríamos que está resuelto todo, ¿no? Pero
+al menos si o esa parte.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:32:36
+Sí.
+Gracias. ¿no?
+Y si si tuvieses que decir algo puntual, no, no te explicaría tanto que que que crees que aprendiste ayer del laboratorio.
+Avatar del perfil de Giano
+Giano
+00:32:52
+Bueno, sería que a veces quedan librerías que se le tratan vulnerabilidades y no se actualizan, y pues es algo. Siempre hay que tener monitorizado, No.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:33:04
+Dale.
+Gracias.
+No sé si están al tanto. Han visto algo de la noticia de la caída de Teams. Bueno, perdón de Outlook de ayer.
+¿alguno ha escuchado algo
+bueno.
+Sí, Ahí Sebastián. Ayer se cayó Outlook para los que no son Auslook es el correo de Microsoft. Sí, lo que no hemos usado blue
+y y es normalmente el correo corporativo por excelencia en Perú. Sí, todo Gregor usa
+casi casi todo grecorro usado Luke.
+por ejemplo. Por eso ayer algunos que querían recuperar sus contraseñas
+como Github ha sido comprado por Microsoft, Microsoft internamente, algunas cosas
+de restauración de contraseñas, accesos de de hija reutiliza, algo de ashree por ahí algo que se ha caído de envío de mails o T. Ps. Estos de one time password o o de recuperación que no estaban funcionando. Por eso en parte, tuvieron sus problemas.
+y pero el origen de la caída ayer de Gautlook no no sea todavía entiendo
+formalizado, pero entiendo que la el origen fue una
+un ataque a una librería con vulnerabilidades. Lo que se conoce como el cierre de, o sea, es una vulnerabilidad nueva detectada en una librería que no sabían que tenía.
+Y lo complejo de eso es que
+sal la vulnerabilidad. Y no tienes el parche, todavía tienes que fabricar el parche o
+aislar controlar alguna manera para que ya no te lo puedan explotar.
+Entonces, para que tengas una idea outlook promete
+que que el correo esté caído máximo 40 min al mes.
+Okay.
+Ayer he estado caído al menos unas 10 h, sí
+o con afectación, que es como lentitud. Algunos sí y otros no, esas cositas.
+Y o sea, que el el el el impacto ha sido grande.
+Entonces, justo eso como meta. Ya no ahorita de poder detectar.
+O sea, esto es de algo nuevo. No estamos hablando de un monstruo como Microsoft, trayéndolo a a empresas peruanas mortales.
+¿nos van a, o sea.
+sí, sí, una librería Chevroleday, o sea, como que el el día que se cone de vulnerabilidades afecta. Imagínense las librerías que ya tienen miles de vulnerabilidades y seguimos usando no Entonces, cuántas empresas ahorita tienen librerías que ya tienen vulnerabilidades y no lo saben
+porque no tienen esas herramientas que los detecten, les ayuden a ver que lo tienen, No.
+el queso comes. El queso que comes italiano no es no es un mero tema de
+de que salga verde o rojo. El pibeline y salga bonito. No es un tema de impacto real de y de soluciones que realmente puedan ayudar a empresas en Perú en el mundo en general.
+empezando en Perú y tanto pequeñas como grandes empresas, no
+okay. Además, ayer coment co compartir algo del aprendizaje de ayer.
+porque voy a tener que venir venir como Papá Noel acá con mi con mi bolsa de regalo de puntos para que
+hasta la próxima, algo más que quiero convertir algún aprendizaje de ayer.
+tal vez de adaptarse. Pregunto a encontrarse ahí con qué equipo les tocaba y afrontar, no más para adelante.
+Por más que los conocieran y no los conocieran, tenían trato con ellos o no.
+Yo también me gustaría, cómo le fue con esa parte
+de que sean grupos aleatorios, hay mismos formados.
+Salvador Sánchez Suarez
+00:37:32
+En el trabajo en equipo, simplemente al menos en mi en nuestro caso, en mi caso, el de mi Grupo, donde estuve este dividimos los las labores y y cada labor por rama, ¿no? Y después le hacemos Pushl Main.
+En nuestro caso fue así.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:37:50
+Y fluyó.
+Salvador Sánchez Suarez
+00:37:52
+Sí, nomás que había un chico que no no podía. Por eso de Microsoft
+ya nomás. Le tuvimos que pasar el el magdan por por Zoom Nomás.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:38:04
+Está bien.
+Pero es así? Generan, Mhm, ¿verdad? Ahí tenía una pregunta.
+Ayer tenían una problemática entre ustedes. Ninguno podía proyectar la pantalla en sus salitas.
+Pregunto porque nadie fue y preguntó, pidió, preguntó, bueno, usted no podemos proyectar entre nosotros.
+Esa
+eso es clave. Ponte, O sea, yo cuando me di cuenta, cuando ya estaba en cuando fue a hacer las preguntas, dije cómo, o sea, obviamente eso les ha limitado un montón. Porque
+cuando están hablando a ciegas, no sin compartir pantalla. Entonces
+es ahí como como un tip cuando pasan esas cosas, levanten la mano y pidan eso. Primera cosa
+como pedir. Y bueno, si me dicen que no me dirán que no que no, pero pero
+pero pido para ver si sí me puede ayudar en lo que te meto que hacer. Sí,
+estamos si alguien que comentar algo más. Si no seguimos
+Zeus
+Okay, vamos a entrar a este concepto de Chief Left Chief Right.
+Acá? Tenemos nuestro típico pibeline, no de
+o perdón, no es debido proceso más o menos entero proceso más o menos para ello.
+Donde codificas haces los comics, tiras, tu pull request
+eso se se certifica en un ambiente. Luego Part viene la parte de despliegue
+hace producción, no se hace el despliegue se confirma que todo está bien y ya queda productiva. La solución no.
+Entonces
+Chiflet es traer al presente, o sea, a lo más personal a la ley, porque digamos que hoy día partimos acá
+no entre nos dan el requerimiento y empezamos a desarrollar.
+y de ahí vamos yendo hacia allá. Entonces, Shifle, extraer controles, validaciones al presente
+cheef, Rid. Llevarlas a futuro, llevarlos a lo más a más adelante, No lo digo más adelante posible, sino estratégicamente. Digo, ¿sabes qué, No lo quiero hacer ahorita acá por tal motivo, y lo voy a hacer en tal otro momento. A veces es por una restricción
+o a veces es porque y
+bueno, perdón, normalmente siempre por una o una restricción que finalmente te te hace que esa sea la estrategia. ¿no? ¿qué restricciones podrían ser! Oye ética, el hacking
+Tengo que hacer las pruebas de la ética del hacking.
+La problemática. El hacking ya se hace con la solución y la infraestructura, listas en un ambiente previo a producción.
+pero ya estás.
+Ya tienes que estar como por acá. No, no lo puedes hacer antes.
+Mhm: Las pruebas.
+si yo quiero implementar. Las pruebas de humo pos de pliegue son post de pliegue, se hacen acá. ¿no?
+Entonces es un poco la idea de la decisión de ese control.
+pasarlo para para más adelante en el proceso, ¿no?
+En
+entonces, como veíamos, si acá, detectamos algo, lo podemos resolver en segundos, ¿no? Porque el desarrollador ya está, acá se da cuenta, lo soluciona y se acabó
+mientras que si esto ya lo comité, lo subí. Vino el Lead, el Tech Lit, y recién se detectó acá, el Technit le rebotará al desarrollador. Era se podrá demorar unos minutos, ¿no?
+O las mismas. Las propias herramientas, también de automatización.
+Corren las validaciones y Acá también le da feedback y el desarrollador en minutos, Tend, lo solucionará.
+Sí, esto ya. Luego lo paso a certificación. Corren las pruebas manuales o automáticas, y la corrección de esto ya son horas. ¿no? Si hay algún retrabajo también. Otra vez salta hacia atrás y acá pueden pasar horas para subsanarlo.
+Entonces digamos que hasta acá hacemos un corte. Ya el proceso llegó hasta acá.
+Yo creo que era la parte del despliegue. Yo hago el despliegue y tengo una serie de pruebas de validación de si el despliegue está funcionando bien o no.
+Entonces esas pruebas de validación se les está funcionando bien o no. Me puede tomar hasta minutos no entre que terminen de correr.
+Y si algo sale mal en unos cuantos minutos puedo tener el roll back de ese despliegue. No, no tengo la corrección ojo desde acá hasta la derecha, porque acá obviamente voy a pasar por todo este proceso otra vez.
+Pero Pero el rol Bac de la retroalimentación de si eso está funcionando bien o no lo tengo en minutos.
+¿sí?
+Y ahora pensando ya en Ok, hicimos el pase, todo está funcionando bien.
+pero por ahí sembramos un incidente que no nos hemos dado cuenta.
+y a los días, a través de la telemetría
+nos empezaremos a dar cuenta de que el tiempo de respuesta se está empezando a degradar.
+Creamos una nueva tabla y no le hemos puesto índices. Entonces.
+conforme esta tabla se está poblando Poblando Poblando poblando
+los en los tiempos respuestas, incrementaron. Entonces no me di cuenta: no poder cometer ninguno de esos momentos, porque no había data
+por ahí sin algún pool de pruebas. Lo he detectado. Puede ser. Pero, bueno.
+eso por ejemplo, se darían cuenta por acá no en
+ahora podemos saber qué son estos experimentos de caos. Los vamos a ver más adelante.
+Y, pero, bueno, eso es un poco la
+la idea del Chief Left, chip, Right y un poco como
+Mhm, Nos vamos dando cuenta en diferentes lapsos de tiempo, según dónde se van dando las cosas ¿no?
+Y
+Y cada control no es como que lo llevo simplemente a mi antojo a un lado o a otro, sino es en base a qué información necesita el control para correr? ¿qué información Ya tengo en ese momento
+el el ambiente, etcétera. Para poder este
+ejecutar ese control, no ese control realmente me da información
+real y y que me sirva.
+Y para una idea, yo voy voy a hacer así. Bien, este ejemplos
+quieren llamar como tontos. No imagínense que que creamos el repositorio base de tu código fuente, sí. Y en ese momento le corremos el análisis de calidad, código
+ha trascendido
+Si no tiene nada, tiene el Ritmick, no no tiene nada más o tiene el Kit de Ing Nord, no tiene sentido.
+entonces esos son criterios. Obviamente eso pues lo he puesto como que el más tonto. Pero hay otros donde tal vez ameritan meterle un poco más de cabeza para ver en qué punto lo pongo, no
+y Okay. Entonces eso es Chiflet, Chiave Wright.
+No sé si vas a tener alguna pregunta
+lo que dicen
+ahora, ¿hasta dónde llega el Chicleft y
+Chiflex, como les decía, está pensado para traer los controles a presente, ¿no? Entonces el futuro, si es producción es llegar a producción.
+entonces todo lo que tenga que ver con producción es lo que no se va a conocer para ese control de Chiclet, no, o sea, cual van a ser los picos de consumo, etcétera, se pueden estimar. ¿sí? Y por ahí un oye, yo ya sé que No sé en el historial de ventas. He tenido 1 000 usuarios por fin de semana
+y eso hace que sean 50 concurrentes.
+entonces okay, vamos a tener esas pruebas en testing.
+Pero eso, por ejemplo, es un análisis que no se hace al inicio cuando recién empieza a desarrollar, sino se va haciendo progresivamente en el tiempo, No.
+así como ese. Hay varios ejemplos de cosas que van pasando de más hacia hacia el lado de producción en en el timing del material de producción.
+En Ahora imagínense vamos. Al contrario.
+agarramos, decimos, sabes qué, traigamos todo presente. Sast Dust.
+S S. A todos los análisis de vulnerabilidades de todo, traigámoslo a
+a cada vez que desarrollan un Covid. Corre todo eso.
+entonces conseguimos que el Payland demora ahora 40 min y
+y que, obviamente, esto hace que no sea viable para el desarrollador esperar 40 min. Cada vez que hace un cambio y terminan habilitando un skip
+para que con un permiso de min ahí salte salte al país, ¿no? Entonces ahí, como hablamos varias veces.
+nadie terminó usándolo. Mhm en o por ahí hay hallazgos, pero no le doy toda la información necesaria.
+entonces no sabe como priorizar, no. Y los termino ignorando no o por ahí. También no afronta esas conversaciones difíciles con el equipo de seguridad para con ellos, priorizar
+en
+Y bueno, así así como es Ahí hay algunos otros ejemplos de tampoco es la idea de llevar todo a presente.
+Y la idea es importante que la automatización la plataforma vaya absorbiendo la complejidad que corresponda para poder traer ese control al presente? No.
+Si voy a analizar más vulnerabilidades, bueno que lógica que analice esas vulnerabilidades, me prepare la información lo más masticada posible
+para que yo, cuando lo vaya a revisar, los pueda asfixiar más rápido, para que también pueda decidir qué hacer si sigo o no sigo más rápido. Este Esa parte la tiene que absorber las automatizaciones para
+realmente ayudar a mejorar el proceso y no que estorbe más el proceso.
+Entonces, si
+pensando en las prácticas de Chief Wright de Ok, esto no lo vemos presente, lo tengo que llevar más hacia la derecha. Ahí es donde salen diferentes prácticas para poder hacer esto. No
+future flags que lo hemos visto antes. Recuerdan ¿para qué sirve.
+Avatar del perfil de Giano
+Giano
+00:49:26
+Como para desbloquear funcionalidades sin necesidad de hacer un despliegue nuevo.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:49:30
+Sí, correcto.
+O sea, recuerden, es como en mi código. Yo ya tengo un If que pregunta por ese fichó flax. No, si está prendido, ejecuto otra funcionalidad. Si no está prendido, no lo ejecuto y ejecuto tal otra
+morir. Entonces, esto acá, es como si
+movieran un campo en base de datos, y en eso se aprende.
+Es una herramienta en sí, pero es el símil, entonces con eso se puede habilitar deshabilitar
+los el canary con análisis canary. Recuerden el canary diployment. El Canary break Canary canario que era
+el símil de las minas
+agarraban un canario. Lo ponían en una jaulita y se iban. Ca: Me ca metiéndola a la cómo se llama esto a la cueva por el túnel del de la mina.
+Y cuando el canario ya se desmayaba y era un okay, hay un problema cada de
+de de aire. Entonces tenemos que salir, no hasta acá nomás, podemos ir. Entonces el cannabi aplicado en esto es
+testing Okay, pero es testing repetitivo.
+Y como Dammy, que va validando que tu aplicación esté arriba. ¿no?
+Entonces, por ejemplo, en
+podemos tener para la página católica. Podemos tener un Canary que está haciendo un curl al al al G. P. S del Depool, punto P para ver que la página esté arriba, no cada minuto.
+Y si te responde 2 o 3 puntos seguidos, que con un error disponga un error diferente. Un código diferente a 200 te lanza la alerta.
+Entonces eso eso nos puede dar el canarino.
+se configura con una herramienta automatizas ahí. La La validación que quieres.
+El tráfico sombra es sinceramente, lo hemos visto en la en la teoría, pero nunca lo uso en la práctica
+es
+yo, como componente, digamos, puedo ser un balanceador. Yo soy un balanceador que recibo la carga de las apis y se la paso al backend para que la procese.
+Entonces yo me configuro, Me configuran para que, además de pasarle al backend, ¿qué es la
+lo común. Vemos esta aplicación.
+Voy replicando esta data.
+así como le mando al al backend para que procese. Esto también se lo pasó al Backend, nueva versión.
+Pero el usuario, al al usarlo, es la respuesta del backen real, versión actual, no de la nueva que está atrás
+que le estoy replicando eso, esa data. Esto es como sombra
+a esa nueva versión para ir validando ¿Cómo se está comportando la nueva versión. Entonces eso, por ejemplo, es un concepto de chicley perdón para ir viendo cómo cómo podría ir validando que la herramienta que la solución esté funcionando bien sin afectar el usuario final.
+Y Y bueno, la verificación sintética y
+perdón. Ahí confundí los 2, confundí el Canary con el verificación sintética. El ejemplo que les está dando de la P. U C de ir haciendo los cursos es de verificación sintética, que son pruebas.
+ya ves queduladas, cada equis tiempo que van testeando a ver cómo va, no.
+Entonces, cuando nadie está usando, o sea, en la noche también estamos validando el side de la pooke para ver si se está ajustando bien, no no solamente cuando los clientes. Entonces, ¿qué me puede dar esto? Que yo me me doy cuenta que se ha caído antes, que el que el cliente me avise.
+¿sí?
+Y lo del canarys. Parece el ejemplo real. El ejemplo que les di lo de la mina es sí tal cual, pero como se aplica, acá, es al desplegar yo la nueva versión.
+Voy haciendo estas esta implementación de esta nueva versión, no a todo mi parque de de servidores, no todos los los servidores o las copias de mi aplicación, donde está, sino un grupo reducido para ir validando de que esté funcionando bien.
+Y si va bien, lo voy replicando en el resto, No, Esto está pensado en una infraestructura
+que tenga más de una réplica por cada componente. No, si vamos hablando de contenedores, al menos necesitarías 2 contenedores para que eso funcione, no primero desplegas en 1
+valía, es que todo vaya bien. Y si está todo bien, despidas en el segundo.
+ese es un poco el diplodico en Canary.
+Uy se me cerró Acá la página.
+Están por ahí. Todavía me escuchan, sí,
+Ya Recién estaban leyendo los chats hace un rato, estaban escribiendo. Si me escuchan, pues se me cerró la pantalla y ya volví.
+Avatar del perfil de Giano
+Giano
+00:54:59
+Qué profe.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+00:55:00
+Dale
+este okay, entonces ya pasamos a fichas canary tráfico sombra y verificación sintética, y el otro es el caos. Caos.
+El experimento de caos. Esto lo creó tratando acordarme. Si fue Google o fue Amazon. Ya, qué es
+es de locos, sabes, pero yo. Eso sí lo he visto funcionando realmente.
+Tú montas tu Servidor, montas tu tu infraestructura, todo está operando
+y dicen, oye, supuestamente tu aplicación, si es que se cae, el servidor no debería pasar nada porque está el otro y automáticamente redirecciona el tráfico por ella. Oye, lo has probado.
+No, no lo he probado. Hay que probarlo, o sea, inyecta
+caídas dentro de toda tu infraestructura y de tu aplicación.
+Todas esas cositas que has diseñado esto por si pasa algo pruébalas haz que se caigan esas cosas ¿no?
+Y quieres contar que yo tuve un un tiempo. Pude trabajar en 1 de los de las nubes.
+Hoy está grabada. Así que no, pues me tengo que cuidar de qué nombres doy este
+y ellos internamente hacen estas pruebas. Es normal.
+o sea, prueban bajar su data center. A ver qué pasa prueban bajarse. No sé la un servidor, un balanceador, etcétera. No es como.
+y ya me acuerdo del nombre. El El nombre de eso se llama caos
+Karls monkey monkey, ah monkey caos muy poca.
+Han escuchado el término del mono con metra con metralleta, o sea, como un loco apuntando Para donde sea
+este Sí, Chao: Chaos Monkey, Charles Monkey es una herramienta de código abierto
+que justo está diseñada para inyectar problemas de forma aleatoria en tu infraestructura. Esa no no la he usado. Yo he usado una de adolescente que es más controlada, más
+más este específica, Pero el concepto que quiero seguir es ese no, O sea, es
+con un bono con metralleta, apuntando a toda la infraestructura tratando de bajarse las cosas. Creo que fue Netflix, Sí, pues Netflix es el creador del Kaos Monkey.
+y
+Entonces ahí es como oye antes de que el servidor se caiga en producción, y ahí recién sepamos qué es lo que va a pasar nosotros. Simulamos ese escenario para estar preparados para que eso está está. Y ahí nos vamos a dar cuenta de Uy. Nos olvidamos de dar partecita y se cayó todo. Obviamente, esto no lo hace en producción, lo hace en un ambiente paralelo.
+Y entonces, por ejemplo, en esa nube.
+no voy a tener diferentes regiones, no Virginia, Oregón, etcétera. Ahora les ha abierto una en Chile hace poco.
+En
+entonces, existe una región o un par de regiones dedicada específicamente a ingeniería de caos, o sea, a experimentos de caos. Me parece bien, bien, ché bien loco no.
+Y ahí todo un equipo que está ahí,
+probando, probando, probando y cada vez que cae algo alerta al equipo, que es dueño de ese componente para que vea de repararlo, no ver qué pasó y y que ya no vuelva a pasar eso.
+Entonces es una práctica bastante chévere no se usa tanto acá en el mercado.
+Yo en me tocó ver eso cuando estaba en el provider y luego con una consultora. Uno nos nuestros clientes. También nos pidió
+que lo ayudemos con esos experimentos de caos para ciertos componentes de su infraestructura. Sí se ejecutamos con con A W. S una herramienta de propiedad doble. S. Esta es inyección de
+de errores de infraestructura para ver qué pasaba
+en un ambiente, como te digo, no de producción, pero es bastante chévere y bastante provechoso, ¿no?
+Entonces, hasta que eso son las diferentes prácticas de
+Cheefright que, como verán, todas esas se tienen que hacer hacia el final, No, No, ninguna de esas hace ese sentido hacerlo desde el inicio. Todas van hacia el final
+y todas nos permiten tener algo que podemos medir y ver para tomar decisiones.
+Sí, sí tiene alguna pregunta.
+Voy a ver los chats un ratito, porque hace rato me estuvieron escribiendo y no me percaté de los chats.
+y no sé si se ha quedado alguno pendiente ahí de
+Okay. Haré un comentario sobre el oratorio. Los últimos que puse en marcha
+Okay. Entonces ya pasamos Chis Lifty Right. Ahora vamos a
+a tocar un poco la práctica de observabilidad, ¿no? O sea.
+cómo pasamos de simplemente observar. Ok, Ya sé que hay un problema a remediarlo.
+Es importante el el momento en el cual los remedios y hay niveles de
+madurez en esta parte de observabilidad y remediación.
+La primera, la clásica es
+una persona está revisando el servidor, se da cuenta que hay un problema y busca que hacer todo por consola no solucionarlo.
+El nivel. Uno es, oye ya configurar la alerta.
+Y si pasan ciertas cosas. Este es el Ranbook Rambo, que es los serie de pasos que hay que hacer para ejecutar para poder solucionar tal problema
+en en el programa de ayer de nubes que el J que trabajaba ya se tenían identificados ciertos, como yo estaba en el equipo, operaciones que era estar atentos por si algo pasa para solucionarlo lo más rápido posible.
+Ya se tenían configuradas ciertas alertas. No oye si sale el Código Error. Tal ejecuta tal c pasos, Tales acciones, no
+las primeras, es para y
+segmentar. ¿de dónde viene el problema? No oye. Revisa los logs. Aquí revisa, busca tales patrones, Acá ta Ta Ta: Ta: Con eso Cor, la persona que está haciendo la validación va tomando las decisiones según lo que el Rambo le está dictando.
+pero es a mano y, obviamente, demora el tiempo que la persona se muera en ejecutar todo eso.
+Luego, Y
+ese Rambok ya no es una serie de pasos manuales que habían ejecutado, sino que lo automatizamos y lo subimos a una herramienta.
+Entonces sucede la alerta. Y esto ejecuta la herramienta para y una persona le da clic a ese work flow Para ejecute esos pasos.
+Es el nivel 2.
+En el nivel 3 es, oye, sucede la alerta y de forma automática. Ya se ejecuta la remediación. Ojo que el Rambook había una parte de diagnóstico.
+Estamos hablando de remediación
+que es oye me quedé sin memoria, reinicia o sube recursos, escala, ponle un servidor más, etcétera.
+En
+entonces este acá y está tomando acciones que están ayudando a que mitiga, se mitigue el el impacto del problema, ¿no?
+Pero hasta acá todas han sido el 0, 1, 2, 3, es reaccionar a que algo sucede. Y luego que sucede acciono y hago algo para que
+para mitigar ese problema que sucedió. Pero el problema sucedió impacto u el 4 es
+Okay. Ya hemos aprendido a a a automatizar cosas, pero no nos quedemos en remediarlo simplemente ni siquiera automático, sino hagamos que esto no suceda.
+¿no?
+Y entonces eso les cuento, ahorita, por ejemplo. A veces suena como.
+no sé si ese valor es como obvio, o como fácil, a veces, de hacer según el tamaño de la aplicación. Pero ahorita. Yo, por ejemplo, 1 de mis clientes tienen una aplicación que hicieron hace un buen tiempo y tienen muchos developers juniors trabajando, entonces
+no está de la mejor manera. Sí, es una empresa relativamente pequeña, bueno.
+pero el problema es que tiene de la forma como se ha diseñado. Tiene demasiadas transacciones que llegan para que te hagas una idea. Ustedes que también han desarrollado varias cositas. El clásico servicio que te trae los parámetros
+de la aplicación, no lista de distritos de provincias, listas de cargos de una persona. Esta es una una empresa de solicitudes de de crédito.
+y entonces hay muchos, muchos parámetros de las personas.
+Y
+entonces imagínense ustedes: Cada 1 se es un usuario de negocio que entra para llamar a un cliente para ofrecerle el crédito.
+Y cuando tú entras a la pantalla del perfil de la persona, hay un montón de datos de la persona que son listas desplegables, no personas más sencilla como el sexo, todos los temas de dirección, la
+el el cargo, trabajo, a qué se dedica, etcétera.
+Entonces cada 1 de esos es una llamada a una A, P I y de la lista de maestros.
+y eso multiplicarlo por cada 1 de nosotros. La cantidad. Eso significa solo eso significa como el 25 por 100 de las transacciones del backend. Es eso ¿no?
+Entonces ahí se hace automoanálisis para ver qué estrategia nos montamos a montarle caché en el Browser para que ya no haga la la petición a la A, p. I, porque lo que estamos pasando ahora, que hay como una curva de de transacciones de más llamadas a clientes.
+Se están comiendo el los hilos del back end y está generando lentitud o contención en el backend.
+entonces ahí se dan cuenta, o perdón, esa parte. Todo nació con yo revisando logs revisando qué es lo que pasaba? Esto. Yo me lo salteé. Yo no soy muy fan de los manuales, así que ese rambo yo no lo hice. Bueno, tal vez lo tenía en la cabeza. Sí, lo tenía en la cabeza
+monte alertas. Y Y bueno, según lo que yo había visto accionado a ciertas cosas.
+este también lo salté. No llega a ser un
+una cosa ejecutable de forma automática. Tal vez algo me leía, me dio con eso. Sí, porque tenía unas Shells que leía, me había armado.
+Y si llegué a este no, o sea, llegué a este que
+por ahí me me escalaba el servidor. Me reiniciaba ciertas cosas.
+pero ya estoy acá. También. Ahora quiero
+Okay. Ya sabemos. Ya hemos mitigado de alguna manera el problema, pero no podemos convivir con este problema por siempre
+Tenemos que atacar la raíz. No es fácil, pero hay que atacar la raíz. Entonces ahí Okay. ¿qué hacemos? ¿qué hacemos para llevar esto? Esta mejora a
+a la aplicación? Para que para que eso ya no suceda.
+entonces esto es un proceso. Como ven, evolutivo, es difícil.
+normalmente depende de la complejidad de la aplicación, pues si son cosas muy sencillas, si probablemente te vas directo a la prevención y ya está,
+pero con cosas complejas donde ya tienes usuarios atrás, negocio operando con esa aplicación, No les vas a decir este ya sé cuál es el problema. El problema es que tienes muchas transacciones y tenemos que rediseñar toda la aplicación me va a demorar mes y medio y no vas a tener mes y medio con la aplicación caída todos los días.
+Entonces ahí vas implementando estas cosas para mitigar ese mes y medio, mientras que ya Ok, terminas de de hacer el rediseño de la aplicación, las mejoras, etcétera.
+Entonces este es importante eso de
+de tener en cuenta que es evolutivo. O sea.
+y en ese término de self Feeling, me me encanta que es justo en esta proactividad de la observabilidad de decir Okay. Ya sé que la aplicación está impactada
+si ya esa construcción impactada, y esa cual es la solución. Yo automatización la ejecutó de una vez. ¿no?
+Entonces, oye, tengo un proceso que está colgado, no responde.
+entonces tengo un check que está validando en qué está. Y si falla reinicio de forma automática, el contenedor o la función o lo que fuera.
+Entonces eso se puede configurar. Así como fuéramos un pibeline para hacer despliegues Estas otras funcionalidades se pueden
+configurar en, sobre todo en la nube. Sí, la nube trae muchas herramientas para poder hacer estas cosas. Esto ya va. Va. Va no va al Github Actions, sino esto ya va a a la propia nube con herramientas que trae que te ayudan con todo esto.
+auto escalado. Por ejemplo, les hablaba antes de un balanceador que invoca al al backend.
+Los balanceadores ya tienen capacidades para ir monitoreando tales métricas y si ve que tal métrica crece en tal porcentaje automáticamente habilita otro servidor paralelo
+y distribuye la carga.
+No, eso, por ejemplo, para picos de demanda es otro escalao. Es
+Es algo ya como si estás en V y no lo haces. Hay un problema de conocimiento, aprovechamiento que deberías hacer. No, A veces acá hay limitantes de de presupuesto porque montado, tu sol habrá costado más plata. Pero bueno, no
+ahí siempre le preguntáis qué hacemos soportas el intud o escalo
+en la demanda, no por si esta demanda es realmente de usuarios que van a la empresa va a facturar más. Vale la pena invertir un poquito más encierros, ¿no?
+El otro frente también es el tema de Time Out reintentos, ese T. Este concepto de circuit breaker
+lo han trabajado en algún curso
+o lo han visto antes en la vida.
+Sí, me interesa bastante saber eso para ver en las prácticas de desarrollo cómo están.
+Le suena circuit breaker.
+Avatar del perfil de Giano
+Giano
+01:09:49
+Nada. Profe.
+Salvador Sánchez Suarez
+01:09:53
+No profe.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:09:54
+Vale, le va a ser a
+a mis amigos que son profes de fundamentos, que este punto es superimportante. Ahí.
+Qué es el Widbraker?
+Muchas veces tenemos Vackends. Sus otros son los vackends
+en Fromden. Se pod no sé si en el Front, se podría. Pero pensando más en el backend, tengo Me Vackend, que invoca a otra a P. I Asunat, a Rennieck al que fuera puede ser externa o también interna. Entonces
+empiezo invocar, y es. Y el tercero falla una vez 2 veces, pero siempre en esa falla, yo lo estoy esperando porque hay un time out máximo.
+Entonces, y i i imaginemos. Este es el componente del backend que está invocando el tercero
+y y parte un rayito arriba, ¿no? O sea, él agarra y está mandando una vez 2 veces 3 veces y falla y falla y falla. Y ya sabemos que está caído. Renieck, sí, pero el backen lo invoca, pues
+Sigrid Brei Breaker lo que te permite es a nivel de código, así como los fiches flags que son a nivel de código. Los configuras sigverybreakers son es una serie de reglas. Me pareces un framework que que tú lo configuras con las reglas y le pones las reglas y le dices oye si en un rango de 10 min.
+El 80 por 100 de transacciones han fallado por timeout o por tal código
+cierra el circuito. ¿qué significa cierra el circuito por defecto. Ya no lo invoco y respondo al error, porque yo sé que va a fallar. Entonces, ahí estoy respondiendo de forma rápida el error que ya sé ahí qué va a pasar.
+Okay, y estoy liberando ese hilo. Estoy liberando ese ese canal, entonces este concepto de siempre. Breaker. Este es súper útil en ese sentido, ¿no? De
+De eso no te va a remediar un problema, pero sí va a hacer que ese problema sea menos
+1 que no puede generar otros problemas. Y 2, que
+es como si es un problema, dímelo de una vez. No, Eso es lo que te iba a decir. Baker. Si hay un problema de una, se responde con hay. Este problema. No te espera, no
+a a que venza el taimado, te cone conexión con el tercero. Es un poco la idea del circubrir Breaker.
+que es justo cerrar circuitos, porque sabemos que esos otros circuitos están fallando ahorita Sí,
+a veces hay lógicas más compleja de entonces. Yo camino por allá, ¿no? Pero Pero la naturaleza es eso.
+Y entonces eso, eso, por ejemplo, es un buen.
+un buen mecanismo y más o menos no tan complejo. Ahora, el el los framework desarrollo ya te traen esto de caja, si es que lo utilizas y lo empleas
+puede ser bien provechoso.
+Luego el tema de la cola de mensajes e E: el tema de procesamiento con colas. Sí, han trabajado en algún curso.
+No, tampoco.
+Bueno, las colas. Lo que nos sirve es, quiero transa. Quiero procesar algo.
+pero no quiero esperar a que el otro me responda.
+Ok, pero quiero asegurarme de que este mensaje se procese.
+Entonces imaginemos un ejemplo real de que es lo que se usa mucho esto. En en las empresas
+que están yendo al mundo digital, La empresa que está llamando mucho al mundo digital tiene muchos servidores y aplicaciones que todavía corren opremis y esas y esos que corren con premis normalmente es un poco más lento tiene
+algunas caídas propias de de los temas de premis. Entonces, cada vez que el mundo digital le quiere mandar algo premis
+y necesita que eso llegue a un premis, se use una cola intermedia
+en esta cola, el el mundo digital, la aplicación digital, lo de la nube deja el mensaje en la cola.
+Hay otro componente que toma el mensaje de la cola y lo procesa en un Remix.
+si es que algo falla, lo vuelve a poner en la cola.
+lo marca, como intenté procesarlo. Pero falló. Así que alguien más que intente luego.
+Entonces viene el proceso otra vez. Luego lo vuelvo a agarrar, lo vuelve a tratar de procesar igual. Puedo poner reglas para que máximo intente 10 veces 5 veces en un rango de X tiempo, ¿no? Y finalmente nace algo, un concepto que se llama el Dead Letter, Q que se lo puse en el chat.
+que es la cola de mensajes muertos que es, oye, Ya intenté el máximo que está en la regla. Yo intenté 10 veces en una hora, y todas las veces fallaron lo anoto por acá para que este luego siga otro procesamiento que se va a implementar luego. ¿no?
+Entonces ese ya lo ve una persona o le montan otro proceso automático que leer esa cola para hacer otras cosas. Pero bueno, es es un poco el
+Ese Ese es el fin de la cola de el
+la reacción automática, la versión automática que ya hemos visto antes se hace el roll back con la versión anterior.
+Y
+y si se ha hecho un cambio por fuera lo del Drift, que también ya lo hemos visto antes, no de correr los plans por fuera y ver de Terraford, por ejemplo, y ver cuál es la diferencia entre lo que se tiene en el código versus lo que está en la infra es el Drift.
+Entonces todo eso, la mayoría de controles ya están disponibles en la nueva que utilizamos y
+pero lo que no configuramos bien son los umbrales o no los colocamos o los colocamos mal
+y qué termina pasando, o nadie le hace caso a la alarma, la alerta o se termina desactivando. Sí,
+supongo importante es darle tiempo y dedicación y esfuerzo para ya nos no estamos de tiempo. ¿estamos
+o ir avanzando.
+Se entendió perdón. Lo que era Segrid Breaker y College.
+o el silencio es que no se entendió.
+Avatar del perfil de Giano
+Giano
+01:16:34
+Qué profe.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:16:37
+Vale.
+Okay. Bueno, el Gol pero igual podemos encontrar
+información. Son. Estamos muy, muy utilizados hoy en día.
+Okay. Entonces.
+Ahora, la autorremediación no es todo, no es todo color de rosa. No siempre hay algunas complicaciones que nos podría
+traer. Okay oye cada vez que se cae el servicio, se reinicia server y ya está,
+pero ya no me doy cuenta que ese reinicio 0, entonces
+no tomo acción para poder realmente en un post morder.
+Solucionar la causa raíz que está atrás de eso, ¿no? Entonces hay que también tener cuidado con eso para que no.
+no caigamos simplemente en estas remediaciones que reinician y no solucionan el el tema de fondo, y
+hay otros que amplifican la falla. Y
+esos temas de circuit breaker, por ejemplo.
+suena chévere y bonito el problema siempre ve que es cuando vuelve a a positivo.
+porque cuando el servicio de Renieck ya levantó
+el siglo y que todavía demora un poquito en volver a engancharse y hay transacciones que puede estar rechazando cuando debió haberlas permitido los buenos, un tema que.
+como un dolor que hay que pagar para evitar lo otro que era mayor. Pero pasa este
+Mhm
+o, por ejemplo, el punto 3, que son 2 reversiones que tienen que ver con temas de base de datos y que esos no se pueden revertir. Y ahí ya genera una problemática.
+entonces con una tengo una mala configuración por ahí del proceso. Pero podría pasar.
+Y el último, muy chistoso es, imagínense
+una persona entrando a la consola D, L. S. Y bajando la cantidad de servidores
+o subiendo la cantidad de servidores. Cualquiera de las 2 y la automatización que tenemos que tiene otras reglas, va variando también esa cantidad de servidores, no el otro escalamiento, porque el otro escalamiento es tanto para arriba como para abajo. ¿sí?
+Este entonces es la persona y la automatización peleándose
+por configurar la cantidad de servidores que correspondan en ese momento.
+porque por ahí. La persona no sabe la automatización, ¿no?
+Entonces se me podrás qué cosas que puede pasar?
+Y Okay. Entonces, ¿cómo se ve un poquito el en un pipe line.
+Bueno, un proceso. Estas prácticas, luego del despliegue, tenemos el el
+las pruebas sintéticas para validar que el servicio esté arriba.
+lo que les decía la página de P. U C, por ejemplo.
+en caso falle. Tenemos automatizado, callback, desplegar la versión anterior.
+Y bueno, finalmente acá poder registrar el isho del evento para poder luego ver qué hacemos.
+60 ejemplo.
+Okay.
+No sé que tiene alguna pregunta o algo?
+Me voy a por ahí con el último tema. Antes de la dinámica
+Okay, nos vamos con las plantillas de pipeland, y
+imagínense ese escenario. No tenemos 40 repositorios de código fuente.
+Todos son Packens, son Apis y todos tienen la misma estructura del pipeland.
+pues eso ya en el que ustedes han estado trabajando en sus laboratorios.
+estaría copiado exactamente igual en 40 repositorios y digamos que y nacieron
+con pruebas automatizadas unitarias, el S A. S, el S. S A y el despliegue de la imagen por el Djsde.
+y acá están usando ciertas librerías con ciertas versiones de estas herramientas.
+Entonces ya tenemos a todos los equipos superando con eso.
+Y en el mes, 6, 1 de estas herramientas encontramos que tiene una vulnerabilidad.
+Entonces hay que cambiar la versión del action, que está especificada ahí, por otra.
+hay que entrar a los 40 hacer el cambio.
+Entonces las plantillas lo que permiten es que esto no suceda es centralizar
+las estructuras de las o el corazón de las de los pibelines
+que vive en las plantillas, y cada filant de cada reto invoca a esa plantilla.
+Entonces, de esa manera puedes crecer un poco de manera de una manera mucho más eficiente.
+Y
+ahora vamos ahora. Les muestro un ejemplo que tengo de una de una empresa de eso.
+Y
+antes de ir a eso, mejor les les presento eso, porque si no, esto va a ser más difícil de entender.
+Sin ver lo otro. Dame un segundito. Y vuelvo a compartir la pantalla.
+Un segundito me me acordar que eso lo tengo de 2 maneras. Lo tengo también a nivel visual.
+que eso creo que también les va a servir bastante.
+Sabes, tú
+como tienes en mi pantalla.
+Entonces les les decía: Chévere. Gracias. Gandy les decía que
+existe lo que se llaman plantillas, que es para evitar
+repetir el mismo código varias veces, así como su código fuente, crean funciones ¿no? Y la función
+las invocan de un lado para otro.
+Acá Hay algo similar en lo que son. Paris.
+se crean plantillas base que pueden ser invocados por otros filenes.
+Y eso se hace a 2 niveles.
+Un primer nivel que se llaman los composito actions. En el caso, Lo voy a hablar todo con el lenguaje de Github
+pero thishau actions. Pero cada 1 tiene su el símil ya solo con otro nombre.
+Entonces, por ejemplo, acá el composito action se ha creado
+un composito action para cada una de las funcionalidades que tiene el pible para el escaneo con sonnercube de calidad de código para el unites de pruebas unitarias para el Gitlick. Para el el tema de escaneos secretos. Cada
+paso del Pibeline está atomizado acá en un componente. Ok, ¿Cómo se ve eso?
+Es compartido. Compré todo en mi pantalla.
+¿cómo se ve eso?
+Acá por ejemplo, tengo este action y, por ejemplo, debemos sacar el Getleak Scan.
+Entonces acá tengo este action que simplemente declara cuáles son los datos de entrada de la action.
+Cuáles son los datos de salida de se action y cuáles son los pasos que va a ejecutar ese action
+okay.
+Esa es esta cajita de Geetlick.
+Y así como esta hay un apartado
+Entonces acá. Es donde instala la la li la herramienta ejecuta, la herramienta prepara el output. Todo eso está
+ahora. Cada una de éstas es una parte del baile, ¿cierto?
+Entonces cada una de éstas va a ser invocada por un world flow base.
+Y él es el que orquesta Cada 1 de los actions okay.
+y yo puedo tener varios de estos, puedo tener Por ejemplo, acá. Yo lo hemos diseñado 1 para C, I
+y otro para C, D 2, 2, warfrase base diferentes.
+Esta acá es la que es la plantilla, realmente. Si la queremos llamar del pible line. Esta es la plantilla que tiene todos los pasos
+que quiero que tenga mi Pai Bland ya configurados.
+pero hasta acá todavía no lo está usando la aplicación. La aplicación está acá arriba.
+Entonces tengo por acá el fronend
+que invoca este base. S. I y tengo por acá el backend que también invoca este base. S. I: Digamos que los 2 tienen el mismo se I exactamente igual. No siempre va a ser así podemos tener bases E. I fronend bases e y backend, y cada 1 invocar lo suyo
+y haciendo lo mismo con el C. D.
+Entonces imagínese si tuvieran varios forents varios backends, cada 1 de éstos simplemente va a instanciar estas estas plantillas y las va las va a usar Ahora, cómo se ve esto en la vía real.
+Ya les mostraba acá los actions sueltos que son todos estos.
+y por acá. Tenemos los work floast base, por ejemplo, vamos al D, C, I
+Este worlflow base de C, I
+curioso, y tú eres zumo para que puedan verlo mejor.
+Este worlfo base es lo mismo, no que está el Los inputs.
+y miren, acá están los pasos, llegas a los actions. Miren.
+acá está el Bild, y está invocando al action de build
+que veíamos antes acá en Action S
+y acá le está pasando los inputs que él necesita.
+Unitest Había 1 de United. ¿cierto?
+Por acá. Está acá. Está Este es el action de Unitext y le pasa los datos que necesita.
+¿sí?
+Entonces esto acá ya está armando todo el árbol del Pay Line y
+que hace cada una de las acciones
+ya es un. Como ven, es un país grandote, no corre todo corre pruebas unitarias.
+Hace el bilt que más tiene. Tiene sangre, análisis de de dependencias.
+Tiene checo en ese contenedor.
+Tiene sunarcube donde dice calidad de código Tiene Gitlick para secretos revisando secretos. En el Piveline.
+perdón, tiene dependencia. Tracker para dependencias. El sangre disculpen era un Sast es el Sast de Análisis de seguridad de código.
+Y al final, el covent, que es todo el resultado. Lanzarlo al al al github como comentarios en el puro, puesto, no para entender mejor qué fue lo que pasó
+entonces. Todo eso ya está. Acá. Ahora vean cómo se ve la aplicación que lo invoca. Esto es lo más.
+Esto no lo tiene.
+Ya está bien. Tiene Él tiene 2 paiones: el D, C, I, el de C, D,
+en el D. S. I. Lo que está haciendo acá es usando la base C, I
+y acá le da todos los parámetros que se necesitan
+para que salga el paylane personalizado para este proyecto, ¿no?
+Entonces este este componente. Voy a ver si ahorita Entro al
+al Github para que lo vean. Este pible line tiene todos los pasos que vimos. Has hecho de código hace el bilt le pasa Sonr: Cube le pasas. Ass: ¿Le pasa este S S A le pasa todos los controles. El get secret to todos los controles los tiene.
+y simplemente es. ¿lo estás logrando, invocando a este Template?
+Mhm.
+Entonces este que estamos viendo acá ya es la aplicación. La aplicación se llama. Es un microservicio.
+Y
+entonces es este de acá. Arriba. Esta es la aplicación que estoy invocándole, entonces de esa manera es la manera eficiente de poder mantenerlo en el tiempo. ¿qué pasa si ahora decimos, oye, sabes que sonrecube. Ya nos quedó chico. Vamos a ir a sonar cloud.
+Entonces hay que cambiar.
+Todos los lugares de sonar, hay que cambiarlos.
+Imagínese todos los planes implementados. Acá Simplemente vamos al de al action
+que tiene la parte de sonar, que está colgada, que está sonar gayscan
+y acá le cambio los pasos para que ahora vaya a zonacloud Cambio lo que sea que hay que cambiar. Listo. Ya todos invocan a esto. No hay que hacer nada.
+Entonces hago el cambio en un solo lugar, y ya todos tienen ese cambio. Ese tiene su pro. Y contra Ok.
+porque cuando le meto la pata, meto la pata para todos también.
+Y ahí nace un concepto que es versionar los actions que publicas
+y las librerías base que publicas.
+Sí, Entonces este action. Yo lo puedo al momento de subir
+al Github, porque eso finalmente todo queda como si fuera un archivo en un repositorio de código fuente.
+Entonces, la idea, como una buena práctica es que yo vaya tagueando en Github.
+cada 1 de estos archivos en conversiones.
+Y cuando yo los use en mi work flow, saber a pedi uses
+cuando yo los use en el work flow como este.
+Miren, acá hay un arroba develop
+porque está usando la versión de la rama de develop que yo tengo acá arroba. Y la versión del task que quiero usar
+Hay que cruzar la versión 0, 2 0, 1.
+Entonces, de esta manera puedes apuntar específicamente a versiones
+de de actions. Y con eso, controlar el tema de que si hay cambios en develop me afecten, porque las versiones recuerden que son estáticas. Entonces
+el es un poco la una buena práctica que bueno, está cano, se está cumpliendo, pero
+pero es un poco la la idea.
+No sé si se entendió. Tiene dudas, preguntas.
+Te vimos ahí el concepto de paso reutilizable o el action.
+vemos luego la plantilla, el Worldflow, reutilizable. Y luego ya vimos como el repositorio de la aplicación, lo invoca.
+Mhm.
+Y
+entonces es un poco la la idea o el concepto de lo que son, lo que son plantillas para bielance y cómo nos puede ayudar a
+en el tiempo, ser mucho más eficiente en toda la gestión de los
+de los pibelines de los aplicaciones, sí, sobre todo en pensando en empresas que tienen muchos componentes y, por ende, tienen muchos Bylands. Sí.
+Para que tengan una idea de esto.
+la empresa de seguros estaba antes, habían como unos 800 microservicios, todos esperándose con papernes.
+todos usando la misma liber, li versión de plantillas, ¿no?
+Entonces ahí, por ejemplo, si tenemos que ser muy cuidadosos en ir versionando y vamos a ir. Y y también íbamos evolucionando los payplanes.
+Entonces eso nos ayudaba de forma muy eficiente ir
+desplegando nuevas funcionalidades de una manera rápida y
+e eficiente, y también con cuidado, no, o sea, con algún tipo de control.
+Y,
+Ok, no sé si es que hay una pregunta. Si no continuamos
+esto, ya lo vimos en el otro lado, que se ve mucho mejor este
+acá al lado de la versión, que es importante poner una y no no dejarlo simplemente montar una rama.
+Y
+Y bueno, los datos de entrada o salida de cada 1 que
+permiten esa interacción entre las entre los actions.
+Ahora, lo importante es un ¿Quién es? ¿quién se vuelve dueño de esa? De ese repositorio de plantillas? No, o sea, porque a Chévere existe la práctica, pero en una empresa donde solo hay desarrolladores
+y no existe un equipo de de box, vale que tenga un poco ese sombrero. Este es complicado un poco gestionar esa plantilla. La idea es que haya.
+no si quieren llamarlos de ox, take lits lo que fuera, pero alguien tiene que hacerse responsable por esas plantillas y mantenerlas para que las personas lo las reutilicen realmente.
+Entonces, y
+bueno, hay que versionarlas ir registrando los cambios como si fuera una aplicación, o sea, la la la plantilla termina siendo como si fuera una mini aplicación.
+y
+Y es curioso para que tengas una idea
+de cómo funcionan las empresas de una manera diferente.
+En la empresa donde yo estaba antes, todavía sigue siendo así. Los propios de Evox son los que construyen los pipelines utilizan plantillas, sí,
+pero ellos crean los pilas. Finalmente, de las aplicaciones usando esas plantillas.
+mientras que por ahí el el banco de la misma corporación.
+no lo sé, manejar de esa manera. Ellos han decidido de que las plantillas están listas, entonces no necesitan los dedos para poder implementar los fireless y el equipo de desarrollo utiliza la plantilla y simplemente implementa el Paylan usando esa plantilla y respetando esa plantilla.
+Entonces son diferentes formas. Unos tiene su pro y su contra de cómo se va utilizando, no finalmente.
+Pero la importancia es que se usen las plantillas se fomente y, a la larga, ayuda a crecer.
+Eso. No sé si tienes alguna pregunta
+alguna duda. Si no nos vamos por la dinámica
+Okay.
+Y
+antes de entrar a este punto yo necesito ir por un vasito de agua. Así que me dénme por fa un minuto
+y y vuelvo para ver esto
+ya
+un poquito. ¿sí?
+Ya estoy por acá
+estoy viendo cuánto somos Okay.
+Bueno, Jorge me comentó que estaba participando hoy de una de un evento, así que no podía estar y
+bueno. Esperemos que el resto pueda bueno. Lo malo de esto es que la grabación no va a quedar para esta parte de acá
+porque va a ser en salitas.
+Jonayu B: ¿Me recuerdan? Sí, que me olvido de poner a grabar luego de
+cuando vuelvan y tomar un poco la de la dinámica y tomar un poco lo que
+lo que se res lo que rescatamos en la N. K. Volver a poner la grabación
+de qué va el juego? ¿cuál es la idea?
+¿voy a cuántos somos 12, ¿no?
+¿sí? Tres grupitos.
+Voy a hacer. Ah, no, pero es conmigo, 3 o 2,
+Sí, hay 2 grupos. Serán, vamos a hacer 2 grupos, 1 de 5, 1 de 6, 3, 6,
+9, 11, sí. Uno de 5, 9, 6,
+y cada 1 ahí van a tener dentro del equipo. Van a tener roles.
+créanme. Sé que va a ser para algunos frustrante, y es parte de la dinámica. Ya es corta, pero va a ser provechosa. Sí, el rol que les toque
+y asúmanlo. Y
+Y si les toca hacer nada, hagan nada. Y si les toca hacer mucho, hagan mucho o que les toca. Caballero.
+Entonces, ¿cuál es el objetivo?
+Cuando estamos en vivo, el el en en en en el aula. Este juego, el objetivo es construir con piezas de Lego
+lo que el negocio quiere ¿Y qué cosa quería el negocio. Normalmente, en esos juegos eran figuras de animales con Lego.
+Y en este caso, como estamos virtual, yo he diseñado unas
+un excel con en Google Drive.
+que ya está compartido. Ahora les paso a link, donde cada equipo va a tener una pestaña
+en esta pestaña. Van a simular construir las piezas
+que o las figuras perdón con las piezas que el ¿Qué negocio está pidiendo Entonces el cliente soy yo.
+Okay, y cada equipo tiene un responsable de producto ese responsable del producto
+que le hemos puesto acá como el romner rol producto puede ser como producto. Bouler.
+Es el que va a ver. Ahora les muestro, excel, va a ver la pestaña cliente. Va a ver que en el Excel hay diferentes pestañas, una pestaña que se llama instrucciones que tiene esta explicación que les voy a dar
+otra pestaña que se llama cliente.
+que es la que tiene la especificación del diente. Lo que está pidiendo que básicamente es qué colores quieren las piezas de la figura
+y lo que es el producto. El Equip, el rol del producto va a ser, es copiar esa especificación de lo que el cliente quiere
+a la hoja de su equipo. Hay una sección que van a ver ahí ahora en la hoja de su equipo, donde van a ver qué es lo que donde copio la especificación del cliente.
+Voy a, se lo juro. Ojalá que vuelva.
+pero se han asustado de la nevera.
+Luego vamos a tener construcción. Esos son los que tienen que ver con los desarrolladores.
+Ellos son los que Okay, en base al pedido que me ha hecho el el producto.
+Ya voy componiendo mis figuras con esos bloques de colores en el en el Excel.
+Luego vienen pruebas que es una persona que agarra, ve la figura que han construido la valida contra la especificación del producto y dice: está bien, o hay que corregir algo. Y si habrá que corregir regresa, y el equipo de construcción
+arreglaron que el el feedback que les dé el de pruebas. ¿sí?
+Y
+Y si el de pruebas dijo que está todo bien. El de operación. Ahí hará como el pase a producción.
+cambiará el estado de esa fila a entregada y va a notar la hora
+del momento donde se hizo el cambio. C.
+¿dónde se ha hecho ese move, se ese cambio y vamos a tener un yo les voy a decir
+cuánto cuántas figuras en paralelo pueden armar.
+Ok, qué representa la figura? La figura representa una aplicación que están construyendo.
+¿por qué ubican el término Whip Working Progress.
+Avatar del perfil de Giano
+Giano
+01:46:31
+Sí Profe.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:46:33
+Vale
+Us. Todos los Todos los equipos tienen un wip máximo que pueden hacer a la vez, ya sea porque no tienen ambiente suficiente para desarrollar una cosa a la vez, ya sea por equis motivos.
+Entonces, acá como el ojo excel te soporta varias cosas que no queremos. Vamos a fijar un máximo de figuras con las que pueden, en las que pueden trabajar a la vez.
+Cada figura está compuesta por 4 bloques
+que son 4 celdas, ahorita en el museo que sale. Y eso va a quedar más claro.
+Entonces el Whip es el que les va a determinar cuántas figuras en paralelo pueden avanzar.
+o sea, por más que sean, los desarrolladores no van a poder.
+Por ejemplo, si el Whip es 1, no van a poder trabajar en 2
+2 filas, vamos a tener trabajando en la misma fila ya.
+Y
+vamos a tener 2 rondas en una primera ronda. No van a poder hablar. Van a estar todos con los micrófonos apagados
+y simplemente el excel va a ser lo único que les va a permitir coordinarse.
+Este es el símil de que es cada equipo funcionando aislado de forma remota y solo se comunican por correos o chats, No, O sea, no pueden hablar.
+Y
+eso. Este verdad es un punto importante. Tu curso estará para que pruebas pueda validar
+la Ca: Hay una cantidad de figuras que es el pedido. Ok.
+entonces pruebas puede recién validar cuando ya tiene todas las figuras listas del pedido. Si le han pedido 3 figuras hasta que las 3 figuras no estén completas, él o marcadas para probarse por los de construcción. Él no va a poder
+corregirlas o perdón, no poder validarlas.
+Es importante para tenerlo tan en cuenta.
+Y bueno, por cada figura que cada equipo va logrando, gana un punto, ¿sí?
+Ahí lo vemos, quién gana
+Como vamos a tener un equipo de 4, 1 de ellos. Consideren solo una persona construcción. Caballero.
+Sí,
+esta observación. Obvianlo es simplemente que va a estar anotada en un punto ya, pero no antes. Tenemos ese error, Pero ese rol, como somos poquitos. No lo vamos a tener en cuenta hoy
+y
+ya veamos el excel.
+El excel
+excel. Ahora dame un segundito
+acá. Está, pero Pero ¿cómo hago para?
+Sí,
+pero eso ya lo puse como público.
+Todavía no lo modifiquen porfa allá, los compartí que se los voy a proyectar primero para explicárselos.
+Pero bueno, esas son las instrucciones que ya se las comenté
+en la ronda. Uno les decía que micrófonos apagados solo a través de la hoja se comunican y
+son lotes de 5 figuras, o sea, terminan las 5 figuras, y ahí recién pruebas puede validar.
+Y y luego de eso, pasarse a la operaciones para caer el pase. Sí, es importante
+también importante que yo, como cliente, puedo cambiar el pedido Okay, porque
+yo luego, pues, cuando ustedes terminen la ronda, yo voy a ir a su excel y voy a
+validar y ver si coincide con lo que yo pedí o no coincide con lo que yo pedí.
+Ok. Ahora vamos a ver cómo cómo se cómo es, cuál es la el Excel para que lo la la la hoja, para que lo puedan entender mejor
+ya antes antes de ir a la segunda ronda. Veamos cómo se ve este. No, Este es lo vamos a ver al final.
+Esta hoja de cliente es la que yo modifico y que la persona de producto revisará para ver qué pedido lleva a su equipo. Si Entonces, por ejemplo, acá. Están los 4
+bloques que componen la figura y acá yo puedo decir qué color es.
+corresponden para esa? ¿no? Entonces digamos que
+el primer período, digamos que nace así: verde, rojo, azul, amarillo.
+verde, la base rojo, el medio, 1
+azul, medio, 2 y amarillo la ventana.
+Entonces, ¿cuál es la idea?
+Viene acá? El equipo de producto y copia lo mismo, no verde, rojo, azul, amarillo.
+Entonces viene acá y lo copia verde, rojo, soul
+amarillo, listo. El equipo de producto terminó. Ya está seteado.
+Ahora viene el equipo de desarrollo, empiezo.
+Yo sé, imagino que yo se desarrolla Okay a acá para que se ordenen, pongan sus nombres, no de quién va a hacer Carrol
+y
+y acá los desarrolladores pueden ir modificando en paralelo Esta, Por ejemplo, estarían est construyendo.
+Y el y y los desarrolladores pueden ir variando esta línea a la vez.
+este amarillo listo. Entonces viene el de Cuba.
+Recordemos que el de Cuba va a venir cuando estén todos completos. Entonces vendrá luego que estén los 5. Imaginemos que están las 5 y en el de pruebas, y dirá: oye, esa línea coincide? No coincide. Sí, coincide. Chévere oye, no coincide.
+Entonces los errores tendrán que ver qué es lo que pasa para solucionarlo.
+Y si es que ya le puso. Ok, si coincide, anotará, acá? Oye en qué minuto se ha dado esto.
+No recuerdo si vamos a tener timer en el Si no. Póngalo, ahora más fácil.
+Ocho 53 y después hacemos la resta para ver en que minutos se dio cada cosa.
+Y
+Ok, y una vez que ustedes terminen y la ronda termine, yo entraré y verificaré cada una de estas líneas con lo que yo pedí y acá les diré aceptado o rechazado.
+Sí,
+no sé si tenga alguna pregunta.
+Avatar del perfil de Giano
+Giano
+01:54:19
+Profe por cada ronda. Cuántas filas van a hacer.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:54:25
+La idea es que me puedan entregar la mayor cantidad de lotes posibles.
+y cada lote son 5 figuras, 5 filas.
+La ronda es de 6 min.
+Avatar del perfil de Giano
+Giano
+01:54:49
+Los constructores tienen prohibido ver la pestaña clientes.
+Solamente el de producto puede ver la pestaña cliente.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:54:58
+Si son curiosos. Pueden verlo si quieren, pero se hagan extraer un poquito lo que les toca.
+Avatar del perfil de Giano
+Giano
+01:55:03
+Ya.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:55:06
+Pero lo que o sea, lo importante que se guían es este.
+o sea, este es el pedido que ustedes tienen
+y el de productos es el que
+tendré que chequear en cliente, si es que por ahí cambia algún pedido.
+Avatar del perfil de Giano
+Giano
+01:55:22
+Profe cada vez que usted varíe en cliente, sería una nueva fila.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:55:29
+Cada vez que yo varíe, un cliente sería una nueva fila, y piensa esto como si fuera
+un pedido con diferentes fun diferentes.
+perdón. Un un solo pedido de un proyecto. Ok.
+es un solo proyecto que ustedes me van a entregar
+como buen negocio. Te hacen cambios de los requerimientos en cualquier momento.
+Entonces, si es que hay un cambio justo, el pedido es: corrijan hacia atrás, todo
+porque ahora todas las piezas deberían ser todas las piezas. Deberían ser, según lo que pide el cliente
+No es que el cliente
+hizo primero las piezas, las que así y después las piezas que las quiero asar, No, el cliente cambió de opinión y ahora todas las piezas las quiso de alguna manera
+diferente a la que pido inicialmente.
+Avatar del perfil de Giano
+Giano
+01:56:37
+Al final, todo tiene que ser lo mismo o varía entre los lotes de 5.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:56:42
+Todo tendría que ser lo mismo.
+Avatar del perfil de Giano
+Giano
+01:56:44
+Ay Okay.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+01:56:47
+¿sí?
+Okay.
+Entonces acá la idea es primero construyendo
+una vez que ya la terminan, le ponen para pruebas, viene el de Cuba, dice, Ok.
+Luego, como el de pruebas dijo Ok, y ya se consideran las 5 para hacer el pase, viene el de operaciones
+o perdón, el de pruebas, como ya las el de pruebas, los pasaría a para entregar.
+Y cuando ya tengas tus 5 para entregar el de operaciones las pasará a entregada.
+Y ahí es donde nota el minuto en que la está entregando sí. Creo que antes. Anoté el tema de pruebas, pero no el de pruebas. Es el de operaciones, porque ese es el minuto de entrega. No es el minuto de prueba
+ya es importante. Esa Esa declaración profesional de operaciones se queda sin sin hacer nada.
+El de prueba. El de operaciones hacen la entrega del lote y marca. ¿a qué hora se está haciendo la entrega
+Okay?
+¿estamos entonces Okay?
+Ahora, importante una cosa: ya les les nos vamos a ir de de de frente ronda Uno.
+yo les yo les voy a a dejar un ra voy a formar las alas, le voy a dejar 2 min para que se ensignen los roles.
+Y en 2 min les digo, arrancó, la ronda 1 desde ahí cuenta en 6 min
+y apenas termine la ronda 1 voy a a notar qué cosa.
+qué cosa acepto y que no de cada 1 Okay.
+Y desde que termina la ronda 1, ustedes tienen 5 min
+con micrófonos abiertos para que coordinen cuál va a ser la nueva forma de trabajo que van a querer.
+Se pueden un poco. La regla del tablero es la misma.
+pero sus roles pueden cambiar. Y de ahí en adelante ya pueden hablar.
+Pueden decidir el tamaño del lote. Pueden decidir quién aprueba, cuándo.
+ya los roles, ustedes los definen.
+y la forma de trabajo de como son organizar. Pero la estructura del proceso sigue la misma. Sí,
+Entonces, una vez que ya pasaron esos 5 min de que rediseñaron la forma cómo van a trabajar. Tienen 6 min más ya de ejecución de la ronda 2
+recién cuando les diga inicia la ronda Dos recién ahí,
+perdón, Recién ahí van a poder llenar este lado de la derecha.
+Y ahí también, nuevamente, cuando empiece la ronda 2, el de producto tendrá que ver qué es lo que he colocado yo acá como pedido sí
+okay.
+Avatar del perfil de Giano
+Giano
+01:59:51
+Profe para refrescarlo. Este pruebas revisa cada 5 en primera instancia, revisa cada 5 y operaciones, marca el minuto y marca para entregar.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+02:00:05
+¿correcto?
+Avatar del perfil de Giano
+Giano
+02:00:05
+Okay.
+Avatar del perfil de Jose del Castillo
+Jose del Castillo
+02:00:07
+Correcto y no se olviden ir modificando con los Estados para que sepan que ella está y que no.
+Ok, vamos.
+Uy una navaja más. Sí, Bueno, serán 4 4
+Okay. Entonces ya tienen este link
+equipo. Uno en la salita de nombre, lo va a poner el equipo. Grupo. Uno: equipo, 1, equipo, 2. Cada 1 usa su su pestaña, ¿sí?
+Y ya vamos con las alas Xbox, Su Manoli
+Listo. Entonces tienen 2 minutitos para organizarse.
+Ahí van las alas.
